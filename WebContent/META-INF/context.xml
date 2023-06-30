@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+<!-- 
+Resource  커넥션풀을 만드는 기본 설정 (어떤DB , 계정을 가지고 접속 설정)
+<Resource
+auth="Container"  
+driverClassName="oracle.jdbc.driver.OracleDriver"
+maxTotal="20"  //커넥션 객체의 최대 갯수  (default 8)
+maxIdle="20"   //사용하지  않는 idle(대기)상태의 최대 수 
+maxActive="20"  //DataSource로부터 꺼낼 수 있는 커넥션 최대 개수 기본값 : 8개
+name="jdbc/myoracle"  // 사용자가 지정하는 임의의 이름 
+type="javax.sql.DataSource" 
+url="jdbc:oracle:thin:@127.0.0.1:1521:orcl"  //원격접속의 경우 반드시 @로 설정한다. 
+username="scott"   //연결한 db 사용자 이름
+password="tiger"   // 연결한 db의 비밀번호 
+/>
+ password="1004" 
+ username="bituser" 
+ 
+ url="jdbc:oracle:thin:@192.168.0.218:1521:XE"
+ name="jdbc/oracle"
+ -->
+	<Resource maxWait="-1" 
+			  maxIdle="20" 
+			  maxTotal="20" 
+			  maxActive="20"
+			  password="oracle" 
+			  username="jin" 
+			  url="jdbc:oracle:thin:@192.168.0.50:1521:orcl"
+			  driverClassName="oracle.jdbc.OracleDriver" 
+              type="javax.sql.DataSource"
+			  auth="Container" 
+              name="jdbc/oracle" />
+</Context>
