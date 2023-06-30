@@ -164,10 +164,73 @@ REFERENCES "Usr" (
 	"usrId"
 );
 
+ALTER TABLE "Emp" ADD CONSTRAINT "FK_Dept_TO_Emp_1" FOREIGN KEY (
+	"deptNo"
+)
+REFERENCES "Dept" (
+	"deptNo"
+);
+
+ALTER TABLE "Emp" ADD CONSTRAINT "FK_Pos_TO_Emp_1" FOREIGN KEY (
+	"posNo"
+)
+REFERENCES "Pos" (
+	"posNo"
+);
+
 ALTER TABLE "Customer" ADD CONSTRAINT "FK_Usr_TO_Customer_1" FOREIGN KEY (
 	"usrId"
 )
 REFERENCES "Usr" (
+	"usrId"
+);
+
+ALTER TABLE "Sal" ADD CONSTRAINT "FK_Emp_TO_Sal_1" FOREIGN KEY (
+	"empNo"
+)
+REFERENCES "Emp" (
+	"empNo"
+);
+
+ALTER TABLE "Sal" ADD CONSTRAINT "FK_Emp_TO_Sal_2" FOREIGN KEY (
+	"usrId"
+)
+REFERENCES "Emp" (
+	"usrId"
+);
+
+ALTER TABLE "leave" ADD CONSTRAINT "FK_Emp_TO_leave_1" FOREIGN KEY (
+	"Key"
+)
+REFERENCES "Emp" (
+	"empNo"
+);
+
+ALTER TABLE "leave" ADD CONSTRAINT "FK_Emp_TO_leave_2" FOREIGN KEY (
+	"usrId"
+)
+REFERENCES "Emp" (
+	"usrId"
+);
+
+ALTER TABLE "leave" ADD CONSTRAINT "FK_leaveType_TO_leave_1" FOREIGN KEY (
+	"typeNo"
+)
+REFERENCES "leaveType" (
+	"typeNo"
+);
+
+ALTER TABLE "Att" ADD CONSTRAINT "FK_Emp_TO_Att_1" FOREIGN KEY (
+	"Key"
+)
+REFERENCES "Emp" (
+	"empNo"
+);
+
+ALTER TABLE "Att" ADD CONSTRAINT "FK_Emp_TO_Att_2" FOREIGN KEY (
+	"usrId"
+)
+REFERENCES "Emp" (
 	"usrId"
 );
 
