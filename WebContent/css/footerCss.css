@@ -1,0 +1,11 @@
+@charset "UTF-8";
+.footer_bottom {
+	display: flex;
+	justify-content: space-between;
+	padding: 30px;
+}
+
+.footer_bottom .info-dropdown {
+	padding: 10px 0px 10px 0px;
+	line-height: 140%;
+}
