@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+.nav {
+	min-width: 700px;
+	display: flex;
+	justify-content: center;
+}
+
+.wrapper {
+	font-family: 'Nanum Gothic', sans-serif;
+	font-family: 'Noto Sans KR', sans-serif;
+	display: flex;
+	justify-content: space-between;
+	margin: 20px;
+}
+
+.wrapper .logo{
+	width: 150px;
+}
+
+.nav .nav-item {
+	list-style-type: none;
+}
+
+.nav .nav-item .nav-link {
+	font-size: 30px;
+	font-family: 'Nanum Gothic', sans-serif;
+	font-family: 'Noto Sans KR', sans-serif;
+	padding: 20px;
+	text-decoration: none;
+	color : black;
+}
