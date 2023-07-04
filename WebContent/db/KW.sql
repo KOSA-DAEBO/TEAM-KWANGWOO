@@ -17,7 +17,7 @@ CREATE TABLE Usr (
 DROP TABLE Emp;
 
 CREATE TABLE Emp (
-	empNo	number		NOT NULL,
+	empNo	number	generated always as identity	NOT NULL,
 	usrId	varchar2(20)		NOT NULL,
 	empName	varchar2(20)		NULL,
 	empAge	number		NULL,
@@ -35,14 +35,14 @@ CREATE TABLE Emp (
 DROP TABLE Customer;
 
 CREATE TABLE Customer (
-	userNo	number		NOT NULL,
+	customerNo	number	generated always as identity	NOT NULL,
 	usrId	varchar2(20)		NOT NULL,
-	userEmail	varchar2(30)		NULL,
-	userTel	varchar2(50)		NULL,
-	userGender	char(1)		NULL,
-	userBirth	Date		NULL,
-	userAddr	varchar2(50)		NOT NULL,
-	userName	varchar2(20)		NULL
+	customerEmail	varchar2(30)		NULL,
+	customerTel	varchar2(50)		NULL,
+	customerGender	char(1)		NULL,
+	customerBirth	Date		NULL,
+	customerAddr	varchar2(50)		NOT NULL,
+	customerName	varchar2(20)		NULL
 );
 
 DROP TABLE Pos;
@@ -55,7 +55,7 @@ CREATE TABLE Pos (
 DROP TABLE Sal;
 
 CREATE TABLE Sal (
-	salNo	number		NOT NULL,
+	salNo	number	generated always as identity	NOT NULL,
 	amount	number		NOT NULL,
 	empNo	number		NOT NULL,
 	usrId	varchar2(20)		NOT NULL
@@ -64,7 +64,7 @@ CREATE TABLE Sal (
 DROP TABLE leave;
 
 CREATE TABLE leave (
-	leaveNo	number		NOT NULL,
+	leaveNo	number	generated always as identity	NOT NULL,
 	startDay	Date		NOT NULL,
 	endDay	Date		NOT NULL,
 	reason	varchar2(30)		NULL,
@@ -77,7 +77,7 @@ CREATE TABLE leave (
 DROP TABLE Att;
 
 CREATE TABLE Att (
-	attNo	number		NOT NULL,
+	attNo	number	generated always as identity	NOT NULL,
 	nowDate	Date		NOT NULL,
 	startTime	Timestamp		NULL,
 	endTime	Timestamp		NULL,
@@ -89,7 +89,7 @@ CREATE TABLE Att (
 DROP TABLE Money;
 
 CREATE TABLE Money (
-	mNo	number		NOT NULL,
+	mNo	number	generated always as identity	NOT NULL,
 	profit	number		NULL,
 	cost	number		NULL,
 	tAmount	number		NULL,
@@ -99,7 +99,7 @@ CREATE TABLE Money (
 DROP TABLE Product;
 
 CREATE TABLE Product (
-	productNo	number		NOT NULL,
+	productNo	number	generated always as identity	NOT NULL,
 	productName	varchar2(20)		NOT NULL,
 	costPrice	number		NOT NULL,
 	salePrice	number		NOT NULL
