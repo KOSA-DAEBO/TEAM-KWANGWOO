@@ -1,6 +1,7 @@
 package edu.kosa.third.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import edu.kosa.third.action.Action;
 import edu.kosa.third.action.ActionForward;
+import edu.kosa.third.dao.LeaveDao;
+import edu.kosa.third.dto.LeaveDto;
+import edu.kosa.third.service.LeaveApplyServiceAction;
 
 @WebServlet("*.do")
 public class FrontRegisterController extends HttpServlet {
@@ -45,7 +49,23 @@ public class FrontRegisterController extends HttpServlet {
     		action = null;
     		forward = action.execute(request, response); //request 클라이언트가 요청한 페이지당 1개씩 만들어지는 request객체
     	
-    	}
+    	}else if (urlcommand.equals("/leave.do")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("/WEB-INF/views/leave/leaveApplicationForm.jsp");
+			
+		} else if (urlcommand.equals("/leaveApply.do")) {
+			action = new LeaveApplyServiceAction();
+			forward = action.execute(request, response);
+			
+		} else if (urlcommand.equals("/leaveList.do")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("/WEB-INF/views/leave/leaveList.jsp");
+			LeaveDao dao = new LeaveDao();
+			List<LeaveDto> list = dao.selectAll();
+			request.setAttribute("list", list);
+		}
     
     	if(forward != null) {
     		if(forward.isRedirect()) { //true 페이지 재 요청 (location.href="페이지"

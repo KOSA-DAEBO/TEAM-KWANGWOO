@@ -3,9 +3,51 @@ package edu.kosa.third.dto;
 import java.sql.Date;
 
 public class LeaveDto {
-	int leaveNo, levStatus;
+	int leaveNo, levStatus, typeNo, empNo;
 	Date startDay, endDay;
-	String reason;
+	String reason, usrId;
+
+	
+	public LeaveDto() {
+	}
+
+	public LeaveDto(int leaveNo, int levStatus, int typeNo, int empNo, Date startDay, Date endDay, String reason,
+			String usrId) {
+		super();
+		this.leaveNo = leaveNo;
+		this.levStatus = levStatus;
+		this.typeNo = typeNo;
+		this.empNo = empNo;
+		this.startDay = startDay;
+		this.endDay = endDay;
+		this.reason = reason;
+		this.usrId = usrId;
+	}
+
+	public int getEmpNo() {
+		return empNo;
+	}
+
+	public void setEmpNo(int empNo) {
+		this.empNo = empNo;
+	}
+
+	public String getUsrId() {
+		return usrId;
+	}
+
+	public void setUsrId(String usrId) {
+		this.usrId = usrId;
+	}
+
+	public int getTypeNo() {
+		return typeNo;
+	}
+
+	public void setTypeNo(int typeNo) {
+		this.typeNo = typeNo;
+	}
+
 
 	public int getLeaveNo() {
 		return leaveNo;
