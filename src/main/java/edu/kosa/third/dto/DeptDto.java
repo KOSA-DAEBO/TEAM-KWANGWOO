@@ -1,8 +1,8 @@
 package edu.kosa.third.dto;
 
 public class DeptDto {
-	int deptNo;
-	String deptName;
+	private int deptNo;
+	private String deptName;
 
 	public int getDeptNo() {
 		return deptNo;

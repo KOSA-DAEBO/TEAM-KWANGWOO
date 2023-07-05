@@ -1,8 +1,8 @@
 package edu.kosa.third.dto;
 
 public class LeaveTypeDto {
-	int typeNo;
-	String typeName;
+	private int typeNo;
+	private String typeName;
 
 	public int getTypeNo() {
 		return typeNo;

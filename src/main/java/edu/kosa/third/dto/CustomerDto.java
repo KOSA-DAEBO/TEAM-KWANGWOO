@@ -3,56 +3,64 @@ package edu.kosa.third.dto;
 import java.sql.Date;
 
 public class CustomerDto {
-	int userNo;
-	String userEmail, userTel, userAddr;
-	boolean userGender;
-	Date userBirth;
+	private int customerNo;
+	private String customerEmail, customerTel, customerAddr, customerName;
+	private boolean customerGender;
+	private Date customerBirth;
 
-	public int getUserNo() {
-		return userNo;
+	public int getCustomerNo() {
+		return customerNo;
 	}
 
-	public void setUserNo(int userNo) {
-		this.userNo = userNo;
+	public void setCustomerNo(int customerNo) {
+		this.customerNo = customerNo;
 	}
 
-	public String getUserEmail() {
-		return userEmail;
+	public String getCustomerEmail() {
+		return customerEmail;
 	}
 
-	public void setUserEmail(String userEmail) {
-		this.userEmail = userEmail;
+	public void setCustomerEmail(String customerEmail) {
+		this.customerEmail = customerEmail;
 	}
 
-	public String getUserTel() {
-		return userTel;
+	public String getCustomerTel() {
+		return customerTel;
 	}
 
-	public void setUserTel(String userTel) {
-		this.userTel = userTel;
+	public void setCustomerTel(String customerTel) {
+		this.customerTel = customerTel;
 	}
 
-	public String getUserAddr() {
-		return userAddr;
+	public String getCustomerAddr() {
+		return customerAddr;
 	}
 
-	public void setUserAddr(String userAddr) {
-		this.userAddr = userAddr;
+	public void setCustomerAddr(String customerAddr) {
+		this.customerAddr = customerAddr;
 	}
 
-	public boolean isUserGender() {
-		return userGender;
+	public String getCustomerName() {
+		return customerName;
 	}
 
-	public void setUserGender(boolean userGender) {
-		this.userGender = userGender;
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
 	}
 
-	public Date getUserBirth() {
-		return userBirth;
+	public boolean isCustomerGender() {
+		return customerGender;
 	}
 
-	public void setUserBirth(Date userBirth) {
-		this.userBirth = userBirth;
+	public void setCustomerGender(boolean customerGender) {
+		this.customerGender = customerGender;
+	}
+
+	public Date getCustomerBirth() {
+		return customerBirth;
+	}
+
+	public void setCustomerBirth(Date customerBirth) {
+		this.customerBirth = customerBirth;
 	}
 }

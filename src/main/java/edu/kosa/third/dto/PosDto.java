@@ -1,8 +1,8 @@
 package edu.kosa.third.dto;
 
 public class PosDto {
-	int posNo;
-	String posName;
+	private int posNo;
+	private String posName;
 
 	public int getPosNo() {
 		return posNo;

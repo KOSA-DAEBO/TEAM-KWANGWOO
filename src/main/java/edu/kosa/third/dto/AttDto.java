@@ -4,10 +4,10 @@ import java.sql.Timestamp;
 import java.sql.Date;
 
 public class AttDto {
-	int attNo;
-	Date nowDate;
-	Timestamp startTime, endTime;
-	String attStatus;
+	private int attNo;
+	private Date nowDate;
+	private Timestamp startTime, endTime;
+	private String attStatus;
 
 	public int getAttNo() {
 		return attNo;

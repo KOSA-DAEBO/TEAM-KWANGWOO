@@ -1,7 +1,7 @@
 package edu.kosa.third.dto;
 
 public class SalDto {
-	int salNo, amount;
+	private int salNo, amount;
 
 	public int getSalNo() {
 		return salNo;
