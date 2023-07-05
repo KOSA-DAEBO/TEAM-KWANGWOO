@@ -1,8 +1,16 @@
 package edu.kosa.third.dto;
 
 public class ItemDto {
-	private int itemNo, cost, price, stock;
+	private int itemNo, cost, price, stock, itemClsNo;
 	private String itemName;
+	
+	public int getItemClsNo() {
+		return itemClsNo;
+	}
+
+	public void setItemClsNo(int itemClsNo) {
+		this.itemClsNo = itemClsNo;
+	}
 
 	public int getItemNo() {
 		return itemNo;

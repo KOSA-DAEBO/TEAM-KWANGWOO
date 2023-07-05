@@ -3,10 +3,26 @@ package edu.kosa.third.dto;
 import java.sql.Date;
 
 public class EmpDto {
-	private int empNo, annualLeave;
+	private int empNo, annualLeave, deptNo, posNo;
 	private Date empBirth, hireDate;
 	private String empName, empEmail, empTel, empAddr;
 	private boolean empStatus, role, empGender;
+	
+	public int getDeptNo() {
+		return deptNo;
+	}
+
+	public void setDeptNo(int deptNo) {
+		this.deptNo = deptNo;
+	}
+
+	public int getPosNo() {
+		return posNo;
+	}
+
+	public void setPosNo(int posNo) {
+		this.posNo = posNo;
+	}
 
 	public int getEmpNo() {
 		return empNo;
