@@ -4,9 +4,17 @@ import java.sql.Date;
 
 public class CustomerDto {
 	private int customerNo;
-	private String customerEmail, customerTel, customerAddr, customerName;
+	private String customerEmail, customerTel, customerAddr, customerName, usrId;
 	private boolean customerGender;
 	private Date customerBirth;
+
+	public String getUsrId() {
+		return usrId;
+	}
+
+	public void setUsrId(String usrId) {
+		this.usrId = usrId;
+	}
 
 	public int getCustomerNo() {
 		return customerNo;

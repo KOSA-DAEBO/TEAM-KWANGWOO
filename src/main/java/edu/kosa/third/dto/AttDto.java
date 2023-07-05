@@ -4,10 +4,26 @@ import java.sql.Timestamp;
 import java.sql.Date;
 
 public class AttDto {
-	private int attNo;
+	private int attNo, empNo;
 	private Date nowDate;
 	private Timestamp startTime, endTime;
-	private String attStatus;
+	private String attStatus, usrId;
+
+	public int getEmpNo() {
+		return empNo;
+	}
+
+	public void setEmpNo(int empNo) {
+		this.empNo = empNo;
+	}
+
+	public String getUsrId() {
+		return usrId;
+	}
+
+	public void setUsrId(String usrId) {
+		this.usrId = usrId;
+	}
 
 	public int getAttNo() {
 		return attNo;
