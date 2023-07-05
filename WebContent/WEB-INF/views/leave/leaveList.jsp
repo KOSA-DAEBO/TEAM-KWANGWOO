@@ -53,7 +53,7 @@ th, td {
 				<c:set var="status" value="반려" />
 			</c:if>
 			<tr>
-				<td>${ list.leaveNo }</td>
+				<td><a href="">${list.leaveNo}</a></td>
 				<td>${ list.empNo }</td>
 				<td>${type}</td>
 				<td>${ list.startDay }</td>
