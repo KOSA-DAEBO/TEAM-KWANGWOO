@@ -53,6 +53,7 @@ public class JoinDao {
 
         } catch (SQLException | NoSuchAlgorithmException e) {
             e.printStackTrace();
+
         }finally {
             ConnectionHelper.close(pstmt);
             ConnectionHelper.close(conn);
