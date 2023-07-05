@@ -20,7 +20,7 @@ CREATE TABLE Emp (
 	empNo	number		NOT NULL,
 	usrId	varchar2(20)		NOT NULL,
 	empName	varchar2(20)		NULL,
-	empAge	number		NULL,
+	empBirth	date		NULL,
 	empEmail	varchar2(30)		NULL,
 	empTel	varchar2(30)		NULL,
 	empStatus	char(1)	DEFAULT 0	NULL,
@@ -28,6 +28,7 @@ CREATE TABLE Emp (
 	empGender	char(1)		NULL,
 	empAddr	varchar2(50)		NULL,
 	hireDate	Date		NOT NULL,
+	annualLeave	number	DEFAULT 0	NULL,
 	deptNo	number(2)		NOT NULL,
 	posNo	number		NOT NULL
 );
@@ -35,14 +36,14 @@ CREATE TABLE Emp (
 DROP TABLE Customer;
 
 CREATE TABLE Customer (
-	userNo	number		NOT NULL,
+	customerNo	number		NOT NULL,
 	usrId	varchar2(20)		NOT NULL,
-	userEmail	varchar2(30)		NULL,
-	userTel	varchar2(50)		NULL,
-	userGender	char(1)		NULL,
-	userBirth	Date		NULL,
-	userAddr	varchar2(50)		NOT NULL,
-	userName	varchar2(20)		NULL
+	customerEmail	varchar2(30)		NULL,
+	customerTel	varchar2(50)		NULL,
+	customerGender	char(1)		NULL,
+	customerBirth	Date		NULL,
+	customerAddr	varchar2(50)		NOT NULL,
+	customerName	varchar2(20)		NULL
 );
 
 DROP TABLE Pos;
@@ -70,8 +71,8 @@ CREATE TABLE leave (
 	reason	varchar2(30)		NULL,
 	levStatus	number	DEFAULT 0	NOT NULL,
 	Key	number		NOT NULL,
-	typeNo	number		NOT NULL,
-	usrId	varchar2(20)		NOT NULL
+	usrId	varchar2(20)		NOT NULL,
+	typeNo	number		NOT NULL
 );
 
 DROP TABLE Att;
@@ -100,9 +101,7 @@ DROP TABLE Product;
 
 CREATE TABLE Product (
 	productNo	number		NOT NULL,
-	productName	varchar2(20)		NOT NULL,
-	costPrice	number		NOT NULL,
-	salePrice	number		NOT NULL
+	productName	varchar2(20)		NOT NULL
 );
 
 DROP TABLE leaveType;
@@ -110,6 +109,32 @@ DROP TABLE leaveType;
 CREATE TABLE leaveType (
 	typeNo	number		NOT NULL,
 	typeName	varchar2(20)		NOT NULL
+);
+
+DROP TABLE Item;
+
+CREATE TABLE Item (
+	itemNo	number		NOT NULL,
+	itemName	varchar2(30)		NOT NULL,
+	cost	number		NOT NULL,
+	price	number		NOT NULL,
+	stock	number	DEFAULT 0	NOT NULL,
+	itemClsNo	number		NOT NULL
+);
+
+DROP TABLE ItemCls;
+
+CREATE TABLE ItemCls (
+	itemClsNo	number		NOT NULL,
+	itemClsName	varchar2(20)		NOT NULL
+);
+
+DROP TABLE PIMapping;
+
+CREATE TABLE PIMapping (
+	mappingNo	number		NOT NULL,
+	productNo	number		NOT NULL,
+	itemNo	number		NOT NULL
 );
 
 ALTER TABLE Dept ADD CONSTRAINT PK_DEPT PRIMARY KEY (
@@ -126,7 +151,7 @@ ALTER TABLE Emp ADD CONSTRAINT PK_EMP PRIMARY KEY (
 );
 
 ALTER TABLE Customer ADD CONSTRAINT PK_CUSTOMER PRIMARY KEY (
-	userNo,
+	customerNo,
 	usrId
 );
 
@@ -156,6 +181,18 @@ ALTER TABLE Product ADD CONSTRAINT PK_PRODUCT PRIMARY KEY (
 
 ALTER TABLE leaveType ADD CONSTRAINT PK_LEAVETYPE PRIMARY KEY (
 	typeNo
+);
+
+ALTER TABLE Item ADD CONSTRAINT PK_ITEM PRIMARY KEY (
+	itemNo
+);
+
+ALTER TABLE ItemCls ADD CONSTRAINT PK_ITEMCLS PRIMARY KEY (
+	itemClsNo
+);
+
+ALTER TABLE PIMapping ADD CONSTRAINT PK_PIMAPPING PRIMARY KEY (
+	mappingNo
 );
 
 ALTER TABLE Emp ADD CONSTRAINT FK_Usr_TO_Emp_1 FOREIGN KEY (
@@ -235,3 +272,23 @@ REFERENCES Emp (
 	usrId
 );
 
+ALTER TABLE Item ADD CONSTRAINT FK_ItemCls_TO_Item_1 FOREIGN KEY (
+	itemClsNo
+)
+REFERENCES ItemCls (
+	itemClsNo
+);
+
+ALTER TABLE PIMapping ADD CONSTRAINT FK_Product_TO_PIMapping_1 FOREIGN KEY (
+	productNo
+)
+REFERENCES Product (
+	productNo
+);
+
+ALTER TABLE PIMapping ADD CONSTRAINT FK_Item_TO_PIMapping_1 FOREIGN KEY (
+	itemNo
+)
+REFERENCES Item (
+	itemNo
+);
