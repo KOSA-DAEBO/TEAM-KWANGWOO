@@ -65,6 +65,14 @@ public class FrontRegisterController extends HttpServlet {
 			LeaveDao dao = new LeaveDao();
 			List<LeaveDto> list = dao.selectAll();
 			request.setAttribute("list", list);
+		}else if(urlcommand.equals("/joinUsr.do")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("/WEB-INF/views/join/joinUsr.jsp");
+
+		}else if(urlcommand.equals("/joinUsrOk.do")) { //UI + 로직
+			action = new JoinOkServiceAction();
+			forward = action.execute(request, response);//request 클라이언트가 요청한 페이지당 1개씩 만들어지는 request객체
 		}
     
     	if(forward != null) {
