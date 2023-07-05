@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+.header{position:relative;}
+.header.line{border-top:4px solid #535962;}
+.head {height:93px; }
+.head_top {width:1100px;height:50px;margin:0 auto;overflow:hidden;position:relative;}
+.head_top .logo {width:150px;}
+.head_top h1 {float:left;margin-top:8px;}
+.head_top .material-symbols-outlined {float: right; margin-top: 10px;}
+
+.head_bottom { height:43px; background:#005b23; clear:both;}
+.head_bottom_in {width:1100px; margin:0 auto;overflow:hidden;}
+.head_bottom_in .head_menu{width:960px;overflow:hidden;}
+.head_menu{float:left;}
+.head_menu:hover + .local_menu {display: block;}
+.head_menu li {float:left;}
+.head_menu li:first-child a{width:191px;}
+.head_menu li a {display:block; height:43px;line-height:50px; color:#fff;font-size:20px; width:191px;text-align:center; text-decoration: none;font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif;}
+.head_menu li.on a {background:#00471b;}
+.head_menu li a:hover {background:#00471b;} 
+
+/*헤더메뉴*/
+.local_menu {width:1098px;display: none;}
+.local_menu:hover {display: block;}
+.local_menu_in {width:955px;background:#ffffff;border-bottom:1px solid #d5d5d5;overflow:hidden; border-left:1px solid #a7dcbe; border-bottom:1px solid #a7dcbe; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box;}
+.local_menu .lm {float:left; width:190px; border-right:1px solid #a7dcbe; padding-bottom:17px;}
+.local_menu .lm:last-child{border-right:1px solid #a7dcbe;}
+.local_menu .lm ul {margin:15px 0 0 15px;}
+.local_menu .lm ul li {line-height:22px;}
+.local_menu .lm ul li a {font-size:13px; color:black; text-decoration: none; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif;}
+.local_menu .lm ul li.on a {color:#005b23;text-decoration:underline;}
+.local_menu .lm ul li a:hover {color:#005b23;text-decoration:underline;}
+.local_menu .lm.group1:hover{background:#a7dcbe;}
+.local_menu .lm.group2:hover{background:#a7dcbe;}
+.local_menu .lm.group3:hover{background:#a7dcbe;}
+.local_menu .lm.group4:hover{background:#a7dcbe;}
+.local_menu .lm.group5:hover{background:#a7dcbe;}
