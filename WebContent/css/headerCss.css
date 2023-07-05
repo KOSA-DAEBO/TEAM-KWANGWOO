@@ -22,9 +22,9 @@
 /*헤더메뉴*/
 .local_menu {width:1098px;display: none;}
 .local_menu:hover {display: block;}
-.local_menu_in {width:960px;background:#ffffff;border-bottom:1px solid #d5d5d5;overflow:hidden; border-left:1px solid #009bdf; border-bottom:1px solid #009bdf; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box;}
-.local_menu .lm {float:left; width:190px; border-right:1px solid #e7e7e7; padding-bottom:17px;}
-.local_menu .lm:last-child{border-right:1px solid #009bdf;}
+.local_menu_in {width:955px;background:#ffffff;border-bottom:1px solid #d5d5d5;overflow:hidden; border-left:1px solid #a7dcbe; border-bottom:1px solid #a7dcbe; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box;}
+.local_menu .lm {float:left; width:190px; border-right:1px solid #a7dcbe; padding-bottom:17px;}
+.local_menu .lm:last-child{border-right:1px solid #a7dcbe;}
 .local_menu .lm ul {margin:15px 0 0 15px;}
 .local_menu .lm ul li {line-height:22px;}
 .local_menu .lm ul li a {font-size:13px; color:black; text-decoration: none; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif;}

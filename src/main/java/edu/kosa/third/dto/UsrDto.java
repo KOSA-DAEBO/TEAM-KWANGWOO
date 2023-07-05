@@ -1,9 +1,9 @@
 package edu.kosa.third.dto;
 
 public class UsrDto {
-	String usrId, pwd;
-	int hex;
-	boolean status;
+	private String usrId, pwd;
+	private int hex;
+	private boolean status;
 
 	public String getUsrId() {
 		return usrId;

@@ -1,9 +1,12 @@
 package edu.kosa.third.dto;
 
+import java.sql.Date;
+
 public class EmpDto {
-	int empNo, empAge;
-	String empName, empEmail, empTel, empAddr;
-	boolean empStatus, role, empGender;
+	private int empNo, annualLeave;
+	private Date empBirth, hireDate;
+	private String empName, empEmail, empTel, empAddr;
+	private boolean empStatus, role, empGender;
 
 	public int getEmpNo() {
 		return empNo;
@@ -13,12 +16,28 @@ public class EmpDto {
 		this.empNo = empNo;
 	}
 
-	public int getEmpAge() {
-		return empAge;
+	public int getAnnualLeave() {
+		return annualLeave;
 	}
 
-	public void setEmpAge(int empAge) {
-		this.empAge = empAge;
+	public void setAnnualLeave(int annualLeave) {
+		this.annualLeave = annualLeave;
+	}
+
+	public Date getEmpBirth() {
+		return empBirth;
+	}
+
+	public void setEmpBirth(Date empBirth) {
+		this.empBirth = empBirth;
+	}
+
+	public Date getHireDate() {
+		return hireDate;
+	}
+
+	public void setHireDate(Date hireDate) {
+		this.hireDate = hireDate;
 	}
 
 	public String getEmpName() {

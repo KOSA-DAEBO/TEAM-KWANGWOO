@@ -1,8 +1,8 @@
 package edu.kosa.third.dto;
 
 public class MoneyDto {
-	int mNo, profit, cost, tAmount;
-	String cause;
+	private int mNo, profit, cost, tAmount;
+	private String cause;
 
 	public int getmNo() {
 		return mNo;
