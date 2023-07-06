@@ -13,7 +13,7 @@ import java.security.SecureRandom;
 import java.sql.Date;
 import java.util.Base64;
 
-public class JoinOkServiceAction implements Action {
+public class JoinCustomerOkServiceAction implements Action {
     @Override
     public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 
@@ -40,7 +40,7 @@ public class JoinOkServiceAction implements Action {
         }
 
         JoinDao dao = new JoinDao();
-        dao.joinchk(new UsrDto(id, pwd, salt, ""),
+        dao.joinCustomerChk(new UsrDto(id, pwd, salt, ""),
                 new CustomerDto("", "", email, tel, gender, birth, addr, name)); // hex 값추가, 회사코드 들어오면 직원으로 Join회원가입
 
         ActionForward forward = new ActionForward();

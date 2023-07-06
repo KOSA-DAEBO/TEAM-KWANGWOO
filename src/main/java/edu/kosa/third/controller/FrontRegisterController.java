@@ -16,8 +16,10 @@ import edu.kosa.third.action.ActionForward;
 import edu.kosa.third.dao.ItemDao;
 import edu.kosa.third.dao.LeaveDao;
 import edu.kosa.third.dto.ItemDto;
+import edu.kosa.third.dto.LeaveDto;
+import edu.kosa.third.service.JoinCustomerOkServiceAction;
+import edu.kosa.third.service.JoinEmpOkServiceAction;
 import edu.kosa.third.dto.ItemsDto;
-import edu.kosa.third.service.JoinOkServiceAction;
 import edu.kosa.third.service.LeaveApplyServiceAction;
 import edu.kosa.third.service.LeaveApproveServiceAction;
 
@@ -77,15 +79,15 @@ public class FrontRegisterController extends HttpServlet {
 			ItemDao dao = new ItemDao();
 			ArrayList<ItemsDto> list = dao.selectAll();
 			request.setAttribute("list", list);
-		}else if(urlcommand.equals("/joinUsr.do")) {
+		}else if(urlcommand.equals("/joinCustomer.do")) {
 			forward = new ActionForward();
 			forward.setRedirect(false);
-			forward.setPath("/WEB-INF/views/join/joinUsr.jsp");
+			forward.setPath("/WEB-INF/views/join/joinCustomer.jsp");
 
-		}else if(urlcommand.equals("/joinUsrOk.do")) { //UI + 로직
-			action = new JoinOkServiceAction();
+		}else if(urlcommand.equals("/joinCustomerOk.do")) { //UI + 로직
+			action = new JoinCustomerOkServiceAction();
 			forward = action.execute(request, response);//request 클라이언트가 요청한 페이지당 1개씩 만들어지는 request객체
-		
+
 		} else if (urlcommand.equals("/viewLeave.do")) {
 			forward = new ActionForward();
     		forward.setRedirect(false);
@@ -93,10 +95,19 @@ public class FrontRegisterController extends HttpServlet {
     		String num = request.getParameter("No");
     		LeaveDao dao = new LeaveDao();
 			ArrayList<HashMap<String, String>> list = dao.selectByNo(num);
-    		request.setAttribute("list", list);			
-		
+    		request.setAttribute("list", list);
+
 		} else if (urlcommand.equals("/leaveApprove.do")) {
 			action = new LeaveApproveServiceAction();
+			forward = action.execute(request, response);
+
+		}else if(urlcommand.equals("/joinEmp.do")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("/WEB-INF/views/join/joinEmp.jsp");
+
+		}else if(urlcommand.equals("/joinEmpOk.do")) {
+			action = new JoinEmpOkServiceAction();
 			forward = action.execute(request, response);
 		}
     
