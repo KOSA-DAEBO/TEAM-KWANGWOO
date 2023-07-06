@@ -3,22 +3,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-<meta charset="UTF-8">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/footerCss.css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-	<hr style="border: 5px solid #005B23; margin-top: 30px">
+	<hr style="border: 2px solid #005B23; margin-top: 30px">
 	<footer class="footer">
     <div class="wrapper">
       <div class="footer_bottom">
-          <div><img alt="logo" src="../images/logo.png"> </div>
+          <div><img alt="logo" src="./images/logo.png"> </div>
           <div class="footer_info_bottom">
             <div>
               (Team)KwangWoo 정보
