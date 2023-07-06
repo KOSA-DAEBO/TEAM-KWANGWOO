@@ -5,9 +5,17 @@ import java.sql.Date;
 public class EmpDto {
 	private int empNo, annualLeave, deptNo, posNo;
 	private Date empBirth, hireDate;
-	private String empName, empEmail, empTel, empAddr;
+	private String empName, empEmail, empTel, empAddr, usrId;
 	private boolean empStatus, role, empGender;
 	
+	public String getUsrId() {
+		return usrId;
+	}
+
+	public void setUsrId(String usrId) {
+		this.usrId = usrId;
+	}
+
 	public int getDeptNo() {
 		return deptNo;
 	}

@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import edu.kosa.third.action.Action;
 import edu.kosa.third.action.ActionForward;
+import edu.kosa.third.dao.ItemDao;
 import edu.kosa.third.dao.LeaveDao;
+import edu.kosa.third.dto.ItemDto;
 import edu.kosa.third.dto.LeaveDto;
 import edu.kosa.third.service.LeaveApplyServiceAction;
 
@@ -64,6 +66,13 @@ public class FrontRegisterController extends HttpServlet {
 			forward.setPath("/WEB-INF/views/leave/leaveList.jsp");
 			LeaveDao dao = new LeaveDao();
 			List<LeaveDto> list = dao.selectAll();
+			request.setAttribute("list", list);
+		} else if(urlcommand.equals("/itemList.do")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("/WEB-INF/views/item/itemList.jsp");
+			ItemDao dao = new ItemDao();
+			List<ItemDto> list = dao.selectAll();
 			request.setAttribute("list", list);
 		}
     

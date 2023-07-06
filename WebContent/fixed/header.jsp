@@ -3,24 +3,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 <meta charset="UTF-8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@300;400;700&display=swap"
-	rel="stylesheet">
-<link rel="stylesheet" href="../css/headerCss.css">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./css/main.css">
+<link rel="icon" href="./favicon.ico" />
 </head>
 <body>
     <div class="header noindex">
       <div class="head" id="head">
          <div class="head_top">
             <h1>
-               <a href="/" title="메인으로 이동"><img src="../images/logo.png"
+               <a href="/" title="메인으로 이동"><img src="./images/logo.png"
                   alt="광우" class="logo" /></a>
             </h1>
             <div>
@@ -39,7 +35,7 @@
                      <li class=""><a href="leaveList.do" title="휴가">휴가</a></li>
                      <li class=""><a href="#" title="급여">급여</a></li>
                      <li class=""><a href="#" title="출퇴근">출퇴근</a></li>
-                     <li class=""><a href="#" title="제품관리">제품관리</a></li>
+                     <li class=""><a href="itemList.do" title="제품관리">제품관리</a></li>
                   </ul>
                </div>
         <div class="local_menu">
@@ -74,9 +70,9 @@
             </div>
             <div class="lm group5">
                <ul>
-                  <li><a href="#">제품관리</a></li>
-                  <li><a href="#">제품구입</a></li>
-                  <li><a href="#">등등등</a></li>
+                  <li><a href="itemList.do">제품관리</a></li>
+                  <li><a href="#">제품추가</a></li>
+                  <li><a href="#">제품발주</a></li>
                </ul>
             </div>
          </div>
