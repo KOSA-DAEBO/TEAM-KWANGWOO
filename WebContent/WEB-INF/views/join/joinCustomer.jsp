@@ -16,14 +16,8 @@
 
 <h1>Customer 회원가입</h1>
 
-<form action="joinUsrOk.do" method="post"  name="test">
-    <input type="submit"/>
-</form>
-
-
 <div class="container">
-    <form action="joinUsrOk.do" method="post" onsubmit="return joinChk();" name="joinUsr">
-
+    <form action= "joinCustomerOk.do" method="post" onsubmit="return joinChkCustomer();" name="joinCustomer">
 
         <div class="row">
 

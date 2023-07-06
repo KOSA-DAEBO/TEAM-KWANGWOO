@@ -65,6 +65,7 @@ public class CustomerDto {
     return customergender;
   }
 
+
   public void setCustomergender(String customergender) {
     this.customergender = customergender;
   }
