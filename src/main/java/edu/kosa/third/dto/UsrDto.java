@@ -1,17 +1,26 @@
 package edu.kosa.third.dto;
 
 public class UsrDto {
-	private String usrId, pwd;
-	private int hex;
-	private boolean status;
+	private String usrid;
+	private String pwd;
+	private String salt;
+	private String status;
 
-	public String getUsrId() {
-		return usrId;
+	public UsrDto(String usrid, String pwd, String salt, String status) {
+		this.usrid = usrid;
+		this.pwd = pwd;
+		this.salt = salt;
+		this.status = status;
 	}
 
-	public void setUsrId(String usrId) {
-		this.usrId = usrId;
+	public String getUsrid() {
+		return usrid;
 	}
+
+	public void setUsrid(String usrid) {
+		this.usrid = usrid;
+	}
+
 
 	public String getPwd() {
 		return pwd;
@@ -21,19 +30,21 @@ public class UsrDto {
 		this.pwd = pwd;
 	}
 
-	public int getHex() {
-		return hex;
+
+	public String getSalt() {
+		return salt;
 	}
 
-	public void setHex(int hex) {
-		this.hex = hex;
+	public void setSalt(String salt) {
+		this.salt = salt;
 	}
 
-	public boolean isStatus() {
+
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(boolean status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 
