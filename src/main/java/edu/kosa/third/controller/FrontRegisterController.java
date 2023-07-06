@@ -14,11 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import edu.kosa.third.action.Action;
 import edu.kosa.third.action.ActionForward;
 import edu.kosa.third.dao.LeaveDao;
-<<<<<<< Updated upstream
-import edu.kosa.third.dto.LeaveDto;
 import edu.kosa.third.service.JoinOkServiceAction;
-=======
->>>>>>> Stashed changes
 import edu.kosa.third.service.LeaveApplyServiceAction;
 import edu.kosa.third.service.LeaveApproveServiceAction;
 
