@@ -8,13 +8,14 @@ import java.util.List;
 
 import edu.kosa.third.dto.ItemClsDto;
 import edu.kosa.third.dto.ItemDto;
+import edu.kosa.third.dto.ItemsDto;
 import edu.kosa.third.utils.ConnectionHelper;
 
 public class ItemDao {
 
-	public ArrayList<ItemDto> selectAll() {
+	public ArrayList<ItemsDto> selectAll() {
 		String sql = "SELECT I.*, IC.ITEMCLSNAME FROM ITEM I JOIN ITEMCLS IC ON I.ITEMCLSNO = IC.ITEMCLSNO";
-		ArrayList<ItemDto> list = new ArrayList<>();
+		ArrayList<ItemsDto> list = new ArrayList<>();
 		Connection conn = ConnectionHelper.getConnection("oracle");
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -24,6 +25,8 @@ public class ItemDao {
 			
 			while(rs.next()) {
 				ItemDto dto = new ItemDto();
+				ItemClsDto cDto = new ItemClsDto();
+				
 				
 				dto.setItemNo(rs.getInt("itemNo"));
 				dto.setItemName(rs.getString("itemName"));
@@ -31,8 +34,11 @@ public class ItemDao {
 				dto.setPrice(rs.getInt("price"));
 				dto.setStock(rs.getInt("stock"));
 				dto.setItemClsNo(rs.getInt("itemclsno"));
+				cDto.setItemClsName(rs.getString("itemClsName"));
 				
-				list.add(dto);
+				ItemsDto dtos = new ItemsDto(dto, cDto);
+				
+				list.add(dtos);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

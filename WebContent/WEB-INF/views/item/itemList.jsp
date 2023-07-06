@@ -21,11 +21,11 @@
 		</div>
 		<c:forEach var="list" items="${list}">
 			<div class="table_body">
-				<div class="t_body" style="color: ${list.stock <= 10 ? 'red' : 'black'}">${list.itemName}</div>
-				<div class="t_body">${list.cost}</div>
-				<div class="t_body">${list.price}</div>
-				<div class="t_body">${list.stock}</div>
-				<div class="t_body">${list.itemClsNo}</div>
+				<div class="t_body" style="color: ${list.dto.stock <= 10 ? 'red' : 'black'}">${list.dto.itemName}</div>
+				<div class="t_body">${list.dto.cost}</div>
+				<div class="t_body">${list.dto.price}</div>
+				<div class="t_body">${list.dto.stock}</div>
+				<div class="t_body">${list.cDto.itemClsName}</div>
 			</div>
 		</c:forEach>
 	</div>
