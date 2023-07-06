@@ -19,6 +19,7 @@ import edu.kosa.third.dto.ItemDto;
 import edu.kosa.third.dto.LeaveDto;
 import edu.kosa.third.service.JoinCustomerOkServiceAction;
 import edu.kosa.third.service.JoinEmpOkServiceAction;
+import edu.kosa.third.dto.ItemsDto;
 import edu.kosa.third.service.LeaveApplyServiceAction;
 import edu.kosa.third.service.LeaveApproveServiceAction;
 
@@ -76,7 +77,7 @@ public class FrontRegisterController extends HttpServlet {
 			forward.setRedirect(false);
 			forward.setPath("/WEB-INF/views/item/itemList.jsp");
 			ItemDao dao = new ItemDao();
-			ArrayList<ItemDto> list = dao.selectAll();
+			ArrayList<ItemsDto> list = dao.selectAll();
 			request.setAttribute("list", list);
 		}else if(urlcommand.equals("/joinCustomer.do")) {
 			forward = new ActionForward();
