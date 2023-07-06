@@ -5,9 +5,25 @@ import java.sql.Date;
 public class EmpDto {
 	private int empNo, annualLeave, deptNo, posNo;
 	private Date empBirth, hireDate;
-	private String empName, empEmail, empTel, empAddr, usrId;
-	private boolean empStatus, role, empGender;
-	
+	private String empName, empEmail, empTel, empAddr , empGender;
+	private boolean empStatus, role;
+
+	public EmpDto(int empNo, int annualLeave, int deptNo, int posNo, Date empBirth, Date hireDate, String empName, String empEmail, String empTel, String empAddr, boolean empStatus, boolean role, String empGender) {
+		this.empNo = empNo;
+		this.annualLeave = annualLeave; //연차일수
+		this.deptNo = deptNo;
+		this.posNo = posNo;
+		this.empBirth = empBirth;
+		this.hireDate = hireDate;
+		this.empName = empName;
+		this.empEmail = empEmail;
+		this.empTel = empTel;
+		this.empAddr = empAddr;
+		this.empStatus = empStatus;
+		this.role = role;
+		this.empGender = empGender;
+	}
+
 	public String getUsrId() {
 		return usrId;
 	}
@@ -15,6 +31,7 @@ public class EmpDto {
 	public void setUsrId(String usrId) {
 		this.usrId = usrId;
 	}
+
 
 	public int getDeptNo() {
 		return deptNo;
@@ -112,11 +129,11 @@ public class EmpDto {
 		this.role = role;
 	}
 
-	public boolean isEmpGender() {
+	public String isEmpGender() {
 		return empGender;
 	}
 
-	public void setEmpGender(boolean empGender) {
+	public void setEmpGender(String empGender) {
 		this.empGender = empGender;
 	}
 }
