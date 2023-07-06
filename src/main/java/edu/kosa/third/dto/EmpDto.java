@@ -5,7 +5,7 @@ import java.sql.Date;
 public class EmpDto {
 	private int empNo, annualLeave, deptNo, posNo;
 	private Date empBirth, hireDate;
-	private String empName, empEmail, empTel, empAddr , empGender;
+	private String usrId, empName, empEmail, empTel, empAddr , empGender;
 	private boolean empStatus, role;
 
 	public EmpDto(int empNo, int annualLeave, int deptNo, int posNo, Date empBirth, Date hireDate, String empName, String empEmail, String empTel, String empAddr, boolean empStatus, boolean role, String empGender) {
