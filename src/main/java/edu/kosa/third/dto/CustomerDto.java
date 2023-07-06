@@ -1,74 +1,99 @@
 package edu.kosa.third.dto;
 
+
 import java.sql.Date;
 
 public class CustomerDto {
-	private int customerNo;
-	private String customerEmail, customerTel, customerAddr, customerName, usrId;
-	private boolean customerGender;
-	private Date customerBirth;
 
-	public String getUsrId() {
-		return usrId;
-	}
+  private String customerno;
+  private String usrid;
+  private String customeremail;
+  private String customertel;
+  private String customergender;
+  private Date customerbirth;
+  private String customeraddr;
+  private String customername;
 
-	public void setUsrId(String usrId) {
-		this.usrId = usrId;
-	}
+  public CustomerDto(String customerno, String usrid, String customeremail, String customertel, String customergender, Date customerbirth, String customeraddr, String customername) {
+    this.customerno = customerno;
+    this.usrid = usrid;
+    this.customeremail = customeremail;
+    this.customertel = customertel;
+    this.customergender = customergender;
+    this.customerbirth = customerbirth;
+    this.customeraddr = customeraddr;
+    this.customername = customername;
+  }
 
-	public int getCustomerNo() {
-		return customerNo;
-	}
+  public String getCustomerno() {
+    return customerno;
+  }
 
-	public void setCustomerNo(int customerNo) {
-		this.customerNo = customerNo;
-	}
+  public void setCustomerno(String customerno) {
+    this.customerno = customerno;
+  }
 
-	public String getCustomerEmail() {
-		return customerEmail;
-	}
 
-	public void setCustomerEmail(String customerEmail) {
-		this.customerEmail = customerEmail;
-	}
+  public String getUsrid() {
+    return usrid;
+  }
 
-	public String getCustomerTel() {
-		return customerTel;
-	}
+  public void setUsrid(String usrid) {
+    this.usrid = usrid;
+  }
 
-	public void setCustomerTel(String customerTel) {
-		this.customerTel = customerTel;
-	}
 
-	public String getCustomerAddr() {
-		return customerAddr;
-	}
+  public String getCustomeremail() {
+    return customeremail;
+  }
 
-	public void setCustomerAddr(String customerAddr) {
-		this.customerAddr = customerAddr;
-	}
+  public void setCustomeremail(String customeremail) {
+    this.customeremail = customeremail;
+  }
 
-	public String getCustomerName() {
-		return customerName;
-	}
 
-	public void setCustomerName(String customerName) {
-		this.customerName = customerName;
-	}
+  public String getCustomertel() {
+    return customertel;
+  }
 
-	public boolean isCustomerGender() {
-		return customerGender;
-	}
+  public void setCustomertel(String customertel) {
+    this.customertel = customertel;
+  }
 
-	public void setCustomerGender(boolean customerGender) {
-		this.customerGender = customerGender;
-	}
 
-	public Date getCustomerBirth() {
-		return customerBirth;
-	}
+  public String getCustomergender() {
+    return customergender;
+  }
 
-	public void setCustomerBirth(Date customerBirth) {
-		this.customerBirth = customerBirth;
-	}
+  public void setCustomergender(String customergender) {
+    this.customergender = customergender;
+  }
+
+
+  public Date getCustomerbirth() {
+    return customerbirth;
+  }
+
+  public void setCustomerbirth(Date customerbirth) {
+    this.customerbirth = customerbirth;
+  }
+
+
+  public String getCustomeraddr() {
+    return customeraddr;
+  }
+
+  public void setCustomeraddr(String customeraddr) {
+    this.customeraddr = customeraddr;
+  }
+
+
+  public String getCustomername() {
+    return customername;
+  }
+
+  public void setCustomername(String customername) {
+    this.customername = customername;
+  }
+
 }

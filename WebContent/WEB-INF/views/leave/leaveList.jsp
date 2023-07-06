@@ -20,45 +20,53 @@ th, td {
 </style>
 </head>
 <body>
-<h1>휴가 리스트</h1>
+	<h1>휴가 리스트</h1>
 	<table>
 		<tr>
 			<th>휴가 번호</th>
 			<th>사번</th>
+			<th>사원 이름</th>
+			<th>부서 이름</th>
+			<th>직급 이름</th>
 			<th>휴가 종류</th>
 			<th>휴가 시작일</th>
 			<th>휴가 종료일</th>
 			<th>승인 여부</th>
+			<th>연차 일수</th>
 		</tr>
 		<c:forEach var="list" items="${ list }">
-			<c:if test="${list.typeNo==10}">
+			<c:if test="${list.get('typeNo')==10}">
 				<c:set var="type" value="연차" />
 			</c:if>
-			<c:if test="${list.typeNo==20}">
+			<c:if test="${list.get('typeNo')==20}">
 				<c:set var="type" value="공가" />
 			</c:if>
-			<c:if test="${list.typeNo==30}">
+			<c:if test="${list.get('typeNo')==30}">
 				<c:set var="type" value="병가" />
 			</c:if>
-			<c:if test="${list.typeNo==40}">
+			<c:if test="${list.get('typeNo')==40}">
 				<c:set var="type" value="특별휴가" />
 			</c:if>
-			<c:if test="${list.levStatus==0}">
+			<c:if test="${list.get('levStatus')==0}">
 				<c:set var="status" value="승인 대기" />
 			</c:if>
-			<c:if test="${list.levStatus==1}">
+			<c:if test="${list.get('levStatus')==1}">
 				<c:set var="status" value="승인" />
 			</c:if>
-			<c:if test="${list.levStatus==2}">
+			<c:if test="${list.get('levStatus')==2}">
 				<c:set var="status" value="반려" />
 			</c:if>
 			<tr>
-				<td><a href="">${list.leaveNo}</a></td>
-				<td>${ list.empNo }</td>
+				<td><a href="viewLeave.do?No=${list.get('leaveNo')}">${list.get('leaveNo')}</a></td>
+				<td>${list.get('empNo')}</td>
+				<td>${list.get('empName')}</td>
+				<td>${list.get('deptName')}</td>
+				<td>${list.get('posName')}</td>
 				<td>${type}</td>
-				<td>${ list.startDay }</td>
-				<td>${ list.endDay }</td>
+				<td>${list.get('startDay')}</td>
+				<td>${list.get('endDay')}</td>
 				<td>${ status }</td>
+				<td>${list.get('annualLeave')}일</td>
 			</tr>
 		</c:forEach>
 	</table>

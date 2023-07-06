@@ -8,7 +8,7 @@ CREATE TABLE Dept (
 DROP TABLE Usr;
 
 CREATE TABLE Usr (
-	usrId	varchar2(20)		NOT NULL,
+	usrId	varchar2(20)	generated always as identity	NOT NULL,
 	pwd	varchar2(20)		NOT NULL,
 	hex	number		NOT NULL,
 	status	char(1)	DEFAULT 0	NOT NULL
@@ -17,7 +17,7 @@ CREATE TABLE Usr (
 DROP TABLE Emp;
 
 CREATE TABLE Emp (
-	empNo	number		NOT NULL,
+	empNo	number	generated always as identity	NOT NULL,
 	usrId	varchar2(20)		NOT NULL,
 	empName	varchar2(20)		NULL,
 	empBirth	date		NULL,
@@ -36,7 +36,7 @@ CREATE TABLE Emp (
 DROP TABLE Customer;
 
 CREATE TABLE Customer (
-	customerNo	number		NOT NULL,
+	customerNo	number	generated always as identity	NOT NULL,
 	usrId	varchar2(20)		NOT NULL,
 	customerEmail	varchar2(30)		NULL,
 	customerTel	varchar2(50)		NULL,
@@ -56,7 +56,7 @@ CREATE TABLE Pos (
 DROP TABLE Sal;
 
 CREATE TABLE Sal (
-	salNo	number		NOT NULL,
+	salNo	number	generated always as identity	NOT NULL,
 	amount	number		NOT NULL,
 	empNo	number		NOT NULL,
 	usrId	varchar2(20)		NOT NULL
@@ -65,7 +65,7 @@ CREATE TABLE Sal (
 DROP TABLE leave;
 
 CREATE TABLE leave (
-	leaveNo	number		NOT NULL,
+	leaveNo	number	generated always as identity	NOT NULL,
 	startDay	Date		NOT NULL,
 	endDay	Date		NOT NULL,
 	reason	varchar2(30)		NULL,
@@ -78,7 +78,7 @@ CREATE TABLE leave (
 DROP TABLE Att;
 
 CREATE TABLE Att (
-	attNo	number		NOT NULL,
+	attNo	number	generated always as identity	NOT NULL,
 	nowDate	Date		NOT NULL,
 	startTime	Timestamp		NULL,
 	endTime	Timestamp		NULL,
@@ -90,7 +90,7 @@ CREATE TABLE Att (
 DROP TABLE Money;
 
 CREATE TABLE Money (
-	mNo	number		NOT NULL,
+	mNo	number	generated always as identity	NOT NULL,
 	profit	number		NULL,
 	cost	number		NULL,
 	tAmount	number		NULL,
@@ -114,7 +114,7 @@ CREATE TABLE leaveType (
 DROP TABLE Item;
 
 CREATE TABLE Item (
-	itemNo	number		NOT NULL,
+	itemNo	number	generated always as identity	NOT NULL,
 	itemName	varchar2(30)		NOT NULL,
 	cost	number		NOT NULL,
 	price	number		NOT NULL,
@@ -132,7 +132,7 @@ CREATE TABLE ItemCls (
 DROP TABLE PIMapping;
 
 CREATE TABLE PIMapping (
-	mappingNo	number		NOT NULL,
+	mappingNo	number	generated always as identity	NOT NULL,
 	productNo	number		NOT NULL,
 	itemNo	number		NOT NULL
 );

@@ -12,7 +12,7 @@ import edu.kosa.third.utils.ConnectionHelper;
 
 public class ItemDao {
 
-	public List<ItemDto> selectAll() {
+	public ArrayList<ItemDto> selectAll() {
 		String sql = "SELECT I.*, IC.ITEMCLSNAME FROM ITEM I JOIN ITEMCLS IC ON I.ITEMCLSNO = IC.ITEMCLSNO";
 		ArrayList<ItemDto> list = new ArrayList<>();
 		Connection conn = ConnectionHelper.getConnection("oracle");

@@ -24,8 +24,8 @@
 				</tr>
 				<tr>
 					<th>휴가 일자</th>
-					<td><input type="date" id="startDay" name="startDay">
-						<input type="date" id="endDay" name="endDay"></td>
+					<td><input type="date" id="startDay" name="startDay"> <input
+						type="date" id="endDay" name="endDay"></td>
 				</tr>
 				<tr>
 					<th>휴가 사유</th>
