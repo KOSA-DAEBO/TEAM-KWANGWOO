@@ -1,7 +1,8 @@
 package edu.kosa.third.controller;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,9 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import edu.kosa.third.action.Action;
 import edu.kosa.third.action.ActionForward;
 import edu.kosa.third.dao.LeaveDao;
-import edu.kosa.third.dto.LeaveDto;
 import edu.kosa.third.service.JoinOkServiceAction;
 import edu.kosa.third.service.LeaveApplyServiceAction;
+import edu.kosa.third.service.LeaveApproveServiceAction;
 
 @WebServlet("*.do")
 public class FrontRegisterController extends HttpServlet {
@@ -64,8 +65,9 @@ public class FrontRegisterController extends HttpServlet {
 			forward.setRedirect(false);
 			forward.setPath("/WEB-INF/views/leave/leaveList.jsp");
 			LeaveDao dao = new LeaveDao();
-			List<LeaveDto> list = dao.selectAll();
+			ArrayList<HashMap<String, String>> list = dao.selectAll();
 			request.setAttribute("list", list);
+
 		}else if(urlcommand.equals("/joinUsr.do")) {
 			forward = new ActionForward();
 			forward.setRedirect(false);
@@ -74,6 +76,20 @@ public class FrontRegisterController extends HttpServlet {
 		}else if(urlcommand.equals("/joinUsrOk.do")) { //UI + 로직
 			action = new JoinOkServiceAction();
 			forward = action.execute(request, response);//request 클라이언트가 요청한 페이지당 1개씩 만들어지는 request객체
+		
+		} else if (urlcommand.equals("/viewLeave.do")) {
+			forward = new ActionForward();
+    		forward.setRedirect(false);
+    		forward.setPath("/WEB-INF/views/leave/leaveDetail.jsp");
+    		String num = request.getParameter("No");
+    		LeaveDao dao = new LeaveDao();
+			ArrayList<HashMap<String, String>> list = dao.selectByNo(num);
+    		request.setAttribute("list", list);			
+		
+		} else if (urlcommand.equals("/leaveApprove.do")) {
+			action = new LeaveApproveServiceAction();
+			forward = action.execute(request, response);
+			
 		}
     
     	if(forward != null) {
