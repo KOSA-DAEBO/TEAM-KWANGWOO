@@ -17,6 +17,8 @@ import edu.kosa.third.dao.ItemDao;
 import edu.kosa.third.dao.LeaveDao;
 import edu.kosa.third.dto.ItemDto;
 import edu.kosa.third.dto.ItemsDto;
+import edu.kosa.third.service.AddItemServiceAction;
+import edu.kosa.third.service.ItemListServiceAction;
 import edu.kosa.third.service.JoinOkServiceAction;
 import edu.kosa.third.service.LeaveApplyServiceAction;
 import edu.kosa.third.service.LeaveApproveServiceAction;
@@ -48,13 +50,13 @@ public class FrontRegisterController extends HttpServlet {
     		forward = new ActionForward();
     		forward.setRedirect(false);
     		forward.setPath("/WEB-INF/views/register/register.jsp");
-
-    	}else if(urlcommand.equals("/registerok.do")) {
+    		
+    	} else if(urlcommand.equals("/registerok.do")) {
     		//UI 제공 + 서비스 필요
     		action = null;
     		forward = action.execute(request, response); //request 클라이언트가 요청한 페이지당 1개씩 만들어지는 request객체
-    	
-    	}else if (urlcommand.equals("/leave.do")) {
+    		
+    	} else if (urlcommand.equals("/leave.do")) {
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("/WEB-INF/views/leave/leaveApplicationForm.jsp");
@@ -70,19 +72,17 @@ public class FrontRegisterController extends HttpServlet {
 			LeaveDao dao = new LeaveDao();
 			ArrayList<HashMap<String, String>> list = dao.selectAll();
 			request.setAttribute("list", list);
+			
 		} else if(urlcommand.equals("/itemList.do")) {
-			forward = new ActionForward();
-			forward.setRedirect(false);
-			forward.setPath("/WEB-INF/views/item/itemList.jsp");
-			ItemDao dao = new ItemDao();
-			ArrayList<ItemsDto> list = dao.selectAll();
-			request.setAttribute("list", list);
-		}else if(urlcommand.equals("/joinUsr.do")) {
+			action = new ItemListServiceAction();
+			forward = action.execute(request, response);
+			
+		} else if(urlcommand.equals("/joinUsr.do")) {
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("/WEB-INF/views/join/joinUsr.jsp");
 
-		}else if(urlcommand.equals("/joinUsrOk.do")) { //UI + 로직
+		} else if(urlcommand.equals("/joinUsrOk.do")) { //UI + 로직
 			action = new JoinOkServiceAction();
 			forward = action.execute(request, response);//request 클라이언트가 요청한 페이지당 1개씩 만들어지는 request객체
 		
@@ -93,10 +93,14 @@ public class FrontRegisterController extends HttpServlet {
     		String num = request.getParameter("No");
     		LeaveDao dao = new LeaveDao();
 			ArrayList<HashMap<String, String>> list = dao.selectByNo(num);
-    		request.setAttribute("list", list);			
+    		request.setAttribute("list", list);
 		
 		} else if (urlcommand.equals("/leaveApprove.do")) {
 			action = new LeaveApproveServiceAction();
+			forward = action.execute(request, response);
+			
+		} else if (urlcommand.equals("/addItem.do")) {
+			action = new AddItemServiceAction();
 			forward = action.execute(request, response);
 		}
     
