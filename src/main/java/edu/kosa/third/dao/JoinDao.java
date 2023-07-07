@@ -28,7 +28,7 @@ public class JoinDao {
             md.update(usrDto.getSalt().getBytes());
             String hex = String.format("%064x", new BigInteger(1, md.digest()));
 
-            pstmt.setString(1, usrDto.getUsrid());
+            pstmt.setString(1, usrDto.getUsrId());
             pstmt.setString(2, hex);
             pstmt.setString(3, usrDto.getSalt());
 
@@ -38,13 +38,13 @@ public class JoinDao {
             String sql2 = "insert into customer(usrId,customerEmail,customerTel,customerGender,customerBirth,customerAddr,customerName) values(?,?,?,?,?,?,?)"; // hex 값은이후 추가
             pstmt2 = conn.prepareStatement(sql2);
 
-            pstmt2.setString(1, usrDto.getUsrid());
-            pstmt2.setString(2, customerDto.getCustomeremail());
-            pstmt2.setString(3, customerDto.getCustomertel());
-            pstmt2.setString(4, customerDto.getCustomergender());
-            pstmt2.setDate(5, customerDto.getCustomerbirth());
-            pstmt2.setString(6, customerDto.getCustomeraddr());
-            pstmt2.setString(7, customerDto.getCustomername());
+            pstmt2.setString(1, usrDto.getUsrId());
+            pstmt2.setString(2, customerDto.getCustomerEmail());
+            pstmt2.setString(3, customerDto.getCustomerTel());
+            pstmt2.setString(4, customerDto.getCustomerGender());
+            pstmt2.setDate(5, customerDto.getCustomerBirth());
+            pstmt2.setString(6, customerDto.getCustomerAddr());
+            pstmt2.setString(7, customerDto.getCustomerName());
 
             pstmt2.execute();
 
@@ -73,7 +73,7 @@ public class JoinDao {
             md.update(usrDto.getSalt().getBytes());
             String hex = String.format("%064x", new BigInteger(1, md.digest()));
 
-            pstmt.setString(1, usrDto.getUsrid());
+            pstmt.setString(1, usrDto.getUsrId());
             pstmt.setString(2, hex);
             pstmt.setString(3, usrDto.getSalt());
             pstmt.execute();
@@ -81,7 +81,7 @@ public class JoinDao {
             String sql2 = "insert into emp(usrid,empname,empbirth,empemail,emptel,empgender,empaddr,hiredate,deptno,posno) values(?,?,?,?,?,?,?,?,?,?)";
             pstmt2 = conn.prepareStatement(sql2);
 
-            pstmt2.setString(1, usrDto.getUsrid());
+            pstmt2.setString(1, usrDto.getUsrId());
             pstmt2.setString(2, empDto.getEmpName());
             pstmt2.setDate(3, empDto.getEmpBirth());
             pstmt2.setString(4, empDto.getEmpEmail());
