@@ -49,8 +49,8 @@
             </div>
             <div class="lm group2">
                <ul>
-                  <li><a href="leaveList.do">휴가관리</a></li>
-                  <li><a href="#">휴가신청</a></li>
+                  <li><a href="leaveList.do?listNum=1">휴가관리</a></li>
+                  <li><a href="leaveList.do?listNum=3">휴가신청</a></li>
                   <li><a href="#">등등등</a></li>
                </ul>
             </div>
