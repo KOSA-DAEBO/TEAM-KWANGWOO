@@ -8,6 +8,10 @@ public class EmpDto {
 	private String usrId, empName, empEmail, empTel, empAddr , empGender;
 	private boolean empStatus, role;
 
+	public EmpDto() {
+		
+	}
+	
 	public EmpDto(int empNo, int annualLeave, int deptNo, int posNo, Date empBirth, Date hireDate, String empName, String empEmail, String empTel, String empAddr, boolean empStatus, boolean role, String empGender) {
 		this.empNo = empNo;
 		this.annualLeave = annualLeave; //연차일수

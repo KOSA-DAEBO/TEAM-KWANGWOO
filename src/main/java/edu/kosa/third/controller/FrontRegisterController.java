@@ -104,6 +104,9 @@ public class FrontRegisterController extends HttpServlet {
 			action = new loginEmpOkServiceAction();
 			forward = action.execute(request, response);
 
+		}else if (urlcommand.equals("/empList.do")) {
+			action = new SelectEmpInfoServiceAction();
+			forward = action.execute(request, response);
 		}
 
 		if (forward != null) {
