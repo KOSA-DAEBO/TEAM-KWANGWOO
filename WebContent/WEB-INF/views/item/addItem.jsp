@@ -39,7 +39,7 @@
 		<div>
 			<input type="submit" class="addBtn" value="추가하기">
 			<input type="reset" class="resetBtn" value="모두지우기">
-			<input type="button" class="listBtn" value="제품리스트">
+			<input type="button" class="listBtn" value="제품리스트" onclick="javascript:location.href='itemList.do'">
 		</div>
 	</form>
 </div>

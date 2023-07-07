@@ -50,24 +50,51 @@ public class ItemDao {
 		return list;
 	}
 
-	public void insertItem(ItemDto itemDto) {
-		String sql = "insert into item(itemname, cost, price, stock, itemclsno) VALUES (?, ?, ?, 0, ?)";
+	public boolean insertItem(ItemDto itemDto) {
+		String checkSql = "select itemname from item where itemname = ?";
+		String sql = "INSERT INTO ITEM(ITEMNAME, COST, PRICE, STOCK, ITEMCLSNO) VALUES (?, ?, ?, 0, ?)";
 		Connection conn = ConnectionHelper.getConnection("oracle");
 		PreparedStatement pstmt = null;
+		PreparedStatement pstmt2 = null;
+		ResultSet rs = null;
+		String dbItemName = null;
 		try {
-			pstmt = conn.prepareStatement(sql);
-			
+			pstmt = conn.prepareStatement(checkSql);
 			pstmt.setString(1, itemDto.getItemName());
-			pstmt.setInt(2, itemDto.getCost());
-			pstmt.setInt(3, itemDto.getPrice());
-			pstmt.setInt(4, itemDto.getItemClsNo());
+			rs = pstmt.executeQuery();
 			
-			pstmt.execute();
+			while(rs.next()) {
+				ItemDto dto = new ItemDto();
+				dto.setItemName(rs.getString("itemname"));
+				dbItemName = dto.getItemName();
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
+		} 
+		
+		if(dbItemName == null || !dbItemName.equals(itemDto.getItemName())) {
+			try {
+				pstmt2 = conn.prepareStatement(sql);
+				
+				pstmt2.setString(1, itemDto.getItemName());
+				pstmt2.setInt(2, itemDto.getCost());
+				pstmt2.setInt(3, itemDto.getPrice());
+				pstmt2.setInt(4, itemDto.getItemClsNo());
+				
+				pstmt2.execute();
+			} catch (Exception e) {
+				// TODO: handle exception
+			}finally {
+				ConnectionHelper.close(rs);
+				ConnectionHelper.close(pstmt);
+				ConnectionHelper.close(conn);
+			}
+			return true;
+		} else {
+			ConnectionHelper.close(rs);
 			ConnectionHelper.close(pstmt);
 			ConnectionHelper.close(conn);
+			return false;
 		}
 	}
 }
