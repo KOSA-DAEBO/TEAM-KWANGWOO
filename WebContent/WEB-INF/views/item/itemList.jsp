@@ -30,7 +30,7 @@
 		</c:forEach>
 	</div>
 	<div class="item_btn">
-		<input type="button" value="상품추가" class="addBtn">
+		<input type="button" value="상품추가" class="addBtn" onclick="javascript:location.href = 'addItem.do'">
 		<input type="button" value="재고주문" class="orderBtn">
 	</div>
 </div>

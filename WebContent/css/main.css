@@ -22,8 +22,8 @@
 /*헤더메뉴*/
 .local_menu {width:1098px;display: none;}
 .local_menu:hover {display: block;}
-.local_menu_in {width:955px;background:#ffffff;border-bottom:1px solid #d5d5d5;overflow:hidden; border-left:1px solid #a7dcbe; border-bottom:1px solid #a7dcbe; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box;}
-.local_menu .lm {float:left; width:190px; border-right:1px solid #a7dcbe; padding-bottom:17px;}
+.local_menu_in {height:100%; width:955px;background:#ffffff;border-bottom:1px solid #d5d5d5;overflow:hidden; border-left:1px solid #a7dcbe; border-bottom:1px solid #a7dcbe; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box;}
+.local_menu .lm {height:100%; float:left; width:190px; border-right:1px solid #a7dcbe; padding-bottom:17px;}
 .local_menu .lm:last-child{border-right:1px solid #a7dcbe;}
 .local_menu .lm ul {margin:15px 0 0 15px;}
 .local_menu .lm ul li {line-height:22px;}
@@ -41,13 +41,32 @@
 .footer_bottom .info-dropdown {padding: 10px 0px 10px 0px; line-height: 140%;}
 
 /*itemList*/
-.item_content{margin: 10px auto 10px auto; width: 1000px; display: grid; justify-content: center; padding: 30px 0px; grid-template-rows: 60px 3fr 50px;}
+.item_content{margin: 10px auto 10px auto; width: 1000px; display: grid; justify-content: center; padding: 30px 0px; grid-template-rows: 90px 3fr 50px;}
 .item_content .name {text-align:center; color:#005b23; font-size:40px; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif;}
 .item_content .item {border: 2px solid #005b23; padding: 10px}
 .item_content .item_btn{text-align: center; padding-top: 10px;}
-.item_content .item_btn .addBtn, .orderBtn{border-radius: 20px; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #005b23; font-size: 20px; width: 150px; height: 40px; margin: 15px 50px;}
+.item_content .item_btn .addBtn, .orderBtn{border-radius: 20px; border-style: solid; border-color:#005b23; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #005b23; font-size: 20px; width: 150px; height: 40px; margin: 15px 50px;}
 .item_content .item_btn .addBtn:hover {background:#005b23; color: #ffffff}
 .item_content .item_btn .orderBtn:hover {background:#005b23; color: #ffffff}
 .table_top {display: grid; grid-template-columns: 3fr 100px 100px 100px 100px; gap: 10px; font-weight: bold; text-align: center;}
 .t_head, .t_body {padding: 5px; border: 1px solid #005b23}
 .table_body {display: grid; grid-template-columns: 3fr 100px 100px 100px 100px; gap: 10px; text-align: center;}
+
+/*itemAdd*/
+.add_content{margin: 10px auto 10px auto; width: 1000px; display: grid; justify-content: center; padding: 30px 0px; grid-template-rows: 90px 3fr;}
+.add_content .name {text-align:center; color:#005b23; font-size:40px; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif;}
+.add_content .add_form {border: 2px solid #005b23; padding: 10px;}
+.add_content .add_form .addRow1 {display: grid; grid-template-columns: 120px 1fr; margin: 30px auto; gap: 10px;}
+.add_content .add_form .addRow2 {display: grid; grid-template-columns: 120px 1fr 120px 1fr; margin: 30px auto; gap: 10px;}
+.add_content .add_form .addRow3 {display: grid; grid-template-columns: 120px 1fr; margin: 30px auto; gap: 10px;}
+.add_content .add_form .addRow1 .inner_name {text-align: center; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; border: 1px solid #005b23; padding: 10px;}
+.add_content .add_form .addRow2 .inner_name {text-align: center; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; border: 1px solid #005b23; padding: 10px;}
+.add_content .add_form .addRow3 .inner_name {text-align: center; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; border: 1px solid #005b23; padding: 10px;}
+.add_content .add_form .addRow1 .form_controll {width: 595px; height: 35px; border: 1px solid #005b23;}
+.add_content .add_form .addRow2 .form_controll_half {width: 210px; height: 35px; border: 1px solid #005b23;}
+.add_content .add_form .addRow3 .add_radio {font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; accent-color: #005b23; height: 35px;}
+.add_content .add_form .addRow3 .add_radio input[type=radio] {margin: 12px 5px; vertical-align: middle;}
+.add_content .add_form .addBtn, .resetBtn, .listBtn {border-radius: 20px; border-style: solid; border-color:#005b23; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #005b23; font-size: 20px; width: 150px; height: 40px; margin: 15px 50px;}
+.add_content .add_form .addBtn:hover {background:#005b23; color: #ffffff;}
+.add_content .add_form .resetBtn:hover {background:#005b23; color: #ffffff;}
+.add_content .add_form .listBtn:hover {background:#005b23; color: #ffffff;}
