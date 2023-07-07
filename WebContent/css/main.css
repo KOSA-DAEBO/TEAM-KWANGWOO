@@ -45,9 +45,11 @@
 .item_content .name {text-align:center; color:#005b23; font-size:40px; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif;}
 .item_content .item {border: 2px solid #005b23; padding: 10px}
 .item_content .item_btn{text-align: center; padding-top: 10px;}
-.item_content .item_btn .addBtn, .orderBtn{border-radius: 20px; border-style: solid; border-color:#005b23; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #005b23; font-size: 20px; width: 150px; height: 40px; margin: 15px 50px;}
+.item_content .item_btn .addBtn, .orderBtn, .deleteBtn, .updateBtn{border-radius: 20px; border-style: solid; border-color:#005b23; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #005b23; font-size: 20px; width: 150px; height: 40px; margin: 15px 30px;}
 .item_content .item_btn .addBtn:hover {background:#005b23; color: #ffffff}
 .item_content .item_btn .orderBtn:hover {background:#005b23; color: #ffffff}
+.item_content .item_btn .updateBtn:hover {background:#005b23; color: #ffffff}
+.item_content .item_btn .deleteBtn:hover {background:#005b23; color: #ffffff}
 .table_top {display: grid; grid-template-columns: 3fr 100px 100px 100px 100px; gap: 10px; font-weight: bold; text-align: center;}
 .t_head, .t_body {padding: 5px; border: 1px solid #005b23}
 .table_body {display: grid; grid-template-columns: 3fr 100px 100px 100px 100px; gap: 10px; text-align: center;}

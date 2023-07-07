@@ -1,5 +1,8 @@
 package edu.kosa.third.service;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -26,11 +29,27 @@ public class AddItemServiceAction implements Action {
 			
 			ItemDao dao = new ItemDao();
 			
-			dao.insertItem(new ItemDto(itemName, cost, price, itemClsNo));
+			boolean result = dao.insertItem(new ItemDto(itemName, cost, price, itemClsNo));
 			
-			request.removeAttribute("itemName");
-			forward.setPath("itemList.do");
-			return forward;
+			if(result == false) {
+				request.setAttribute("errorMsg", "중복된 상품명이 있습니다."); // 에러 메시지를 request 속성으로 설정
+				
+				response.setContentType("text/html;charset=UTF-8");
+                PrintWriter out;
+				try {
+					out = response.getWriter();
+					out.println("<script>alert('중복된 상품명이 있습니다.'); window.history.back();</script>");
+					out.flush();
+					out.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+                return null;
+            } else {
+                forward.setRedirect(true); // 리다이렉트 방식으로 설정
+                forward.setPath("itemList.do");
+                return forward;
+			}
 		}
 	}
 }
