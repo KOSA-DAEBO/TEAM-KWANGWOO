@@ -1,5 +1,7 @@
 package edu.kosa.third.service;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -35,19 +37,34 @@ public class LeaveApplyServiceAction implements Action {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out;
 		if (typeNo.equals("10") && dao.checkAnnual(usrId) < (int) (days + 1)) {
-			resultdata = "연차 일수가 부족하여 휴가 신청에 실패하였습니다.";
+			try {
+				out = response.getWriter();
+				out.println("<script>alert('연차 일수가 부족합니다.'); location.href='leave.do';</script>");
+				out.flush();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		} else if (dao.checkDays(usrId, startDay, endDay)) {
-			resultdata = "선택 하신 날짜에 중복으로 휴가가 신청되어 있습니다.";
+			try {
+				out = response.getWriter();
+				out.println("<script>alert('선택 하신 날짜에 중복으로 휴가가 신청되어 있습니다.'); location.href='leave.do';</script>");
+				out.flush();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		} else {
-			dao.applyLeave(typeNo, startDay, endDay, reason, usrId);
-			resultdata = "휴가 신청 완료.";
+			int num =dao.applyLeave(typeNo, startDay, endDay, reason, usrId);
+			if(num>0) resultdata = "휴가 신청 완료.";
+			else resultdata="휴가 신청 실패";
 		}
 		request.setAttribute("data", resultdata);
 
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false); // True 클라이언트가 새로운 페이지를 요청하게 할 거예요
-		forward.setPath("/WEB-INF/views/leave/leaveMain.jsp");
+		forward.setPath("/leaveList.do?listNum=3");
 		return forward;
 	}
 

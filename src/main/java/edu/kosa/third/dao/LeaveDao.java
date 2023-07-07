@@ -60,6 +60,7 @@ public class LeaveDao {
 		sb.append(" left join emp e on e.empNo = l.empNo");
 		sb.append(" left join dept d on d.deptNo = e.deptNo");
 		sb.append(" left join pos p on p.posNo = e.posNo");
+		sb.append(" order by leaveno");
 		String sql = sb.toString();
 
 		/// Pool ///////////////////////////////////
@@ -84,6 +85,8 @@ public class LeaveDao {
 				map.put("annualLeave", rs.getInt(10) + "");
 				list.add(map);
 			}
+			rs.close();
+			pstmt.close();
 			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -98,6 +101,7 @@ public class LeaveDao {
 		sb.append(" left join dept d on d.deptNo = e.deptNo");
 		sb.append(" left join pos p on p.posNo = e.posNo");
 		sb.append(" where leaveNo = ?");
+		sb.append(" order by leaveno");
 		String sql = sb.toString();
 
 		Connection conn = ConnectionHelper.getConnection("oracle");
@@ -126,6 +130,8 @@ public class LeaveDao {
 				map.put("levStatus", rs.getInt(5) + "");
 				list.add(map);
 			}
+			rs.close();
+			pstmt.close();
 			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -143,6 +149,8 @@ public class LeaveDao {
 			pstmt.setInt(1, num);
 			pstmt.setInt(2, leaveNo);
 			resultrow = pstmt.executeUpdate();
+			pstmt.close();
+			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -172,6 +180,8 @@ public class LeaveDao {
 			pstmt.setInt(1, annual);
 			pstmt.setString(2, usrId);	
 			pstmt.executeUpdate();
+			pstmt.close();
+			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -189,6 +199,9 @@ public class LeaveDao {
 			while (rs.next()) {
 				num = rs.getInt(1);
 			}
+			rs.close();
+			pstmt.close();
+			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -197,7 +210,7 @@ public class LeaveDao {
 
 	public boolean checkDays(String usrId, String startDay, String endDay){
 		PreparedStatement pstmt = null;
-		String sql = "select * from leave where usrId= ? and ?>=startday and ?<=endday";
+		String sql = "select * from leave where usrId= ? and levstatus=0 and ?>=startday and ?<=endday";
 		Connection conn = ConnectionHelper.getConnection("oracle");
 		boolean flag = false;
 		try {
@@ -207,6 +220,9 @@ public class LeaveDao {
 			pstmt.setString(3, endDay);
 			ResultSet rs = pstmt.executeQuery();
 			flag = rs.next();
+			rs.close();
+			pstmt.close();
+			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -225,9 +241,72 @@ public class LeaveDao {
 			while (rs.next()) {
 				empNo = rs.getInt(1);
 			}
+			rs.close();
+			pstmt.close();
+			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return empNo;
+	}
+	
+	public void deleteLeave(int leaveNo, String usrId) {
+		PreparedStatement pstmt = null;
+		String sql = "delete from leave where leaveno= ? and usrId=?";
+		Connection conn = ConnectionHelper.getConnection("oracle");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, leaveNo);
+			pstmt.setString(2, usrId);	
+			pstmt.executeUpdate();
+			pstmt.close();
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public ArrayList<HashMap<String, String>> selectById(String usrId) {
+		PreparedStatement pstmt = null;
+		StringBuilder sb = new StringBuilder();
+		sb.append(
+				"SELECT leaveno, e.empno, empname, deptname, posname, typeno, startday, endday, levstatus, e.annualLeave FROM leave l");
+		sb.append(" left join emp e on e.empNo = l.empNo");
+		sb.append(" left join dept d on d.deptNo = e.deptNo");
+		sb.append(" left join pos p on p.posNo = e.posNo");
+		sb.append(" where l.usrId= ?");
+		sb.append(" order by leaveno");
+		String sql = sb.toString();
+
+		/// Pool ///////////////////////////////////
+		Connection conn = ConnectionHelper.getConnection("oracle");
+		////////////////////////////////////////////
+		ArrayList<HashMap<String, String>> list = new ArrayList<>();
+		HashMap<String, String> map;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, usrId);
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				map = new HashMap<String, String>();
+				map.put("leaveNo", rs.getInt(1) + "");
+				map.put("empNo", rs.getInt(2) + "");
+				map.put("empName", rs.getString(3));
+				map.put("deptName", rs.getString(4));
+				map.put("posName", rs.getString(5));
+				map.put("typeNo", rs.getInt(6) + "");
+				map.put("startDay", rs.getDate(7) + "");
+				map.put("endDay", rs.getDate(8) + "");
+				map.put("levStatus", rs.getInt(9) + "");
+				map.put("annualLeave", rs.getInt(10) + "");
+				list.add(map);
+			}
+			rs.close();
+			pstmt.close();
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 }
