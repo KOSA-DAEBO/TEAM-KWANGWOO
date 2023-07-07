@@ -20,9 +20,9 @@
                   alt="광우" class="logo" /></a>
             </h1>
             <div>
-               <span class="material-symbols-outlined">login</span>
+               <span class="material-symbols-outlined" OnClick="location.href='/loginCustomer.do'">login</span>
                <span class="material-symbols-outlined">logout</span>
-               <span class="material-symbols-outlined">person_add</span>
+               <span class="material-symbols-outlined" OnClick="location.href='/joinCustomer.do'">person_add</span>
             </div>
          </div>
          <!-- //head_top -->

@@ -3,37 +3,42 @@
 <html>
 <head>
     <title>고객 로그인</title>
+
+    <script type="text/javascript" src="../../../js/loginScript.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
 
 <section class="loginForm">
 
     <h1>로그인</h1>
-    <form action= "loginOk.do" method="post" onsubmit="return loginChkCustomer();" name="loginCustomer">
+    <form action= "loginCustomerOk.do" method="post" onsubmit="return loginChk();" name="login">
         <div>
             <table>
                 <tr>
                     <td class="td_left">
-                        <label for="id">아이디:</label>
+                        <label for="usrId">아이디:</label>
                     </td>
 
                     <td class="td_ right">
-                        <input type="text" name="id" id="id"/>
+                        <input type="text" name="usrId" id="usrId"/>
                     </td>
                 </tr>
                 <tr>
                     <td class="td_left">
-                        <label for="passwd">비밀번호:</label>
+                        <label for="usrPwd">비밀번호:</label>
                     </td>
                     <td class="td_ right">
-                        <input type="password" name="passwd" id="passwd"/>
+                        <input type="password" name="usrPwd" id="usrPwd"/>
                     </td>
                 </tr>
             </table>
             <input type="submit" value="로그인" id="selectButton"/>
         </div>
     </form>
-</section
+</section>
 
 </body>
 </html>
