@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -34,7 +34,7 @@
 				<tr>
 					<td colspan="2" align="center"><input type="submit" value="전송">&nbsp;&nbsp;
 						<input type="button" value="리스트"
-						onclick="javascript:location.href='leaveList.do'" /></td>
+						onclick="javascript:location.href='leaveList.do?listNum=3'" /></td>
 				</tr>
 			</tbody>
 		</table>
