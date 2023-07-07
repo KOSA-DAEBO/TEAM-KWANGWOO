@@ -5,96 +5,96 @@ import java.sql.Date;
 
 public class CustomerDto {
 
-  private String customerno;
-  private String usrid;
-  private String customeremail;
-  private String customertel;
-  private String customergender;
-  private Date customerbirth;
-  private String customeraddr;
-  private String customername;
+  private String customerNo;
+  private String usrId;
+  private String customerEmail;
+  private String customerTel;
+  private String customerGender;
+  private Date customerBirth;
+  private String customerAddr;
+  private String customerName;
 
-  public CustomerDto(String customerno, String usrid, String customeremail, String customertel, String customergender, Date customerbirth, String customeraddr, String customername) {
-    this.customerno = customerno;
-    this.usrid = usrid;
-    this.customeremail = customeremail;
-    this.customertel = customertel;
-    this.customergender = customergender;
-    this.customerbirth = customerbirth;
-    this.customeraddr = customeraddr;
-    this.customername = customername;
+  public CustomerDto(String customerNo, String usrId, String customerEmail, String customerTel, String customerGender, Date customerBirth, String customerAddr, String customerName) {
+    this.customerNo = customerNo;
+    this.usrId = usrId;
+    this.customerEmail = customerEmail;
+    this.customerTel = customerTel;
+    this.customerGender = customerGender;
+    this.customerBirth = customerBirth;
+    this.customerAddr = customerAddr;
+    this.customerName = customerName;
   }
 
-  public String getCustomerno() {
-    return customerno;
+  public String getCustomerNo() {
+    return customerNo;
   }
 
-  public void setCustomerno(String customerno) {
-    this.customerno = customerno;
-  }
-
-
-  public String getUsrid() {
-    return usrid;
-  }
-
-  public void setUsrid(String usrid) {
-    this.usrid = usrid;
+  public void setCustomerNo(String customerNo) {
+    this.customerNo = customerNo;
   }
 
 
-  public String getCustomeremail() {
-    return customeremail;
+  public String getUsrId() {
+    return usrId;
   }
 
-  public void setCustomeremail(String customeremail) {
-    this.customeremail = customeremail;
-  }
-
-
-  public String getCustomertel() {
-    return customertel;
-  }
-
-  public void setCustomertel(String customertel) {
-    this.customertel = customertel;
+  public void setUsrId(String usrId) {
+    this.usrId = usrId;
   }
 
 
-  public String getCustomergender() {
-    return customergender;
+  public String getCustomerEmail() {
+    return customerEmail;
+  }
+
+  public void setCustomerEmail(String customerEmail) {
+    this.customerEmail = customerEmail;
   }
 
 
-  public void setCustomergender(String customergender) {
-    this.customergender = customergender;
+  public String getCustomerTel() {
+    return customerTel;
+  }
+
+  public void setCustomerTel(String customerTel) {
+    this.customerTel = customerTel;
   }
 
 
-  public Date getCustomerbirth() {
-    return customerbirth;
-  }
-
-  public void setCustomerbirth(Date customerbirth) {
-    this.customerbirth = customerbirth;
+  public String getCustomerGender() {
+    return customerGender;
   }
 
 
-  public String getCustomeraddr() {
-    return customeraddr;
-  }
-
-  public void setCustomeraddr(String customeraddr) {
-    this.customeraddr = customeraddr;
+  public void setCustomerGender(String customerGender) {
+    this.customerGender = customerGender;
   }
 
 
-  public String getCustomername() {
-    return customername;
+  public Date getCustomerBirth() {
+    return customerBirth;
   }
 
-  public void setCustomername(String customername) {
-    this.customername = customername;
+  public void setCustomerBirth(Date customerBirth) {
+    this.customerBirth = customerBirth;
+  }
+
+
+  public String getCustomerAddr() {
+    return customerAddr;
+  }
+
+  public void setCustomerAddr(String customerAddr) {
+    this.customerAddr = customerAddr;
+  }
+
+
+  public String getCustomerName() {
+    return customerName;
+  }
+
+  public void setCustomerName(String customerName) {
+    this.customerName = customerName;
   }
 
 }

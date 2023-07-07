@@ -1,24 +1,28 @@
 package edu.kosa.third.dto;
 
 public class UsrDto {
-	private String usrid;
+	private String usrId;
 	private String pwd;
 	private String salt;
 	private String status;
 
-	public UsrDto(String usrid, String pwd, String salt, String status) {
-		this.usrid = usrid;
+	public UsrDto(String usrId, String pwd, String salt, String status) {
+		this.usrId = usrId;
 		this.pwd = pwd;
 		this.salt = salt;
 		this.status = status;
 	}
 
-	public String getUsrid() {
-		return usrid;
+	public UsrDto() {
+
 	}
 
-	public void setUsrid(String usrid) {
-		this.usrid = usrid;
+	public String getUsrId() {
+		return usrId;
+	}
+
+	public void setUsrId(String usrId) {
+		this.usrId = usrId;
 	}
 
 
