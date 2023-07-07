@@ -1,9 +1,6 @@
 package edu.kosa.third.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,14 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import edu.kosa.third.action.Action;
 import edu.kosa.third.action.ActionForward;
-import edu.kosa.third.dao.LeaveDao;
-import edu.kosa.third.service.AddItemServiceAction;
-import edu.kosa.third.service.ItemListServiceAction;
-import edu.kosa.third.service.JoinCustomerOkServiceAction;
-import edu.kosa.third.service.JoinEmpOkServiceAction;
-import edu.kosa.third.service.LeaveApplyServiceAction;
-import edu.kosa.third.service.LeaveApproveServiceAction;
-import edu.kosa.third.service.LeaveListServiceAction;
+import edu.kosa.third.service.*;
 
 @WebServlet("*.do")
 public class FrontRegisterController extends HttpServlet {
@@ -47,12 +37,12 @@ public class FrontRegisterController extends HttpServlet {
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("/WEB-INF/views/register/register.jsp");
-			
+
 		} else if (urlcommand.equals("/registerok.do")) {
 			// UI 제공 + 서비스 필요
 			action = null;
 			forward = action.execute(request, response); // request 클라이언트가 요청한 페이지당 1개씩 만들어지는 request객체
-			
+
 		} else if (urlcommand.equals("/leave.do")) {
 			forward = new ActionForward();
 			forward.setRedirect(false);
@@ -91,10 +81,29 @@ public class FrontRegisterController extends HttpServlet {
 		} else if(urlcommand.equals("/joinEmpOk.do")) {
 			action = new JoinEmpOkServiceAction();
 			forward = action.execute(request, response);
-			
+
 		} else if (urlcommand.equals("/addItem.do")) {
 			action = new AddItemServiceAction();
 			forward = action.execute(request, response);
+
+		}else if(urlcommand.equals("/loginCustomer.do")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("/WEB-INF/views/login/loginCustomer.jsp");
+
+		}else if(urlcommand.equals("/loginCustomerOk.do")) {
+			action = new loginCustomerOkServiceAction();
+			forward = action.execute(request, response);
+
+		}else if(urlcommand.equals("/loginEmp.do")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("/WEB-INF/views/login/loginEmp.jsp");
+
+		}else if(urlcommand.equals("/loginEmpOk.do")) {
+			action = new loginEmpOkServiceAction();
+			forward = action.execute(request, response);
+
 		}
 
 		if (forward != null) {
