@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -50,10 +50,13 @@
 				<c:set var="status" value="반려" />
 			</c:if>
 			<c:set var="leaveNo" value="${list.get('leaveNo')}" scope="session" />
+			<c:set var="levStatus" value="${list.get('levStatus')}" scope="session" />
+			<c:set var="typeNo" value="${list.get('typeNo')}" scope="session" />
 			<c:set var="startDay" value="${list.get('startDay')}" scope="session" />
 			<c:set var="endDay" value="${list.get('endDay')}" scope="session" />
+			<c:set var="enpNo" value="${list.get('enpNo')}" scope="session" />
 			<tr>
-				<th>휴가번호</th>
+				<th>신청 번호</th>
 				<td colspan="3">${list.get('leaveNo')}</td>
 			</tr>
 			<tr>
@@ -90,22 +93,22 @@
 	</table>
 	<c:set var="app" value="1" />
 	<c:set var="rej" value="2" />
-	<table>
-		<tr>
-			<td>
-				<form action="leaveApprove.do" method="post">
-					<input type="hidden" name="approveType" id="approveType"
-						value="${app}"> <input type="submit" value="승인">
-				</form>
-			</td>
-			<td>
-				<form action="leaveApprove.do" method="post">
-					<input type="hidden" name="approveType" id="approveType"
-						value="${rej}"> <input type="submit" value="거절">
-				</form>
-			</td>
-		</tr>
-	</table>
+		<table>
+			<tr>
+				<td>
+					<form action="leaveApprove.do" method="post">
+						<input type="hidden" name="approveType" id="approveType"
+							value="${app}"> <input type="submit" value="승인">
+					</form>
+				</td>
+				<td>
+					<form action="leaveApprove.do" method="post">
+						<input type="hidden" name="approveType" id="approveType"
+							value="${rej}"> <input type="submit" value="거절">
+					</form>
+				</td>
+			</tr>
+		</table>
 
 </body>
 </html>

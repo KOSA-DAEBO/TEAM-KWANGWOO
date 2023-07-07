@@ -20,8 +20,9 @@ th, td {
 </style>
 </head>
 <body>
+<h1>usrId님 보유하신 연차 일수는 %{annualLeave}일 입니다.</h1>
 	<div class="item_content">
-		<div class="name">휴가 리스트</div>
+		<div class="name">휴가 신청 내역</div>
 		<table>
 			<tr>
 				<th>신청 번호</th>
@@ -77,7 +78,7 @@ th, td {
 			<td>
 				<form action="leave.do" method="post">
 					<input type="hidden" name="apply" id="apply"
-						value="휴가신청"> <input type="submit" value="휴가 등록">
+						value="휴가신청"> <input type="submit" value="휴가 신청">
 				</form>
 			</td>
 			<td>

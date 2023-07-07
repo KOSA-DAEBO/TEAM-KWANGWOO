@@ -4,6 +4,15 @@ public class ItemDto {
 	private int itemNo, cost, price, stock, itemClsNo;
 	private String itemName;
 	
+	public ItemDto() {};
+	
+	public ItemDto(String itemName, int cost, int price, int itemClsNo) {
+		this.itemName = itemName;
+		this.cost = cost;
+		this.price = price;
+		this.itemClsNo = itemClsNo;
+	}
+	
 	public int getItemClsNo() {
 		return itemClsNo;
 	}

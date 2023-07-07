@@ -49,4 +49,25 @@ public class ItemDao {
 		}
 		return list;
 	}
+
+	public void insertItem(ItemDto itemDto) {
+		String sql = "insert into item(itemname, cost, price, stock, itemclsno) VALUES (?, ?, ?, 0, ?)";
+		Connection conn = ConnectionHelper.getConnection("oracle");
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, itemDto.getItemName());
+			pstmt.setInt(2, itemDto.getCost());
+			pstmt.setInt(3, itemDto.getPrice());
+			pstmt.setInt(4, itemDto.getItemClsNo());
+			
+			pstmt.execute();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
+		}
+	}
 }
