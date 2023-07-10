@@ -1,6 +1,5 @@
 function joinChkCustomer() {
 
-
     if (!document.joinCustomer.usrId.value) {
         document.joinCustomer.usrId.focus();
         alert("아이디를 입력하십시요.");
@@ -61,8 +60,6 @@ function joinChkCustomer() {
         alert("비밀번호확인이 비밀번호와 일치 하지 않습니다.");
         return false;
     }
-
-
 
     return true;
 
@@ -138,6 +135,5 @@ function joinChkEmp(){
     }
 
     return true;
-
 
 }

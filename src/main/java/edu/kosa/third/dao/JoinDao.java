@@ -34,7 +34,6 @@ public class JoinDao {
 
             pstmt.execute();
 
-
             String sql2 = "insert into customer(usrId,customerEmail,customerTel,customerGender,customerBirth,customerAddr,customerName) values(?,?,?,?,?,?,?)"; // hex 값은이후 추가
             pstmt2 = conn.prepareStatement(sql2);
 
@@ -47,7 +46,6 @@ public class JoinDao {
             pstmt2.setString(7, customerDto.getCustomerName());
 
             pstmt2.execute();
-
 
         } catch (SQLException | NoSuchAlgorithmException e) {
             e.printStackTrace();
