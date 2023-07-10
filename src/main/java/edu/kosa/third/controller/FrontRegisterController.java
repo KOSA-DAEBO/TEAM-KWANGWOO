@@ -86,24 +86,32 @@ public class FrontRegisterController extends HttpServlet {
 			action = new AddItemServiceAction();
 			forward = action.execute(request, response);
 
-		}else if(urlcommand.equals("/loginCustomer.do")) {
+		} else if(urlcommand.equals("/loginCustomer.do")) {
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("/WEB-INF/views/login/loginCustomer.jsp");
 
-		}else if(urlcommand.equals("/loginCustomerOk.do")) {
+		} else if(urlcommand.equals("/loginCustomerOk.do")) {
 			action = new loginCustomerOkServiceAction();
 			forward = action.execute(request, response);
 
-		}else if(urlcommand.equals("/loginEmp.do")) {
+		} else if(urlcommand.equals("/loginEmp.do")) {
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("/WEB-INF/views/login/loginEmp.jsp");
 
-		}else if(urlcommand.equals("/loginEmpOk.do")) {
+		} else if(urlcommand.equals("/loginEmpOk.do")) {
 			action = new loginEmpOkServiceAction();
 			forward = action.execute(request, response);
 
+		} else if(urlcommand.equals("/updateItem.do")) {
+			action = new UpdateItemServiceAction();
+			forward = action.execute(request, response);
+			
+		} else if(urlcommand.equals("/deleteItem.do")) {
+			action = new DeleteItemServiceAction();
+			forward = action.execute(request, response);
+			
 		}
 
 		if (forward != null) {
