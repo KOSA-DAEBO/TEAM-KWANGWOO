@@ -65,9 +65,9 @@ public class FrontRegisterController extends HttpServlet {
 			forward.setRedirect(false);
 			forward.setPath("/WEB-INF/views/join/joinCustomer.jsp");
 
-		} else if(urlcommand.equals("/joinCustomerOk.do")) { //UI + 로직
+		} else if(urlcommand.equals("/joinCustomerOk.do")) {
 			action = new JoinCustomerOkServiceAction();
-			forward = action.execute(request, response);//request 클라이언트가 요청한 페이지당 1개씩 만들어지는 request객체
+			forward = action.execute(request, response);
 
 		} else if (urlcommand.equals("/leaveApprove.do")) {
 			action = new LeaveApproveServiceAction();

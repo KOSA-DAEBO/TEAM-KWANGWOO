@@ -2,54 +2,38 @@ package edu.kosa.third.dao;
 
 import edu.kosa.third.dto.CustomerDto;
 import edu.kosa.third.dto.EmpDto;
-import edu.kosa.third.dto.UsrDto;
+import edu.kosa.third.utils.CheckInfo;
 import edu.kosa.third.utils.ConnectionHelper;
 
-import java.math.BigInteger;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 
 public class loginDao {
 
     public CustomerDto customerChk(String id, String pwd) throws SQLException, NoSuchAlgorithmException {
-        Connection conn = null;
-        PreparedStatement pstmt = null;
-        conn = ConnectionHelper.getConnection("oracle");
-        String sql="select * from Usr where usrId = ?";
+        if (CheckInfo.PwdChk(id, pwd)) {
+            Connection conn = ConnectionHelper.getConnection("oracle");
+            String sql = "select * from Customer where usrId = ?";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, id);
+            ResultSet rs = pstmt.executeQuery();
+            rs.next();
 
-        pstmt = conn.prepareStatement(sql);
-        pstmt.setString(1, id);
-        ResultSet rs = pstmt.executeQuery();
+            CustomerDto customerDto = new CustomerDto(rs.getString("CUSTOMERNO"),
+                    rs.getString("USRID"),
+                    rs.getString("CUSTOMEREMAIL"),
+                    rs.getString("CUSTOMERTEL"),
+                    rs.getString("CUSTOMERGENDER"),
+                    rs.getDate("CUSTOMERBIRTH"),
+                    rs.getString("CUSTOMERADDR"),
+                    rs.getString("CUSTOMERNAME")
+            );
 
-        UsrDto usrDto = new UsrDto();
-
-        if(rs.next()){
-
-            MessageDigest md = MessageDigest.getInstance("SHA-512/256");
-            md.update(pwd.getBytes());
-            md.update(rs.getString("salt").getBytes());
-            String hex = String.format("%064x", new BigInteger(1, md.digest()));
-
-            if(hex.equals(rs.getString("pwd"))){
-                String sql2= "select * from Customer where usrId = ?";
-                PreparedStatement pstmt2 = conn.prepareStatement(sql2);
-                pstmt2.setString(1, id);
-                ResultSet rs2 = pstmt2.executeQuery();
-                rs2.next();
-
-                CustomerDto customerDto = new CustomerDto(rs2.getString("CUSTOMERNO"),
-                        rs2.getString("USRID"),
-                        rs2.getString("CUSTOMEREMAIL"),
-                        rs2.getString("CUSTOMERTEL"),
-                        rs2.getString("CUSTOMERGENDER"),
-                        rs2.getDate("CUSTOMERBIRTH"),
-                        rs2.getString("CUSTOMERADDR"),
-                        rs2.getString("CUSTOMERNAME")
-                );
-
-                return customerDto;
-            }
+            return customerDto;
         }
 
         return null;
@@ -57,51 +41,33 @@ public class loginDao {
     }
 
     public EmpDto EmpChk(String id, String pwd) throws SQLException, NoSuchAlgorithmException {
-        Connection conn = null;
-        PreparedStatement pstmt = null;
-        conn = ConnectionHelper.getConnection("oracle");
-        String sql="select * from Usr where usrId = ?";
 
-        pstmt = conn.prepareStatement(sql);
-        pstmt.setString(1, id);
-        ResultSet rs = pstmt.executeQuery();
+        if (CheckInfo.PwdChk(id, pwd)) {
+            Connection conn = ConnectionHelper.getConnection("oracle");
+            String sql = "select * from Emp where usrId = ?";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, id);
+            ResultSet rs = pstmt.executeQuery();
+            rs.next();
 
-        UsrDto usrDto = new UsrDto();
+            EmpDto empDto = new EmpDto(rs.getInt("EMPNO"),
+                    rs.getInt("ANNUALLEAVE"),
+                    rs.getInt("DEPTNO"),
+                    rs.getInt("POSNO"),
+                    rs.getDate("EMPBIRTH"),
+                    rs.getDate("HIREDATE"),
+                    rs.getString("EMPNAME"),
+                    rs.getString("EMPEMAIL"),
+                    rs.getString("EMPTEL"),
+                    rs.getString("EMPADDR"),
+                    rs.getBoolean("EMPSTATUS"),
+                    rs.getBoolean("ROLE"),
+                    rs.getString("EMPGENDER")
+            );
+            return empDto;
 
-        if(rs.next()){
-
-            MessageDigest md = MessageDigest.getInstance("SHA-512/256");
-            md.update(pwd.getBytes());
-            md.update(rs.getString("salt").getBytes());
-            String hex = String.format("%064x", new BigInteger(1, md.digest()));
-
-            if(hex.equals(rs.getString("pwd"))){
-                String sql2= "select * from Emp where usrId = ?";
-                PreparedStatement pstmt2 = conn.prepareStatement(sql2);
-                pstmt2.setString(1, id);
-                ResultSet rs2 = pstmt2.executeQuery();
-                rs2.next();
-
-                EmpDto empDto = new EmpDto(rs2.getInt("EMPNO"),
-                        rs2.getInt("ANNUALLEAVE"),
-                        rs2.getInt("DEPTNO"),
-                        rs2.getInt("POSNO"),
-                        rs2.getDate("EMPBIRTH"),
-                        rs2.getDate("HIREDATE"),
-                        rs2.getString("EMPNAME"),
-                        rs2.getString("EMPEMAIL"),
-                        rs2.getString("EMPTEL"),
-                        rs2.getString("EMPADDR"),
-                        rs2.getBoolean("EMPSTATUS"),
-                        rs2.getBoolean("ROLE"),
-                        rs2.getString("EMPGENDER")
-                );
-
-                return empDto;
-            }
         }
-
-
         return null;
+
     }
 }

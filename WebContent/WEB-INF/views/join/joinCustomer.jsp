@@ -37,7 +37,6 @@
 
         </div>
 
-
         <div class="form-group">
 
             <label for="usrPwd">비밀번호 :</label>
@@ -45,7 +44,6 @@
             <input type="password" class="form-control" id="usrPwd" placeholder="비밀번호 입력" name="usrPwd">
 
         </div>
-
 
         <div class="form-group">
 
@@ -63,7 +61,6 @@
 
         </div>
 
-
         <div class="form-group">
 
             <label for="usrEmail">이메일 :</label>
@@ -71,7 +68,6 @@
             <input type="email" class="form-control" id="usrEmail" placeholder="이메일 입력" name="usrEmail">
 
         </div>
-
 
         <div class="form-group">
 
