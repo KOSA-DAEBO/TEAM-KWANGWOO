@@ -10,6 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./css/main.css">
 <link rel="icon" href="./favicon.ico" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <div class="header noindex">
@@ -20,9 +21,9 @@
                   alt="광우" class="logo" /></a>
             </h1>
             <div>
-               <span class="material-symbols-outlined" OnClick="location.href='/loginCustomer.do'">login</span>
+               <span class="material-symbols-outlined" OnClick="location.href='../loginCustomer.do'">login</span>
                <span class="material-symbols-outlined">logout</span>
-               <span class="material-symbols-outlined" OnClick="location.href='/joinCustomer.do'">person_add</span>
+               <span class="material-symbols-outlined" OnClick="location.href='../joinCustomer.do'">person_add</span>
             </div>
          </div>
          <!-- //head_top -->

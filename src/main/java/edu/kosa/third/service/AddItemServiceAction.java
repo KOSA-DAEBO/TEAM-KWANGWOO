@@ -32,8 +32,6 @@ public class AddItemServiceAction implements Action {
 			boolean result = dao.insertItem(new ItemDto(itemName, cost, price, itemClsNo));
 			
 			if(result == false) {
-				request.setAttribute("errorMsg", "중복된 상품명이 있습니다."); // 에러 메시지를 request 속성으로 설정
-				
 				response.setContentType("text/html;charset=UTF-8");
                 PrintWriter out;
 				try {
