@@ -75,7 +75,7 @@
                   <li><a href="#">제품추가</a></li>
                   <li><a href="itemList.do">상품관리</a></li>
                   <li><a href="addItem.do">상품추가</a></li>
-                  <li><a href="#">상품발주</a></li>
+                  <li><a href="itemList.do?listNo=3">상품발주</a></li>
                </ul>
             </div>
          </div>

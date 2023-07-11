@@ -13,6 +13,11 @@ public class ItemDto {
 		this.itemClsNo = itemClsNo;
 	}
 	
+	public ItemDto (int itemNo, int stock) {
+		this.itemNo = itemNo;
+		this.stock = stock;
+	}
+	
 	public ItemDto(int itemNo, String itemName, int cost, int price, int itemClsNo) {
 		this.itemNo = itemNo;
 		this.itemName = itemName;

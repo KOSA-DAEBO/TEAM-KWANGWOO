@@ -75,7 +75,7 @@ public class LeaveApproveServiceAction implements Action {
 		String resultdata = "";
 
 		int su = dao.approveLeave(num, leaveNo);
-
+		
 		if (su > 0 && num == 1) {
 			if(typeNo.equals("10"))
 			dao.decAnnualLeave(startDay, endDay, usrId);

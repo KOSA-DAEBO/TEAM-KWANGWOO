@@ -20,11 +20,13 @@ public class ItemListServiceAction implements Action {
 		ItemDao dao = new ItemDao();
 		ArrayList<ItemsDto> list = dao.selectAll();
 		
-		request.setAttribute("list", list);
 		
+		request.setAttribute("list", list);
 		forward.setRedirect(false);
 		if(listNo != null && listNo.equals("2")) {
 			forward.setPath("/WEB-INF/views/item/checkItem.jsp");
+		} else if(listNo != null && listNo.equals("3")) {
+			forward.setPath("/WEB-INF/views/item/buyItem.jsp");
 		} else {
 			forward.setPath("/WEB-INF/views/item/itemList.jsp");
 		}

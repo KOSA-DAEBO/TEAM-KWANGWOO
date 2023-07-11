@@ -20,8 +20,7 @@ public class LeaveDao {
 
 		int resultrow = 0;
 		PreparedStatement pstmt = null;
-		String sql = "insert into leave (startday, endday, reason, empno, usrid, typeno)"
-					+" values(?,?,?,?,?,?)";
+		String sql = "insert into leave (startday, endday, reason, empno, usrid, typeno)" + " values(?,?,?,?,?,?)";
 		// Pool
 		Connection conn = null;
 		int type = Integer.parseInt(typeNo);
@@ -41,19 +40,15 @@ public class LeaveDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			try {
-				ConnectionHelper.close(pstmt);
-				ConnectionHelper.close(conn);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
 		}
-
 		return resultrow;
 	}
 
 	public ArrayList<HashMap<String, String>> selectAll() {
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		StringBuilder sb = new StringBuilder();
 		sb.append(
 				"SELECT leaveno, e.empno, empname, deptname, posname, typeno, startday, endday, levstatus, e.annualLeave FROM leave l");
@@ -70,7 +65,7 @@ public class LeaveDao {
 		HashMap<String, String> map;
 		try {
 			pstmt = conn.prepareStatement(sql);
-			ResultSet rs = pstmt.executeQuery();
+			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				map = new HashMap<String, String>();
 				map.put("leaveNo", rs.getInt(1) + "");
@@ -85,11 +80,12 @@ public class LeaveDao {
 				map.put("annualLeave", rs.getInt(10) + "");
 				list.add(map);
 			}
-			rs.close();
-			pstmt.close();
-			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(rs);
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
 		}
 		return list;
 	}
@@ -105,14 +101,14 @@ public class LeaveDao {
 		String sql = sb.toString();
 
 		Connection conn = ConnectionHelper.getConnection("oracle");
-		
+		ResultSet rs = null;
 		ArrayList<HashMap<String, String>> list = new ArrayList<>();
 		HashMap<String, String> map;
-		
+
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, Integer.parseInt(leaveNo));
-			ResultSet rs = pstmt.executeQuery();
+			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
 				map = new HashMap<String, String>();
@@ -130,11 +126,12 @@ public class LeaveDao {
 				map.put("levStatus", rs.getInt(5) + "");
 				list.add(map);
 			}
-			rs.close();
-			pstmt.close();
-			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(rs);
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
 		}
 		return list;
 	}
@@ -149,14 +146,15 @@ public class LeaveDao {
 			pstmt.setInt(1, num);
 			pstmt.setInt(2, leaveNo);
 			resultrow = pstmt.executeUpdate();
-			pstmt.close();
-			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
 		}
 		return resultrow;
 	}
-	
+
 	public void decAnnualLeave(String startDay, String endDay, String usrId) {
 		DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		long days = 0;
@@ -166,50 +164,54 @@ public class LeaveDao {
 			Date ed = sdf.parse(endDay);
 			long sec = ((ed.getTime() - sd.getTime())) / 1000;
 			days = sec / (24 * 60 * 60);
-			annual-=(days+1);
+			annual -= (days + 1);
 
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		
+
 		PreparedStatement pstmt = null;
 		String sql = "update EMP set AnnualLeave = ? where usrId = ?";
 		Connection conn = ConnectionHelper.getConnection("oracle");
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, annual);
-			pstmt.setString(2, usrId);	
+			pstmt.setString(2, usrId);
 			pstmt.executeUpdate();
-			pstmt.close();
-			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
 		}
 	}
 
 	public int checkAnnual(String usrId) {
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		String sql = "SELECT ANNUALLEAVE from EMP where usrId = ?";
 		Connection conn = ConnectionHelper.getConnection("oracle");
 		int num = 0;
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, usrId);
-			ResultSet rs = pstmt.executeQuery();
+			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				num = rs.getInt(1);
 			}
-			rs.close();
-			pstmt.close();
-			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(rs);
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
 		}
 		return num;
 	}
 
-	public boolean checkDays(String usrId, String startDay, String endDay){
+	public boolean checkDays(String usrId, String startDay, String endDay) {
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		String sql = "select * from leave where usrId= ? and levstatus=0 and ?>=startday and ?<=endday";
 		Connection conn = ConnectionHelper.getConnection("oracle");
 		boolean flag = false;
@@ -218,54 +220,57 @@ public class LeaveDao {
 			pstmt.setString(1, usrId);
 			pstmt.setString(2, startDay);
 			pstmt.setString(3, endDay);
-			ResultSet rs = pstmt.executeQuery();
+			rs = pstmt.executeQuery();
 			flag = rs.next();
-			rs.close();
-			pstmt.close();
-			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(rs);
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
 		}
 		return flag;
 	}
-	
+
 	public int searchEmpNo(String usrId) {
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		String sql = "select EmpNo from EMP where usrId= ?";
 		Connection conn = ConnectionHelper.getConnection("oracle");
-		int empNo=0;
+		int empNo = 0;
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, usrId);
-			ResultSet rs = pstmt.executeQuery();
+			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				empNo = rs.getInt(1);
 			}
-			rs.close();
-			pstmt.close();
-			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(rs);
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
 		}
 		return empNo;
 	}
-	
-	public void deleteLeave(int leaveNo, String usrId) {
+
+	public void deleteLeave(int leaveNo) {
 		PreparedStatement pstmt = null;
-		String sql = "delete from leave where leaveno= ? and usrId=?";
+		String sql = "delete from leave where leaveno= ?";
 		Connection conn = ConnectionHelper.getConnection("oracle");
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, leaveNo);
-			pstmt.setString(2, usrId);	
 			pstmt.executeUpdate();
-			pstmt.close();
-			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
 		}
 	}
-	
+
 	public ArrayList<HashMap<String, String>> selectById(String usrId) {
 		PreparedStatement pstmt = null;
 		StringBuilder sb = new StringBuilder();
@@ -279,6 +284,7 @@ public class LeaveDao {
 		String sql = sb.toString();
 
 		/// Pool ///////////////////////////////////
+		ResultSet rs = null;
 		Connection conn = ConnectionHelper.getConnection("oracle");
 		////////////////////////////////////////////
 		ArrayList<HashMap<String, String>> list = new ArrayList<>();
@@ -286,7 +292,7 @@ public class LeaveDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, usrId);
-			ResultSet rs = pstmt.executeQuery();
+			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				map = new HashMap<String, String>();
 				map.put("leaveNo", rs.getInt(1) + "");
@@ -301,12 +307,66 @@ public class LeaveDao {
 				map.put("annualLeave", rs.getInt(10) + "");
 				list.add(map);
 			}
-			rs.close();
-			pstmt.close();
-			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(rs);
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
 		}
 		return list;
 	}
+
+	public void incAnnualLeave(String startDay, String endDay, String usrId) {
+		DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		long days = 0;
+		int annual = checkAnnual(usrId);
+		try {
+			Date sd = sdf.parse(startDay);
+			Date ed = sdf.parse(endDay);
+			long sec = ((ed.getTime() - sd.getTime())) / 1000;
+			days = sec / (24 * 60 * 60);
+			annual += (days + 1);
+
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+		PreparedStatement pstmt = null;
+		String sql = "update EMP set AnnualLeave = ? where usrId = ?";
+		Connection conn = ConnectionHelper.getConnection("oracle");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, annual);
+			pstmt.setString(2, usrId);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
+		}
+	}
+
+	public void modifyLeave(String startDay, String endDay, String reason, int typeNo, int leaveNo) {
+		PreparedStatement pstmt = null;
+		String sql = "update Leave set startday = ?, endday = ?, reason=?, typeno=? where leaveno = ?";
+		Connection conn = ConnectionHelper.getConnection("oracle");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, startDay);
+			pstmt.setString(2, endDay);
+			pstmt.setString(3, reason);
+			pstmt.setInt(4, typeNo);
+			pstmt.setInt(5, leaveNo);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
+		}
+
+	}
+
 }

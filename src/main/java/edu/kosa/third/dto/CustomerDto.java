@@ -13,6 +13,10 @@ public class CustomerDto {
   private Date customerBirth;
   private String customerAddr;
   private String customerName;
+  
+  public CustomerDto() {
+	  
+  }
 
   public CustomerDto(String customerNo, String usrId, String customerEmail, String customerTel, String customerGender, Date customerBirth, String customerAddr, String customerName) {
     this.customerNo = customerNo;
