@@ -6,6 +6,12 @@ function joinChkCustomer() {
         return false;
     }
 
+    if(document.joinCustomer.idDuplicateChk.value == "no"){
+        document.joinCustomer.usrId.focus();
+        alert("아이디 중복체크를 해주세요.");
+        return false;
+    }
+
     if (!document.joinCustomer.usrPwd.value) {
         alert("비밀번호를 입력하십시요.");
         document.joinCustomer.usrPwd.focus();
@@ -65,13 +71,20 @@ function joinChkCustomer() {
 
 }
 
-function joinChkEmp(){
+function joinChkEmp() {
 
     if (!document.joinEmp.usrId.value) {
         document.joinEmp.usrId.focus();
         alert("아이디를 입력하십시요.");
         return false;
     }
+
+    if(document.joinEmp.idDuplicateChk.value == "no"){
+        document.joinEmp.usrId.focus();
+        alert("아이디 중복체크를 해주세요.");
+        return false;
+    }
+
 
     if (!document.joinEmp.usrPwd.value) {
         alert("비밀번호를 입력하십시요.");
@@ -136,4 +149,57 @@ function joinChkEmp(){
 
     return true;
 
+}
+
+
+
+function idChk() {
+    var usrId = document.getElementById("usrId").value;
+    var new_window_width = 500;
+    var new_window_height = 300;
+    var positionX = (window.screen.width / 2) - (new_window_width / 2);
+    var positionY = (window.screen.height / 2) - (new_window_height / 2);
+    var pattern = /^[a-z0-9_-]{5,20}$/;
+
+
+    if (!usrId) {
+        alert("아이디를 입력하십시요.");
+        usrId.focus();
+    }else if (!pattern.test(usrId)) {
+        alert("아이디는 5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.");
+        usrId.focus();
+        return false;
+    }else{
+        window.open(
+            "/TEAM-KWANGWOO/idDuplChk.do?usrId="+usrId,
+            "아이디 중복체크",
+            "width=" + new_window_width + ", height=" + new_window_height + ", top=" + positionY + ", left=" + positionX
+        );
+    }
+}
+
+function idConfirm(){
+    opener.document.getElementById("usrId").value = document.dupleChk.usrId.value;
+    opener.document.getElementById("usrId").readOnly = true;
+    opener.document.getElementById("idDuplicateChk").value = "ok";
+    window.close();
+}
+
+function idDupleChk(){
+    if (!document.dupleChk.usrId.value) {
+        document.dupleChk.usrId.focus();
+        alert("아이디를 입력하십시요.");
+        return false;
+    }
+
+    var usrId = document.dupleChk.usrId.value;
+    var pattern = /^[a-z0-9_-]{5,20}$/;
+
+    if (!pattern.test(usrId)) {
+        alert("아이디는 5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.");
+        document.dupleChk.usrId.focus();
+        return false;
+    }
+
+    return true;
 }

@@ -6,7 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import edu.kosa.third.action.Action;
 import edu.kosa.third.action.ActionForward;
-import edu.kosa.third.dao.loginDao;
+import edu.kosa.third.dao.LoginDao;
 import edu.kosa.third.dto.CustomerDto;
 
 
@@ -23,7 +23,7 @@ public class loginCustomerOkServiceAction implements Action {
 		String id = request.getParameter("usrId");
 		String pwd = request.getParameter("usrPwd");
 
-		loginDao dao = new loginDao();
+		LoginDao dao = new LoginDao();
 		CustomerDto dto;
 
 		try {
@@ -49,7 +49,7 @@ public class loginCustomerOkServiceAction implements Action {
 			} catch (IOException e) {
 				throw new RuntimeException(e);
 			}
-			out.println("<script>alert('아이디 혹은 비밀번호가 틀렸습니다.'); location.href='/loginCustomer.do';</script>");
+			out.println("<script>alert('아이디 혹은 비밀번호가 틀렸습니다.'); window.history.back();</script>");
 			out.flush();
 		}else{
 			forward.setPath("index.jsp");

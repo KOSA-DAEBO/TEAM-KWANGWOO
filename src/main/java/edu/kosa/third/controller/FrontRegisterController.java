@@ -91,20 +91,30 @@ public class FrontRegisterController extends HttpServlet {
 			forward.setRedirect(false);
 			forward.setPath("/WEB-INF/views/login/loginCustomer.jsp");
 
-		}else if(urlcommand.equals("/loginCustomerOk.do")) {
+		} else if(urlcommand.equals("/loginCustomerOk.do")) {
 			action = new loginCustomerOkServiceAction();
 			forward = action.execute(request, response);
 
-		}else if(urlcommand.equals("/loginEmp.do")) {
+		} else if(urlcommand.equals("/loginEmp.do")) {
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("/WEB-INF/views/login/loginEmp.jsp");
 
-		}else if(urlcommand.equals("/loginEmpOk.do")) {
+		} else if(urlcommand.equals("/loginEmpOk.do")) {
 			action = new loginEmpOkServiceAction();
 			forward = action.execute(request, response);
 
+		} else if(urlcommand.equals("/idDuplChk.do")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("/WEB-INF/views/join/idChk.jsp");
+
+		} else if(urlcommand.equals("/idDuplOk.do")) {
+			action = new idDuplicateOkServiceAction();
+			forward = action.execute(request, response);
+
 		}
+
 
 		if (forward != null) {
 			if (forward.isRedirect()) { // true 페이지 재 요청 (location.href="페이지"
