@@ -1,20 +1,18 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ include file="../../../fixed/header.jsp" %>
 
 <!DOCTYPE html>
 <html>
 <head>
     <title>고객 회원가입</title>
 
-    <script type="text/javascript" src="../../../js/joinScript.js"></script>
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <script type="text/javascript" src="./js/joinScript.js"></script>
+    <c:set var="duplChkId" value="${false}" scope="session"/>
 </head>
 <body>
 
 <h1>Customer 회원가입</h1>
-
 <div class="container">
     <form action= "joinCustomerOk.do" method="post" onsubmit="return joinChkCustomer();" name="joinCustomer">
 
@@ -28,12 +26,12 @@
 
             </div>
 
-            <%--<div class="col align-self-end">
-            // ID 중복체크 추후 구현
+            <div class="col align-self-end">
 
-                <button type="button" id="idCheck" class="btn btn-primary" onclick="location.href='/usrIdChk.do?id='" >중복확인</button>
+                <button type="button" id="idCheck" onclick="idChk()" >중복확인</button>
+                <input type="hidden" id="idDuplicateChk" name ="idDuplicateChk" value="no">
 
-            </div>--%>
+            </div>
 
         </div>
 
