@@ -7,34 +7,26 @@
 <head>
 <meta charset="UTF-8">
 <title>leaveList.jsp</title>
-<style>
-table {
-	font-family: arial, sans-serif;
-	border-collapse: collapse;
-}
-
-th, td {
-	border: 1px solid #ddd;
-	text-align: center;
-}
-</style>
 </head>
 <body>
-	<div class="item_content">
+	<br><br>
+	<div class="leave_content">
 		<div class="name">승인 대기 휴가 리스트</div>
-		<table>
-			<tr>
-				<th>신청 번호</th>
-				<th>사원 이름</th>
-				<th>사번</th>
-				<th>부서 이름</th>
-				<th>직급 이름</th>
-				<th>휴가 종류</th>
-				<th>휴가 시작일</th>
-				<th>휴가 종료일</th>
-				<th>승인 여부</th>
-				<th>연차 일수</th>
-			</tr>
+		<table class="type07">
+			<thead>
+				<tr>
+					<th scope="col">신청 번호</th>
+					<th scope="col">사원 이름</th>
+					<th scope="col">사번</th>
+					<th scope="col">부서 이름</th>
+					<th scope="col">직급 이름</th>
+					<th scope="col">휴가 종류</th>
+					<th scope="col">휴가 시작일</th>
+					<th scope="col">휴가 종료일</th>
+					<th scope="col">승인 여부</th>
+					<th scope="col">연차 일수</th>
+				</tr>
+			</thead>
 			<c:forEach var="list" items="${ list }">
 				<c:if test="${list.get('typeNo')==10}">
 					<c:set var="type" value="연차" />
@@ -58,30 +50,28 @@ th, td {
 					<c:set var="status" value="반려" />
 				</c:if>
 				<c:if test="${list.get('levStatus')==0}">
-					<tr>
-						<td><a href="leaveList.do?No=${list.get('leaveNo')}">${list.get('leaveNo')}</a></td>
-						<td>${list.get('empName')}</td>
-						<td>${list.get('empNo')}</td>
-						<td>${list.get('deptName')}</td>
-						<td>${list.get('posName')}</td>
-						<td>${type}</td>
-						<td>${list.get('startDay')}</td>
-						<td>${list.get('endDay')}</td>
-						<td>${ status }</td>
-						<td>${list.get('annualLeave')}일</td>
-					</tr>
+					<tbody>
+						<tr>
+							<th scope="row"><a
+								href="leaveList.do?No=${list.get('leaveNo')}">${list.get('leaveNo')}</a></th>
+							<td>${list.get('empName')}</td>
+							<td>${list.get('empNo')}</td>
+							<td>${list.get('deptName')}</td>
+							<td>${list.get('posName')}</td>
+							<td>${type}</td>
+							<td>${list.get('startDay')}</td>
+							<td>${list.get('endDay')}</td>
+							<td>${ status }</td>
+							<td>${list.get('annualLeave')}일</td>
+						</tr>
+					</tbody>
 				</c:if>
 			</c:forEach>
 		</table>
 	</div>
-	<table>
+	<br>
+	<table class="type02">
 		<tr>
-			<td>
-				<form action="leave.do" method="post">
-					<input type="hidden" name="apply" id="apply" value="휴가신청">
-					<input type="submit" value="휴가 등록">
-				</form>
-			</td>
 			<td>
 				<form action="leaveList.do" method="post">
 					<input type="hidden" name="listNum" id="listNum" value="1">

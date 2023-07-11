@@ -97,3 +97,22 @@
 .modal-content .modal_inner_content .modal_deleteBtn:hover {background-color: red; color: #ffffff;}
 .close {color: #aaa; font-size: 28px; font-weight: bold; cursor: pointer; margin-left:auto; margin-right: 5px;}
 .close:hover, .close:focus {color: black; text-decoration: none; cursor: pointer;}
+
+/*leave*/
+table.type07{border-collapse:collapse;text-align:left;line-height:1.5;border:1px solid #ccc;margin:20px 10px}
+table.type07 thead{border-right:1px solid #ccc;border-left:1px solid #ccc;background:#e7708d}
+table.type07 thead th{padding:10px;font-weight:700;vertical-align:top;color:#fff;text-align:center}
+table.type07 tbody th{width:250px;padding:10px;font-weight:700;vertical-align:top;border-bottom:1px solid #ccc;background:#fcf1f4;text-align:center}
+table.type07 td{width:350px;padding:10px;vertical-align:top;border-bottom:1px solid #ccc;text-align:center}
+.levmodal{display:none;position:fixed;z-index:1;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgba(0,0,0,0.5)}
+.modal_content{background-color:#fefefe;margin:7% auto;padding:60px;border:1px solid #888;width:25%}
+table.type09{border-collapse:collapse;text-align:left;line-height:1.5;margin-left:auto;margin-right:auto}
+table.type09 thead th{padding:10px;font-weight:700;vertical-align:top;color:#369;border-bottom:3px solid #036;background:#dcdcd1}
+table.type09 thead td{padding:10px;font-weight:700;vertical-align:top;color:#369;border-bottom:3px solid #036;background:#dcdcd1}
+table.type09 tbody th{width:150px;padding:10px;font-weight:700;vertical-align:top;border-bottom:1px solid #ccc;border-top:1px solid #ccc;background:#f3f6f7}
+table.type09 td{width:300px;padding:10px;vertical-align:top;border-bottom:1px solid #ccc}
+table.type02{border-collapse:separate;border-spacing:0;text-align:center;line-height:1.5;border-top:1px solid #ccc;border-left:1px solid #ccc;margin-left:auto;margin-right:auto}
+table.type02 th{font-weight:700;vertical-align:top;text-align:center;border-right:1px solid #ccc;border-bottom:1px solid #ccc;border-top:1px solid #fff;border-left:1px solid #fff;background:#eee}
+table.type02 input.lbutton{font-size:17px}
+.leave_content {margin: 5px auto 5px auto; width: 1200px; display: grid; justify-content: center; padding: 0px 0px; grid-template-rows: 60px 3fr 0px;}
+.leave_content .name {text-align:center; color:#005b23; font-size:40px; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif;}

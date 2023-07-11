@@ -1,6 +1,7 @@
 package edu.kosa.third.controller;
 
 import java.io.IOException;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +11,21 @@ import javax.servlet.http.HttpServletResponse;
 
 import edu.kosa.third.action.Action;
 import edu.kosa.third.action.ActionForward;
-import edu.kosa.third.service.*;
+import edu.kosa.third.service.AddItemServiceAction;
+import edu.kosa.third.service.DeleteItemServiceAction;
+import edu.kosa.third.service.IdDuplicateOkServiceAction;
+import edu.kosa.third.service.ItemListServiceAction;
+import edu.kosa.third.service.JoinCustomerOkServiceAction;
+import edu.kosa.third.service.JoinEmpOkServiceAction;
+import edu.kosa.third.service.LeaveApplyServiceAction;
+import edu.kosa.third.service.LeaveApproveServiceAction;
+import edu.kosa.third.service.LeaveDeleteServiceAction;
+import edu.kosa.third.service.LeaveListServiceAction;
+import edu.kosa.third.service.LoginCustomerOkServiceAction;
+import edu.kosa.third.service.LoginEmpOkServiceAction;
+import edu.kosa.third.service.SelectEmpDetail;
+import edu.kosa.third.service.SelectEmpInfoServiceAction;
+import edu.kosa.third.service.UpdateItemServiceAction;
 
 @WebServlet("*.do")
 public class FrontRegisterController extends HttpServlet {
@@ -60,12 +75,12 @@ public class FrontRegisterController extends HttpServlet {
 			action = new ItemListServiceAction();
 			forward = action.execute(request, response);
 
-		} else if(urlcommand.equals("/joinCustomer.do")) {
+		} else if (urlcommand.equals("/joinCustomer.do")) {
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("/WEB-INF/views/join/joinCustomer.jsp");
 
-		} else if(urlcommand.equals("/joinCustomerOk.do")) {
+		} else if (urlcommand.equals("/joinCustomerOk.do")) {
 			action = new JoinCustomerOkServiceAction();
 			forward = action.execute(request, response);
 
@@ -73,12 +88,12 @@ public class FrontRegisterController extends HttpServlet {
 			action = new LeaveApproveServiceAction();
 			forward = action.execute(request, response);
 
-		} else if(urlcommand.equals("/joinEmp.do")) {
+		} else if (urlcommand.equals("/joinEmp.do")) {
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("/WEB-INF/views/join/joinEmp.jsp");
 
-		} else if(urlcommand.equals("/joinEmpOk.do")) {
+		} else if (urlcommand.equals("/joinEmpOk.do")) {
 			action = new JoinEmpOkServiceAction();
 			forward = action.execute(request, response);
 
@@ -86,38 +101,38 @@ public class FrontRegisterController extends HttpServlet {
 			action = new AddItemServiceAction();
 			forward = action.execute(request, response);
 
-		} else if(urlcommand.equals("/loginCustomer.do")) {
+		} else if (urlcommand.equals("/loginCustomer.do")) {
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("/WEB-INF/views/login/loginCustomer.jsp");
 
-		} else if(urlcommand.equals("/loginCustomerOk.do")) {
+		} else if (urlcommand.equals("/loginCustomerOk.do")) {
 			action = new LoginCustomerOkServiceAction();
 			forward = action.execute(request, response);
 
-		} else if(urlcommand.equals("/loginEmp.do")) {
+		} else if (urlcommand.equals("/loginEmp.do")) {
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("/WEB-INF/views/login/loginEmp.jsp");
 
-		} else if(urlcommand.equals("/loginEmpOk.do")) {
+		} else if (urlcommand.equals("/loginEmpOk.do")) {
 			action = new LoginEmpOkServiceAction();
 			forward = action.execute(request, response);
 
-		} else if(urlcommand.equals("/updateItem.do")) {
+		} else if (urlcommand.equals("/updateItem.do")) {
 			action = new UpdateItemServiceAction();
 			forward = action.execute(request, response);
 
-		} else if(urlcommand.equals("/deleteItem.do")) {
+		} else if (urlcommand.equals("/deleteItem.do")) {
 			action = new DeleteItemServiceAction();
 			forward = action.execute(request, response);
 
-		} else if(urlcommand.equals("/idDuplChk.do")) {
+		} else if (urlcommand.equals("/idDuplChk.do")) {
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("/WEB-INF/views/join/idChk.jsp");
 
-		} else if(urlcommand.equals("/idDuplOk.do")) {
+		} else if (urlcommand.equals("/idDuplOk.do")) {
 			action = new IdDuplicateOkServiceAction();
 			forward = action.execute(request, response);
 
@@ -131,6 +146,9 @@ public class FrontRegisterController extends HttpServlet {
 
 		} else if (urlcommand.equals("/empList.do")) {
 			action = new SelectEmpInfoServiceAction();
+
+		} else if (urlcommand.equals("/leaveDelete.do")) {
+			action = new LeaveDeleteServiceAction();
 			forward = action.execute(request, response);
 		}
 
