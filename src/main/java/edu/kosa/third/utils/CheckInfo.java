@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public class CheckInfo {
 
-    public static boolean PwdChk(String id, String pwd) {
+    public static boolean PwdChk(String id, String pwd) throws SQLException, NoSuchAlgorithmException {
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;

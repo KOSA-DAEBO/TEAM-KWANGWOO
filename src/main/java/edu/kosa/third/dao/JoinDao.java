@@ -52,6 +52,7 @@ public class JoinDao {
             e.printStackTrace();
 
         }finally {
+        	ConnectionHelper.close(pstmt2);
             ConnectionHelper.close(pstmt);
             ConnectionHelper.close(pstmt2);
             ConnectionHelper.close(conn);
@@ -98,6 +99,7 @@ public class JoinDao {
             e.printStackTrace();
 
         }finally {
+        	ConnectionHelper.close(pstmt2);
             ConnectionHelper.close(pstmt);
             ConnectionHelper.close(pstmt2);
             ConnectionHelper.close(conn);
