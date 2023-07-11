@@ -32,7 +32,7 @@ public class loginDao {
                     rs.getString("CUSTOMERADDR"),
                     rs.getString("CUSTOMERNAME")
             );
-
+            
             return customerDto;
         }
 
