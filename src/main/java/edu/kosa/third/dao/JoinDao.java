@@ -10,6 +10,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class JoinDao {
@@ -85,7 +86,7 @@ public class JoinDao {
             pstmt2.setDate(3, empDto.getEmpBirth());
             pstmt2.setString(4, empDto.getEmpEmail());
             pstmt2.setString(5, empDto.getEmpTel());
-            pstmt2.setString(6, empDto.isEmpGender());
+            pstmt2.setString(6, empDto.getEmpGender());
             pstmt2.setString(7, empDto.getEmpAddr());
             pstmt2.setDate(8, empDto.getHireDate());
             pstmt2.setInt(9, empDto.getDeptNo());
@@ -104,4 +105,33 @@ public class JoinDao {
 
     }
 
+    public boolean idDuplChk(String id) {
+
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        boolean duplchk = false;
+        try{
+            conn = ConnectionHelper.getConnection("oracle");
+            String sql = "select * from usr where usrid = ?";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, id);
+            rs = pstmt.executeQuery();
+            if(rs.next()){
+                duplchk = false;
+            }else {
+                duplchk = true;
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            ConnectionHelper.close(rs);
+            ConnectionHelper.close(pstmt);
+            ConnectionHelper.close(conn);
+        }
+
+        return duplchk;
+    }
 }
