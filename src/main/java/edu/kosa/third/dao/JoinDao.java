@@ -85,7 +85,7 @@ public class JoinDao {
             pstmt2.setDate(3, empDto.getEmpBirth());
             pstmt2.setString(4, empDto.getEmpEmail());
             pstmt2.setString(5, empDto.getEmpTel());
-            pstmt2.setString(6, empDto.isEmpGender());
+            pstmt2.setString(6, empDto.getEmpGender());
             pstmt2.setString(7, empDto.getEmpAddr());
             pstmt2.setDate(8, empDto.getHireDate());
             pstmt2.setInt(9, empDto.getDeptNo());
