@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Team KwangWoo</title>
 </head>
 <body>
 <div class="item_content">
@@ -32,7 +32,7 @@
 	<div class="item_btn">
 		<input type="button" value="상품추가" class="addBtn" onclick="javascript:location.href = 'addItem.do'">
 		<input type="button" value="수정/삭제" class="updateBtn" onclick="javascript:location.href = 'itemList.do?listNo=2'">
-		<input type="button" value="재고주문" class="orderBtn">
+		<input type="button" value="재고주문" class="orderBtn" onclick="javascript:location.href = 'itemList.do?listNo=3'">
 	</div>
 </div>
 </body>

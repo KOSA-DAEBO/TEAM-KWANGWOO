@@ -83,15 +83,16 @@ public class ItemDao {
 				
 				pstmt2.execute();
 			} catch (Exception e) {
-				// TODO: handle exception
 			}finally {
 				ConnectionHelper.close(rs);
+				ConnectionHelper.close(pstmt2);
 				ConnectionHelper.close(pstmt);
 				ConnectionHelper.close(conn);
 			}
 			return true;
 		} else {
 			ConnectionHelper.close(rs);
+			ConnectionHelper.close(pstmt2);
 			ConnectionHelper.close(pstmt);
 			ConnectionHelper.close(conn);
 			return false;
@@ -130,6 +131,47 @@ public class ItemDao {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setInt(1, itemNo);
+			
+			pstmt.execute();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
+		}
+	}
+
+	public void buyItem(ItemDto itemDto) {
+		String sql = "UPDATE ITEM SET STOCK = STOCK + ? WHERE ITEMNO = ?";
+		Connection conn = ConnectionHelper.getConnection("oracle");
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, itemDto.getStock());
+			pstmt.setInt(2, itemDto.getItemNo());
+			
+			pstmt.execute();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
+		}
+	}
+
+	public void costMoney(int totalPrice) {
+		String sql = "INSERT INTO MONEY (PROFIT, COST, TAMOUNT, CAUSE) VALUES (0, ?, (SELECT TAMOUNT - ? FROM MONEY WHERE MNO = (SELECT MAX(MNO) FROM MONEY)), '상품 구매')";
+		Connection conn = ConnectionHelper.getConnection("oracle");
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, totalPrice);
+			pstmt.setInt(2, totalPrice);
 			
 			pstmt.execute();
 		} catch (Exception e) {

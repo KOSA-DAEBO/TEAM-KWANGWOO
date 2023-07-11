@@ -11,21 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import edu.kosa.third.action.Action;
 import edu.kosa.third.action.ActionForward;
-import edu.kosa.third.service.AddItemServiceAction;
-import edu.kosa.third.service.DeleteItemServiceAction;
-import edu.kosa.third.service.IdDuplicateOkServiceAction;
-import edu.kosa.third.service.ItemListServiceAction;
-import edu.kosa.third.service.JoinCustomerOkServiceAction;
-import edu.kosa.third.service.JoinEmpOkServiceAction;
-import edu.kosa.third.service.LeaveApplyServiceAction;
-import edu.kosa.third.service.LeaveApproveServiceAction;
-import edu.kosa.third.service.LeaveDeleteServiceAction;
-import edu.kosa.third.service.LeaveListServiceAction;
-import edu.kosa.third.service.LoginCustomerOkServiceAction;
-import edu.kosa.third.service.LoginEmpOkServiceAction;
-import edu.kosa.third.service.SelectEmpDetail;
-import edu.kosa.third.service.SelectEmpInfoServiceAction;
-import edu.kosa.third.service.UpdateItemServiceAction;
+import edu.kosa.third.service.*;
 
 @WebServlet("*.do")
 public class FrontRegisterController extends HttpServlet {
@@ -126,7 +112,11 @@ public class FrontRegisterController extends HttpServlet {
 		} else if (urlcommand.equals("/deleteItem.do")) {
 			action = new DeleteItemServiceAction();
 			forward = action.execute(request, response);
-
+			
+		} else if(urlcommand.equals("/buyItem.do")) {
+			action = new BuyItemServiceAction();
+			forward = action.execute(request, response);
+			
 		} else if (urlcommand.equals("/idDuplChk.do")) {
 			forward = new ActionForward();
 			forward.setRedirect(false);
@@ -144,12 +134,10 @@ public class FrontRegisterController extends HttpServlet {
 			action = new SelectEmpDetail();
 			forward = action.execute(request, response);
 
-		} else if (urlcommand.equals("/empList.do")) {
-			action = new SelectEmpInfoServiceAction();
-
 		} else if (urlcommand.equals("/leaveDelete.do")) {
 			action = new LeaveDeleteServiceAction();
 			forward = action.execute(request, response);
+
 		}
 
 		if (forward != null) {
