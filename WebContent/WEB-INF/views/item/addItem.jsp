@@ -7,7 +7,7 @@
 <head>
 <script type="text/javascript" src="./js/itemScript.js"></script>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Team KwangWoo</title>
 </head>
 <body>
 <div class="add_content">

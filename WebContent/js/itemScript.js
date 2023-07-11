@@ -52,7 +52,6 @@ function checkAddItem() {
 function openModal(itemNo, itemName, cost, price, stock, itemClsNo) {
 	var modal = document.getElementById("modal");
 	var modalContent = document.getElementById("modal_inner_content");
-	var value = itemClsNo;
 
 	modal.style.display = "block";
 	modalContent.innerHTML = `
