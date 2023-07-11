@@ -13,7 +13,7 @@ import java.io.PrintWriter;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 
-public class LoginEmpOkServiceAction implements Action {
+public class loginEmpOkServiceAction implements Action {
     @Override
     public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 

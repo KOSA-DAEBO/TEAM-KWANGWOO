@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class IdDuplicateOkServiceAction implements Action {
+public class idDuplicateOkServiceAction implements Action {
 
     @Override
     public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {

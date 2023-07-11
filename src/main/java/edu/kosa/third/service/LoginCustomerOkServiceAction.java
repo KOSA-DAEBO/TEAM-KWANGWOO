@@ -15,7 +15,7 @@ import java.io.PrintWriter;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 
-public class LoginCustomerOkServiceAction implements Action {
+public class loginCustomerOkServiceAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
