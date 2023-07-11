@@ -15,6 +15,7 @@ public class ItemListServiceAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
+		String listNo = request.getParameter("listNo");
 		
 		ItemDao dao = new ItemDao();
 		ArrayList<ItemsDto> list = dao.selectAll();
@@ -22,7 +23,11 @@ public class ItemListServiceAction implements Action {
 		request.setAttribute("list", list);
 		
 		forward.setRedirect(false);
-		forward.setPath("/WEB-INF/views/item/itemList.jsp");
+		if(listNo != null && listNo.equals("2")) {
+			forward.setPath("/WEB-INF/views/item/checkItem.jsp");
+		} else {
+			forward.setPath("/WEB-INF/views/item/itemList.jsp");
+		}
 		
 		return forward;
 	}

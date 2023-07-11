@@ -86,7 +86,7 @@ public class FrontRegisterController extends HttpServlet {
 			action = new AddItemServiceAction();
 			forward = action.execute(request, response);
 
-		}else if(urlcommand.equals("/loginCustomer.do")) {
+		} else if(urlcommand.equals("/loginCustomer.do")) {
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("/WEB-INF/views/login/loginCustomer.jsp");
@@ -104,6 +104,14 @@ public class FrontRegisterController extends HttpServlet {
 			action = new loginEmpOkServiceAction();
 			forward = action.execute(request, response);
 
+		} else if(urlcommand.equals("/updateItem.do")) {
+			action = new UpdateItemServiceAction();
+			forward = action.execute(request, response);
+
+		} else if(urlcommand.equals("/deleteItem.do")) {
+			action = new DeleteItemServiceAction();
+			forward = action.execute(request, response);
+
 		} else if(urlcommand.equals("/idDuplChk.do")) {
 			forward = new ActionForward();
 			forward.setRedirect(false);
@@ -114,7 +122,6 @@ public class FrontRegisterController extends HttpServlet {
 			forward = action.execute(request, response);
 
 		}
-
 
 		if (forward != null) {
 			if (forward.isRedirect()) { // true 페이지 재 요청 (location.href="페이지"

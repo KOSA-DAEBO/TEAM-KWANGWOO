@@ -97,4 +97,46 @@ public class ItemDao {
 			return false;
 		}
 	}
+
+	public void updateItem(ItemDto itemDto) {
+		String sql = "UPDATE ITEM SET ITEMNAME = ?, COST = ?, PRICE = ?, ITEMCLSNO = ? WHERE ITEMNO = ?";
+		Connection conn = ConnectionHelper.getConnection("oracle");
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, itemDto.getItemName());
+			pstmt.setInt(2, itemDto.getCost());
+			pstmt.setInt(3, itemDto.getPrice());
+			pstmt.setInt(4, itemDto.getItemClsNo());
+			pstmt.setInt(5, itemDto.getItemNo());
+			
+			pstmt.execute();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
+		}
+	}
+
+	public void deleteItem(int itemNo) {
+		String sql = "delete from item where itemno = ?";
+		Connection conn = ConnectionHelper.getConnection("oracle");
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, itemNo);
+			
+			pstmt.execute();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
+		}
+	}
 }

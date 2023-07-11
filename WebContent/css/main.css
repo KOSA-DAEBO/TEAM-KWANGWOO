@@ -22,8 +22,8 @@
 /*헤더메뉴*/
 .local_menu {width:1098px;display: none;}
 .local_menu:hover {display: block;}
-.local_menu_in {height:100%; width:955px;background:#ffffff;border-bottom:1px solid #d5d5d5;overflow:hidden; border-left:1px solid #a7dcbe; border-bottom:1px solid #a7dcbe; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box;}
-.local_menu .lm {height:100%; float:left; width:190px; border-right:1px solid #a7dcbe; padding-bottom:17px;}
+.local_menu_in {display:flex; width:955px;background:#ffffff;border-bottom:1px solid #d5d5d5;overflow:hidden; border-left:1px solid #a7dcbe; border-bottom:1px solid #a7dcbe; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box;}
+.local_menu .lm {display:flex; float:left; width:190px; border-right:1px solid #a7dcbe; padding-bottom:17px;}
 .local_menu .lm:last-child{border-right:1px solid #a7dcbe;}
 .local_menu .lm ul {margin:15px 0 0 15px;}
 .local_menu .lm ul li {line-height:22px;}
@@ -41,15 +41,12 @@
 .footer_bottom .info-dropdown {padding: 10px 0px 10px 0px; line-height: 140%;}
 
 /*itemList*/
-.item_content{margin: 10px auto 10px auto; width: 1000px; display: grid; justify-content: center; padding: 30px 0px; grid-template-rows: 90px 3fr 50px;}
+.item_content {margin: 10px auto 10px auto; width: 1200px; display: grid; justify-content: center; padding: 30px 0px; grid-template-rows: 90px 3fr 50px;}
 .item_content .name {text-align:center; color:#005b23; font-size:40px; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif;}
 .item_content .item {border: 2px solid #005b23; padding: 10px}
 .item_content .item_btn{text-align: center; padding-top: 10px;}
-.item_content .item_btn .addBtn, .orderBtn, .deleteBtn, .updateBtn{border-radius: 20px; border-style: solid; border-color:#005b23; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #005b23; font-size: 20px; width: 150px; height: 40px; margin: 15px 30px;}
-.item_content .item_btn .addBtn:hover {background:#005b23; color: #ffffff}
-.item_content .item_btn .orderBtn:hover {background:#005b23; color: #ffffff}
-.item_content .item_btn .updateBtn:hover {background:#005b23; color: #ffffff}
-.item_content .item_btn .deleteBtn:hover {background:#005b23; color: #ffffff}
+.item_content .item_btn .addBtn, .orderBtn, .deleteBtn, .updateBtn, .updateItem, .deleteItem {border-radius: 20px; border-style: solid; border-color:#005b23; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #005b23; font-size: 20px; width: 150px; height: 40px; margin: 15px 30px;}
+.item_content .item_btn .addBtn:hover, .orderBtn:hover, .updateBtn:hover, .deleteBtn:hover {background:#005b23; color: #ffffff}
 .table_top {display: grid; grid-template-columns: 3fr 100px 100px 100px 100px; gap: 10px; font-weight: bold; text-align: center;}
 .t_head, .t_body {padding: 5px; border: 1px solid #005b23}
 .table_body {display: grid; grid-template-columns: 3fr 100px 100px 100px 100px; gap: 10px; text-align: center;}
@@ -69,6 +66,34 @@
 .add_content .add_form .addRow3 .add_radio {font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; accent-color: #005b23; height: 35px;}
 .add_content .add_form .addRow3 .add_radio input[type=radio] {margin: 12px 5px; vertical-align: middle;}
 .add_content .add_form .addBtn, .resetBtn, .listBtn {border-radius: 20px; border-style: solid; border-color:#005b23; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #005b23; font-size: 20px; width: 150px; height: 40px; margin: 15px 50px;}
-.add_content .add_form .addBtn:hover {background:#005b23; color: #ffffff;}
-.add_content .add_form .resetBtn:hover {background:#005b23; color: #ffffff;}
-.add_content .add_form .listBtn:hover {background:#005b23; color: #ffffff;}
+.add_content .add_form .addBtn:hover, .resetBtn:hover, .listBtn:hover {background:#005b23; color: #ffffff;}
+
+/*checkItem*/
+.check_item_content {margin: 10px auto 10px auto; width: 1200px; display: grid; justify-content: center; padding: 30px 0px; grid-template-rows: 90px 1fr;}
+.check_item_content .name {text-align:center; color:#005b23; font-size:40px; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif;}
+.check_item_content .item {border: 2px solid #005b23; padding: 10px;}
+.check_table_top {display: grid; grid-template-columns: 100px 3fr 100px 100px 100px 100px; gap: 10px; font-weight: bold; text-align: center;}
+.check_table_body {display: grid; grid-template-columns: 100px 3fr 100px 100px 100px 100px; gap: 10px; text-align: center;}
+.check_table_body a:hover {transform: scale(2); color: #005b23; font-weight: bold; cursor: pointer;}
+
+/*modal*/
+.modal {display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.4);}
+.modal-content {display: grid; grid-template-rows: 30px 1fr; background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 50%;}
+.modal-content .modal_inner_content {display: grid; grid-template-rows: 50px 3fr; gap: 10px;}
+.modal-content .modal_inner_content .modal_header {color: #005b23; font-size: 20px; text-align: center; font-weight: bold; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif;}
+.modal-content .modal_inner_content .inner_value {display: flex; align-items: center; justify-content: center;}
+.modal-content .modal_inner_content .updateRow1 {display: grid; grid-template-columns: 150px 100px 150px 1fr; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; font-size: 15px; gap: 10px; margin: 15px 0px;}
+.modal-content .modal_inner_content .updateRow2 {display: grid; grid-template-columns: 150px 180px 150px 150px 120px; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; text-align: center; font-size: 15px; gap: 10px; margin: 15px 0px;}
+.modal-content .modal_inner_content .updateRow3 {display: grid; grid-template-columns: 150px 1fr; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; text-align: center; font-size: 15px; margin: 15px 0px;}
+.modal-content .modal_inner_content .updateRow1 input {width: 80%; height: 27px;}
+.modal-content .modal_inner_content .updateRow2 input {height: 27px;}
+.modal-content .modal_inner_content .updateRow4 {text-align: center;}
+.modal-content .modal_inner_content .inner_name {display:flex; align-items:center; justify-content:center; border: 1px solid #005b23; height: 30px;}
+.modal-content .modal_inner_content .updateRow3 .update_radio {font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; accent-color: #005b23; height: 35px;}
+.modal-content .modal_inner_content .updateRow3 .update_radio input[type=radio] {margin: 12px 5px; vertical-align: middle;}
+.modal-content .modal_inner_content .modal_updateBtn {border-radius: 20px; border-style: solid; border-color:#005b23; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #005b23; font-size: 20px; width: 150px; height: 40px; margin: 15px 50px;}
+.modal-content .modal_inner_content .modal_deleteBtn {border-radius: 20px; border-style: solid; border-color:red; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: red; font-size: 20px; width: 150px; height: 40px; margin: 15px 50px;}
+.modal-content .modal_inner_content .modal_updateBtn:hover {background-color: #005b23; color: #ffffff;}
+.modal-content .modal_inner_content .modal_deleteBtn:hover {background-color: red; color: #ffffff;}
+.close {color: #aaa; font-size: 28px; font-weight: bold; cursor: pointer; margin-left:auto; margin-right: 5px;}
+.close:hover, .close:focus {color: black; text-decoration: none; cursor: pointer;}

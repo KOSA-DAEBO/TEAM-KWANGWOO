@@ -13,6 +13,14 @@ public class ItemDto {
 		this.itemClsNo = itemClsNo;
 	}
 	
+	public ItemDto(int itemNo, String itemName, int cost, int price, int itemClsNo) {
+		this.itemNo = itemNo;
+		this.itemName = itemName;
+		this.cost = cost;
+		this.price = price;
+		this.itemClsNo = itemClsNo;
+	}
+
 	public int getItemClsNo() {
 		return itemClsNo;
 	}
