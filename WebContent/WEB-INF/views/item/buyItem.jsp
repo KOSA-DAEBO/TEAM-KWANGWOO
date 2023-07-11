@@ -5,10 +5,34 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script defer="defer" type="text/javascript" src="./js/itemScript.js"></script>
 <meta charset="UTF-8">
 <title>Team KwangWoo</title>
 </head>
 <body>
+	<div class="buy_item_nav">
+		<a id="buyFormToggle">구입하기</a>
+		<div id="buyForm" class="buy_form">
+    		<div class="name">구매목록</div>
+   			<form action="buyItem.do" method="post" id="buyForm" class="inner_buy_form" name="buy_form">
+   				<div class="buy_content">
+					<div>제품번호</div>
+					<div><input type="text" class="buy_input"></div>
+					<div>구매수량</div>
+					<div><input type="number" class="buy_input"></div>
+				</div>
+				<div>
+					<input type="button" value="추가하기" class="addItemListBtn">
+				</div>
+				<div class="buy_check_item">
+				
+				</div>
+				<div>
+					<input type="submit" value="구매하기" class="buy_itemBtn">
+				</div>
+			</form>
+		</div>
+	</div>
 	<div class="buy_item_content">
 		<div class="name">재고 리스트</div>
 		<div class="item">
@@ -30,8 +54,6 @@
 					<div class="t_body">${list.cDto.itemClsName}</div>
 				</div>
 			</c:forEach>
-		</div>
-		<div class="buy_check_item">
 		</div>
 	</div>
 </body>
