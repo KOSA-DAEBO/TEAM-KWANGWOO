@@ -13,131 +13,115 @@
 </head>
 <body>
 
-<h1>Emp 회원가입</h1>
+<div class="join_title">직원 회원가입</div>
 
-<div class="container">
-    <form action= "joinEmpOk.do" method="post" onsubmit="return joinChkEmp();" name="joinEmp">
+<section class="joinPage">
+    <div class="joinBox">
+        <form action="joinEmpOk.do" method="post" onsubmit="return joinChkEmp();" name="joinEmp">
 
-        <div class="row">
+            <div class="join_Row">
 
-            <div class="col">
+                <div class="col">
 
-                <label for="usrId">아이디 :</label>
+                    <label for="usrId" class="join_list">아이디 :</label>
 
-                <input type="text" class="form-control" id="usrId" placeholder="아이디 입력" name="usrId">
+                    <input type="text" class="join_input" id="usrId" placeholder="아이디 입력" name="usrId" style=" width : 240px;">
+
+                    <button type="button" class="joinButton" id="idCheckButton" onclick="idChk()">중복확인</button>
+
+                    <input type="hidden" id="idDuplicateChk" name="idDuplicateChk" value="no">
+
+                </div>
 
             </div>
 
-            <div class="col align-self-end">
+            <div class="join_Row">
 
-                <button type="button" id="idCheck" onclick="idChk()" >중복확인</button>
-                <input type="hidden" id="idDuplicateChk" name ="idDuplicateChk" value="no">
+                <label for="usrPwd" class="join_list">비밀번호 :</label>
+
+                <input type="password" class="join_input" id="usrPwd" placeholder="비밀번호 입력" name="usrPwd">
 
             </div>
 
-        </div>
+            <div class="join_Row">
+
+                <label for="usrPwdCheck" class="join_list">비밀번호 확인 :</label>
+
+                <input type="password" class="join_input" id="usrPwdCheck" placeholder="비밀번호 확인" name="usrPwdCheck">
+
+            </div>
+
+            <div class="join_Row">
+
+                <label for="usrName" class="join_list">이름 :</label>
+
+                <input type="text" class="join_input" id="usrName" placeholder="이름 입력" name="usrName">
+
+            </div>
+
+            <div class="join_Row">
+
+                <label for="usrEmail" class="join_list">이메일 :</label>
+
+                <input type="email" class="join_input" id="usrEmail" placeholder="이메일 입력" name="usrEmail">
+
+            </div>
+
+            <div class="join_Row">
+
+                <label for="usrTel" class="join_list">휴대폰번호 :</label>
+
+                <input type="tel" class="join_input" id="usrTel" placeholder="전화번호 입력" name="usrTel">
+
+            </div>
+
+            <div class="join_Row">
+
+                <label for="usrAddr" class="join_list">주소 :</label>
+
+                <input type="text" class="join_input" id="usrAddr" placeholder="주소 입력" name="usrAddr">
+
+            </div>
 
 
-        <div class="form-group">
+            <div class="join_Row">
 
-            <label for="usrPwd">비밀번호 :</label>
+                <label class="join_list">성별 :</label>
 
-            <input type="password" class="form-control" id="usrPwd" placeholder="비밀번호 입력" name="usrPwd">
+                <input type="radio" class="join_check_input" name="usrGender" value="0" checked >남 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                <input type="radio" class="join_check_input" name="usrGender" value="1">여
 
-        </div>
+            </div>
 
+            <div class="join_Row">
 
-        <div class="form-group">
+                <label for="usrBirth" class="join_list">생년월일 :</label>
 
-            <label for="usrPwdCheck">비밀번호 확인 :</label>
+                <input type="date" class="join_input" id="usrBirth" value="1900-01-01" placeholder="생년월일 8자리 입력"
+                       name="usrBirth">
 
-            <input type="password" class="form-control" id="usrPwdCheck" placeholder="비밀번호 확인" name="usrPwdCheck">
+            </div>
 
-        </div>
+            <div class="join_Row">
 
-        <div class="form-group">
+                <label for="companyCode" class="join_list">회사 식별번호 :</label>
 
-            <label for="usrName">이름 :</label>
+                <input type="text" class="join_input" id="companyCode" placeholder="회사번호 입력" name="companyCode">
 
-            <input type="text" class="form-control" id="usrName" placeholder="이름 입력" name="usrName">
+            </div>
 
-        </div>
+            <input type="submit" class="joinButton" value="회원가입"/>
 
+        </form>
+    </div>
+</section>
 
-        <div class="form-group">
-
-            <label for="usrEmail">이메일 :</label>
-
-            <input type="email" class="form-control" id="usrEmail" placeholder="이메일 입력" name="usrEmail">
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label for="usrTel">휴대폰번호 :</label>
-
-            <input type="tel" class="form-control" id="usrTel" placeholder="전화번호 입력" name="usrTel">
-
-        </div>
-
-        <div class="form-group">
-
-            <label for="usrAddr">주소 :</label>
-
-            <input type="text" class="form-control" id="usrAddr" placeholder="주소 입력" name="usrAddr">
-
-        </div>
-
-
-        <div class="form-check-inline">
-
-            <label class="form-check-label">
-
-                <input type="radio" class="form-check-input" name="usrGender" value="0" checked>남
-
-            </label>
-
-        </div>
-
-
-        <div class="form-check-inline">
-
-            <label class="form-check-label">
-
-                <input type="radio" class="form-check-input" name="usrGender" value="1">여
-
-            </label>
-
-        </div>
-
-        <br/><br/>
-
-
-        <div class="form-group">
-
-            <label for="usrBirth">생년월일 :</label>
-
-            <input type="date" class="form-control" id="usrBirth" value="1900-01-01" placeholder="생년월일 8자리 입력"
-                   name="usrBirth">
-
-        </div>
-
-        <br/>
-
-        <div class="form-group">
-
-            <label for="companyCode">회사 식별번호 :</label>
-
-            <input type="text" class="form-control" id="companyCode" placeholder="회사 번호 입력" name="companyCode">
-
-        </div>
-
-        <input type="submit" class="btn btn-primary" value="회원가입"/>
-
-    </form>
+<div id="atag">
+    <a href="/TEAM-KWANGWOO/joinEmp.do"
+       class="changeType">직원 회원가입</a>
 </div>
 
-
+</body>
 </body>
 </html>
+<%@ include file="../../../fixed/footer.jsp" %>

@@ -97,3 +97,26 @@
 .modal-content .modal_inner_content .modal_deleteBtn:hover {background-color: red; color: #ffffff;}
 .close {color: #aaa; font-size: 28px; font-weight: bold; cursor: pointer; margin-left:auto; margin-right: 5px;}
 .close:hover, .close:focus {color: black; text-decoration: none; cursor: pointer;}
+
+/*login*/
+.loginPage{width:420px;padding:40px;height:auto;top:20%;left:30%;margin:0 auto 11%;border-bottom:5px solid #005B23;border-top:5px solid #005B23}
+.login_title{margin:6% auto 0;text-align:center;text-indent:-350px;padding:20px;font-size:30px}
+.login_input{width:200px;height:30px;margin:0 0 20px 20px;border:1px solid #005B23;display:inline-block;font-weight:600;transition:.25s}
+.login_table{margin:0 auto}
+.changeType{font-size:14px;line-height:17px;text-decoration:none;color:#888}
+#loginButton{width:300px;height:36px;margin-left:60px;margin-top:20px;border:none;display:inline-block;border-radius:15px;box-shadow:0 15px 35px rgba(0,0,0,0.1);text-decoration:none;font-weight:600;transition:.25s;color:#f8f8ff;background-color:#005B23}
+#loginButton:hover{transform:scale(1.2)}
+#atag{text-align:right;margin-right:1%}
+
+/*join*/
+.joinPage{width:540px;padding:40px;height:auto;top:20%;left:30%;margin:0 auto 3%;border-bottom:5px solid #005B23;border-top:5px solid #005B23}
+.join_title{margin:3% auto 0;text-align:center;text-indent:-420px;padding:10px;font-size:30px}
+.join_input{width:330px;height:30px;border:1px solid #005B23;display:inline-block;font-weight:600;transition:.25s}
+.joinButton{width:300px;height:36px;margin:60px 0 30px 110px;border:none;display:inline-block;border-radius:15px;box-shadow:0 15px 35px rgba(0,0,0,0.1);text-decoration:none;font-weight:600;transition:.25s;color:#f8f8ff;background-color:#005B23}
+.joinButton:hover{transform:scale(1.2)}
+.join_Row{padding:10px}
+.join_list{display:inline-block;width:140px}
+#idCheckButton{margin:0;width:85px;height:30px}
+#idChecklist{padding-left:30px}
+#idCheckTitle{size:20px;text-indent:0;margin:20px}
+#idCheckPage{overflow-x:hidden}
