@@ -24,7 +24,7 @@
 				<div>
 					<input type="button" value="추가하기" class="addItemListBtn">
 				</div>
-				<div class="buy_check_item">
+				<div class="buy_check_item" id="checkItem">
 				
 				</div>
 				<div>

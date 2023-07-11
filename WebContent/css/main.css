@@ -88,6 +88,7 @@
 .buy_item_content {margin: 20px auto 20px auto; width: 1200px; display: grid; justify-content: center; padding: 30px 0px; grid-template-rows: 90px 1fr;}
 .buy_item_content .name {text-align:center; color:#005b23; font-size:40px; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif;}
 .buy_item_content .item {border: 2px solid #005b23; padding: 10px;}
+.buy_check_item_content {margin: 10px 0px;}
 .buy_check_item_content button {border: 1px solid red; margin-left: 10px; background-color: red; color: #ffffff; border-radius: 70%;}
 .buy_table_top {display: grid; grid-template-columns: 100px 3fr 100px 100px 100px 100px; gap: 10px; font-weight: bold; text-align: center;}
 .buy_table_body {display: grid; grid-template-columns: 100px 3fr 100px 100px 100px 100px; gap: 10px; text-align: center;}

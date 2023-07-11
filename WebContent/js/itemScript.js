@@ -148,6 +148,7 @@ addItemListBtn.addEventListener("click", function() {
 	buyCheckItem.appendChild(buyCheckItemContent);
 
 	removeButton.addEventListener("click", function() {
+		event.stopPropagation();
 		buyCheckItem.removeChild(buyCheckItemContent);
 	});
 
