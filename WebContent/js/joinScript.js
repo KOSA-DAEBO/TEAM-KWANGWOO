@@ -156,7 +156,7 @@ function joinChkEmp() {
 function idChk() {
     var usrId = document.getElementById("usrId").value;
     var new_window_width = 500;
-    var new_window_height = 300;
+    var new_window_height = 500;
     var positionX = (window.screen.width / 2) - (new_window_width / 2);
     var positionY = (window.screen.height / 2) - (new_window_height / 2);
     var pattern = /^[a-z0-9_-]{5,20}$/;
@@ -164,10 +164,8 @@ function idChk() {
 
     if (!usrId) {
         alert("아이디를 입력하십시요.");
-        usrId.focus();
     }else if (!pattern.test(usrId)) {
         alert("아이디는 5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.");
-        usrId.focus();
         return false;
     }else{
         window.open(
@@ -200,6 +198,8 @@ function idDupleChk(){
         document.dupleChk.usrId.focus();
         return false;
     }
+
+    alert("사용가능한 아이디 입니다.");
 
     return true;
 }

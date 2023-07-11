@@ -54,6 +54,7 @@ public class JoinDao {
         }finally {
         	ConnectionHelper.close(pstmt2);
             ConnectionHelper.close(pstmt);
+            ConnectionHelper.close(pstmt2);
             ConnectionHelper.close(conn);
         }
 
@@ -100,6 +101,7 @@ public class JoinDao {
         }finally {
         	ConnectionHelper.close(pstmt2);
             ConnectionHelper.close(pstmt);
+            ConnectionHelper.close(pstmt2);
             ConnectionHelper.close(conn);
         }
 

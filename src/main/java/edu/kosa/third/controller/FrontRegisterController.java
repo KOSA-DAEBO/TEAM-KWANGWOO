@@ -112,11 +112,11 @@ public class FrontRegisterController extends HttpServlet {
 		} else if (urlcommand.equals("/deleteItem.do")) {
 			action = new DeleteItemServiceAction();
 			forward = action.execute(request, response);
-			
+
 		} else if(urlcommand.equals("/buyItem.do")) {
 			action = new BuyItemServiceAction();
 			forward = action.execute(request, response);
-			
+
 		} else if (urlcommand.equals("/idDuplChk.do")) {
 			forward = new ActionForward();
 			forward.setRedirect(false);
