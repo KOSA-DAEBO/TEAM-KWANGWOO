@@ -19,6 +19,7 @@ public class SelectEmpInfoServiceAction implements Action {
 		List<EmpDto> empList = dao.totalEmpInfo();
 
 		request.setAttribute("empList", empList);
+
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
 		forward.setPath("/WEB-INF/views/selectinfo/showEmpInfo.jsp");

@@ -16,11 +16,13 @@ import edu.kosa.third.dto.PosDto;
 import edu.kosa.third.utils.ConnectionHelper;
 
 public class UsrInfoDao {
+	Connection conn = null;
+	DataSource ds = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+
 	// 소비자 - 소비자 확인 (전체조회 없음)
 	public CustomerDto detailCustInfo(String usrId) {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
 		String sql = "select * from customer where usrid = ?";
 		CustomerDto cto = null;
 		try {
@@ -53,9 +55,6 @@ public class UsrInfoDao {
 
 	// 직원 - 직원 본인 정보 상세조회
 	public ArrayList<EmpsDetailDto> detailempInfo() {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
 		String sql = "select e.empno, e.usrid, e.empname, empbirth, e.empemail, e.empstatus,"
 				+ "  e.emptel, e.empgender, e.empaddr, e.hiredate, "
 				+ " e.annualleave, d.deptname, p.posname"
@@ -100,9 +99,6 @@ public class UsrInfoDao {
 
 	// 전체 직원 조회
 	public List<EmpDto> totalEmpInfo() {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
 		String select = "select usrid, empno, empname, hiredate from emp";
 		List<EmpDto> list = null;
 		try {

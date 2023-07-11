@@ -1,26 +1,37 @@
 package edu.kosa.third.service;
 
-import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import edu.kosa.third.action.Action;
 import edu.kosa.third.action.ActionForward;
-import edu.kosa.third.dao.UsrInfoDao;
-import edu.kosa.third.dto.CustomerDto;
 
-public class SelectCustomerInfoServiceAction implements Action {
+public class SelectCustomerInfoServiceAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
-		String usrId = (String) request.getSession().getAttribute("usrId");
-		UsrInfoDao dao = new UsrInfoDao();
-		CustomerDto customList = dao.detailCustInfo(usrId);
+		
+		
+		String customerUsrId = request.getParameter("customerUsrId");
+		String customerName = request.getParameter("customerName");
+		String customerEmail = request.getParameter("customerEmail");
+		String customerTel = request.getParameter("customerTel");
+		String customerAddr = request.getParameter("customerAddr");
+		String customerGender = request.getParameter("customerGender");
+		String customerBirth = request.getParameter("customerBirth");
 
-		request.setAttribute("customList", customList);
+		Map<String, Object> customMap = new HashMap<>();
+		customMap.put("customerUsrId", customerUsrId);
+		customMap.put("customerName", customerName);
+		customMap.put("customerEmail", customerEmail);
+		customMap.put("customerTel", customerTel);
+		customMap.put("customerAddr", customerAddr);
+		customMap.put("customerGender", customerGender);
+		customMap.put("customerBirth", customerBirth);
+		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
 		forward.setPath("/WEB-INF/views/selectinfo/showCustomInfo.jsp");
