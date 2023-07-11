@@ -95,133 +95,143 @@ function closeModal() {
 }
 
 function showConfirmation(itemName, itemNo) {
-  var confirmation = confirm(`정말로 ${itemName}을(를) 삭제하시겠습니까?`);
-  if (confirmation) {
-    location.href = 'deleteItem.do?itemNo=' + itemNo;
-  }
+	var confirmation = confirm(`정말로 ${itemName}을(를) 삭제하시겠습니까?`);
+	if (confirmation) {
+		location.href = 'deleteItem.do?itemNo=' + itemNo;
+	}
 }
 
 const buyFormToggle = document.getElementById("buyFormToggle");
 const buyForm = document.getElementById("buyForm");
 
-buyFormToggle.addEventListener("click", function () {
-  buyFormToggle.style.display = "none";
-  buyForm.style.display = "grid";
+buyFormToggle.addEventListener("click", function() {
+	buyFormToggle.style.display = "none";
+	buyForm.style.display = "grid";
 });
 
-document.addEventListener("click", function (event) {
-  const target = event.target;
-  if (target !== buyFormToggle && !buyForm.contains(target)) {
-    buyFormToggle.style.display = "flex";
-    buyForm.style.display = "none";
-  }
+document.addEventListener("click", function(event) {
+	const target = event.target;
+	if (target !== buyFormToggle && !buyForm.contains(target)) {
+		buyFormToggle.style.display = "flex";
+		buyForm.style.display = "none";
+	}
 });
 
 const addItemListBtn = document.getElementsByClassName("addItemListBtn")[0];
 const buyCheckItem = document.getElementsByClassName("buy_check_item")[0];
 
 addItemListBtn.addEventListener("click", function() {
-  const itemNoInput = document.getElementsByClassName("buy_input")[0];
-  const stockInput = document.getElementsByClassName("buy_input")[1];
-  const itemNo = itemNoInput.value;
-  const stock = stockInput.value;
-  
-  const itemName = getItemNameByItemNo(itemNo).substring(0, 10);
-  const cost = getCostByItemNo(itemNo);
-  const totalPrice = stock * cost;
-  
-  const itemText = `${itemNo}번 ${itemName} : ${stock}개 = ${totalPrice}`;
-  
-  const buyCheckItemContent = document.createElement("div");
-  buyCheckItemContent.classList.add("buy_check_item_content");
-  
-  const itemContent = document.createElement("span");
-  itemContent.textContent = itemText;
-  
-  const removeButton = document.createElement("button");
-  removeButton.textContent = "x";
-  
-  buyCheckItemContent.appendChild(itemContent);
-  buyCheckItemContent.appendChild(removeButton);
-  buyCheckItemContent.dataset.itemNo = itemNo;
-  
-  buyCheckItem.appendChild(buyCheckItemContent);
-  
-  removeButton.addEventListener("click", function() {
-    buyCheckItem.removeChild(buyCheckItemContent);
-  });
-  
-  itemNoInput.value = "";
-  stockInput.value = "";
+	const itemNoInput = document.getElementsByClassName("buy_input")[0];
+	const stockInput = document.getElementsByClassName("buy_input")[1];
+	const itemNo = itemNoInput.value;
+	const stock = stockInput.value;
+
+	const itemName = getItemNameByItemNo(itemNo).substring(0, 10);
+	const cost = getCostByItemNo(itemNo);
+	const totalPrice = stock * cost;
+
+	const itemText = `${itemNo}번 ${itemName} : ${stock}개 = ${totalPrice}`;
+
+	const buyCheckItemContent = document.createElement("div");
+	buyCheckItemContent.classList.add("buy_check_item_content");
+
+	const itemContent = document.createElement("span");
+	itemContent.textContent = itemText;
+
+	const removeButton = document.createElement("button");
+	removeButton.textContent = "x";
+
+	buyCheckItemContent.appendChild(itemContent);
+	buyCheckItemContent.appendChild(removeButton);
+	buyCheckItemContent.dataset.itemNo = itemNo;
+
+	buyCheckItem.appendChild(buyCheckItemContent);
+
+	removeButton.addEventListener("click", function() {
+		buyCheckItem.removeChild(buyCheckItemContent);
+	});
+
+	itemNoInput.value = "";
+	stockInput.value = "";
 });
 
 function getItemNameByItemNo(itemNo) {
-  const itemNos = document.getElementsByClassName("t_body");
-  for (let i = 0; i < itemNos.length; i += 6) {
-    const currentItemNo = itemNos[i].textContent.trim();
-    if (currentItemNo === itemNo) {
-      const itemNameElement = itemNos[i + 1];
-      return itemNameElement ? itemNameElement.textContent.trim() : "";
-    }
-  }
-  return "";
+	const itemNos = document.getElementsByClassName("t_body");
+	for (let i = 0; i < itemNos.length; i += 6) {
+		const currentItemNo = itemNos[i].textContent.trim();
+		if (currentItemNo === itemNo) {
+			const itemNameElement = itemNos[i + 1];
+			return itemNameElement ? itemNameElement.textContent.trim() : "";
+		}
+	}
+	return "";
 }
 
 function getCostByItemNo(itemNo) {
-  const itemNos = document.getElementsByClassName("t_body");
-  for (let i = 0; i < itemNos.length; i += 6) {
-    const currentItemNo = itemNos[i].textContent.trim();
-    if (currentItemNo === itemNo) {
-      const costElement = itemNos[i + 2];
-      return costElement ? costElement.textContent.trim() : "";
-    }
-  }
-  return "";
+	const itemNos = document.getElementsByClassName("t_body");
+	for (let i = 0; i < itemNos.length; i += 6) {
+		const currentItemNo = itemNos[i].textContent.trim();
+		if (currentItemNo === itemNo) {
+			const costElement = itemNos[i + 2];
+			return costElement ? costElement.textContent.trim() : "";
+		}
+	}
+	return "";
 }
 
 document.getElementById("buyForm").addEventListener("submit", function(event) {
-  event.preventDefault(); // 기본 동작인 폼 전송을 막음
+	event.preventDefault(); // 기본 동작인 폼 전송을 막음
 
-  // 추가한 항목들을 가져옴
-  const buyCheckItems = document.querySelectorAll(".buy_check_item_content");
+	// 팝업 창 띄우기
+	const confirmation = confirm("구매하시겠습니까?");
+	if (confirmation) {
+		// 추가한 항목들을 가져옴
+		const buyCheckItems = document.querySelectorAll(".buy_check_item_content");
 
-  // 추가한 항목들의 정보를 배열에 저장
-  const items = [];
-  buyCheckItems.forEach(function(item) {
-    const itemNo = item.dataset.itemNo; // 데이터 속성에서 itemNo를 가져옴
-    const itemText = item.textContent;
-    const [stock, totalPrice] = itemText.split(" = ");
-    items.push({ itemNo: itemNo.trim(), stock: parseInt(stock), totalPrice: parseInt(totalPrice) });
-  });
+		// 추가한 항목들의 정보를 배열에 저장
+		const items = [];
+		buyCheckItems.forEach(function(item) {
+			const itemNo = item.dataset.itemNo; // 데이터 속성에서 itemNo를 가져옴
+			const itemText = item.textContent;
+			const regex = /(\d+)개/;
+			const match = itemText.match(regex);
+			const stock = match ? parseInt(match[1]) : 0;
+			const totalPrice = match ? parseInt(itemText.split(" = ")[1]) : 0;
+			items.push({ itemNo: itemNo.trim(), stock: parseInt(stock), totalPrice: parseInt(totalPrice) });
+		});
 
-  // 서버로 데이터 전송
-  sendToServer(items);
+		// 서버로 데이터 전송
+		sendToServer(items);
+
+		// 새로고침
+		window.location.reload();
+	}
 });
 
 function sendToServer(items) {
-  const xhr = new XMLHttpRequest();
-  const url = "buyItem.do"; // 서버 URL을 여기에 입력해주세요
+	const xhr = new XMLHttpRequest();
+	const url = "buyItem.do"; // 서버 URL을 여기에 입력해주세요
 
-  // POST 요청 설정
-  xhr.open("POST", url, true);
-  xhr.setRequestHeader("Content-Type", "application/json");
+	// POST 요청 설정
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-Type", "application/json");
 
-  // 요청 완료 후 처리
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState === XMLHttpRequest.DONE) {
-      if (xhr.status === 200) {
-        // 서버 응답을 받았을 때의 처리
-        console.log("데이터 전송 성공");
-      } else {
-        // 서버 응답을 받지 못했을 때의 처리
-        console.error("데이터 전송 실패");
-      }
-    }
-  };
+	// 요청 완료 후 처리
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState === XMLHttpRequest.DONE) {
+			if (xhr.status === 200) {
+				// 서버 응답을 받았을 때의 처리
+				console.log("데이터 전송 성공");
+			} else {
+				// 서버 응답을 받지 못했을 때의 처리
+				console.error("데이터 전송 실패");
+			}
+		}
+	};
 
-  // 전송할 데이터 설정
-  const data = JSON.stringify(items);
+	// 전송할 데이터 설정
+	const data = JSON.stringify(items);
 
-  // 데이터 전송
-  xhr.send(data);
+	// 데이터 전송
+	xhr.send(data);
 }
