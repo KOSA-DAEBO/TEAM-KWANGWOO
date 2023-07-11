@@ -88,10 +88,8 @@
 
                 <label class="join_list">성별 :</label>
 
-                    <input type="radio" class="join_check_input" name="usrGender" value="0" checked>남
-
-
-                    <input type="radio" class="join_check_input" name="usrGender" value="1">여
+                <input type="radio" class="join_check_input" name="usrGender" value="0" checked >남 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                <input type="radio" class="join_check_input" name="usrGender" value="1">여
 
             </div>
 
@@ -111,7 +109,7 @@
 </section>
 
 <div id="atag">
-    <a href="/TEAM-KWANGWOO/joinEmp.do"
+    <a href="joinEmp.do"
        class="changeType">직원 회원가입</a>
 </div>
 
