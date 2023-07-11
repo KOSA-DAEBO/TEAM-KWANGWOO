@@ -38,7 +38,7 @@
     </form>
 </section>
 <div id="atag">
-    <a href="/TEAM-KWANGWOO/loginCustomer.do"
+    <a href="loginEmp.do"
        class="changeType">고객 로그인</a>
 </div>
 </body>

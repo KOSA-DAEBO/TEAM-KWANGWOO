@@ -169,7 +169,7 @@ function idChk() {
         return false;
     }else{
         window.open(
-            "/TEAM-KWANGWOO/idDuplChk.do?usrId="+usrId,
+            "idDuplChk.do?usrId="+usrId,
             "아이디 중복체크",
             "width=" + new_window_width + ", height=" + new_window_height + ", top=" + positionY + ", left=" + positionX
         );
@@ -198,8 +198,6 @@ function idDupleChk(){
         document.dupleChk.usrId.focus();
         return false;
     }
-
-    alert("사용가능한 아이디 입니다.");
 
     return true;
 }

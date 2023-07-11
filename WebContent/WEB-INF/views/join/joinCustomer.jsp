@@ -111,7 +111,7 @@
 </section>
 
 <div id="atag">
-    <a href="/TEAM-KWANGWOO/joinEmp.do"
+    <a href="joinEmp.do"
        class="changeType">직원 회원가입</a>
 </div>
 
