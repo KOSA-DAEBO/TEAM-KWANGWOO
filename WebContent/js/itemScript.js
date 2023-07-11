@@ -211,7 +211,7 @@ document.getElementById("buyForm").addEventListener("submit", function(event) {
 
 function sendToServer(items) {
 	const xhr = new XMLHttpRequest();
-	const url = "buyItem.do"; // 서버 URL을 여기에 입력해주세요
+	const url = "buyItem.do";
 
 	// POST 요청 설정
 	xhr.open("POST", url, true);

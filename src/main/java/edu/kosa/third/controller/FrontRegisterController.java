@@ -138,6 +138,10 @@ public class FrontRegisterController extends HttpServlet {
 			action = new LeaveDeleteServiceAction();
 			forward = action.execute(request, response);
 
+		} else if (urlcommand.equals("/leaveDelete.do")) {
+			action = new ProductListServiceAction();
+			forward = action.execute(request, response);
+			
 		}
 
 		if (forward != null) {
