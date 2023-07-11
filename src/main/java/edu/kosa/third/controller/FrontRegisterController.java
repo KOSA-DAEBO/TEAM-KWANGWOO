@@ -92,7 +92,7 @@ public class FrontRegisterController extends HttpServlet {
 			forward.setPath("/WEB-INF/views/login/loginCustomer.jsp");
 
 		} else if(urlcommand.equals("/loginCustomerOk.do")) {
-			action = new loginCustomerOkServiceAction();
+			action = new LoginCustomerOkServiceAction();
 			forward = action.execute(request, response);
 
 		} else if(urlcommand.equals("/loginEmp.do")) {
@@ -101,7 +101,7 @@ public class FrontRegisterController extends HttpServlet {
 			forward.setPath("/WEB-INF/views/login/loginEmp.jsp");
 
 		} else if(urlcommand.equals("/loginEmpOk.do")) {
-			action = new loginEmpOkServiceAction();
+			action = new LoginEmpOkServiceAction();
 			forward = action.execute(request, response);
 
 		} else if(urlcommand.equals("/updateItem.do")) {
@@ -118,7 +118,7 @@ public class FrontRegisterController extends HttpServlet {
 			forward.setPath("/WEB-INF/views/join/idChk.jsp");
 
 		} else if(urlcommand.equals("/idDuplOk.do")) {
-			action = new idDuplicateOkServiceAction();
+			action = new IdDuplicateOkServiceAction();
 			forward = action.execute(request, response);
 
 		}
