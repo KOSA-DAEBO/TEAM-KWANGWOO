@@ -142,7 +142,7 @@ function joinChkEmp() {
     }
 
     if (!document.joinEmp.companyCode.value) {
-        alert("회사 식별번호를를 입력하십시요.");
+        alert("회사 식별번호를 입력하십시요.");
         document.joinEmp.companyCode.focus();
         return false;
     }

@@ -38,7 +38,7 @@
     </form>
 </section>
 <div id="atag">
-    <a href="loginEmp.do"
+    <a href="loginCustomer.do"
        class="changeType">고객 로그인</a>
 </div>
 </body>
