@@ -14,7 +14,6 @@ public class DeleteItemServiceAction implements Action {
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
 		int itemNo = Integer.parseInt(request.getParameter("itemNo"));
-		System.out.println(itemNo);
 		
 		ItemDao dao = new ItemDao();
 		dao.deleteItem(itemNo);
