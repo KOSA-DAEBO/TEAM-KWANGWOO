@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script type="text/javascript" src="./js/itemScript.js"></script>
+<script defer="defer" type="text/javascript" src="./js/itemScript.js"></script>
 <meta charset="UTF-8">
 <title>Team KwangWoo</title>
 </head>
