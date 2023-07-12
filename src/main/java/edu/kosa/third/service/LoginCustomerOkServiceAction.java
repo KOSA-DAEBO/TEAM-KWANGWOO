@@ -52,7 +52,7 @@ public class LoginCustomerOkServiceAction implements Action {
 			out.println("<script>alert('아이디 혹은 비밀번호가 틀렸습니다.'); window.history.back();</script>");
 			out.flush();
 		}else{
-			forward.setPath("index.jsp");
+			forward.setPath("/WEB-INF/views/main/main.jsp");
 		}
 		return forward;
 	}

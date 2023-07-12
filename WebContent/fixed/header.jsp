@@ -22,7 +22,7 @@
             </h1>
             <div>
                <span class="material-symbols-outlined" OnClick="location.href='loginCustomer.do'">login</span>
-               <span class="material-symbols-outlined">logout</span>
+               <span class="material-symbols-outlined" OnClick="location.href='logout.do'">logout</span>
                <span class="material-symbols-outlined" OnClick="location.href='joinCustomer.do'">person_add</span>
             </div>
          </div>

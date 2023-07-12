@@ -45,7 +45,7 @@ public class JoinCustomerOkServiceAction implements Action {
 
         ActionForward forward = new ActionForward();
         forward.setRedirect(false);
-        forward.setPath("/loginCustomer.do"); //로그인 완료 메인 페이지로 이동
+        forward.setPath("/WEB-INF/views/main/main.jsp"); //로그인 완료 메인 페이지로 이동
         return forward;
     }
 }

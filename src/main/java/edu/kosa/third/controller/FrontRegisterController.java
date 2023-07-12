@@ -113,7 +113,7 @@ public class FrontRegisterController extends HttpServlet {
 			action = new DeleteItemServiceAction();
 			forward = action.execute(request, response);
 
-		} else if(urlcommand.equals("/buyItem.do")) {
+		} else if (urlcommand.equals("/buyItem.do")) {
 			action = new BuyItemServiceAction();
 			forward = action.execute(request, response);
 
@@ -138,10 +138,13 @@ public class FrontRegisterController extends HttpServlet {
 			action = new LeaveDeleteServiceAction();
 			forward = action.execute(request, response);
 
-		} else if (urlcommand.equals("/leaveDelete.do")) {
+		} else if (urlcommand.equals("/productList.do")) {
 			action = new ProductListServiceAction();
 			forward = action.execute(request, response);
 			
+		} else if (urlcommand.equals("/logout.do")) {
+			action = new LogoutServiceAction();
+			forward = action.execute(request, response);
 		}
 
 		if (forward != null) {
