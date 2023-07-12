@@ -126,12 +126,8 @@ public class FrontRegisterController extends HttpServlet {
 			action = new IdDuplicateOkServiceAction();
 			forward = action.execute(request, response);
 
-		} else if (urlcommand.equals("/empList.do")) {
-			action = new SelectEmpInfoServiceAction();
-			forward = action.execute(request, response);
-
 		} else if (urlcommand.equals("/empDetail.do")) {
-			action = new SelectEmpDetail();
+			action = new EmpDetailInfoServiceAction();
 			forward = action.execute(request, response);
 
 		} else if (urlcommand.equals("/leaveDelete.do")) {
@@ -144,6 +140,40 @@ public class FrontRegisterController extends HttpServlet {
 			
 		} else if (urlcommand.equals("/logout.do")) {
 			action = new LogoutServiceAction();
+		} else if (urlcommand.equals("/empList.do")) {
+			action = new TotalEmpInfoServiceAction();
+			forward = action.execute(request, response);
+			
+		} else if(urlcommand.equals("/depeMenu.do")) {
+			action = new DeptManageViewServiceAction();
+			forward = action.execute(request, response);
+			
+		} else if(urlcommand.equals("/customDetail.do")) {
+			action = new DetailCustomerInfoServiceAction();
+			forward = action.execute(request, response);
+
+		} else if(urlcommand.equals("/deptMenu.do")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("/WEB-INF/views/deptMenu/deptMenu.jsp");
+	
+		} else if(urlcommand.equals("/insertDeptView.do")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("/WEB-INF/views/deptMenu/insertDept.jsp");
+
+		} else if(urlcommand.equals("/updateDeptView.do")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("/WEB-INF/views/deptMenu/updateDept.jsp");
+		
+		} else if(urlcommand.equals("/deleteDeptView.do")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("/WEB-INF/views/deptMenu/deleteDept.jsp");
+
+		} else if (urlcommand.equals("/manageEmpInfo.do")) {
+			action = new ManageEmpInfoServiceAction();
 			forward = action.execute(request, response);
 		}
 

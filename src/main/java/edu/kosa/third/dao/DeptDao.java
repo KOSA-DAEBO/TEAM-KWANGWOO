@@ -2,27 +2,73 @@ package edu.kosa.third.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.SQLException;
 
-import javax.sql.DataSource;
-
+import edu.kosa.third.dto.DeptDto;
 import edu.kosa.third.utils.ConnectionHelper;
 
 public class DeptDao {
-	public int insertDept(int deptNO, String deptName) {
+
+	// 부서추가
+	public boolean insertDept(DeptDto deptdto) {
 		Connection conn = null;
-		DataSource ds = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
-		int result = 0;
-		String insert = "insert into dept(deptno, deptname) values(?,?)";
-
+		boolean result = false;
 		try {
+			String insert = "insert into dept(deptno, deptname) values(?,?)";
 			conn = ConnectionHelper.getConnection("oracle");
 			pstmt = conn.prepareStatement(insert);
+			pstmt.setInt(1, deptdto.getDeptNo());
+			pstmt.setString(2, deptdto.getDeptName());
+
+			pstmt.execute();
+			result = true;
+
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
+		}
+		return result;
+	}
+
+	// 부서변경
+	public boolean updateDept(DeptDto deptdto) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String update = "update dept set deptno = ?, deptname = ? where deptname = ?";
+		boolean result = false;
+		try {
+			conn = ConnectionHelper.getConnection("oracle");
+			pstmt = conn.prepareStatement(update);
+			pstmt.setInt(1, deptdto.getDeptNo());
+			pstmt.setString(2, deptdto.getDeptName());
+			pstmt.setString(3, deptdto.getDeptName());
+			result = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
+		}
+		return result;
+	}
+
+	public boolean deleteDept(DeptDto deptdto) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String delete = "delete from dept where deptname = ?";
+		conn = ConnectionHelper.getConnection("oracle");
+		boolean result = false;
+		try {
+			pstmt = conn.prepareStatement(delete);
+			pstmt.setString(1, deptdto.getDeptName());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
 		}
 		return result;
 	}
