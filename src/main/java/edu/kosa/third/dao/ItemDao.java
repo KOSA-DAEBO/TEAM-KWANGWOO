@@ -123,7 +123,7 @@ public class ItemDao {
 	}
 
 	public void deleteItem(int itemNo) {
-		String sql = "delete from item where itemno = ?";
+		String sql = "DELETE FROM ITEM WHERE ITEMNO = ?";
 		Connection conn = ConnectionHelper.getConnection("oracle");
 		PreparedStatement pstmt = null;
 		

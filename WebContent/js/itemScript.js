@@ -130,6 +130,11 @@ addItemListBtn.addEventListener("click", function() {
 	const cost = getCostByItemNo(itemNo);
 	const totalPrice = stock * cost;
 
+	if (stock < 0) {
+		alert("재고를 제거할 수 없습니다.");
+		return;
+	}
+	
 	const itemText = `${itemNo}번 ${itemName} : ${stock}개 = ${totalPrice}`;
 
 	const buyCheckItemContent = document.createElement("div");
@@ -194,7 +199,7 @@ document.getElementById("buyForm").addEventListener("submit", function(event) {
 		buyCheckItems.forEach(function(item) {
 			const itemNo = item.dataset.itemNo; // 데이터 속성에서 itemNo를 가져옴
 			const itemText = item.textContent;
-			const regex = /(\d+)개/;
+			const regex = /(-?\d+)개/;
 			const match = itemText.match(regex);
 			const stock = match ? parseInt(match[1]) : 0;
 			const totalPrice = match ? parseInt(itemText.split(" = ")[1]) : 0;
@@ -205,13 +210,15 @@ document.getElementById("buyForm").addEventListener("submit", function(event) {
 		sendToServer(items);
 
 		// 새로고침
-		window.location.reload();
+		setTimeout(function() {
+			window.location.reload();
+		}, 500);
 	}
 });
 
 function sendToServer(items) {
 	const xhr = new XMLHttpRequest();
-	const url = "buyItem.do"; // 서버 URL을 여기에 입력해주세요
+	const url = "buyItem.do";
 
 	// POST 요청 설정
 	xhr.open("POST", url, true);
