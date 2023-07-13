@@ -10,7 +10,7 @@ import edu.kosa.third.action.ActionForward;
 import edu.kosa.third.dao.UsrInfoDao;
 import edu.kosa.third.dto.EmpDto;
 
-public class SelectEmpInfoServiceAction implements Action {
+public class TotalEmpInfoServiceAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
@@ -22,7 +22,7 @@ public class SelectEmpInfoServiceAction implements Action {
 
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("/WEB-INF/views/selectinfo/showEmpInfo.jsp");
+		forward.setPath("/WEB-INF/views/usrinfo/showEmpInfo.jsp");
 		return forward;
 	}
 }

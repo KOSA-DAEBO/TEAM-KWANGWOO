@@ -126,12 +126,8 @@ public class FrontRegisterController extends HttpServlet {
 			action = new IdDuplicateOkServiceAction();
 			forward = action.execute(request, response);
 
-		} else if (urlcommand.equals("/empList.do")) {
-			action = new SelectEmpInfoServiceAction();
-			forward = action.execute(request, response);
-
 		} else if (urlcommand.equals("/empDetail.do")) {
-			action = new SelectEmpDetail();
+			action = new DetailEmpInfoServiceAction();
 			forward = action.execute(request, response);
 
 		} else if (urlcommand.equals("/leaveDelete.do")) {
@@ -144,6 +140,23 @@ public class FrontRegisterController extends HttpServlet {
 			
 		} else if (urlcommand.equals("/logout.do")) {
 			action = new LogoutServiceAction();
+			forward = action.execute(request, response);
+			
+		} else if (urlcommand.equals("/empList.do")) {
+			action = new TotalEmpInfoServiceAction();
+			forward = action.execute(request, response);
+			
+		} else if(urlcommand.equals("/customDetail.do")) {
+			action = new DetailCustomerInfoServiceAction();
+			forward = action.execute(request, response);
+
+		} else if(urlcommand.equals("/deptMenu.do")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("/WEB-INF/views/deptMenu/deptMenu.jsp");
+	
+		}else if (urlcommand.equals("/manageEmpInfo.do")) { // empdetail 하고 동일함 고쳐야할 dept수정 방식과 동일함, dept 는 바꿀때 입력하는 값으로, role =1 일 경우 관리자 여기로 이동하게 한다
+			action = new ManageEmpInfoServiceAction();
 			forward = action.execute(request, response);
 		}
 

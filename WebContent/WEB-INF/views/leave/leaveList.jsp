@@ -9,7 +9,8 @@
 <title>leaveList.jsp</title>
 </head>
 <body>
-<br><br>
+	<br>
+	<br>
 	<div class="leave_content">
 		<div class="name">휴가 전체 목록</div>
 		<table class="type07">
@@ -50,33 +51,27 @@
 					<c:set var="status" value="반려" />
 				</c:if>
 				<tbody>
-				<tr>
-					<th scope="row"><a
-						href="leaveList.do?No=${list.get('leaveNo')}">${list.get('leaveNo')}</a></th>
-					<td>${list.get('empName')}</td>
-					<td>${list.get('empNo')}</td>
-					<td>${list.get('deptName')}</td>
-					<td>${list.get('posName')}</td>
-					<td>${type}</td>
-					<td>${list.get('startDay')}</td>
-					<td>${list.get('endDay')}</td>
-					<td>${ status }</td>
-					<td>${list.get('annualLeave')}일</td>
-				</tr>
+					<tr>
+						<th scope="row"><a
+							href="leaveList.do?No=${list.get('leaveNo')}">${list.get('leaveNo')}</a></th>
+						<td>${list.get('empName')}</td>
+						<td>${list.get('empNo')}</td>
+						<td>${list.get('deptName')}</td>
+						<td>${list.get('posName')}</td>
+						<td>${type}</td>
+						<td>${list.get('startDay')}</td>
+						<td>${list.get('endDay')}</td>
+						<td>${ status }</td>
+						<td>${list.get('annualLeave')}일</td>
+					</tr>
 				</tbody>
 			</c:forEach>
 		</table>
-	</div>
-	<table class="type02">
-		<tr>
-			<td>
-				<form action="leaveList.do" method="post">
-					<input type="hidden" name="listNum" id="listNum" value="2">
-					<input type="submit" value="승인 대기 중인 휴가 확인">
-				</form>
-			</td>
-		</tr>
-	</table>
+		</div>
+		<form action="leaveList.do" class="levForm" method="post">
+			<input type="hidden" name="listNum" id="listNum" value="2"> <input
+				type="submit" class="leaveButton2" value="승인 대기 중인 휴가 확인">
+		</form>
 </body>
 </html>
 <%@ include file="../../../fixed/footer.jsp"%>

@@ -118,6 +118,7 @@
 .close:hover, .close:focus {color: black; text-decoration: none; cursor: pointer;}
 
 /*leave*/
+table.type100{margin-left: auto; margin-right: auto;}
 table.type07{border-collapse:collapse;text-align:left;line-height:1.5;border:1px solid #ccc;margin:20px 10px}
 table.type07 thead{border-right:1px solid #ccc;border-left:1px solid #ccc;background:#e7708d}
 table.type07 thead th{padding:10px;font-weight:700;vertical-align:top;color:#fff;text-align:center}
@@ -135,8 +136,12 @@ table.type02 th{font-weight:700;vertical-align:top;text-align:center;border-righ
 table.type02 input.lbutton{font-size:17px}
 .leave_content {margin: 5px auto 5px auto; width: 1200px; display: grid; justify-content: center; padding: 0px 0px; grid-template-rows: 60px 3fr 0px;}
 .leave_content .name {text-align:center; color:#005b23; font-size:40px; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif;}
+.levForm{text-align: center;}
+.leaveButton{justify-content: center; border-radius: 20px; border-style: solid; border-color:#005b23; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #005b23; font-size: 20px; width: 150px; height: 40px; margin: 15px 30px;}
+.leaveButton2{justify-content: center; border-radius: 20px; border-style: solid; border-color:#005b23; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #005b23; font-size: 20px; width: 250px; height: 40px; margin: 15px 30px;}
+.leaveButton:hover , .leaveButton2:hover {background:#005b23; color: #ffffff;}
 
-/*login*/
+/*login*/	
 .loginPage{width:420px;padding:40px;height:auto;top:20%;left:30%;margin:0 auto 11%;border-bottom:5px solid #005B23;border-top:5px solid #005B23}
 .login_title{margin:6% auto 0;text-align:center;text-indent:-350px;padding:20px;font-size:30px}
 .login_input{width:200px;height:30px;margin:0 0 20px 20px;border:1px solid #005B23;display:inline-block;font-weight:600;transition:.25s}

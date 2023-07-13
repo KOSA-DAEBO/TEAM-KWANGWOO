@@ -43,7 +43,7 @@
             <div class="local_menu_in">
             <div class="lm group1">
                <ul>
-                  <li><a href="#">부서관리</a></li>
+                  <li><a href="deptMenu.do">부서관리</a></li>
                   <li><a href="#">마이페이지</a></li>
                   <li><a href="#">등등등</a></li>
                </ul>
