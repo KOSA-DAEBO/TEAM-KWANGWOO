@@ -1,11 +1,11 @@
 package edu.kosa.third.dto;
 
-public class EmpsDetailDto {
+public class EmpDetailsDto {
 	private PosDto posdto;
 	private DeptDto deptdto;
 	private EmpDto empdto;
 	
-	public EmpsDetailDto(EmpDto empDto, PosDto posDto, DeptDto deptDto) {
+	public EmpDetailsDto(EmpDto empDto, PosDto posDto, DeptDto deptDto) {
         this.empdto= empDto;
         this.posdto= posDto;
         this.deptdto= deptDto;
