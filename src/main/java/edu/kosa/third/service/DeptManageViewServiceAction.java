@@ -12,6 +12,7 @@ public class DeptManageViewServiceAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		String deptMenu = request.getParameter("selectDept");
 
+
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
 

@@ -23,10 +23,10 @@
 				<td>
 					<table>
 						<tr>
-							<td colspan="2"><br>
-							<a href="manageEmpInfo.do">
-							<img src="./images/usericon.png" onerror="this.onerror=null; this.src='./images/usericon.png';">
-									</a></td>
+							<td colspan="2"><br> <a href="manageEmpInfo.do"> <img
+									src="./images/usericon.png"
+									onerror="this.onerror=null; this.src='./images/usericon.png';">
+							</a></td>
 						</tr>
 						<tr>
 							<th>이 름</th>

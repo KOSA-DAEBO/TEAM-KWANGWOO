@@ -11,43 +11,43 @@
 </head>
 <body>
 	<div align="center">
-	<div align="center">개인 정보 변경하기</div>
 		<table border="1">
-			<c:forEach items="${customList}" var="customlist">
+			<c:forEach items="${customList}" var="customList">
 				<tr>
 					<td>계정</td>
-					<td>${customlist.customerNo }</td>
+					<td>${customList.customerNo }</td>
 				</tr>
 				<tr>
 					<td>이름</td>
-					<td>${customlist.customerName }</td>
+					<td>${customList.customerName }</td>
 				</tr>
 				<tr>
 					<td>주소</td>
-					<td>${customlist.customerAddr }</td>
+					<td>${customList.customerAddr }</td>
 				</tr>
 				<tr>
 					<td>전화번호</td>
-					<td>${customlist.customerTel }</td>
+					<td>${customList.customerTel }</td>
 				</tr>
 				<tr>
 					<td>이메일</td>
-					<td>${customlist.customerEmail }</td>
+					<td>${customList.customerEmail }</td>
 				</tr>
 				<tr>
 					<td>성별:</td>
 					<td><c:choose>
-							<c:when test="${customlist.customerGender == '1'  }">
+							<c:when test="${customList.customerGender == '1'  }">
 								남
 							</c:when>
-							<c:when test="${customlist.customerGender == '0'  }">
+							<c:when test="${customList.customerGender == '0'  }">
 								여
 							</c:when>
 						</c:choose></td>
 				</tr>
 				<tr>
 					<td>생년월일:</td>
-					<td>${customlist.customerBirth }</td>
+
+					<td>${customList.customerBirth }</td>
 				</tr>
 			</c:forEach>
 		</table>

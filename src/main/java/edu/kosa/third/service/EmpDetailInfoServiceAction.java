@@ -8,7 +8,7 @@ import edu.kosa.third.action.ActionForward;
 import edu.kosa.third.dao.UsrInfoDao;
 import edu.kosa.third.dto.EmpDetailsDto;
 
-public class DetailEmpInfoServiceAction implements Action {
+public class EmpDetailInfoServiceAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {

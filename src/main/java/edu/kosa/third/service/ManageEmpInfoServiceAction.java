@@ -10,6 +10,7 @@ import edu.kosa.third.dto.EmpDetailsDto;
 
 public class ManageEmpInfoServiceAction implements Action {
 
+
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		UsrInfoDao dao = new UsrInfoDao();
@@ -17,7 +18,6 @@ public class ManageEmpInfoServiceAction implements Action {
 		EmpDetailsDto empList = dao.detailempInfo();
 		
 		request.setAttribute("empList", empList);
-		System.out.println("email"+empList.toString());
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
 		forward.setPath("/WEB-INF/views/usrinfo/manageEmpInfo.jsp");

@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div id="usrcontainer" align="center">
-		<h2 align="center"> 관리자 인사 관리</h2>
+		<h2 align="center">관리자 인사 관리</h2>
 		<table id="usrinfo">
 			<tr>
 				<td>이름</td>
@@ -27,11 +27,13 @@
 			</tr>
 			<tr>
 				<td>부서</td>
-				<td><input type="text" value="${empList.deptdto.deptName}" placeholder="${empList.deptdto.deptName}"></td>
+				<td><input type="text" value="${empList.deptdto.deptName}"
+					placeholder="${empList.deptdto.deptName}"></td>
 			</tr>
 			<tr>
 				<td>직위</td>
-				<td><input type="text" value="${empList.posdto.posName}" placeholder="${empList.posdto.posName}"></td>
+				<td><input type="text" value="${empList.posdto.posName}"
+					placeholder="${empList.posdto.posName}"></td>
 			</tr>
 			<tr>
 				<td>주소</td>
@@ -79,10 +81,11 @@
 				            </c:when>
 					</c:choose></td>
 			</tr>
-			<tr><td colspan="2">
-			<input type="submit" value="수 정">
-			<input type="reset" value="취 소">
- 			</td></tr>
+			<tr>
+				<td colspan="2"><input type="submit" value="수 정"> <input
+					type="reset" value="취 소"></td>
+			</tr>
+
 		</table>
 	</div>
 </body>

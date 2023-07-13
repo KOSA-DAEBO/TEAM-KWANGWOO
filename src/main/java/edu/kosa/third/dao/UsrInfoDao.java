@@ -26,7 +26,7 @@ public class UsrInfoDao {
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, "asd");//나중에 로그인 기능 연동 후 usrId 로 바꿀것
+			pstmt.setString(1, "zxczxc");
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				CustomerDto customdto = new CustomerDto();
@@ -97,9 +97,6 @@ public class UsrInfoDao {
 			ConnectionHelper.close(pstmt);
 			ConnectionHelper.close(conn);
 		}
-		System.out.println("usrdao"+dto.getDeptdto().getDeptName());
-		System.out.println("empInfo"+dto.getPosdto().getPosName());
-		System.out.println("empInfo"+dto.getEmpdto().getEmpName());
 		return dto;
 	}
 
