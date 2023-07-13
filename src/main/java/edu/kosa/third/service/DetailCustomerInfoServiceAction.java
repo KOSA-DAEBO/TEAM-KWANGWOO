@@ -1,7 +1,5 @@
 package edu.kosa.third.service;
 
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,9 +14,8 @@ public class DetailCustomerInfoServiceAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		UsrInfoDao dao = new UsrInfoDao();
 		
-		ArrayList<CustomerDto> customlist = dao.detailCustInfo();
-		request.setAttribute("customList", customlist);
-		
+		CustomerDto customInfo = dao.customerInfoAll();
+		request.setAttribute("customInfo", customInfo);
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
 		forward.setPath("/WEB-INF/views/usrinfo/showCustomInfo.jsp");

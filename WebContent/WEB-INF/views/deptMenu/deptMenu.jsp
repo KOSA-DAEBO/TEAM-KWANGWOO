@@ -6,9 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Team KwangWoo</title>
+<script type="text/javascript" src="./js/deptScript.js" defer="defer"></script>
 </head>
 <body>
-	<script type="text/javascript" src="./js/deptScript.js" defer="defer"></script>
 	<br>
 	<div align="center">
 		<select id="selectDept" onchange="changeContent()">
@@ -18,7 +18,8 @@
 		</select>
 		<div id="content"></div>
 	</div>
-	<div hidden="" id="deleteDept">
+	
+	<div hidden="" id="deleteDept"><!-- 삭제 -->
 		<form action="deleteDept.do" method="post">
 			<div align="center">
 				부서이름<br> <input type="text" id="deptName">
@@ -30,7 +31,7 @@
 		</form>
 	</div>
 
-	<div hidden="" id="insertDept">
+	<div hidden="" id="insertDept"><!-- 추가 -->
 		<form action="deleteDept.do" method="post">
 			<div align="center">
 				부서이름<br> <input type="text" id="deptName">
@@ -42,7 +43,7 @@
 		</form>
 	</div>
 
-	<div hidden="updateDeptMenu" id="updateDept">
+	<div hidden="updateDeptMenu" id="updateDept"><!-- 업데이트 -->
 		<form action="updateDept.do" method="post">
 			<div align="center">
 				부서이름<br> <input type="text" id="deptName">

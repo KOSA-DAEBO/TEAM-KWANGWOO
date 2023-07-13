@@ -15,9 +15,9 @@ public class ManageEmpInfoServiceAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		UsrInfoDao dao = new UsrInfoDao();
 
-		EmpDetailsDto empList = dao.detailempInfo();
+		EmpDetailsDto empDto = dao.detailEmpInfo();
 		
-		request.setAttribute("empList", empList);
+		request.setAttribute("empInfo", empDto);
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
 		forward.setPath("/WEB-INF/views/usrinfo/manageEmpInfo.jsp");

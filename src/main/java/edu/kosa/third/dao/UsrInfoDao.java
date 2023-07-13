@@ -16,20 +16,21 @@ import edu.kosa.third.utils.ConnectionHelper;
 public class UsrInfoDao {
 
 	
-	// 소비자 확인 (전체조회 없음)
-	public ArrayList<CustomerDto> detailCustInfo() {
+	// 소비자 개인정보 조회
+	public CustomerDto customerInfoAll() {
 		String sql = "select * from customer where usrid=?";
-		ArrayList<CustomerDto> list = new ArrayList<>();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		CustomerDto customdto = null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "zxczxc");
 			rs = pstmt.executeQuery();
+			customdto = new CustomerDto();
+
 			while (rs.next()) {
-				CustomerDto customdto = new CustomerDto();
 				customdto.setCustomerNo(rs.getString(1));
 				customdto.setUsrId(rs.getString(2));
 				customdto.setCustomerEmail(rs.getString(3));
@@ -38,9 +39,7 @@ public class UsrInfoDao {
 				customdto.setCustomerBirth(rs.getDate(6));
 				customdto.setCustomerAddr(rs.getString(7));
 				customdto.setCustomerName(rs.getString(8));
-
-				list.add(customdto);
-
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -49,11 +48,11 @@ public class UsrInfoDao {
 			ConnectionHelper.close(pstmt);
 			ConnectionHelper.close(conn);
 		}
-		return list;
+		return customdto;
 	}
 
-	// 직원 - 직원 본인 정보 상세조회
-	public EmpDetailsDto detailempInfo() {
+	// 직원 - 직원 개인 정보 상세조회
+	public EmpDetailsDto detailEmpInfo() {
 		String sql = "select e.empno, e.usrid, e.empname, empbirth, e.empemail, e.empstatus,"
 				+ "  e.emptel, e.empgender, e.empaddr, e.hiredate, " + " e.annualleave, d.deptname, p.posname"
 				+ "				 from emp e, pos p, dept d where e.deptNo = d.deptNo and e.posNo = p.posNo and usrId = ?";
@@ -99,8 +98,8 @@ public class UsrInfoDao {
 		}
 		return dto;
 	}
-
-	// 전체 직원 조회
+ 
+	// 전체 직원 조회 반복문 사용
 	public List<EmpDto> totalEmpInfo() {
 		String select = "select usrid, empno, empname, hiredate from emp";
 		List<EmpDto> list = null;
