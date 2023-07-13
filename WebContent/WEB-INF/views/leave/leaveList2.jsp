@@ -9,7 +9,8 @@
 <title>leaveList.jsp</title>
 </head>
 <body>
-	<br><br>
+	<br>
+	<br>
 	<div class="leave_content">
 		<div class="name">승인 대기 휴가 리스트</div>
 		<table class="type07">
@@ -69,17 +70,10 @@
 			</c:forEach>
 		</table>
 	</div>
-	<br>
-	<table class="type02">
-		<tr>
-			<td>
-				<form action="leaveList.do" method="post">
-					<input type="hidden" name="listNum" id="listNum" value="1">
-					<input type="submit" value="전체 휴가 확인">
-				</form>
-			</td>
-		</tr>
-	</table>
+	<form class="levForm" action="leaveList.do" method="post">
+		<input type="hidden" name="listNum" id="listNum" value="1"> <input
+			type="submit" class="leaveButton" value="전체 휴가 확인">
+	</form>
 </body>
 </html>
 <%@ include file="../../../fixed/footer.jsp"%>

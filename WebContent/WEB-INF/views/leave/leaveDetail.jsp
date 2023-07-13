@@ -9,21 +9,7 @@
 	href="https://unpkg.com/nice-forms.css@0.1.7/dist/nice-forms.css" />
 <meta charset="UTF-8">
 <title>leaveDetail.jsp</title>
-
-<script type="text/javascript">
-	function approve() {
-		alert('승인 처리하였습니다.');
-		location.href = 'leaveApprove.do'
-	}
-</script>
-
-<script type="text/javascript">
-	function reject() {
-		alert('반려 처리하였습니다.');
-		location.href = 'leaveApprove.do'
-	}
-</script>
-
+<script type="text/javascript" src="./js/leaveScript.js"></script>
 </head>
 
 <body>
@@ -62,6 +48,7 @@
 					scope="session" />
 				<c:set var="endDay" value="${list.get('endDay')}" scope="session" />
 				<c:set var="enpNo" value="${list.get('enpNo')}" scope="session" />
+				<c:set var="reason" value="${list.get('reason')}" scope="session" />
 				<tr>
 					<th scope="col">신청 번호</th>
 					<td scope="col">${list.get('leaveNo')}</td>
@@ -106,37 +93,40 @@
 	<c:set var="app" value="1" />
 	<c:set var="rej" value="2" />
 	<br>
-	<table class="type02">
+
+	<table class="type100">
 		<tr>
-			<th>
-				<form action="leaveApprove.do" method="post">
+			<td>
+				<form class="levForm" action="leaveApprove.do" method="post">
 					<input type="hidden" name="approveType" id="approveType"
 						value="${app}"> <input type="submit" value="승인"
-						class="lbutton">
+						class="leaveButton">
 				</form>
-			</th>
-			<th>
-				<form action="leaveApprove.do" method="post">
-					<input type="hidden" name="approveType" id="approveType"
-						value="${rej}"> <input type="submit" value="거절"
-						class="lbutton">
-				</form>
-			</th>
-			<th>
-				<form action="leaveApprove.do" method="post">
-					<input type="hidden" name="approveType" id="approveType"
-						value="${rej}"> <input type="submit" value="수정"
-						class="lbutton">
-				</form>
-			</th>
-			<th>
+			</td>
+			<td>
+			<form class="levForm" action="leaveApprove.do" method="post">
+				<input type="hidden" name="approveType" id="approveType"
+					value="${rej}"> <input type="submit" class="leaveButton"
+					value="거절">
+			</form>
+			</td>
+			<td>
+				<button type="button" class="leaveButton" onclick="openModal()">수정</button>
+			</td>
+			<td>
 				<form action="leaveDelete.do" method="post">
 					<input type="hidden" name="leaveNo" id="leaveNo" value="${leaveNo}">
-					<input type="submit" value="삭제" class="lbutton">
+					<input type="submit" class="leaveButton" value="삭제">
 				</form>
-			</th>
+			</td>
 		</tr>
 	</table>
+	<div id="myModal" class="levmodal">
+		<div class="modal_content">
+			<jsp:include page="leaveModifyForm.jsp" />
+		</div>
+	</div>
+
 </body>
 </html>
 <%@ include file="../../../fixed/footer.jsp"%>
