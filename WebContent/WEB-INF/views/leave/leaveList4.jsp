@@ -8,28 +8,12 @@
 <meta charset="UTF-8">
 <title>leaveList.jsp</title>
 
-<script type="text/javascript">
-	function openModal() {
-		var modal = document.getElementById("myModal");
-		modal.style.display = "block";
-	}
-
-	function closeModal() {
-		var modal = document.getElementById("myModal");
-		modal.style.display = "none";
-	}
-
-	window.onclick = function(event) {
-		var modal = document.getElementById("myModal");
-		if (event.target == modal) {
-			modal.style.display = "none";
-		}
-	}
-</script>
+<script type="text/javascript" src="./js/leaveScript.js"></script>
 
 </head>
 <body>
-	<h1>usrId님 보유하신 연차 일수는 %{annualLeave}일 입니다.</h1>
+	<br>
+	<br>
 	<div class="leave_content">
 		<div class="name">승인 대기 휴가 리스트</div>
 		<table class="type07">
@@ -70,38 +54,30 @@
 					<c:set var="status" value="반려" />
 				</c:if>
 				<c:if test="${list.get('levStatus')==0}">
-				<tbody>
-					<tr>
-						<th scope="row"><a
-							href="leaveList.do?No=${list.get('leaveNo')}">${list.get('leaveNo')}</a></th>
-						<td>${list.get('empName')}</td>
-						<td>${list.get('empNo')}</td>
-						<td>${list.get('deptName')}</td>
-						<td>${list.get('posName')}</td>
-						<td>${type}</td>
-						<td>${list.get('startDay')}</td>
-						<td>${list.get('endDay')}</td>
-						<td>${ status }</td>
-						<td>${list.get('annualLeave')}일</td>
-					</tr>
+					<tbody>
+						<tr>
+							<th scope="row"><a
+								href="leaveList.do?No=${list.get('leaveNo')}">${list.get('leaveNo')}</a></th>
+							<td>${list.get('empName')}</td>
+							<td>${list.get('empNo')}</td>
+							<td>${list.get('deptName')}</td>
+							<td>${list.get('posName')}</td>
+							<td>${type}</td>
+							<td>${list.get('startDay')}</td>
+							<td>${list.get('endDay')}</td>
+							<td>${ status }</td>
+							<td>${list.get('annualLeave')}일</td>
+						</tr>
 					</tbody>
 				</c:if>
 			</c:forEach>
 		</table>
 	</div>
-	<table class="type02">
-		<tr>
-			<td>
-				<button onclick="openModal()">휴가 신청</button>
-			</td>
-			<td>
-				<form action="leaveList.do" method="post">
-					<input type="hidden" name="listNum" id="listNum" value="4">
-					<input type="submit" value="승인 대기 중인 휴가 확인">
-				</form>
-			</td>
-		</tr>
-	</table>
+	<form class="levForm" action="leaveList.do" method="post">
+		<button type="button" class="leaveButton" onclick="openModal()">휴가 신청</button>
+		<input type="hidden" name="listNum" id="listNum" value="3"> <input
+			type="submit" class="leaveButton2" value="전체 휴가 신청 내역 확인">
+	</form>
 	<div id="myModal" class="levmodal">
 		<div class="modal_content">
 			<jsp:include page="leaveApplicationForm.jsp" />
