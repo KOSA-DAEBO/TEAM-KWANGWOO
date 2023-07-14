@@ -11,17 +11,25 @@ import edu.kosa.third.utils.ConnectionHelper;
 public class ProductDao {
 
 	public ArrayList<ProductDto> selectAll() {
-		String sql = "SELECT P.productNo, P.productName, SUM(I.price) total_price FROM Product P JOIN PIMapping PI ON P.productNo = PI.productNo JOIN Item I ON PI.itemNo = I.itemNo GROUP BY P.productNo, P.productName";
+		String sql = "SELECT P.PRODUCTNO, P.PRODUCTNAME, p.imagepath, SUM(I.PRICE) TOTAL_PRICE FROM PRODUCT P JOIN PIMAPPING PI ON P.PRODUCTNO = PI.PRODUCTNO JOIN ITEM I ON PI.ITEMNO = I.ITEMNO GROUP BY P.PRODUCTNO, P.PRODUCTNAME, p.imagepath";
 		Connection conn = ConnectionHelper.getConnection("oracle");
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		ArrayList<ProductDto> list = new ArrayList<>();
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
+				ProductDto dto = new ProductDto();
 				
+				dto.setProductNo(rs.getInt(1));
+				dto.setProductName(rs.getString(2));
+				dto.setImagePath(rs.getString(3));
+				dto.setTotalPrice(rs.getInt(4));
+				
+				list.add(dto);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -30,7 +38,7 @@ public class ProductDao {
 			ConnectionHelper.close(conn);
 		}
 		
-		return null;
+		return list;
 	}
 
 }
