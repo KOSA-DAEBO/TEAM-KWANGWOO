@@ -71,7 +71,7 @@
             </div>
             <div class="lm group5">
                <ul>
-                  <li><a href="#">제품관리</a></li>
+                  <li><a href="productList.do">제품관리</a></li>
                   <li><a href="#">제품추가</a></li>
                   <li><a href="itemList.do">상품관리</a></li>
                   <li><a href="addItem.do">상품추가</a></li>

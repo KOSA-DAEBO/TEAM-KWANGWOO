@@ -14,7 +14,7 @@
 	<div class="name">상품 추가 페이지</div>
 	<form action="addItem.do" method="post" class="add_form" name="addItem" onsubmit="return checkAddItem();">
 		<div class="addRow1">
-			<div class="inner_name">제품명</div>
+			<div class="inner_name">상품명</div>
 			<div><input type="text" placeholder="    제품명 입력해주세요." class="form_controll" id="itemName" name="itemName"></div>
 		</div>
 		<div class="addRow2">
@@ -24,7 +24,7 @@
 			<div><input type="text" placeholder="    판매가를 입력해주세요." class="form_controll_half" id="price" name="price"></div>
 		</div>
 		<div class="addRow3">
-			<div class="inner_name">제품구분</div>
+			<div class="inner_name">상품구분</div>
 			<div class="add_radio">
 				<input type="radio" class="radio_inner" value="10" name="itemClsNo">케이스
 				<input type="radio" class="radio_inner" value="20" name="itemClsNo">프로세서

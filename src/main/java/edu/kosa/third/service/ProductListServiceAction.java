@@ -21,7 +21,7 @@ public class ProductListServiceAction implements Action {
 		ArrayList<ProductDto> list = dao.selectAll();
 		
 		request.setAttribute("list", list);
-		forward.setPath("/WEB-INF/views/item/productList.jsp");
+		forward.setPath("/WEB-INF/views/product/productList.jsp");
 		
 		return forward;
 	}

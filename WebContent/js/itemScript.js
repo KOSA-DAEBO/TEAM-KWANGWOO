@@ -135,6 +135,10 @@ addItemListBtn.addEventListener("click", function() {
 		return;
 	}
 	
+	if (itemName === "") {
+		return;
+	}
+	
 	const itemText = `${itemNo}번 ${itemName} : ${stock}개 = ${totalPrice}`;
 
 	const buyCheckItemContent = document.createElement("div");
