@@ -15,6 +15,7 @@
 		<div>
 			<form class="addForm" action="addProduct.do" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
 				<div class="addImage" onclick="document.getElementById('fileInput').click()">
+					<label for="fileInput" class="addImageLabel" id="fileInputText">클릭해서 이미지 추가</label>
 					<input type="file" id="fileInput" name="file" style="display: none;" onchange="previewImage(this)">
 					<img class="imgPreview" id="imgPreview" src="#" alt="미리보기 이미지" style="display: none;">
 				</div>

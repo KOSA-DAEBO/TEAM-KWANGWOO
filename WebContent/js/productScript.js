@@ -61,14 +61,22 @@ function showFileInput() {
 }
 
 function previewImage(input) {
-	if (input.files && input.files[0]) {
-		const reader = new FileReader();
-		reader.onload = function(e) {
-			const imgPreview = document.getElementById("imgPreview");
-			imgPreview.src = e.target.result;
-			imgPreview.style.display = "block";
-		};
-		reader.readAsDataURL(input.files[0]);
+	const preview = document.getElementById('imgPreview');
+	const test = document.getElementById('fileInputText');
+	const file = input.files[0];
+	const reader = new FileReader();
+
+	reader.onload = function(e) {
+		preview.src = e.target.result;
+		preview.style.display = 'block';
+		test.style.display = 'none';
+	};
+
+	if (file) {
+		reader.readAsDataURL(file);
+	} else {
+		preview.src = '#';
+		preview.style.display = 'none';
 	}
 }
 

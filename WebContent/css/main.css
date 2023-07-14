@@ -126,8 +126,10 @@
 .addProduct {margin: 10px auto 10px auto; width: 1000px; display: grid; justify-content: center; padding: 30px 0px; grid-template-rows: 90px 1fr;}
 .addProduct .name {text-align:center; color:#005b23; font-size:40px; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif;}
 .addProduct .addForm {display: grid; grid-template-columns: 400px 1fr; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; gap: 30px;}
-.addProduct .addForm .addImage {border: 1px solid #005b23;}
-.addProduct .addForm .addImage .imgPreview {width: 100%;}
+.addProduct .addForm .addImage {border: 1px solid #005b23; position: relative;}
+.addProduct .addForm .addImage .addImageLabel {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #777; font-size: 14px; pointer-events: none;}
+.addProduct .addForm .addImage .imgPreview {display: none; width: 100%;}
+.addProduct .addForm .addImage .imgPreview[src] {display: block; width: 100%;}
 .addProduct .addForm .addItem {display: grid; grid-template-rows: 50px 1fr 50px; gap: 10px;}
 .addProduct .addForm .addItem .insertProductName {display: grid; grid-template-columns: 100px 1fr; gap: 10px;}
 .addProduct .addForm .addItem .insertProductName .addInputName {margin: 16px 0px;}
