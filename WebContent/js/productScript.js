@@ -62,9 +62,9 @@ function showFileInput() {
 
 function previewImage(input) {
 	if (input.files && input.files[0]) {
-		var reader = new FileReader();
+		const reader = new FileReader();
 		reader.onload = function(e) {
-			var imgPreview = document.getElementById("imgPreview");
+			const imgPreview = document.getElementById("imgPreview");
 			imgPreview.src = e.target.result;
 			imgPreview.style.display = "block";
 		};
@@ -73,9 +73,24 @@ function previewImage(input) {
 }
 
 function validateForm() {
-	var fileInput = document.getElementById("fileInput");
-	if (fileInput.files.length === 0) {
-		alert("파일을 선택해주세요.");
+	const fileInput = document.getElementById('fileInput');
+	const productName = document.querySelector('.productName').value;
+	const selectElements = document.querySelectorAll('.addSelectContent');
+
+	if (productName.trim() === '') {
+		alert('제품명을 입력해주세요.');
+		return false;
+	}
+
+	for (let i = 0; i < selectElements.length; i++) {
+		if (selectElements[i].value === '') {
+			alert('필수 항목을 선택해주세요.');
+			return false;
+		}
+	}
+
+	if (fileInput.value === '') {
+		alert('파일을 등록하세요.');
 		return false;
 	}
 	return true;

@@ -96,8 +96,8 @@
 .addItemListBtn:hover, .buy_itemBtn:hover {background-color: #005b23; color: #ffffff;}
 
 /*product*/
-.goAddProduct {position: fixed; right: 10px; top: 150px; width: 70px; height: 70px;  border: 1px solid #005b23; background-color: #005b23; color: #ffffff; border-radius: 70%;}
-.goAddProduct a {display:flex; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; cursor: pointer; margin-top: 25px; margin-left: 6px;}
+.goAddProduct {position: fixed; right: 10px; top: 150px; width: 70px; height: 70px;  border: 1px solid #005b23; background-color: #005b23; color: #ffffff; border-radius: 70%; cursor: pointer;}
+.goAddProduct a {display:flex; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; margin-top: 25px; margin-left: 6px;}
 .product_content {display:grid; grid-template-rows: 90px 1fr; gap:10px; width: 70%; height: 580px; margin: 10px auto; padding: 30px 0px;}
 .product_content .name {text-align:center; color:#005b23; font-size:40px; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif;}
 .product_content .card_form {display: grid; grid-template-rows: 1fr 100px;}

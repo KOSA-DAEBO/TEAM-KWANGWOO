@@ -13,7 +13,7 @@
 	<div class="addProduct">
 		<div class="name">제품 추가하기</div>
 		<div>
-			<form class="addForm" action="addProduct.do" method="post" enctype="multipart/form-data">
+			<form class="addForm" action="addProduct.do" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
 				<div class="addImage" onclick="document.getElementById('fileInput').click()">
 					<input type="file" id="fileInput" name="file" style="display: none;" onchange="previewImage(this)">
 					<img class="imgPreview" id="imgPreview" src="#" alt="미리보기 이미지" style="display: none;">
@@ -27,7 +27,7 @@
 						<c:forEach var="dtoList" items="${dtoList}">
 							<div class="addSelectName">${dtoList.itemClsName}</div>
 							<select class="addSelectContent">
-									<option value="">--선택하세요</option>
+									<option value="">--선택하세요(필수항목)</option>
 								<c:forEach var="list" items="${list}">
 									<c:if test="${list.cDto.itemClsName.equals(dtoList.itemClsName)}">
 										<option value="${list.dto.itemNo}">${list.dto.itemName}</option>

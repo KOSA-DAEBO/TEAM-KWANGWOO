@@ -12,9 +12,10 @@ public class addProductServiceAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
+
 		
 		
-		
+		forward.setPath("productList.do");
 		return forward;
 	}
 

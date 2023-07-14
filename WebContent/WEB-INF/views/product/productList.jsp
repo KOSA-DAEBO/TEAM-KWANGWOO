@@ -10,7 +10,7 @@
 <title>Team KwangWoo</title>
 </head>
 <body>
-<div class="goAddProduct"><a onclick="javascript:location.href='goAddProduct.do'">제품추가</a></div>
+<div class="goAddProduct" onclick="javascript:location.href='goAddProduct.do'"><a>제품추가</a></div>
 <div class="product_content">
 	<div class="name">상품 리스트</div>
 	<form class="card_form">
