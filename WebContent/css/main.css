@@ -9,13 +9,13 @@
 .head_top .material-symbols-outlined {float: right; margin-top: 10px;}
 
 .head_bottom { height:43px; background:#005b23; clear:both;}
-.head_bottom_in {width:1100px; margin:0 auto;overflow:hidden;}
-.head_bottom_in .head_menu{width:960px;overflow:hidden;}
+.head_bottom_in {width:1100px; margin:0 auto; overflow:hidden;}
+.head_bottom_in .head_menu{width:960px; overflow:hidden;}
 .head_menu{float:left;}
 .head_menu:hover + .local_menu {display: block;}
 .head_menu li {float:left;}
 .head_menu li:first-child a{width:191px;}
-.head_menu li a {display:block; height:43px;line-height:50px; color:#fff;font-size:20px; width:191px;text-align:center; text-decoration: none;font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif;}
+.head_menu li a {display:block; height:43px; line-height:50px; color:#fff;font-size:20px; width:191px;text-align:center; text-decoration: none;font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif;}
 .head_menu li.on a {background:#00471b;}
 .head_menu li a:hover {background:#00471b;} 
 
@@ -96,6 +96,8 @@
 .addItemListBtn:hover, .buy_itemBtn:hover {background-color: #005b23; color: #ffffff;}
 
 /*product*/
+.goAddProduct {position: fixed; right: 10px; top: 150px; width: 70px; height: 70px;  border: 1px solid #005b23; background-color: #005b23; color: #ffffff; border-radius: 70%;}
+.goAddProduct a {display:flex; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; cursor: pointer; margin-top: 25px; margin-left: 6px;}
 .product_content {display:grid; grid-template-rows: 90px 1fr; gap:10px; width: 70%; height: 580px; margin: 10px auto; padding: 30px 0px;}
 .product_content .name {text-align:center; color:#005b23; font-size:40px; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif;}
 .product_content .card_form {display: grid; grid-template-rows: 1fr 100px;}
