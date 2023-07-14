@@ -109,6 +109,17 @@
 .product_content .pagination button:hover {background-color: #005b23; color: #ffffff;}
 .product_content .pagination button:disabled {opacity: 0.5; cursor: not-allowed;}
 
+/*detail_product*/
+.productDetail {display: grid; grid-template-columns: repeat(2, 1fr); gap:10px; width: 70%; height: 580px; margin: 10px auto; padding: 30px 0px; border: 1px solid #005b23; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; font-size: 20px;}
+.productDetail .productDetailImg {width: 400px; margin: auto;}
+.productDetail .productDetailImg > img {width: 100%;}
+.productDetail .productContent {display: grid; grid-template-rows: 1fr 50px;}
+.productDetail .productContent .content {display:grid; grid-template-columns: 150px 1fr;}
+.productDetail .productContent .updateBtn {border-radius: 20px; border-style: solid; border-color:#005b23; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #005b23; font-size: 20px; width: 150px; height: 40px; margin: 0px 50px;}
+.productDetail .productContent .deleteBtn {border-radius: 20px; border-style: solid; border-color:red; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: red; font-size: 20px; width: 150px; height: 40px; margin: 0px 50px;}
+.productDetail .productContent .updateBtn:hover {background-color: #005b23; color: #ffffff;}
+.productDetail .productContent .deleteBtn:hover {background-color: red; color: #ffffff;}
+
 /*addItem_modal*/
 .modal {display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.4);}
 .modal-content {display: grid; grid-template-rows: 30px 1fr; background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 50%;}

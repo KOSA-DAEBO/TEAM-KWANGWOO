@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ include file="../../../fixed/header.jsp" %>
 <!DOCTYPE html>
 <html>
@@ -16,9 +15,9 @@
 	<form class="card_form">
 		<div class="card_list">
 			<c:forEach var="list" items="${list}">
-				<div class="card">
+				<div class="card" onclick="location.href='detailProduct.do?productNo=${list.productNo}'">
 					<div class="card_left">
-						<div class="p_image"><img alt="PC이미지" src="${list.imagePath}"></div>
+						<div class="p_image"><img alt="PC이미지" src="${list.thumbnailPath}"></div>
 					</div>
 					<div class="card_right">
 						<div class="p_content">제품번호 : ${list.productNo}</div>

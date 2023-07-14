@@ -4,14 +4,20 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
 
+import edu.kosa.third.dto.ItemClsDto;
+import edu.kosa.third.dto.ItemDto;
+import edu.kosa.third.dto.ItemsDto;
+import edu.kosa.third.dto.PIMappingDto;
 import edu.kosa.third.dto.ProductDto;
+import edu.kosa.third.dto.ProductManageDto;
 import edu.kosa.third.utils.ConnectionHelper;
 
 public class ProductDao {
 
 	public ArrayList<ProductDto> selectAll() {
-		String sql = "SELECT P.PRODUCTNO, P.PRODUCTNAME, p.imagepath, SUM(I.PRICE) TOTAL_PRICE FROM PRODUCT P JOIN PIMAPPING PI ON P.PRODUCTNO = PI.PRODUCTNO JOIN ITEM I ON PI.ITEMNO = I.ITEMNO GROUP BY P.PRODUCTNO, P.PRODUCTNAME, p.imagepath";
+		String sql = "SELECT P.PRODUCTNO, P.PRODUCTNAME, P.THUMBNAILPATH, SUM(I.PRICE) TOTAL_PRICE FROM PRODUCT P JOIN PIMAPPING PI ON P.PRODUCTNO = PI.PRODUCTNO JOIN ITEM I ON PI.ITEMNO = I.ITEMNO GROUP BY P.PRODUCTNO, P.PRODUCTNAME, P.THUMBNAILPATH";
 		Connection conn = ConnectionHelper.getConnection("oracle");
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -26,7 +32,7 @@ public class ProductDao {
 				
 				dto.setProductNo(rs.getInt(1));
 				dto.setProductName(rs.getString(2));
-				dto.setImagePath(rs.getString(3));
+				dto.setThumbnailPath(rs.getString(3));
 				dto.setTotalPrice(rs.getInt(4));
 				
 				list.add(dto);
@@ -41,4 +47,68 @@ public class ProductDao {
 		return list;
 	}
 
+	public ProductManageDto selectProductNo(int productNo) {
+		String sql;
+		Connection conn = ConnectionHelper.getConnection("oracle");
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ProductManageDto dto = null;
+		
+		try {
+			sql = "SELECT * FROM PRODUCT WHERE PRODUCTNO = ?";
+			
+			ProductDto pDto = new ProductDto();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, productNo);
+			rs = pstmt.executeQuery();
+			rs.next();
+			pDto.setProductNo(rs.getInt("productNo"));
+			pDto.setProductName(rs.getString("productName"));
+			pDto.setImagePath(rs.getString("imagePath"));
+			
+			sql = "SELECT P.*, I.*, IC.itemClsName FROM PIMapping P JOIN Item I ON P.itemNo = I.itemNo JOIN ItemCls IC ON I.itemClsNo = IC.itemClsNo WHERE P.productNo = ?";
+			pstmt.clearParameters();
+			
+			List<PIMappingDto> pimDtoList = new ArrayList<>();
+			List<ItemsDto> itemsDtoList = new ArrayList<>();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, productNo);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				PIMappingDto pimDto = new PIMappingDto();
+				ItemDto itemDto = new ItemDto();
+				ItemClsDto itemClsDto = new ItemClsDto();
+				
+				pimDto.setMappingNo(rs.getInt("mappingNo"));
+				pimDto.setProductNo(rs.getInt("productNo"));
+				pimDto.setItemNo(rs.getInt("itemNo"));
+				
+				itemDto.setItemNo(rs.getInt("itemNo"));
+				itemDto.setItemName(rs.getString("itemName"));
+				itemDto.setCost(rs.getInt("cost"));
+				itemDto.setPrice(rs.getInt("price"));
+				itemDto.setStock(rs.getInt("stock"));
+				itemDto.setItemClsNo(rs.getInt("itemClsNo"));
+				
+				itemClsDto.setItemClsName(rs.getString("itemClsName"));
+				
+				ItemsDto itemsDto = new ItemsDto(itemDto, itemClsDto);
+				pimDtoList.add(pimDto);
+				itemsDtoList.add(itemsDto);
+			}
+			
+			dto = new ProductManageDto(pDto, pimDtoList, itemsDtoList);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(rs);
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
+		}
+		
+		return dto;
+	}
+	
+	
 }

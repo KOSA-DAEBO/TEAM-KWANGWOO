@@ -2,15 +2,24 @@ package edu.kosa.third.dto;
 
 public class ProductDto {
 	private int productNo, totalPrice;
-	private String productName, imagePath;
+	private String productName, imagePath, thumbnailPath;
 
 	public ProductDto() {};
-	
-	public ProductDto(int productNo, int totalPrice, String productName, String imagePath) {
+
+	public ProductDto(int productNo, int totalPrice, String productName, String imagePath, String thumbnailPath) {
 		this.productNo = productNo;
 		this.totalPrice = totalPrice;
 		this.productName = productName;
 		this.imagePath = imagePath;
+		this.thumbnailPath = thumbnailPath;
+	}
+
+	public String getThumbnailPath() {
+		return thumbnailPath;
+	}
+
+	public void setThumbnailPath(String thumbnailPath) {
+		this.thumbnailPath = thumbnailPath;
 	}
 
 	public int getTotalPrice() {
