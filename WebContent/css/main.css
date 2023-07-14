@@ -96,7 +96,7 @@
 .addItemListBtn:hover, .buy_itemBtn:hover {background-color: #005b23; color: #ffffff;}
 
 /*product*/
-.product_content {display:grid; grid-template-rows: 90px 1fr; gap:10px; width: 70%; height: 580px; margin: 10px auto; border: 1px solid #005b23; padding: 30px 0px;}
+.product_content {display:grid; grid-template-rows: 90px 1fr; gap:10px; width: 70%; height: 580px; margin: 10px auto; padding: 30px 0px;}
 .product_content .name {text-align:center; color:#005b23; font-size:40px; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif;}
 .product_content .card_form {display: grid; grid-template-rows: 1fr 100px;}
 .product_content .card_form .card_list {display: grid; grid-template-rows: repeat(2, 1fr); grid-template-columns: repeat(4, 1fr); align-items: center;}
