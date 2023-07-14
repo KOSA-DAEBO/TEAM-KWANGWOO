@@ -18,11 +18,28 @@
 		</select>
 		<div id="content"></div>
 	</div>
-	
-	<div hidden="" id="deleteDept"><!-- 삭제 -->
+
+	<div hidden="" id="insertDept">
+		<!-- 추가 -->
+		<form action="insertDept.do" method="get">
+			<div align="center">
+				부서이름<br> <input type="text" id="deptName" name="deptName"><br>
+				부서번호<br> <input type="number" id="deptNo" name="deptNo">
+				<div align="center">
+					<br> <br> 
+					<input type="submit" value="추 가">&nbsp;&nbsp;
+					<input type="reset" value="취 소">
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<div hidden="" id="deleteDept">
+		<!-- 삭제 -->
 		<form action="deleteDept.do" method="post">
 			<div align="center">
-				부서이름<br> <input type="text" id="deptName">
+				부서이름<br> <input type="text" id="deptName" name="deptName"><br>
+				부서번호<br> <input type="number" id="deptNo" name="deptNo">
 				<div align="center">
 					<br> <br> <input type="submit" value="삭 제">&nbsp;&nbsp;
 					<input type="reset" value="취 소">
@@ -31,22 +48,12 @@
 		</form>
 	</div>
 
-	<div hidden="" id="insertDept"><!-- 추가 -->
-		<form action="deleteDept.do" method="post">
-			<div align="center">
-				부서이름<br> <input type="text" id="deptName">
-				<div align="center">
-					<br> <br> <input type="submit" value="추 가">&nbsp;&nbsp;
-					<input type="reset" value="취 소">
-				</div>
-			</div>
-		</form>
-	</div>
-
-	<div hidden="updateDeptMenu" id="updateDept"><!-- 업데이트 -->
+	<div hidden="" id="updateDept">
+		<!-- 업데이트 -->
 		<form action="updateDept.do" method="post">
 			<div align="center">
-				부서이름<br> <input type="text" id="deptName">
+				부서이름<br> <input type="text" id="deptName" name="deptName"><br>
+				부서번호<br> <input type="number" id="deptNo" name="deptNo">
 				<div align="center">
 					<br> <br> <input type="submit" value="수 정">&nbsp;&nbsp;
 					<input type="reset" value="취 소">

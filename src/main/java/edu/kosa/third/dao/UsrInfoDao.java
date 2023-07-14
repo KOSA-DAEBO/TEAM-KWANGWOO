@@ -15,7 +15,6 @@ import edu.kosa.third.utils.ConnectionHelper;
 
 public class UsrInfoDao {
 
-	
 	// 소비자 개인정보 조회
 	public CustomerDto customerInfoAll() {
 		String sql = "select * from customer where usrid=?";
@@ -39,7 +38,7 @@ public class UsrInfoDao {
 				customdto.setCustomerBirth(rs.getDate(6));
 				customdto.setCustomerAddr(rs.getString(7));
 				customdto.setCustomerName(rs.getString(8));
-				
+
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -59,36 +58,35 @@ public class UsrInfoDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+
 		EmpDetailsDto dto = null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, "asdsaad2114");//나중에 로그인 기능 연동 후 usrId 로 바꿀것
+			pstmt.setString(1, "asdsaad2114");// 나중에 로그인 기능 연동 후 usrId 로 바꿀것
 			rs = pstmt.executeQuery();
-				
-			
-				EmpDto emp = new EmpDto();
-				PosDto pos = new PosDto();
-				DeptDto dept = new DeptDto();
-					
-				while(rs.next()) {
-					
-					emp.setEmpNo(rs.getInt(1));
-					emp.setUsrId(rs.getString(2));
-					emp.setEmpName(rs.getString(3));
-					emp.setEmpBirth(rs.getDate(4));
-					emp.setEmpEmail(rs.getString(5));
-					emp.setEmpStatus(rs.getBoolean(6));
-					emp.setEmpTel(rs.getString(7));
-					emp.setEmpGender(rs.getString(8));
-					emp.setEmpAddr(rs.getString(9));
-					emp.setHireDate(rs.getDate(10));
-					emp.setAnnualLeave(rs.getInt(11));
-					dept.setDeptName(rs.getString(12));
-					pos.setPosName(rs.getString(13));
-					dto = new EmpDetailsDto(emp, pos, dept);
-				}
+
+			EmpDto emp = new EmpDto();
+			PosDto pos = new PosDto();
+			DeptDto dept = new DeptDto();
+
+			while (rs.next()) {
+
+				emp.setEmpNo(rs.getInt(1));
+				emp.setUsrId(rs.getString(2));
+				emp.setEmpName(rs.getString(3));
+				emp.setEmpBirth(rs.getDate(4));
+				emp.setEmpEmail(rs.getString(5));
+				emp.setEmpStatus(rs.getBoolean(6));
+				emp.setEmpTel(rs.getString(7));
+				emp.setEmpGender(rs.getString(8));
+				emp.setEmpAddr(rs.getString(9));
+				emp.setHireDate(rs.getDate(10));
+				emp.setAnnualLeave(rs.getInt(11));
+				dept.setDeptName(rs.getString(12));
+				pos.setPosName(rs.getString(13));
+				dto = new EmpDetailsDto(emp, pos, dept);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -98,7 +96,7 @@ public class UsrInfoDao {
 		}
 		return dto;
 	}
- 
+
 	// 전체 직원 조회 반복문 사용
 	public List<EmpDto> totalEmpInfo() {
 		String select = "select usrid, empno, empname, hiredate from emp";

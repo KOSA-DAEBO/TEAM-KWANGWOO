@@ -5,17 +5,23 @@ import javax.servlet.http.HttpServletResponse;
 
 import edu.kosa.third.action.Action;
 import edu.kosa.third.action.ActionForward;
+import edu.kosa.third.dao.DeptDao;
 import edu.kosa.third.dto.DeptDto;
 
-public class DeptManageServiceAction implements Action{
+public class UpdateDeptServiceAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
-		DeptDto deptDto = new DeptDto();
+		ActionForward forward = new ActionForward();
+		forward.setRedirect(false);
 		
-		String deptName = request.getParameter("deptName");
 		int deptNo = Integer.parseInt(request.getParameter("deptNo"));
-		
-		return null;
+		String deptName = request.getParameter("deptName");
+
+		DeptDao deptdao = new DeptDao();
+
+		deptdao.updateDept(new DeptDto(deptNo, deptName));
+		forward.setPath("/deptMenu.do");
+		return forward;
 	}
 }

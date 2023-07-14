@@ -1,7 +1,6 @@
 <%@page import="edu.kosa.third.dto.EmpDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="java.util.*, edu.kosa.third.dto.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="../../../fixed/header.jsp"%>
 <!DOCTYPE html>
@@ -23,8 +22,7 @@
 				<td>
 					<table>
 						<tr>
-							<td colspan="2"><br> <a href="manageEmpInfo.do"> 
-								<img	src="./images/usericon.png"
+							<td colspan="2"><br> <a href="manageEmpInfo.do"> <img
 									onerror="this.onerror=null; this.src='./images/usericon.png';">
 							</a></td>
 						</tr>

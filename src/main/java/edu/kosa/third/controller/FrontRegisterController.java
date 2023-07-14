@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import edu.kosa.third.action.Action;
 import edu.kosa.third.action.ActionForward;
+import edu.kosa.third.dao.DeptDao;
+import edu.kosa.third.dto.DeptDto;
 import edu.kosa.third.service.*;
 
 @WebServlet("*.do")
@@ -137,28 +139,36 @@ public class FrontRegisterController extends HttpServlet {
 		} else if (urlcommand.equals("/productList.do")) {
 			action = new ProductListServiceAction();
 			forward = action.execute(request, response);
-			
+
 		} else if (urlcommand.equals("/logout.do")) {
 			action = new LogoutServiceAction();
 			forward = action.execute(request, response);
-			
-		} else if(urlcommand.equals("/customDetail.do")) {
+
+		} else if (urlcommand.equals("/customDetail.do")) {
 			action = new DetailCustomerInfoServiceAction();
 			forward = action.execute(request, response);
 
-		} else if(urlcommand.equals("/deptMenu.do")) {
+		} else if (urlcommand.equals("/deptMenu.do")) {
 			forward = new ActionForward();
 			forward.setPath("/WEB-INF/views/deptMenu/deptMenu.jsp");
-	
+
 		} else if (urlcommand.equals("/manageEmpInfo.do")) {
 			action = new ManageEmpInfoServiceAction();
 			forward = action.execute(request, response);
-			
+
 		} else if (urlcommand.equals("/empList.do")) {
 			action = new TotalEmpInfoServiceAction();
 			forward = action.execute(request, response);
+
+		} else if (urlcommand.equals("/insertDept.do")) {
+			action = new AddDeptServiceAction();
+			forward = action.execute(request, response);
 			
-		}
+		} else if (urlcommand.equals("/deleteDept.do")) {
+			action = new DeleteDeptServiceAction();
+			forward = action.execute(request, response);
+		} 
+
 		if (forward != null) {
 			if (forward.isRedirect()) { // true 페이지 재 요청 (location.href="페이지"
 				response.sendRedirect(forward.getPath());
