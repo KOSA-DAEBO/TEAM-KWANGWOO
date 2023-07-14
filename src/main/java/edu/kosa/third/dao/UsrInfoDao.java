@@ -6,42 +6,40 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.sql.DataSource;
-
 import edu.kosa.third.dto.CustomerDto;
 import edu.kosa.third.dto.DeptDto;
 import edu.kosa.third.dto.EmpDto;
-import edu.kosa.third.dto.EmpsDetailDto;
+import edu.kosa.third.dto.EmpDetailsDto;
 import edu.kosa.third.dto.PosDto;
 import edu.kosa.third.utils.ConnectionHelper;
 
 public class UsrInfoDao {
-	Connection conn = null;
-	DataSource ds = null;
-	PreparedStatement pstmt = null;
-	ResultSet rs = null;
 
-	// 소비자 - 소비자 확인 (전체조회 없음)
-	public CustomerDto detailCustInfo(String usrId) {
-		String sql = "select * from customer where usrid = ?";
-		CustomerDto cto = null;
+	
+	// 소비자 개인정보 조회
+	public CustomerDto customerInfoAll() {
+		String sql = "select * from customer where usrid=?";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		CustomerDto customdto = null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, "usrId");
+			pstmt.setString(1, "zxczxc");
 			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				cto = new CustomerDto();
+			customdto = new CustomerDto();
 
-				cto.setCustomerNo(rs.getString(1));
-				cto.setUsrId(rs.getString(2));
-				cto.setCustomerName(rs.getString(3));
-				cto.setCustomerEmail(rs.getString(4));
-				cto.setCustomerTel(rs.getString(5));
-				cto.setCustomerAddr(rs.getString(6));
-				cto.setCustomerGender(rs.getString(7));
-				cto.setCustomerBirth(rs.getDate(8));
-
+			while (rs.next()) {
+				customdto.setCustomerNo(rs.getString(1));
+				customdto.setUsrId(rs.getString(2));
+				customdto.setCustomerEmail(rs.getString(3));
+				customdto.setCustomerTel(rs.getString(4));
+				customdto.setCustomerGender(rs.getString(5));
+				customdto.setCustomerBirth(rs.getDate(6));
+				customdto.setCustomerAddr(rs.getString(7));
+				customdto.setCustomerName(rs.getString(8));
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -50,43 +48,47 @@ public class UsrInfoDao {
 			ConnectionHelper.close(pstmt);
 			ConnectionHelper.close(conn);
 		}
-		return cto;
+		return customdto;
 	}
 
-	// 직원 - 직원 본인 정보 상세조회
-	public ArrayList<EmpsDetailDto> detailempInfo() {
+	// 직원 - 직원 개인 정보 상세조회
+	public EmpDetailsDto detailEmpInfo() {
 		String sql = "select e.empno, e.usrid, e.empname, empbirth, e.empemail, e.empstatus,"
-				+ "  e.emptel, e.empgender, e.empaddr, e.hiredate, "
-				+ " e.annualleave, d.deptname, p.posname"
-				+ "				 from emp e, pos p, dept d where e.deptNo = d.deptNo and e.posNo = p.posNo and usrId=?";
-		ArrayList<EmpsDetailDto> list = new ArrayList<>();
+				+ "  e.emptel, e.empgender, e.empaddr, e.hiredate, " + " e.annualleave, d.deptname, p.posname"
+				+ "				 from emp e, pos p, dept d where e.deptNo = d.deptNo and e.posNo = p.posNo and usrId = ?";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		EmpDetailsDto dto = null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, "asdsaad2114");
+			pstmt.setString(1, "asdsaad2114");//나중에 로그인 기능 연동 후 usrId 로 바꿀것
 			rs = pstmt.executeQuery();
-			while (rs.next()) {
+				
+			
 				EmpDto emp = new EmpDto();
 				PosDto pos = new PosDto();
 				DeptDto dept = new DeptDto();
-
-				emp.setEmpNo(rs.getInt(1));
-				emp.setUsrId(rs.getString(2));
-				emp.setEmpName(rs.getString(3));
-				emp.setEmpBirth(rs.getDate(4));
-				emp.setEmpEmail(rs.getString(5));
-				emp.setEmpStatus(rs.getBoolean(6));
-				emp.setEmpTel(rs.getString(7));
-				emp.setEmpGender(rs.getString(8));
-				emp.setEmpAddr(rs.getString(9));
-				emp.setHireDate(rs.getDate(10));
-				emp.setAnnualLeave(rs.getInt(11));
-				dept.setDeptName(rs.getString(12));
-				pos.setPosName(rs.getString(13));
-
-				EmpsDetailDto dto = new EmpsDetailDto(emp, pos, dept);
-				list.add(dto);
-			}
+					
+				while(rs.next()) {
+					
+					emp.setEmpNo(rs.getInt(1));
+					emp.setUsrId(rs.getString(2));
+					emp.setEmpName(rs.getString(3));
+					emp.setEmpBirth(rs.getDate(4));
+					emp.setEmpEmail(rs.getString(5));
+					emp.setEmpStatus(rs.getBoolean(6));
+					emp.setEmpTel(rs.getString(7));
+					emp.setEmpGender(rs.getString(8));
+					emp.setEmpAddr(rs.getString(9));
+					emp.setHireDate(rs.getDate(10));
+					emp.setAnnualLeave(rs.getInt(11));
+					dept.setDeptName(rs.getString(12));
+					pos.setPosName(rs.getString(13));
+					dto = new EmpDetailsDto(emp, pos, dept);
+				}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -94,13 +96,16 @@ public class UsrInfoDao {
 			ConnectionHelper.close(pstmt);
 			ConnectionHelper.close(conn);
 		}
-		return list;
+		return dto;
 	}
-
-	// 전체 직원 조회
+ 
+	// 전체 직원 조회 반복문 사용
 	public List<EmpDto> totalEmpInfo() {
 		String select = "select usrid, empno, empname, hiredate from emp";
 		List<EmpDto> list = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			list = new ArrayList<>();
 			conn = ConnectionHelper.getConnection("oracle");

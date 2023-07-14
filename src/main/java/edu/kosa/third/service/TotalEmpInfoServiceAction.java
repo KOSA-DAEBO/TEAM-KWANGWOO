@@ -1,6 +1,6 @@
 package edu.kosa.third.service;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -8,19 +8,21 @@ import javax.servlet.http.HttpServletResponse;
 import edu.kosa.third.action.Action;
 import edu.kosa.third.action.ActionForward;
 import edu.kosa.third.dao.UsrInfoDao;
-import edu.kosa.third.dto.EmpsDetailDto;
+import edu.kosa.third.dto.EmpDto;
 
-public class SelectEmpDetail implements Action{
+public class TotalEmpInfoServiceAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		UsrInfoDao dao = new UsrInfoDao();
-		
-		ArrayList<EmpsDetailDto> empList = dao.detailempInfo();
+
+		List<EmpDto> empList = dao.totalEmpInfo();
+
 		request.setAttribute("empList", empList);
+
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("/WEB-INF/views/selectinfo/detailEmpInfo.jsp");
+		forward.setPath("/WEB-INF/views/usrinfo/showEmpInfo.jsp");
 		return forward;
 	}
 }
