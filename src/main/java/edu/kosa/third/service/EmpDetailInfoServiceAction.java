@@ -1,29 +1,25 @@
 package edu.kosa.third.service;
 
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import edu.kosa.third.action.Action;
 import edu.kosa.third.action.ActionForward;
-import edu.kosa.third.dao.ProductDao;
-import edu.kosa.third.dto.ProductDto;
+import edu.kosa.third.dao.UsrInfoDao;
+import edu.kosa.third.dto.EmpDetailsDto;
 
-public class ProductListServiceAction implements Action {
+public class EmpDetailInfoServiceAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
+		UsrInfoDao dao = new UsrInfoDao();
+
+		EmpDetailsDto empList = dao.detailEmpInfo();
+		
+		request.setAttribute("empList", empList);
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		
-		ProductDao dao = new ProductDao();
-		ArrayList<ProductDto> list = dao.selectAll();
-		
-		request.setAttribute("list", list);
-		forward.setPath("/WEB-INF/views/product/productList.jsp");
-		
+		forward.setPath("/WEB-INF/views/usrinfo/detailEmpInfo.jsp");
 		return forward;
 	}
-
 }
