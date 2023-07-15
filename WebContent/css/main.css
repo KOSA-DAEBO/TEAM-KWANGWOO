@@ -7,6 +7,7 @@
 .head_top .logo {width:150px;}
 .head_top h1 {float:left;margin-top:8px;}
 .head_top .material-symbols-outlined {float: right; margin-top: 10px;}
+.head_top .iconText{float: right; margin: 13px 0 0 15px; text-decoration: none; color:black;}
 
 .head_bottom { height:43px; background:#005b23; clear:both;}
 .head_bottom_in {width:1100px; margin:0 auto;overflow:hidden;}
@@ -173,6 +174,7 @@ table.type02 input.lbutton{font-size:17px}
 .joinButton:hover{transform:scale(1.2)}
 .join_Row{padding:10px}
 .join_list{display:inline-block;width:140px}
+.join_radio_input{margin: 12px 5px;vertical-align: middle;accent-color: #005b23;margin : 0 20px 0 70px;}
 #idCheckButton{margin:0;width:85px;height:30px}
 #idChecklist{padding-left:30px}
 #idCheckTitle{size:20px;text-indent:0;margin:20px}

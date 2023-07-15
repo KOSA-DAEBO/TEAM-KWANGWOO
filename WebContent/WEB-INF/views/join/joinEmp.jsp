@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ include file="../../../fixed/headerWhithoutMenu.jsp" %>
+<%@ include file="../../../fixed/header.jsp" %>
 
 <!DOCTYPE html>
 <html>
@@ -88,8 +88,8 @@
 
                 <label class="join_list">성별 :</label>
 
-                <input type="radio" class="join_check_input" name="usrGender" value="0" checked >남 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                <input type="radio" class="join_check_input" name="usrGender" value="1">여
+                <input type="radio" class="join_radio_input" name="usrGender" value="0" checked >남
+                <input type="radio" class="join_radio_input" name="usrGender" value="1">여
 
             </div>
 

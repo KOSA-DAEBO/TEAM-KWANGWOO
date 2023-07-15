@@ -31,9 +31,9 @@ password="tiger"   // 연결한 db의 비밀번호
               type="javax.sql.DataSource"
 			  auth="Container"
               name="jdbc/oracle" />-->
+<!--DBCP 2.x에 맞게 속성명 변경-->
 
-
-	<Resource maxWaitMillis="15000"
+	<Resource maxWaitMillis="-1"
 			  maxIdle="20"
 			  maxTotal="20"
 			  password="oracle"

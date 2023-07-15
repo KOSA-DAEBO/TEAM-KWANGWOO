@@ -21,9 +21,12 @@
                   alt="광우" class="logo" /></a>
             </h1>
             <div>
-               <span class="material-symbols-outlined" OnClick="location.href='loginCustomer.do'">login</span>
-               <span class="material-symbols-outlined" OnClick="location.href='logout.do'">logout</span>
-               <span class="material-symbols-outlined" OnClick="location.href='joinCustomer.do'">person_add</span>
+               <span class="material-symbols-outlined">login</span>
+                <a class="iconText" href="loginCustomer.do"> 로그인</a>
+               <span class="material-symbols-outlined">logout</span>
+                <a class="iconText" href="logout.do"> 로그아웃</a>
+               <span class="material-symbols-outlined">person_add</span>
+                <a class="iconText" href="joinCustomer.do"> 회원가입</a>
             </div>
          </div>
          <!-- //head_top -->
@@ -65,8 +68,10 @@
             <div class="lm group4">
                <ul>
                    <li><a href="commuteEmpChk.do">출퇴근체크</a></li>
-                   <li><a href="#">출퇴근관리</a></li>
                    <li><a href="#">출퇴근확인</a></li>
+                   <c:if test="${login.role}"> <%--관리자 로그인--%>
+                       <li><a href="#">출퇴근관리</a></li>
+                   </c:if>
                </ul>
             </div>
             <div class="lm group5">
