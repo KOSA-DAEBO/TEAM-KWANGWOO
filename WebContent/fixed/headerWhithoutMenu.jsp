@@ -29,11 +29,7 @@
         <!-- //head_top -->
 
         <div class="head_bottom">
-            <div class="head_bottom_in">
 
-
-            </div>
-            <!-- //head_bottom_in -->
         </div>
     </div>
 </div>

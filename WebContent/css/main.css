@@ -163,3 +163,11 @@ table.type02 input.lbutton{font-size:17px}
 #idChecklist{padding-left:30px}
 #idCheckTitle{size:20px;text-indent:0;margin:20px}
 #idCheckPage{overflow-x:hidden}
+
+/*commute*/
+.commute_title{margin:6% auto 0;text-align:center;text-indent:-365px;padding:20px;font-size:30px}
+.commute_Page{width:420px;padding:55px;height:auto;top:20%;left:30%;margin:0 auto 11%;border-bottom:5px solid #005B23;border-top:5px solid #005B23}
+.commute_Input{width:200px;height:30px;margin:0 0 20px 20px;display:inline-block;border:0;font-weight:900;font-size:30px;color:#000}
+.commute_table{font-size:30px;margin:0 auto}
+#commuteButton{width:360px;height:43px;margin-left:30px;margin-top:40px;border:none;display:inline-block;border-radius:15px;box-shadow:0 15px 35px rgba(0,0,0,0.1);text-decoration:none;font-weight:600;transition:.25s;color:#f8f8ff;background-color:#005B23;font-size:26px}
+#commuteButton:hover{transform:scale(1.2)}

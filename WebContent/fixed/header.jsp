@@ -64,9 +64,9 @@
             </div>
             <div class="lm group4">
                <ul>
-                  <li><a href="#">출퇴근관리</a></li>
-                  <li><a href="#">출퇴근확인</a></li>
-                  <li><a href="#">등등등</a></li>
+                   <li><a href="commuteEmpChk.do">출퇴근체크</a></li>
+                   <li><a href="#">출퇴근관리</a></li>
+                   <li><a href="#">출퇴근확인</a></li>
                </ul>
             </div>
             <div class="lm group5">
