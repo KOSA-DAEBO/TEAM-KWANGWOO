@@ -11,21 +11,22 @@ public class EmpDto {
 	public EmpDto() {
 		
 	}
-	
-	public EmpDto(int empNo, int annualLeave, int deptNo, int posNo, Date empBirth, Date hireDate, String empName, String empEmail, String empTel, String empAddr, boolean empStatus, boolean role, String empGender) {
+
+	public EmpDto(int empNo, int annualLeave, int deptNo, int posNo, Date empBirth, Date hireDate, String usrId, String empName, String empEmail, String empTel, String empAddr, String empGender, boolean empStatus, boolean role) {
 		this.empNo = empNo;
-		this.annualLeave = annualLeave; //연차일수
+		this.annualLeave = annualLeave;
 		this.deptNo = deptNo;
 		this.posNo = posNo;
 		this.empBirth = empBirth;
 		this.hireDate = hireDate;
+		this.usrId = usrId;
 		this.empName = empName;
 		this.empEmail = empEmail;
 		this.empTel = empTel;
 		this.empAddr = empAddr;
+		this.empGender = empGender;
 		this.empStatus = empStatus;
 		this.role = role;
-		this.empGender = empGender;
 	}
 
 	public String getUsrId() {
