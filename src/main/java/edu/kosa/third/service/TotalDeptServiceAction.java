@@ -5,20 +5,21 @@ import javax.servlet.http.HttpServletResponse;
 
 import edu.kosa.third.action.Action;
 import edu.kosa.third.action.ActionForward;
-import edu.kosa.third.dao.UsrInfoDao;
-import edu.kosa.third.dto.EmpDetailsDto;
+import edu.kosa.third.dao.DeptDao;
+import edu.kosa.third.dto.DeptDto;
 
-public class DetailEmpInfoServiceAction implements Action {
+public class TotalDeptServiceAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
-		UsrInfoDao dao = new UsrInfoDao();
-
-		EmpDetailsDto empinfo = dao.detailEmpInfo(request);
-		request.setAttribute("empInfo", empinfo);
+		DeptDao deptdao = new DeptDao();
+		
+		DeptDto deptDto = deptdao.deptAll(request);
+		request.setAttribute("deptList", deptList);
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
 		forward.setPath("/WEB-INF/views/usrinfo/detailEmpInfo.jsp");
 		return forward;
 	}
+
 }

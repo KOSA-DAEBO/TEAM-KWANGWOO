@@ -6,18 +6,71 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import edu.kosa.third.dto.CustomerDto;
 import edu.kosa.third.dto.DeptDto;
-import edu.kosa.third.dto.EmpDto;
 import edu.kosa.third.dto.EmpDetailsDto;
+import edu.kosa.third.dto.EmpDto;
 import edu.kosa.third.dto.PosDto;
+import edu.kosa.third.dto.UsrDto;
 import edu.kosa.third.utils.ConnectionHelper;
 
 public class UsrInfoDao {
 
+	public void updateEmpInfo(EmpDto empdto) {
+		String update = "update emp set empname=?, empaddr=?, emptel=?, empemail=? where empno=?";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = ConnectionHelper.getConnection("oracle");
+			pstmt = conn.prepareStatement(update);
+			
+			
+			pstmt.setString(1, empdto.getEmpName());
+			pstmt.setString(2, empdto.getEmpAddr());
+			pstmt.setString(3, empdto.getEmpTel());
+			pstmt.setString(4, empdto.getEmpEmail());
+			pstmt.setInt(5, empdto.getEmpNo());
+//			pstmt.setString(6, usrdto.getUsrimage());
+			pstmt.execute();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
+		}
+	}
+
+	//관리자 직원 정보 조회
+	public int managerEmp(String usrId) {
+		String select = "select role from emp where usrId = ?";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = ConnectionHelper.getConnection("oracle");
+			pstmt = conn.prepareStatement(select);
+			pstmt.setString(1, usrId);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				return rs.getInt("role");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(rs);
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
+		}
+		return 0;
+	}
+
 	// 소비자 개인정보 조회
-	public CustomerDto customerInfoAll() {
-		String sql = "select * from customer where usrid=?";
+	public CustomerDto customerInfoAll(HttpServletRequest request) {
+		String sql = "select * from customer where customerno=?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -25,7 +78,13 @@ public class UsrInfoDao {
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, "zxczxc");
+
+			HttpSession session = request.getSession();
+			CustomerDto custdto = new CustomerDto();
+			custdto = (CustomerDto) session.getAttribute("login");
+
+			pstmt.setString(1, custdto.getCustomerNo());
+
 			rs = pstmt.executeQuery();
 			customdto = new CustomerDto();
 
@@ -51,10 +110,10 @@ public class UsrInfoDao {
 	}
 
 	// 직원 - 직원 개인 정보 상세조회
-	public EmpDetailsDto detailEmpInfo() {
-		String sql = "select e.empno, e.usrid, e.empname, empbirth, e.empemail, e.empstatus,"
-				+ "  e.emptel, e.empgender, e.empaddr, e.hiredate, " + " e.annualleave, d.deptname, p.posname"
-				+ "				 from emp e, pos p, dept d where e.deptNo = d.deptNo and e.posNo = p.posNo and usrId = ?";
+	public EmpDetailsDto detailEmpInfo(HttpServletRequest request) {
+		String sql = "select e.empno, e.usrid, e.empname, e.empbirth, e.empemail, e.empstatus,"
+				+ " e.emptel, e.empgender, e.empaddr, e.hiredate, e.annualleave, d.deptname, p.posname, e.role "//u.usrimage
+				+ " from emp e, pos p, dept d where e.deptNo = d.deptNo and e.posNo = p.posNo and e.empNo = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -63,13 +122,19 @@ public class UsrInfoDao {
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, "asdsaad2114");// 나중에 로그인 기능 연동 후 usrId 로 바꿀것
+
+			HttpSession session = request.getSession();
+			EmpDto empdto = new EmpDto();
+			empdto = (EmpDto) session.getAttribute("login");
+
+			pstmt.setInt(1, empdto.getEmpNo());
 			rs = pstmt.executeQuery();
 
 			EmpDto emp = new EmpDto();
 			PosDto pos = new PosDto();
 			DeptDto dept = new DeptDto();
-
+			UsrDto usr = new UsrDto();
+			
 			while (rs.next()) {
 
 				emp.setEmpNo(rs.getInt(1));
@@ -85,7 +150,10 @@ public class UsrInfoDao {
 				emp.setAnnualLeave(rs.getInt(11));
 				dept.setDeptName(rs.getString(12));
 				pos.setPosName(rs.getString(13));
-				dto = new EmpDetailsDto(emp, pos, dept);
+				emp.setRole(rs.getBoolean(14));
+//				usr.setUsrimage(rs.getString(15));
+				
+				dto = new EmpDetailsDto(emp, pos, dept, usr);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

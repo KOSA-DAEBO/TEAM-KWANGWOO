@@ -4,56 +4,62 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import edu.kosa.third.dto.DeptDto;
 import edu.kosa.third.utils.ConnectionHelper;
 
 public class DeptDao {
 
-	public DeptDto SelectDept() {
+	public List<DeptDto> deptAll(){
+		String select = "select * from dept";
+		List <DeptDto> list = null;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String select = "select * from dept";
-		DeptDto deptdto = new DeptDto();
 		try {
+			list = new ArrayList<>();
 			conn = ConnectionHelper.getConnection("oracle");
 			pstmt = conn.prepareStatement(select);
 			rs = pstmt.executeQuery();
-			
-			deptdto = new DeptDto();
-			
 			while(rs.next()) {
-			deptdto.setDeptNo(rs.getInt(1));
-			deptdto.setDeptName(rs.getString(2));
+				DeptDto deptdto = new DeptDto();
+				
+				deptdto.setDeptNo(rs.getInt(1));
+				deptdto.setDeptName(rs.getString(2));
+				
+				list.add(deptdto);
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
-			
+			ConnectionHelper.close(rs);
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
 		}
-		return deptdto;
+		return list;
 	}
-	
 	// 부서추가
 	public boolean insertDept(DeptDto deptDto) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String insert = "insert into dept(deptno, deptname) values(?,?)";
+		boolean result = false;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			pstmt = conn.prepareStatement(insert);
 			pstmt.setInt(1, deptDto.getDeptNo());
 			pstmt.setString(2, deptDto.getDeptName());
-			
-			pstmt.execute(); 
+			pstmt.execute();
+			result = true;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			ConnectionHelper.close(pstmt);
 			ConnectionHelper.close(conn);
 		}
-		return true;
+		return result;
 	}
 
 	// 부서변경
@@ -64,11 +70,9 @@ public class DeptDao {
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			pstmt = conn.prepareStatement(update);
-			pstmt.setInt(1,Integer.parseInt("deptNo"));
+			pstmt.setInt(1, Integer.parseInt("deptNo"));
 			pstmt.setString(2, "deptName");
 			pstmt.setString(3, "deptName");
-			System.out.println("dao No"+deptDto.getDeptName());
-			System.out.println("dao Name"+deptDto.getDeptNo());
 			pstmt.execute();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -86,8 +90,8 @@ public class DeptDao {
 		conn = ConnectionHelper.getConnection("oracle");
 		try {
 			pstmt = conn.prepareStatement(delete);
-			pstmt.setString(2, deptDto.getDeptName());
 			pstmt.setInt(1, deptDto.getDeptNo());
+			pstmt.setString(2, deptDto.getDeptName());
 
 			pstmt.execute();
 		} catch (SQLException e) {

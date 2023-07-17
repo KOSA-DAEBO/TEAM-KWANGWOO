@@ -14,8 +14,7 @@
 		<table align="center">
 			<tr>
 				<c:forEach items="${empList}" var="emplist" varStatus="status">
-					<!-- If the count is a multiple of 5 and not the first index, close the current row and start a new row -->
-					<c:if test="${status.count % 6 == 0 && status.count != 1}">
+				 <c:if test="${status.count % 5 == 0}">
 			</tr>
 			<tr>
 				</c:if>

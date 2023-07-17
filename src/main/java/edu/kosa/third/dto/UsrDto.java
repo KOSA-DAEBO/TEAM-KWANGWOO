@@ -5,7 +5,10 @@ public class UsrDto {
 	private String pwd;
 	private String salt;
 	private String status;
-
+	private String usrimage;
+	private String usrthumbnail;
+	
+	
 	public UsrDto(String usrId, String pwd, String salt, String status) {
 		this.usrId = usrId;
 		this.pwd = pwd;
@@ -15,6 +18,23 @@ public class UsrDto {
 
 	public UsrDto() {
 
+	}
+
+	
+	public String getUsrimage() {
+		return usrimage;
+	}
+
+	public void setUsrimage(String usrimage) {
+		this.usrimage = usrimage;
+	}
+
+	public String getUsrthumbnail() {
+		return usrthumbnail;
+	}
+
+	public void setUsrthumbnail(String usrthumbnail) {
+		this.usrthumbnail = usrthumbnail;
 	}
 
 	public String getUsrId() {

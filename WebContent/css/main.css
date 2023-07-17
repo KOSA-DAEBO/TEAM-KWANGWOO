@@ -177,3 +177,18 @@ table.type02 input.lbutton{font-size:17px}
 #idChecklist{padding-left:30px}
 #idCheckTitle{size:20px;text-indent:0;margin:20px}
 #idCheckPage{overflow-x:hidden}
+
+/*usrDetail*/
+#usrcontainer{border:1px solid blue; display: grid; place-items: center; width: 100%; height: 700px;}
+#usrcontainer #usrinfo{ width:670px; margin-top:50px; height: 390px; border:2px solid #005b23;}
+#usrcontainer #usrinfo #usrimage{width:200px; height:200px; border: 2px green solid;}
+#usrcontainer #usrinfo .usrinfocategory{text-align:center; vertical-align:middle; width:100px; height: 30px; border:1px solid #005B23}
+#usrcontainer #usrinfo .usrinfocontent{text-align:center; vertical-align:middle; width:330px; height:30px; border:1px solid #005B23; display:inline-block; font-weight:600;}
+#usrcontainer #usrinfo #usrbtn{border-radius: 20px; border-style: solid; border-color:#005b23; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #005b23; font-size: 20px; width: 150px; height: 40px; margin: 15px 50px;}
+#usrupdate, #usrreset, #deleteusr{border-radius: 20px; border-style: solid; border-color:#005b23; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #005b23; font-size: 20px; width: 150px; height: 40px; margin: 15px 50px;}
+#usrupdate:hover , #usrreset:hover , #deleteusr:hover{transform:scale(1.2)}
+
+
+
+
+

@@ -27,12 +27,12 @@ public class AddDeptServiceAction implements Action {
 				
 			boolean result = deptdao.insertDept(new DeptDto(deptNo, deptName));
 
-			if (result == false) {//이름은 null 이 아니다.
+			if (result == false) {
 				response.setContentType("text/html;charset=UTF-8");
 				PrintWriter out;
 				try {
 					out = response.getWriter();
-					out.println("<script>alert('부서를 추가할 수 없습니다.'); window.history.back();</script>");
+					out.println("<script>alert('부서가 추가 되지 않았습니다.'); window.history.back();</script>");
 					out.flush();
 					out.close();
 				} catch (IOException e) {
@@ -40,7 +40,7 @@ public class AddDeptServiceAction implements Action {
 				}
 				return null;
 			} else {
-				forward.setRedirect(true); // 리다이렉트 방식으로 설정
+				forward.setRedirect(true);
 				forward.setPath("deptMenu.do");
 				return forward;
 			}

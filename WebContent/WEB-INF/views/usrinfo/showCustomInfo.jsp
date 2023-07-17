@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원개인정보 페이지</title>
+<title>Team KwangWoo</title>
 </head>
 <body>
 	<div align="center">

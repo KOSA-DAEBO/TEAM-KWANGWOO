@@ -51,5 +51,4 @@ public class LeaveModifyServiceAction implements Action {
 		request.setAttribute("list", list);
 		return forward;
 	}
-
 }

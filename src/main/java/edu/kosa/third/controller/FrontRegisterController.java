@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import edu.kosa.third.action.Action;
 import edu.kosa.third.action.ActionForward;
-import edu.kosa.third.dao.DeptDao;
-import edu.kosa.third.dto.DeptDto;
 import edu.kosa.third.service.*;
 
 @WebServlet("*.do")
@@ -167,7 +165,11 @@ public class FrontRegisterController extends HttpServlet {
 		} else if (urlcommand.equals("/deleteDept.do")) {
 			action = new DeleteDeptServiceAction();
 			forward = action.execute(request, response);
-		} 
+			
+		} else if(urlcommand.equals("/updateUsrInfo.do")) {
+			action = new UpdateEmpInfo();
+			forward = action.execute(request, response);
+		}
 
 		if (forward != null) {
 			if (forward.isRedirect()) { // true 페이지 재 요청 (location.href="페이지"

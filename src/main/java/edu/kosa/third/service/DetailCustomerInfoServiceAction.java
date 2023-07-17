@@ -14,7 +14,7 @@ public class DetailCustomerInfoServiceAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		UsrInfoDao dao = new UsrInfoDao();
 		
-		CustomerDto customInfo = dao.customerInfoAll();
+		CustomerDto customInfo = dao.customerInfoAll(request);
 		request.setAttribute("customInfo", customInfo);
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);

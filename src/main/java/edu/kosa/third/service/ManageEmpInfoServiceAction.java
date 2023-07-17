@@ -15,7 +15,7 @@ public class ManageEmpInfoServiceAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		UsrInfoDao dao = new UsrInfoDao();
 
-		EmpDetailsDto empDto = dao.detailEmpInfo();
+		EmpDetailsDto empDto = dao.detailEmpInfo(request);
 		
 		request.setAttribute("empInfo", empDto);
 		ActionForward forward = new ActionForward();
