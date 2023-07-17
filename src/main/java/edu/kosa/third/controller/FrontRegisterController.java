@@ -142,7 +142,7 @@ public class FrontRegisterController extends HttpServlet {
 			action = new LogoutServiceAction();
 			forward = action.execute(request, response);
 
-		} else if(urlcommand.equals("/customDetail.do")) {
+		} else if (urlcommand.equals("/customDetail.do")) {
 			action = new DetailCustomerInfoServiceAction();
 			forward = action.execute(request, response);
 
@@ -159,7 +159,7 @@ public class FrontRegisterController extends HttpServlet {
 			action = new CommuteEmpChkServiceAction();
 			forward = action.execute(request, response);
 
-		} else if(urlcommand.equals("/deptMenu.do")) {
+		} else if (urlcommand.equals("/deptMenu.do")) {
 			forward = new ActionForward();
 			forward.setPath("/WEB-INF/views/deptMenu/deptMenu.jsp");
 
@@ -196,7 +196,6 @@ public class FrontRegisterController extends HttpServlet {
 			forward = action.execute(request, response);
 			
 		}
-		
 		
 		if (forward != null) {
 			if (forward.isRedirect()) { // true 페이지 재 요청 (location.href="페이지"
