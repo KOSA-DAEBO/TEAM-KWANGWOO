@@ -1,13 +1,14 @@
 window.addEventListener("DOMContentLoaded", function() {
-	// 페이지 로드 시 초기화 작업
-	const listSize = parseInt(document.getElementById("listSize").value);
-	const itemsPerPage = 8; // 페이지당 아이템 수
+	let itemsPerPage = 8; // 페이지당 아이템 수
 	let currentPage = 1; // 현재 페이지
+
+	// 전체 페이지 수 계산
+	let totalItems = document.querySelectorAll(".card_list > div").length;
+	let totalPages = Math.ceil(totalItems / itemsPerPage);
 
 	// 페이지 업데이트 함수
 	function updatePage() {
-		const cards = document.querySelectorAll(".card_list > div");
-		const totalPages = Math.ceil(listSize / itemsPerPage); // 전체 페이지 수
+		let cards = document.querySelectorAll(".card_list > div");
 
 		// 각 아이템마다 보여줄지 여부 결정
 		cards.forEach(function(card, index) {
@@ -19,7 +20,7 @@ window.addEventListener("DOMContentLoaded", function() {
 		});
 
 		// 이전 버튼 활성화/비활성화 상태 업데이트
-		const prevButton = document.getElementById("prevButton");
+		let prevButton = document.getElementById("prevButton");
 		if (currentPage === 1) {
 			prevButton.disabled = true; // 첫 페이지일 경우 비활성화
 		} else {
@@ -27,7 +28,7 @@ window.addEventListener("DOMContentLoaded", function() {
 		}
 
 		// 다음 버튼 활성화/비활성화 상태 업데이트
-		const nextButton = document.getElementById("nextButton");
+		let nextButton = document.getElementById("nextButton");
 		if (currentPage === totalPages) {
 			nextButton.disabled = true; // 마지막 페이지일 경우 비활성화
 		} else {
@@ -45,7 +46,6 @@ window.addEventListener("DOMContentLoaded", function() {
 
 	// 다음 버튼 클릭 이벤트 처리
 	document.getElementById("nextButton").addEventListener("click", function() {
-		const totalPages = Math.ceil(listSize / itemsPerPage); // 전체 페이지 수
 		if (currentPage < totalPages) {
 			currentPage++; // 다음 페이지로 이동
 			updatePage(); // 페이지 업데이트
@@ -102,4 +102,11 @@ function validateForm() {
 		return false;
 	}
 	return true;
+}
+
+function confirmDelete(productNo) {
+	const confirmMessage = `해당 상품을 정말 삭제하시겠습니까?`;
+	if (confirm(confirmMessage)) {
+		location.href = `deleteProduct.do?productNo=${productNo}`;
+	}
 }

@@ -25,7 +25,7 @@
 			</div>
 			<div>
 				<input class="updateBtn" type="button" value="수정하기">
-				<input class="deleteBtn" type="button" value="삭제하기">
+				<input class="deleteBtn" type="button" value="삭제하기" onclick="confirmDelete(${dto.pDto.productNo})">
 			</div>
 		</div>
 	</div>

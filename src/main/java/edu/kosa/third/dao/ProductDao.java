@@ -152,7 +152,6 @@ public class ProductDao {
 		Connection conn = ConnectionHelper.getConnection("oracle");
 		PreparedStatement pstmt = null;
 		
-		System.out.println(productNo);
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
@@ -162,6 +161,32 @@ public class ProductDao {
 				pstmt.executeUpdate();
 				pstmt.clearParameters();
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
+		}
+	}
+
+	public void deleteProduct(int productNo) {
+		String sql;
+		
+		Connection conn = ConnectionHelper.getConnection("oracle");
+		PreparedStatement pstmt = null;
+		
+		try {
+			sql = "DELETE FROM PIMAPPING WHERE PRODUCTNO = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, productNo);
+			pstmt.executeUpdate();
+			pstmt.clearParameters();
+			
+			sql = "DELETE FROM PRODUCT WHERE PRODUCTNO = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, productNo);
+			pstmt.executeUpdate();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
