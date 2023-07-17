@@ -16,18 +16,13 @@ public class CommuteEmpServiceAction  implements Action {
         ActionForward forward = new ActionForward();
         forward.setRedirect(false);
 
-        if(session == null || session.getAttribute("login")==null){ //세션 만료시 로그인 페이지로 이동
-            forward.setPath("loginEmp.do");
-            return forward;
-        }else{
-            EmpDto dto = (EmpDto)session.getAttribute("login");
-            CommuteDao dao = new CommuteDao();
-            String[] time = dao.commuteTimeChk(dto);
+        EmpDto dto = (EmpDto)session.getAttribute("login");
+        CommuteDao dao = new CommuteDao();
+        String[] time = dao.commuteTimeChk(dto);
 
-            session.setAttribute("att",time);
+        session.setAttribute("att",time);
 
-            forward.setPath("/WEB-INF/views/commute/commuteEmpChk.jsp");
-            return forward;
-        }
+        forward.setPath("/WEB-INF/views/commute/commuteEmpChk.jsp");
+        return forward;
     }
 }
