@@ -20,27 +20,28 @@ password="tiger"   // 연결한 db의 비밀번호
  url="jdbc:oracle:thin:@192.168.0.218:1521:XE"
  name="jdbc/oracle"
  -->
-   <!--<Resource maxWait="-1"
-           maxIdle="20"
-           maxTotal="20"
-           maxActive="20"
-           password="oracle" 
-           username="jin" 
-           url="jdbc:oracle:thin:@192.168.0.50:1521:orcl"
-           driverClassName="oracle.jdbc.OracleDriver"
+
+	<!--<Resource maxWait="-1"
+			  maxIdle="20"
+			  maxTotal="20"
+			  maxActive="20"
+			  password="oracle" 
+			  username="jin" 
+			  url="jdbc:oracle:thin:@192.168.0.50:1521:orcl"
+			  driverClassName="oracle.jdbc.OracleDriver"
               type="javax.sql.DataSource"
-           auth="Container"
+			  auth="Container"
               name="jdbc/oracle" />-->
 <!--DBCP 2.x에 맞게 속성명 변경-->
 
-   <Resource maxWaitMillis="-1"
-           maxIdle="20"
-           maxTotal="20"
-           password="oracle"
-           username="jin"
-           url="jdbc:oracle:thin:@192.168.0.50:1521:orcl"
-           driverClassName="oracle.jdbc.OracleDriver"
-           type="javax.sql.DataSource"
-           auth="Container"
-           name="jdbc/oracle" />
+	<Resource maxWaitMillis="-1"
+			  maxIdle="20"
+			  maxTotal="20"
+			  password="oracle"
+			  username="jin"
+			  url="jdbc:oracle:thin:@192.168.0.50:1521:orcl"
+			  driverClassName="oracle.jdbc.OracleDriver"
+			  type="javax.sql.DataSource"
+			  auth="Container"
+			  name="jdbc/oracle" />
 </Context>

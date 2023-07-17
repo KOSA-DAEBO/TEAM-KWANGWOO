@@ -18,7 +18,7 @@ import edu.kosa.third.dto.UsrDto;
 import edu.kosa.third.utils.ConnectionHelper;
 
 public class UsrInfoDao {
-
+	
 	public void updateEmpInfo(EmpDto empdto) {
 		String update = "update emp set empname=?, empaddr=?, emptel=?, empemail=? where empno=?";
 		Connection conn = null;

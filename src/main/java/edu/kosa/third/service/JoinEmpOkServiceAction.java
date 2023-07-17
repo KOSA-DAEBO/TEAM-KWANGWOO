@@ -53,7 +53,7 @@ public class JoinEmpOkServiceAction implements Action {
 
                 JoinDao dao = new JoinDao();
                 dao.joinEmpChk(new UsrDto(id, pwd, salt, ""),
-                        new EmpDto(0,0,5,5,birth,now,name,email,tel,addr,false,false,gender));
+                        new EmpDto(0,0,5,5,birth,now,id,name,email,tel,addr,gender,false,false));
                 break;
             default:
                 break;
