@@ -1,6 +1,6 @@
 package edu.kosa.third.service;
 
-import java.io.File;
+import java.util.Arrays;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +11,8 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import edu.kosa.third.action.Action;
 import edu.kosa.third.action.ActionForward;
+import edu.kosa.third.dao.ProductDao;
+import edu.kosa.third.dto.ProductDto;
 import edu.kosa.third.utils.Thumbnail;
 
 public class addProductServiceAction implements Action {
@@ -34,18 +36,26 @@ public class addProductServiceAction implements Action {
 
         	MultipartRequest multi = new MultipartRequest(request, realPath, maxSize, encType, new DefaultFileRenamePolicy());
         	
+        	String fileName = multi.getFilesystemName("file");
         	String originalFileName = multi.getOriginalFileName("file");
         	int index = originalFileName.indexOf(".");
-        	String fileName = originalFileName.substring(0, index);
         	String fileExt = originalFileName.substring(index + 1);
-        	
-        	File file = new File(originalFileName);
         	
         	String original = realPath + "\\" + fileName;
         	String thumbnail = realPath2 + "\\" + fileName;
         	
         	Thumbnail.createImage(original, thumbnail, fileExt);
         	
+        	String productName = multi.getParameter("productName");
+        	String[] values = multi.getParameterValues("addSelectContent");
+        	String saveImage = savePath + "/" + fileName;
+        	String saveThumbImage = thumbnailPath + "/" + fileName;
+        	
+        	ProductDao dao = new ProductDao();
+        	
+        	int productNo = dao.insertProduct(new ProductDto(productName, saveImage, saveThumbImage));
+        	
+        	dao.insertPIMapping(productNo, values);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -14,6 +14,12 @@ public class ProductDto {
 		this.thumbnailPath = thumbnailPath;
 	}
 
+	public ProductDto(String productName, String saveImage, String saveThumbImage) {
+		this.productName = productName;
+		this.imagePath = saveImage;
+		this.thumbnailPath = saveThumbImage;
+	}
+
 	public String getThumbnailPath() {
 		return thumbnailPath;
 	}

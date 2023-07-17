@@ -3,6 +3,7 @@ package edu.kosa.third.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -109,6 +110,63 @@ public class ProductDao {
 		
 		return dto;
 	}
-	
-	
+
+	public int insertProduct(ProductDto productDto) {
+		String sql;
+		Connection conn = ConnectionHelper.getConnection("oracle");
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int productNo = -1;
+		
+		try {
+			sql = "INSERT INTO PRODUCT(PRODUCTNAME, IMAGEPATH, THUMBNAILPATH) VALUES (?, ?, ?)";
+			pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			pstmt.setString(1, productDto.getProductName());
+			pstmt.setString(2, productDto.getImagePath());
+			pstmt.setString(3, productDto.getThumbnailPath());
+			pstmt.executeUpdate();
+			
+			pstmt.clearParameters();
+			
+			sql = "SELECT MAX(productNo) FROM PRODUCT";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				productNo = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(rs);
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
+		}
+		
+		return productNo;
+	}
+
+	public void insertPIMapping(int productNo, String[] values) {
+		String sql = "INSERT INTO PIMAPPING(PRODUCTNO, ITEMNO) VALUES (?, ?)";
+		
+		Connection conn = ConnectionHelper.getConnection("oracle");
+		PreparedStatement pstmt = null;
+		
+		System.out.println(productNo);
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			for (int i = 0; i < values.length; i++) {
+				pstmt.setInt(1, productNo);
+				pstmt.setInt(2, Integer.parseInt(values[i]));
+				pstmt.executeUpdate();
+				pstmt.clearParameters();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
+		}
+	}
 }

@@ -22,12 +22,12 @@
 				<div class="addItem">
 					<div class="insertProductName">
 						<div class="addInputName">제품명</div>
-						<input type="text" class="productName" placeholder="제품명을 입력해주세요.">
+						<input type="text" class="productName" placeholder="제품명을 입력해주세요." id="productName" name="productName">
 					</div>
 					<div class="addSelect">
 						<c:forEach var="dtoList" items="${dtoList}">
 							<div class="addSelectName">${dtoList.itemClsName}</div>
-							<select class="addSelectContent">
+							<select class="addSelectContent" id="addSelectContent" name="addSelectContent">
 									<option value="">--선택하세요(필수항목)</option>
 								<c:forEach var="list" items="${list}">
 									<c:if test="${list.cDto.itemClsName.equals(dtoList.itemClsName)}">
