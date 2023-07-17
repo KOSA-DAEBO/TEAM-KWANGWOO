@@ -141,19 +141,32 @@ public class FrontRegisterController extends HttpServlet {
 		} else if (urlcommand.equals("/logout.do")) {
 			action = new LogoutServiceAction();
 			forward = action.execute(request, response);
-			
+
 		} else if(urlcommand.equals("/customDetail.do")) {
 			action = new DetailCustomerInfoServiceAction();
+			forward = action.execute(request, response);
+
+		} else if (urlcommand.equals("/commuteEmp.do")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("/WEB-INF/views/commute/commuteEmp.jsp");
+
+		} else if (urlcommand.equals("/commuteEmpChk.do")) {
+			action = new CommuteEmpServiceAction();
+			forward = action.execute(request, response);
+
+		} else if (urlcommand.equals("/commuteEmpChkOk.do")) {
+			action = new CommuteEmpChkServiceAction();
 			forward = action.execute(request, response);
 
 		} else if(urlcommand.equals("/deptMenu.do")) {
 			forward = new ActionForward();
 			forward.setPath("/WEB-INF/views/deptMenu/deptMenu.jsp");
-	
+
 		} else if (urlcommand.equals("/manageEmpInfo.do")) {
 			action = new ManageEmpInfoServiceAction();
 			forward = action.execute(request, response);
-			
+
 		} else if (urlcommand.equals("/empList.do")) {
 			action = new TotalEmpInfoServiceAction();
 			forward = action.execute(request, response);

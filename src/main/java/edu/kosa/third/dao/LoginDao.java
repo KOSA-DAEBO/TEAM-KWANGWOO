@@ -73,13 +73,14 @@ public class LoginDao {
                         rs.getInt("POSNO"),
                         rs.getDate("EMPBIRTH"),
                         rs.getDate("HIREDATE"),
+                        rs.getString("USRID"),
                         rs.getString("EMPNAME"),
                         rs.getString("EMPEMAIL"),
                         rs.getString("EMPTEL"),
                         rs.getString("EMPADDR"),
+                        rs.getString("EMPGENDER"),
                         rs.getBoolean("EMPSTATUS"),
-                        rs.getBoolean("ROLE"),
-                        rs.getString("EMPGENDER")
+                        rs.getBoolean("ROLE")
                 );
 
             } catch (SQLException e) {
