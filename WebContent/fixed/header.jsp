@@ -21,9 +21,12 @@
                   alt="광우" class="logo" /></a>
             </h1>
             <div>
-               <span class="material-symbols-outlined" OnClick="location.href='loginCustomer.do'">login</span>
-               <span class="material-symbols-outlined" OnClick="location.href='logout.do'">logout</span>
-               <span class="material-symbols-outlined" OnClick="location.href='joinCustomer.do'">person_add</span>
+               <span class="material-symbols-outlined">login</span>
+                <a class="iconText" href="loginCustomer.do"> 로그인</a>
+               <span class="material-symbols-outlined">logout</span>
+                <a class="iconText" href="logout.do"> 로그아웃</a>
+               <span class="material-symbols-outlined">person_add</span>
+                <a class="iconText" href="joinCustomer.do"> 회원가입</a>
             </div>
          </div>
          <!-- //head_top -->
@@ -36,7 +39,7 @@
                      <li class=""><a href="leaveList.do" title="휴가">휴가</a></li>
                      <li class=""><a href="#" title="급여">급여</a></li>
                      <li class=""><a href="#" title="출퇴근">출퇴근</a></li>
-                     <li class=""><a href="itemList.do" title="제품관리">제품관리</a></li>
+                     <li class=""><a href="productList.do" title="제품관리">제품관리</a></li>
                   </ul>
                </div>
         <div class="local_menu">
@@ -64,15 +67,17 @@
             </div>
             <div class="lm group4">
                <ul>
-                  <li><a href="#">출퇴근관리</a></li>
-                  <li><a href="#">출퇴근확인</a></li>
-                  <li><a href="#">등등등</a></li>
+                   <li><a href="commuteEmpChk.do">출퇴근체크</a></li>
+                   <li><a href="#">출퇴근확인</a></li>
+                   <c:if test="${login.role}"> <%--관리자 로그인--%>
+                       <li><a href="#">출퇴근관리</a></li>
+                   </c:if>
                </ul>
             </div>
             <div class="lm group5">
                <ul>
                   <li><a href="productList.do">제품관리</a></li>
-                  <li><a href="#">제품추가</a></li>
+                  <li><a href="goAddProduct.do">제품추가</a></li>
                   <li><a href="itemList.do">상품관리</a></li>
                   <li><a href="addItem.do">상품추가</a></li>
                   <li><a href="itemList.do?listNo=3">상품발주</a></li>

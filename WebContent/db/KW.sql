@@ -292,3 +292,28 @@ ALTER TABLE PIMapping ADD CONSTRAINT FK_Item_TO_PIMapping_1 FOREIGN KEY (
 REFERENCES Item (
 	itemNo
 );
+
+
+--프로시저 생성
+CREATE OR REPLACE PROCEDURE update_emp_status IS
+BEGIN
+    UPDATE emp
+    SET empstatus = 0;
+    COMMIT;
+END;
+/
+
+--스케줄러 생성
+BEGIN
+    DBMS_SCHEDULER.CREATE_JOB (
+            job_name        => 'UPDATE_EMP_STATUS_JOB',
+            job_type        => 'STORED_PROCEDURE',
+            job_action      => 'update_emp_status',
+            start_date      => SYSTIMESTAMP,
+            repeat_interval => 'FREQ=DAILY; BYHOUR=0;',
+            end_date        => NULL,
+            enabled         => TRUE,
+            comments        => '05시마다 출근 여부 초기화'
+        );
+END;
+/
