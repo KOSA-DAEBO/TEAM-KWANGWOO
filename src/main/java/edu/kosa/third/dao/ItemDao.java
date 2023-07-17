@@ -34,6 +34,7 @@ public class ItemDao {
 				dto.setPrice(rs.getInt("price"));
 				dto.setStock(rs.getInt("stock"));
 				dto.setItemClsNo(rs.getInt("itemclsno"));
+				cDto.setItemClsNo(rs.getInt("itemClsNo"));
 				cDto.setItemClsName(rs.getString("itemClsName"));
 				
 				ItemsDto dtos = new ItemsDto(dto, cDto);

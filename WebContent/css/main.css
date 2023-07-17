@@ -10,13 +10,13 @@
 .head_top .iconText{float: right; margin: 13px 0 0 15px; text-decoration: none; color:black;}
 
 .head_bottom { height:43px; background:#005b23; clear:both;}
-.head_bottom_in {width:1100px; margin:0 auto;overflow:hidden;}
-.head_bottom_in .head_menu{width:960px;overflow:hidden;}
+.head_bottom_in {width:1100px; margin:0 auto; overflow:hidden;}
+.head_bottom_in .head_menu{width:960px; overflow:hidden;}
 .head_menu{float:left;}
 .head_menu:hover + .local_menu {display: block;}
 .head_menu li {float:left;}
 .head_menu li:first-child a{width:191px;}
-.head_menu li a {display:block; height:43px;line-height:50px; color:#fff;font-size:20px; width:191px;text-align:center; text-decoration: none;font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif;}
+.head_menu li a {display:block; height:43px; line-height:50px; color:#fff;font-size:20px; width:191px;text-align:center; text-decoration: none;font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif;}
 .head_menu li.on a {background:#00471b;}
 .head_menu li a:hover {background:#00471b;} 
 
@@ -97,6 +97,8 @@
 .addItemListBtn:hover, .buy_itemBtn:hover {background-color: #005b23; color: #ffffff;}
 
 /*product*/
+.goAddProduct {position: fixed; right: 10px; top: 150px; width: 70px; height: 70px;  border: 1px solid #005b23; background-color: #005b23; color: #ffffff; border-radius: 70%; cursor: pointer;}
+.goAddProduct a {display:flex; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; margin-top: 25px; margin-left: 6px;}
 .product_content {display:grid; grid-template-rows: 90px 1fr; gap:10px; width: 70%; height: 580px; margin: 10px auto; padding: 30px 0px;}
 .product_content .name {text-align:center; color:#005b23; font-size:40px; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif;}
 .product_content .card_form {display: grid; grid-template-rows: 1fr 100px;}
@@ -109,6 +111,37 @@
 .product_content .pagination button {border-radius: 20px; border-style: solid; border-color:#005b23; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #005b23; font-size: 20px; width: 150px; height: 40px; margin: 15px 50px;}
 .product_content .pagination button:hover {background-color: #005b23; color: #ffffff;}
 .product_content .pagination button:disabled {opacity: 0.5; cursor: not-allowed;}
+
+/*detail_product*/
+.productDetail {display: grid; grid-template-columns: repeat(2, 1fr); gap:10px; width: 70%; height: 580px; margin: 10px auto; padding: 30px 0px; border: 1px solid #005b23; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; font-size: 20px;}
+.productDetail .productDetailImg {width: 400px; margin: auto;}
+.productDetail .productDetailImg > img {width: 100%;}
+.productDetail .productContent {display: grid; grid-template-rows: 1fr 50px;}
+.productDetail .productContent .content {display:grid; grid-template-columns: 150px 1fr;}
+.productDetail .productContent .updateBtn {border-radius: 20px; border-style: solid; border-color:#005b23; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #005b23; font-size: 20px; width: 150px; height: 40px; margin: 0px 50px;}
+.productDetail .productContent .deleteBtn {border-radius: 20px; border-style: solid; border-color:red; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: red; font-size: 20px; width: 150px; height: 40px; margin: 0px 50px;}
+.productDetail .productContent .updateBtn:hover {background-color: #005b23; color: #ffffff;}
+.productDetail .productContent .deleteBtn:hover {background-color: red; color: #ffffff;}
+
+/*add_product*/
+.addProduct {margin: 10px auto 10px auto; width: 1000px; display: grid; justify-content: center; padding: 30px 0px; grid-template-rows: 90px 1fr;}
+.addProduct .name {text-align:center; color:#005b23; font-size:40px; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif;}
+.addProduct .addForm {display: grid; grid-template-columns: 400px 1fr; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; gap: 30px;}
+.addProduct .addForm .addImage {border: 1px solid #005b23; position: relative;}
+.addProduct .addForm .addImage .addImageLabel {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #777; font-size: 14px; pointer-events: none;}
+.addProduct .addForm .addImage .imgPreview {display: none; width: 100%;}
+.addProduct .addForm .addImage .imgPreview[src] {display: block; width: 100%;}
+.addProduct .addForm .addItem {display: grid; grid-template-rows: 50px 1fr 50px; gap: 10px;}
+.addProduct .addForm .addItem .insertProductName {display: grid; grid-template-columns: 100px 1fr; gap: 10px;}
+.addProduct .addForm .addItem .insertProductName .addInputName {margin: 16px 0px;}
+.addProduct .addForm .addItem .insertProductName input {margin: 10px 0px; padding-left: 10px;}
+.addProduct .addForm .addItem .addSelect {display: grid; grid-template-rows: repeat(8, 1fr); grid-template-columns: 100px 1fr; gap: 10px;}
+.addProduct .addForm .addItem .addSelect .addSelectName {margin: 7px 0px;}
+.addProduct .addForm .addItem .addSelect .addSelectContent {height: 30px;}
+.addProduct .addForm .addItem .addProductBtn, .addProductBtn {border-radius: 20px; border-style: solid; border-color:#005b23; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #005b23; font-size: 15px; width: 100px; height: 30px; margin: 10px 0px 10px 70px;}
+.addProduct .addForm .addItem .addProductBtn:hover, .addProductBtn:hover {background-color: #005b23; color: #ffffff;}
+
+
 
 /*addItem_modal*/
 .modal {display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.4);}

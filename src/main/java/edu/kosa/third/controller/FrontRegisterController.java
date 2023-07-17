@@ -170,8 +170,22 @@ public class FrontRegisterController extends HttpServlet {
 		} else if (urlcommand.equals("/empList.do")) {
 			action = new TotalEmpInfoServiceAction();
 			forward = action.execute(request, response);
-
+			
+		} else if (urlcommand.equals("/detailProduct.do")) {
+			action = new ProductInfoServiceAction();
+			forward = action.execute(request, response);
+			
+		} else if (urlcommand.equals("/addProduct.do")) {
+			action = new addProductServiceAction();
+			forward = action.execute(request, response);
+			
+		} else if (urlcommand.equals("/goAddProduct.do")) {
+			action = new getItemServiceAction();
+			forward = action.execute(request, response);
+			
 		}
+		
+		
 		if (forward != null) {
 			if (forward.isRedirect()) { // true 페이지 재 요청 (location.href="페이지"
 				response.sendRedirect(forward.getPath());
