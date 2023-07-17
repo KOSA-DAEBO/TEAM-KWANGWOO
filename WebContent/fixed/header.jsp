@@ -39,7 +39,7 @@
                      <li class=""><a href="leaveList.do" title="휴가">휴가</a></li>
                      <li class=""><a href="#" title="급여">급여</a></li>
                      <li class=""><a href="#" title="출퇴근">출퇴근</a></li>
-                     <li class=""><a href="itemList.do" title="제품관리">제품관리</a></li>
+                     <li class=""><a href="productList.do" title="제품관리">제품관리</a></li>
                   </ul>
                </div>
         <div class="local_menu">
@@ -77,7 +77,7 @@
             <div class="lm group5">
                <ul>
                   <li><a href="productList.do">제품관리</a></li>
-                  <li><a href="#">제품추가</a></li>
+                  <li><a href="goAddProduct.do">제품추가</a></li>
                   <li><a href="itemList.do">상품관리</a></li>
                   <li><a href="addItem.do">상품추가</a></li>
                   <li><a href="itemList.do?listNo=3">상품발주</a></li>
