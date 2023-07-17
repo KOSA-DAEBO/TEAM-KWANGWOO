@@ -35,8 +35,8 @@ public class LoginCustomerOkServiceAction implements Action {
 		}
 
 		HttpSession session = request.getSession(true);
-		session.removeAttribute("login");
-		session.setAttribute("login",dto);
+		session.removeAttribute("loginCustomer");
+		session.setAttribute("loginCustomer",dto);
 
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
