@@ -4,15 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Com KwangWoo</title>
 </head>
 <body>
-	<hr class="footer_line">
-	<footer class="footer">
-    <div class="wrapper">
-      <div class="footer_bottom">
-          <div><img alt="logo" src="./images/logo.png"> </div>
-          <div class="footer_info_bottom">
+	<hr class="custom_footer_line">
+	<footer class="custom_footer">
+    <div class="custom_wrapper">
+      <div class="custom_footer_bottom">
+          <div class="customLogo"><img alt="logo" src="./images/customLogo.jpg"> </div>
+          <div class="custom_footer_info_bottom">
             <div>
               (Team)KwangWoo 정보
             </div>
