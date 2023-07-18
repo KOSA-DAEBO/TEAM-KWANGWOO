@@ -187,6 +187,10 @@ public class FrontRegisterController extends HttpServlet {
 			action = new deleteProductServiceAction();
 			forward = action.execute(request, response);
 			
+		} else if (urlcommand.equals("/updateProduct.do")) {
+			action = new updateProductServiceAction();
+			forward = action.execute(request, response);
+			
 		}
 		
 		

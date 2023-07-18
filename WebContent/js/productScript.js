@@ -110,3 +110,30 @@ function confirmDelete(productNo) {
 		location.href = `deleteProduct.do?productNo=${productNo}`;
 	}
 }
+
+var itemNames = document.querySelectorAll(".itemNameValue");
+var itemValues = document.querySelectorAll(".itemValue");
+var nowOptions = document.querySelectorAll(".nowOption");
+
+for (var i = 0; i < nowOptions.length; i++) {
+	nowOptions[i].textContent = itemNames[i].textContent + "(현재상태)";
+	nowOptions[i].setAttribute("value", itemValues[i].textContent);
+}
+
+// 수정하기 버튼 요소 가져오기
+const updateBtn = document.querySelector(".updateBtn");
+
+// productDetail 요소 가져오기
+const productDetail = document.querySelector(".productDetail");
+
+// updateProduct 요소 가져오기
+const updateProduct = document.querySelector(".updateProduct");
+
+// 수정하기 버튼 클릭 이벤트 처리
+updateBtn.addEventListener("click", function() {
+	// productDetail 보이지 않도록 설정
+	productDetail.style.display = "none";
+
+	// updateProduct 보이도록 설정
+	updateProduct.style.display = "block";
+});

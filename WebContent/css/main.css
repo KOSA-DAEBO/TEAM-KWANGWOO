@@ -141,7 +141,22 @@
 .addProduct .addForm .addItem .addProductBtn, .addProductBtn {border-radius: 20px; border-style: solid; border-color:#005b23; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #005b23; font-size: 15px; width: 100px; height: 30px; margin: 10px 0px 10px 70px;}
 .addProduct .addForm .addItem .addProductBtn:hover, .addProductBtn:hover {background-color: #005b23; color: #ffffff;}
 
-
+/*update_product*/
+.updateProduct {display:none; margin: 10px auto 10px auto; width: 1000px; justify-content: center; padding: 30px 0px; height: 540px;}
+.updateProduct .updateForm {display: grid; grid-template-columns: 400px 1fr; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; gap: 30px; height: 450px;}
+.updateProduct .updateForm .updateImage {border: 1px solid #005b23; position: relative;}
+.updateProduct .updateForm .updateImage .addImageLabel {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #777; font-size: 14px; pointer-events: none;}
+.updateProduct .updateForm .updateImage .imgPreview {display: none; width: 100%;}
+.updateProduct .updateForm .updateImage .imgPreview[src] {display: block; width: 100%;}
+.updateProduct .updateForm .updateItem {display: grid; grid-template-rows: 50px 1fr 50px; gap: 10px;}
+.updateProduct .updateForm .updateItem .updateProductName {display: grid; grid-template-columns: 100px 1fr; gap: 10px;}
+.updateProduct .updateForm .updateItem .updateProductName .updateInputName {margin: 16px 0px;}
+.updateProduct .updateForm .updateItem .updateProductName input {margin: 10px 0px; padding-left: 10px;}
+.updateProduct .updateForm .updateItem .updateSelect {display: grid; grid-template-rows: repeat(8, 1fr); grid-template-columns: 100px 1fr; gap: 10px;}
+.updateProduct .updateForm .updateItem .updateSelect .updateSelectName {margin: 7px 0px;}
+.updateProduct .updateForm .updateItem .updateSelect .updateSelectContent {height: 30px;}
+.updateProduct .updateForm .updateItem .updateProductBtn, .updateProductBtn {border-radius: 20px; border-style: solid; border-color:#005b23; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #005b23; font-size: 15px; width: 100px; height: 30px; margin: 10px 0px 10px 70px;}
+.updateProduct .updateForm .updateItem .updateProductBtn:hover, .updateProductBtn:hover {background-color: #005b23; color: #ffffff;}
 
 /*addItem_modal*/
 .modal {display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.4);}
