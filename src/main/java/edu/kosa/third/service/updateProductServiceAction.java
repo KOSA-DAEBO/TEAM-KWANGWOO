@@ -62,16 +62,16 @@ public class updateProductServiceAction implements Action {
         	String beforeImg = pDto.getImagePath().substring(9);
         	String beforeThumbnail = pDto.getThumbnailPath().substring(12);
         	
-        	String deleteImg = savePath + "/" + beforeImg;
-        	String deleteThumbnail = thumbnailPath + "/" + beforeThumbnail;
+        	String deleteImg = realPath + "\\" + beforeImg;
+        	String deleteThumbnail = realPath2 + "\\" + beforeThumbnail;
         	
         	File deleteImage = new File(deleteImg);
         	File deleteThumbImg = new File(deleteThumbnail);
         	
-        	if(!deleteImage.exists() && deleteImage.isFile()) {
+        	if(deleteImage.exists() && deleteImage.isFile()) {
         		deleteImage.delete();
         	}
-        	if(!deleteThumbImg.exists() && deleteThumbImg.isFile()) {
+        	if(deleteThumbImg.exists() && deleteThumbImg.isFile()) {
         		deleteThumbImg.delete();
         	}
         	
