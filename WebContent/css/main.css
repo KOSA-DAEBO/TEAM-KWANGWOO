@@ -147,6 +147,15 @@
 .productDetail .productContent .updateBtn:hover {background-color: #005b23; color: #ffffff;}
 .productDetail .productContent .deleteBtn:hover {background-color: red; color: #ffffff;}
 
+/*custom_detail_product*/
+.custom_productDetail {display: grid; grid-template-columns: repeat(2, 1fr); gap:10px; width: 70%; height: 580px; margin: 30px auto; padding: 30px 0px; border: 1px solid #C40723; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; font-size: 20px;}
+.custom_productDetail .productDetailImg {width: 400px; margin: auto;}
+.custom_productDetail .productDetailImg > img {width: 100%;}
+.custom_productDetail .productContent {display: grid; grid-template-rows: 1fr 50px;}
+.custom_productDetail .productContent .content {display:grid; grid-template-columns: 150px 1fr;}
+.custom_productDetail .productContent .buyBtn {border-radius: 20px; border-style: solid; border-color:#C40723; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #C40723; font-size: 20px; width: 150px; height: 40px; margin: 0px 200px;}
+.custom_productDetail .productContent .buyBtn:hover {background-color: #C40723; color: #ffffff;}
+
 /*add_product*/
 .addProduct {margin: 10px auto 10px auto; width: 1000px; display: grid; justify-content: center; padding: 30px 0px; grid-template-rows: 90px 1fr;}
 .addProduct .name {text-align:center; color:#005b23; font-size:40px; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif;}
