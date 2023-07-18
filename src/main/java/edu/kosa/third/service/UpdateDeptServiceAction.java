@@ -15,12 +15,13 @@ public class UpdateDeptServiceAction implements Action {
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
 		
-		int deptNo = Integer.parseInt(request.getParameter("deptNo"));
-		String deptName = request.getParameter("deptName");
-
+		int newDeptNo = Integer.parseInt(request.getParameter("deptNo"));
+		String newDeptName = request.getParameter("deptName");
+		String BeforeDeptName = request.getParameter("");
 		DeptDao deptdao = new DeptDao();
-
-		deptdao.updateDept(new DeptDto(deptNo, deptName));
+		System.out.println("newDeptName"+newDeptName);
+		System.out.println("newDeptNo"+newDeptNo);
+		deptdao.updateDept(new DeptDto(newDeptNo, newDeptName));
 		forward.setPath("/deptMenu.do");
 		return forward;
 	}

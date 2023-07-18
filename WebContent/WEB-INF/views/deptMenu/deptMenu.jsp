@@ -1,4 +1,3 @@
-<%@page import="org.apache.taglibs.standard.tag.common.xml.ForEachTag"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../../../fixed/header.jsp"%>
@@ -17,11 +16,11 @@
 			<option value="deleteDept">부서 삭제</option>
 			<option value="updateDept">부서 변경</option>
 		</select>
-		<div id="content"><input type="button" value="부서보기" id="showdeptList"></div>
+		<div id="content"></div>
 	</div>
 
 	<div hidden="" id="insertDept">
-		<form action="insertDept.do" method="get">
+		<form action="insertDept.do" method="post">
 			<div align="center">
 				부서이름<br> <input type="text" id="deptName" name="deptName"><br>
 				부서번호<br> <input type="number" id="deptNo" name="deptNo">
@@ -49,8 +48,12 @@
 	<div hidden="" id="updateDept">
 		<form action="updateDept.do" method="post">
 			<div align="center">
-				부서이름<br> <input type="text" id="deptName" name="deptName"><br>
-				부서번호<br> <input type="number" id="deptNo" name="deptNo">
+				새로운 부서이름<br> <input type="text" id="deptName" name="newDeptName"><br>
+				새로운 부서번호<br> <input type="number" id="deptNo" name="newDeptNo"><br>
+				<div id="changeDept">
+				부서이름<br>
+				<input type="text" id="beforeDeptName" name="beforeDeptName">
+				</div>
 				<div align="center">
 					<br> <br> <input type="submit" value="수 정">&nbsp;&nbsp;
 					<input type="reset" value="취 소">

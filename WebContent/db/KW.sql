@@ -313,7 +313,7 @@ BEGIN
             repeat_interval => 'FREQ=DAILY; BYHOUR=0;',
             end_date        => NULL,
             enabled         => TRUE,
-            comments        => '05시마다 출근 여부 초기화'
+            comments        => '00시마다 출근 여부 초기화'
         );
 END;
 /

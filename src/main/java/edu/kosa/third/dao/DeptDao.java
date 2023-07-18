@@ -11,35 +11,7 @@ import edu.kosa.third.dto.DeptDto;
 import edu.kosa.third.utils.ConnectionHelper;
 
 public class DeptDao {
-
-	public List<DeptDto> deptAll(){
-		String select = "select * from dept";
-		List <DeptDto> list = null;
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		try {
-			list = new ArrayList<>();
-			conn = ConnectionHelper.getConnection("oracle");
-			pstmt = conn.prepareStatement(select);
-			rs = pstmt.executeQuery();
-			while(rs.next()) {
-				DeptDto deptdto = new DeptDto();
-				
-				deptdto.setDeptNo(rs.getInt(1));
-				deptdto.setDeptName(rs.getString(2));
-				
-				list.add(deptdto);
-			}
-		}catch(Exception e) {
-			e.printStackTrace();
-		}finally {
-			ConnectionHelper.close(rs);
-			ConnectionHelper.close(pstmt);
-			ConnectionHelper.close(conn);
-		}
-		return list;
-	}
+	
 	// 부서추가
 	public boolean insertDept(DeptDto deptDto) {
 		Connection conn = null;

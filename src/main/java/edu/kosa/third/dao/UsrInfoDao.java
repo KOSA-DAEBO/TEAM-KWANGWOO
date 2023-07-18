@@ -18,58 +18,53 @@ import edu.kosa.third.dto.UsrDto;
 import edu.kosa.third.utils.ConnectionHelper;
 
 public class UsrInfoDao {
-	
-	public void updateEmpInfo(EmpDto empdto) {
-		String update = "update emp set empname=?, empaddr=?, emptel=?, empemail=? where empno=?";
+
+	public void updateEmpManage(DeptDto deptdto, PosDto posdto) {
+		String update = "update smp set d.deptname=?, p.posname=? from pos p, dept d where usrid=?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			pstmt = conn.prepareStatement(update);
-			
-			
+
+			pstmt.setString(1, deptdto.getDeptName());
+			pstmt.setString(2, posdto.getPosName());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
+		}
+	}
+
+	public void updateEmpInfo(EmpDto empdto) {
+		String update = "update emp set empname=?, empaddr=?, emptel=?, empemail=? where empno=?";
+		Connection conn = ConnectionHelper.getConnection("oracle");
+		PreparedStatement pstmt = null;
+		try {
+
+			pstmt = conn.prepareStatement(update);
+
 			pstmt.setString(1, empdto.getEmpName());
 			pstmt.setString(2, empdto.getEmpAddr());
 			pstmt.setString(3, empdto.getEmpTel());
 			pstmt.setString(4, empdto.getEmpEmail());
 			pstmt.setInt(5, empdto.getEmpNo());
 //			pstmt.setString(6, usrdto.getUsrimage());
-			pstmt.execute();
-			
-		}catch(Exception e) {
-			e.printStackTrace();
-		}finally {
-			ConnectionHelper.close(pstmt);
-			ConnectionHelper.close(conn);
-		}
-	}
 
-	//관리자 직원 정보 조회
-	public int managerEmp(String usrId) {
-		String select = "select role from emp where usrId = ?";
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		try {
-			conn = ConnectionHelper.getConnection("oracle");
-			pstmt = conn.prepareStatement(select);
-			pstmt.setString(1, usrId);
-			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				return rs.getInt("role");
-			}
+			pstmt.execute();
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			ConnectionHelper.close(rs);
 			ConnectionHelper.close(pstmt);
 			ConnectionHelper.close(conn);
 		}
-		return 0;
 	}
 
 	// 소비자 개인정보 조회
-	public CustomerDto customerInfoAll(HttpServletRequest request) {
+	public CustomerDto customerInfoAll(HttpServletRequest request) { // 개선 필요. 동일한 작업을 반복한다.
+
 		String sql = "select * from customer where customerno=?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -86,17 +81,16 @@ public class UsrInfoDao {
 			pstmt.setString(1, custdto.getCustomerNo());
 
 			rs = pstmt.executeQuery();
-			customdto = new CustomerDto();
 
 			while (rs.next()) {
-				customdto.setCustomerNo(rs.getString(1));
-				customdto.setUsrId(rs.getString(2));
-				customdto.setCustomerEmail(rs.getString(3));
-				customdto.setCustomerTel(rs.getString(4));
-				customdto.setCustomerGender(rs.getString(5));
-				customdto.setCustomerBirth(rs.getDate(6));
-				customdto.setCustomerAddr(rs.getString(7));
-				customdto.setCustomerName(rs.getString(8));
+				customdto.setCustomerNo(rs.getString("CustomerNo"));
+				customdto.setUsrId(rs.getString("UsrId"));
+				customdto.setCustomerEmail(rs.getString("CustomerEmail"));
+				customdto.setCustomerTel(rs.getString("CustomerTel"));
+				customdto.setCustomerGender(rs.getString("CustomerGender"));
+				customdto.setCustomerBirth(rs.getDate("CustomerBirth"));
+				customdto.setCustomerAddr(rs.getString("CustomerAddr"));
+				customdto.setCustomerName(rs.getString("CustomerName"));
 
 			}
 		} catch (Exception e) {
@@ -111,56 +105,45 @@ public class UsrInfoDao {
 
 	// 직원 - 직원 개인 정보 상세조회
 	public EmpDetailsDto detailEmpInfo(HttpServletRequest request) {
-		String sql = "select e.empno, e.usrid, e.empname, e.empbirth, e.empemail, e.empstatus,"
-				+ " e.emptel, e.empgender, e.empaddr, e.hiredate, e.annualleave, d.deptname, p.posname, e.role "//u.usrimage
-				+ " from emp e, pos p, dept d where e.deptNo = d.deptNo and e.posNo = p.posNo and e.empNo = ?";
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
+		String sql = "SELECT e.empno, e.usrid, e.empname, e.empbirth, e.empemail, e.empstatus,"
+				+ " e.emptel, e.empgender, e.empaddr, e.hiredate, e.annualleave, d.deptname, p.posname"// u.usrimage
+				+ " FROM emp e JOIN pos p ON e.posNo = p.posNo JOIN dept d ON e.deptNo = d.deptNo "
+				+ " WHERE e.empNo = ?";
 
 		EmpDetailsDto dto = null;
-		try {
-			conn = ConnectionHelper.getConnection("oracle");
-			pstmt = conn.prepareStatement(sql);
+		try (Connection conn = ConnectionHelper.getConnection("oracle");
+				PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
 			HttpSession session = request.getSession();
-			EmpDto empdto = new EmpDto();
-			empdto = (EmpDto) session.getAttribute("login");
-
+			EmpDto empdto = (EmpDto) session.getAttribute("login");
 			pstmt.setInt(1, empdto.getEmpNo());
-			rs = pstmt.executeQuery();
 
-			EmpDto emp = new EmpDto();
-			PosDto pos = new PosDto();
-			DeptDto dept = new DeptDto();
-			UsrDto usr = new UsrDto();
-			
-			while (rs.next()) {
-
-				emp.setEmpNo(rs.getInt(1));
-				emp.setUsrId(rs.getString(2));
-				emp.setEmpName(rs.getString(3));
-				emp.setEmpBirth(rs.getDate(4));
-				emp.setEmpEmail(rs.getString(5));
-				emp.setEmpStatus(rs.getBoolean(6));
-				emp.setEmpTel(rs.getString(7));
-				emp.setEmpGender(rs.getString(8));
-				emp.setEmpAddr(rs.getString(9));
-				emp.setHireDate(rs.getDate(10));
-				emp.setAnnualLeave(rs.getInt(11));
-				dept.setDeptName(rs.getString(12));
-				pos.setPosName(rs.getString(13));
-				emp.setRole(rs.getBoolean(14));
-//				usr.setUsrimage(rs.getString(15));
-				
-				dto = new EmpDetailsDto(emp, pos, dept, usr);
+			try (ResultSet rs = pstmt.executeQuery()) {
+				if (rs.next()) {
+					EmpDto emp = new EmpDto();
+					PosDto pos = new PosDto();
+					DeptDto dept = new DeptDto();
+					UsrDto usr = new UsrDto();
+					
+					emp.setEmpNo(rs.getInt("EmpNo"));
+					emp.setUsrId(rs.getString("UsrId"));
+					emp.setEmpName(rs.getString("EmpName"));
+					emp.setEmpBirth(rs.getDate("EmpBirth"));
+					emp.setEmpEmail(rs.getString("EmpEmail"));
+					emp.setEmpStatus(rs.getBoolean("EmpStatus"));
+					emp.setEmpTel(rs.getString("EmpTel"));
+					emp.setEmpGender(rs.getString("EmpGender"));
+					emp.setEmpAddr(rs.getString("EmpAddr"));
+					emp.setHireDate(rs.getDate("HireDate"));
+					emp.setAnnualLeave(rs.getInt("AnnualLeave"));
+					dept.setDeptName(rs.getString("DeptName"));
+					pos.setPosName(rs.getString("PosName"));
+					
+					dto = new EmpDetailsDto(emp, pos, dept, usr);
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			ConnectionHelper.close(rs);
-			ConnectionHelper.close(pstmt);
-			ConnectionHelper.close(conn);
 		}
 		return dto;
 	}
@@ -180,10 +163,10 @@ public class UsrInfoDao {
 			while (rs.next()) {
 				EmpDto empdto = new EmpDto();
 
-				empdto.setUsrId(rs.getString(1));
-				empdto.setEmpNo(rs.getInt(2));
-				empdto.setEmpName(rs.getString(3));
-				empdto.setHireDate(rs.getDate(4));
+				empdto.setUsrId(rs.getString("UsrId"));
+				empdto.setEmpNo(rs.getInt("EmpNo"));
+				empdto.setEmpName(rs.getString("EmpName"));
+				empdto.setHireDate(rs.getDate("HireDate"));
 				list.add(empdto);
 			}
 		} catch (Exception e) {
