@@ -3,8 +3,8 @@ package edu.kosa.third.dto;
 import java.sql.Date;
 
 public class EmpDto {
-	private int empNo, annualLeave, deptNo, posNo;
-	private Date empBirth, hireDate;
+	private int empNo, annualLeave, deptNo, posNo, salary;
+	private Date empBirth, hireDate, departureDate;
 	private String usrId, empName, empEmail, empTel, empAddr , empGender;
 	private boolean empStatus, role;
 
@@ -12,13 +12,18 @@ public class EmpDto {
 		
 	}
 
-	public EmpDto(int empNo, int annualLeave, int deptNo, int posNo, Date empBirth, Date hireDate, String usrId, String empName, String empEmail, String empTel, String empAddr, String empGender, boolean empStatus, boolean role) {
+	public EmpDto(int empNo, int annualLeave, int deptNo, int posNo, int salary, Date empBirth, Date hireDate,
+			Date departureDate, String usrId, String empName, String empEmail, String empTel, String empAddr,
+			String empGender, boolean empStatus, boolean role) {
+		super();
 		this.empNo = empNo;
 		this.annualLeave = annualLeave;
 		this.deptNo = deptNo;
 		this.posNo = posNo;
+		this.salary = salary;
 		this.empBirth = empBirth;
 		this.hireDate = hireDate;
+		this.departureDate = departureDate;
 		this.usrId = usrId;
 		this.empName = empName;
 		this.empEmail = empEmail;
@@ -28,6 +33,7 @@ public class EmpDto {
 		this.empStatus = empStatus;
 		this.role = role;
 	}
+
 
 	public String getUsrId() {
 		return usrId;
@@ -142,4 +148,21 @@ public class EmpDto {
 		this.empGender = empGender;
 	}
 
+	public int getSalary() {
+		return salary;
+	}
+
+	public void setSalary(int salary) {
+		this.salary = salary;
+	}
+
+	public Date getDepartureDate() {
+		return departureDate;
+	}
+
+	public void setDepartureDate(Date departureDate) {
+		this.departureDate = departureDate;
+	}
+
+	
 }

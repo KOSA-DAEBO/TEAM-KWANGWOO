@@ -137,12 +137,12 @@ public class FrontRegisterController extends HttpServlet {
 		} else if (urlcommand.equals("/productList.do")) {
 			action = new ProductListServiceAction();
 			forward = action.execute(request, response);
-			
+
 		} else if (urlcommand.equals("/logout.do")) {
 			action = new LogoutServiceAction();
 			forward = action.execute(request, response);
 
-		} else if(urlcommand.equals("/customDetail.do")) {
+		} else if (urlcommand.equals("/customDetail.do")) {
 			action = new DetailCustomerInfoServiceAction();
 			forward = action.execute(request, response);
 
@@ -159,7 +159,7 @@ public class FrontRegisterController extends HttpServlet {
 			action = new CommuteEmpChkServiceAction();
 			forward = action.execute(request, response);
 
-		} else if(urlcommand.equals("/deptMenu.do")) {
+		} else if (urlcommand.equals("/deptMenu.do")) {
 			forward = new ActionForward();
 			forward.setPath("/WEB-INF/views/deptMenu/deptMenu.jsp");
 
@@ -170,38 +170,40 @@ public class FrontRegisterController extends HttpServlet {
 		} else if (urlcommand.equals("/empList.do")) {
 			action = new TotalEmpInfoServiceAction();
 			forward = action.execute(request, response);
-			
+
 		} else if (urlcommand.equals("/detailProduct.do")) {
 			action = new ProductInfoServiceAction();
 			forward = action.execute(request, response);
-			
+
 		} else if (urlcommand.equals("/addProduct.do")) {
 			action = new addProductServiceAction();
 			forward = action.execute(request, response);
-			
+
 		} else if (urlcommand.equals("/goAddProduct.do")) {
 			action = new getItemServiceAction();
 			forward = action.execute(request, response);
-			
+
 		} else if (urlcommand.equals("/deleteProduct.do")) {
 			action = new deleteProductServiceAction();
 			forward = action.execute(request, response);
-			
+
 		} else if (urlcommand.equals("/updateProduct.do")) {
 			action = new updateProductServiceAction();
 			forward = action.execute(request, response);
-			
+
 		} else if (urlcommand.equals("/customList.do")) {
 			action = new customProductServiceAction();
 			forward = action.execute(request, response);
-			
+
 		} else if (urlcommand.equals("/detailCustomProduct.do")) {
 			action = new customProductDetailServiceAction();
 			forward = action.execute(request, response);
-			
+
+		} else if (urlcommand.equals("/leaveModify.do")) {
+			action = new LeaveModifyServiceAction();
+			forward = action.execute(request, response);
 		}
-		
-		
+
 		if (forward != null) {
 			if (forward.isRedirect()) { // true 페이지 재 요청 (location.href="페이지"
 				response.sendRedirect(forward.getPath());

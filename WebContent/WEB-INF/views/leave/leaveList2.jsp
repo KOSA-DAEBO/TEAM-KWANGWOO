@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>leaveList.jsp</title>
+<title>Team KwangWoo</title>
 </head>
 <body>
 	<br>

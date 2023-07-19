@@ -25,6 +25,8 @@ public class LeaveDeleteServiceAction implements Action {
 		String typeNo = (String) session.getAttribute("typeNo");
 		String startDay = (String) session.getAttribute("startDay");
 		String endDay = (String) session.getAttribute("endDay");
+		String usrId = (String) session.getAttribute("usrId");
+		
 		int leaveNo = Integer.parseInt(request.getParameter("leaveNo"));
 		
 		response.setContentType("text/html; charset=UTF-8");
@@ -42,14 +44,12 @@ public class LeaveDeleteServiceAction implements Action {
 		
 		dao.deleteLeave(leaveNo);
 		
-		String usrId = "crush0327";
-
 		if (levStatus.equals("1") && typeNo.equals("10")) 
-			dao.incAnnualLeave(startDay, endDay, usrId);
+			dao.incAnnualLeave(startDay, endDay, usrId );
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("/leaveList.do?listNum=3");
+		forward.setPath("/leaveList.do?listNum=1");
 		return forward;
 	}
 

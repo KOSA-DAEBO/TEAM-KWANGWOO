@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import edu.kosa.third.action.Action;
 import edu.kosa.third.action.ActionForward;
 import edu.kosa.third.dao.LeaveDao;
+import edu.kosa.third.dto.EmpDto;
 
 public class LeaveApproveServiceAction implements Action {
 
@@ -21,6 +22,7 @@ public class LeaveApproveServiceAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		String levStatus = (String) session.getAttribute("levStatus");
+		String usrId = (String) session.getAttribute("usrId");
 		if (!levStatus.equals("0")) {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out;
@@ -39,7 +41,6 @@ public class LeaveApproveServiceAction implements Action {
 		String startDay = (String) session.getAttribute("startDay");
 		String endDay = (String) session.getAttribute("endDay");
 		String typeNo = (String) session.getAttribute("typeNo");
-		String usrId = "crush0327";
 		int num = Integer.parseInt(request.getParameter("approveType"));
 		if (typeNo.equals("10") && num==1) {
 			DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -67,7 +68,7 @@ public class LeaveApproveServiceAction implements Action {
 				}
 				ActionForward forward = new ActionForward();
 				forward.setRedirect(false); // True 클라이언트가 새로운 페이지를 요청하게 할 거예요
-				forward.setPath("/leaveList.do?listNum=2");
+				forward.setPath("/leaveList.do?No="+leaveNo);
 				return forward;
 			}
 		}
@@ -90,7 +91,7 @@ public class LeaveApproveServiceAction implements Action {
 		}
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false); // True 클라이언트가 새로운 페이지를 요청하게 할 거예요
-		forward.setPath("/leaveList.do?listNum=2");
+		forward.setPath("/leaveList.do?listNum=1");
 		return forward;
 	}
 

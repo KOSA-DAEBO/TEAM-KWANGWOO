@@ -36,7 +36,7 @@
                <div class="head_menu">
                   <ul>
                      <li class=""><a href="#" title="인사">인사</a></li>
-                     <li class=""><a href="leaveList.do" title="휴가">휴가</a></li>
+                     <li class=""><a href="leaveList.do?listNum=3" title="휴가">휴가</a></li>
                      <li class=""><a href="#" title="급여">급여</a></li>
                      <li class=""><a href="#" title="출퇴근">출퇴근</a></li>
                      <li class=""><a href="productList.do" title="제품관리">제품관리</a></li>

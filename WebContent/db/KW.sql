@@ -17,20 +17,22 @@ CREATE TABLE Usr (
 DROP TABLE Emp;
 
 CREATE TABLE Emp (
-	empNo	number	generated always as identity	NOT NULL,
-	usrId	varchar2(20)		NOT NULL,
-	empName	varchar2(20)		NULL,
-	empBirth	date		NULL,
-	empEmail	varchar2(30)		NULL,
-	empTel	varchar2(30)		NULL,
-	empStatus	char(1)	DEFAULT 0	NULL,
-	role	char(1)	DEFAULT 0	NOT NULL,
-	empGender	char(1)		NULL,
-	empAddr	varchar2(50)		NULL,
-	hireDate	Date		NOT NULL,
-	annualLeave	number	DEFAULT 0	NULL,
-	deptNo	number(2)		NOT NULL,
-	posNo	number		NOT NULL
+	empNo	number	NOT NULL,
+	usrId	varchar2(20)	NOT NULL,
+	empName	varchar2(20)	NULL,
+	empBirth	date	NULL,
+	empEmail	varchar2(30)	NULL,
+	empTel	varchar2(30)	NULL,
+	empStatus	char(1)	NULL	DEFAULT 0,
+	role	char(1)	NOT NULL	DEFAULT 0,
+	empGender	char(1)	NULL,
+	empAddr	varchar2(50)	NULL,
+	hireDate	Date	NOT NULL,
+	departuredate	date	NULL,
+	annualLeave	number	NULL	DEFAULT 0,
+	salary	number	NULL	DEFAULT 0,
+	deptNo	number(2)	NOT NULL,
+	posNo	number	NOT NULL
 );
 
 DROP TABLE Customer;
@@ -58,6 +60,7 @@ DROP TABLE Sal;
 CREATE TABLE Sal (
 	salNo	number	generated always as identity	NOT NULL,
 	amount	number		NOT NULL,
+	payDay	Date	NOT NULL,
 	empNo	number		NOT NULL,
 	usrId	varchar2(20)		NOT NULL
 );

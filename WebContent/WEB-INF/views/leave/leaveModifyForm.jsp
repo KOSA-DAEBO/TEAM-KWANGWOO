@@ -7,10 +7,10 @@
 <link rel="stylesheet"
 	href="https://unpkg.com/nice-forms.css@0.1.7/dist/nice-forms.css" />
 <meta charset="UTF-8">
-<title>leaveApplicationForm</title>
+<title>Team KwangWoo</title>
 </head>
 <body>
-	<form action="leaveApply.do" method="post">
+	<form action="leaveModify.do" method="post">
 		<div class="nice-form-group">
 			<label>휴가 종류</label> <select name="leaveType" id="leaveType">
 				<option value="10">연차</option>

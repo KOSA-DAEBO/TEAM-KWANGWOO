@@ -7,7 +7,7 @@
 <link rel="stylesheet"
 	href="https://unpkg.com/nice-forms.css@0.1.7/dist/nice-forms.css" />
 <meta charset="UTF-8">
-<title>leaveApplicationForm</title>
+<title>Team KwangWoo</title>
 
 </head>
 <body>
