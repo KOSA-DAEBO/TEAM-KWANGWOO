@@ -4,18 +4,16 @@ import java.sql.Date;
 
 public class EmpDto {
 	private int empNo, annualLeave, deptNo, posNo, salary;
+
 	private Date empBirth, hireDate, departureDate;
 	private String usrId, empName, empEmail, empTel, empAddr , empGender;
 	private boolean empStatus, role;
-
-	public EmpDto() {
-		
-	}
 
 	public EmpDto(int empNo, int annualLeave, int deptNo, int posNo, int salary, Date empBirth, Date hireDate,
 			Date departureDate, String usrId, String empName, String empEmail, String empTel, String empAddr,
 			String empGender, boolean empStatus, boolean role) {
 		super();
+
 		this.empNo = empNo;
 		this.annualLeave = annualLeave;
 		this.deptNo = deptNo;
@@ -33,7 +31,25 @@ public class EmpDto {
 		this.empStatus = empStatus;
 		this.role = role;
 	}
+	
+	public EmpDto(String empName, String empAddr, String empTel, String empEmail) {
+		this.empName = empName;
+		this.empAddr = empAddr;
+		this.empTel = empTel;
+		this.empEmail = empEmail;
+	}
 
+	public EmpDto(String empName, String empAddr, String empTel, String empEmail, int empNo) {
+		this.empName = empName;
+		this.empAddr = empAddr;
+		this.empTel = empTel;
+		this.empEmail = empEmail;
+		this.empNo = empNo;
+	}
+
+	public EmpDto() {
+
+	}
 
 	public String getUsrId() {
 		return usrId;

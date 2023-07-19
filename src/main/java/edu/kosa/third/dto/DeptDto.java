@@ -12,6 +12,7 @@ public class DeptDto {
 		this.deptName = deptName;
 		this.deptNo = deptNo;
 	}
+
 	public int getDeptNo() {
 		return deptNo;
 	}

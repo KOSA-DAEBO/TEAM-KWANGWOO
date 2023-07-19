@@ -295,9 +295,11 @@ table.type02 input.lbutton{font-size:17px}
 #usrcontainer #usrinfo .usrinfocontent .updatePos{width: 100px; height:70px; text-align:center; vertical-align:middle; border: 2px green solid;}
 #usrcontainer #usrinfo .usrinfocontent .updatePos .updatePosRadio{width:100px; height:70px;}
 #usrcontainer #usrinfo #usrbtn{border-radius: 20px; border-style: solid; border-color:#005b23; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #005b23; font-size: 20px; width: 150px; height: 40px; margin: 15px 50px;}
-#usrupdate, #usrreset, #deleteusr{border-radius: 20px; border-style: solid; border-color:#005b23; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #005b23; font-size: 20px; width: 150px; height: 40px; margin: 15px 50px;}
-#usrupdate:hover , #usrreset:hover , #deleteusr:hover{transform:scale(1.2)}
+#usrupdate, #usrreset, #deleteusr,  #empdelete {border-radius: 20px; border-style: solid; border-color:#005b23; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #005b23; font-size: 20px; width: 150px; height: 40px; margin: 15px 50px;}
+#usrupdate:hover , #usrreset:hover , #deleteusr:hover, #empdelete:hover{transform:scale(1.2)}
 
+.simpleList .infoList{display: grid; grid-template-rows: 1fr; justify-content: center; margin: 10px auto;}
+.allempinfo{width:800px;}
 /*commute*/
 .commute_title{margin:6% auto 0;text-align:center;text-indent:-365px;padding:20px;font-size:30px}
 .commute_Page{width:420px;padding:55px;height:auto;top:20%;left:30%;margin:0 auto 11%;border-bottom:5px solid #005B23;border-top:5px solid #005B23}
@@ -322,3 +324,7 @@ table.type091 thead td{width:100px; text-align:center; padding:10px;font-weight:
 table.type091 tbody th{width:70px; text-align:center; padding:10px;font-weight:700;vertical-align:top;border-bottom:1px solid #ccc;border-top:1px solid #ccc;background:#f3f6f7}
 table.type091 tbody td.empnumber{width:20px; text-align:center;}
 table.type091 td{text-align:center; width:100px;padding:10px;vertical-align:top;border-bottom:1px solid #ccc}
+
+/*deptList*/
+.deptTable {justify-content: center; display: grid; grid-template-rows: 1fr; margin: 10px auto; }
+

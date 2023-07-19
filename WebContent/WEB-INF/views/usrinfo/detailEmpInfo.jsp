@@ -9,16 +9,8 @@
 <title>Team KwangWoo</title>
 </head>
 <body>
-<br> Username:
-   <c:out value="${login.empName}" />
-   <br> 유저Id:
-   <c:out value="${login.usrId}" />
-   <br> 관리자여부: 
-   <c:out value="${login.role}" />
-	전화번호 : <c:out value="${login.empTel}" />
-         주소:   <c:out value="${login.empAddr}" />
 	<div id="usrcontainer">
-		<form action="updateUsrInfo.do" method="get">
+		<form action="updateUsrInfo.do" method="post">
 			<table id="usrinfo">
 				<tr>
 					<td rowspan="14" id="usrimage"><input type="file" value="사진추가"
@@ -35,19 +27,19 @@
 							</tr>
 							<tr>
 								<td class="usrinfocategory">사번</td>
-								<td class="usrinfocontent">${login.empNo}</td>
+								<td class="usrinfocontent"><input type="hidden" value="${login.empNo}" id="empNo" name="empNo">${login.empNo}</td>
 							</tr>
 							<tr>
 								<td class="usrinfocategory">계정</td>
-								<td class="usrinfocontent">${empInfo.empdto.usrId}</td>
+								<td class="usrinfocontent">${login.usrId}</td>
 							</tr>
 							<tr>
 								<td class="usrinfocategory">부서</td>
-								<td class="usrinfocontent">${empInfo.deptdto.deptName}</td>
+								<td class="usrinfocontent">${empInfo.deptDto.deptName}</td>
 							</tr>
 							<tr>
 								<td class="usrinfocategory">직위</td>
-								<td class="usrinfocontent">${empInfo.posdto.posName}</td>
+								<td class="usrinfocontent">${empInfo.posDto.posName}</td>
 							</tr>
 							<tr>
 								<td class="usrinfocategory">주소</td>
@@ -85,7 +77,7 @@
 							</tr>
 							<tr>
 								<td class="usrinfocategory">휴가상태</td>
-								<td class="usrinfocontent">${login.annualLeave}일</td>
+								<td class="usrinfocontent">${login.annualLeave} 일</td>
 							</tr>
 							<tr>
 								<td class="usrinfocategory">출근상태</td>
@@ -103,9 +95,9 @@
 				</tr>
 				<tr>
 					<td colspan="2" id="usrbtn">
-					<input type="submit"	id="usrupdate" value="수 정"> 
+					<input type="submit" id="usrupdate" value="수 정"> 
 					<input	type="reset" id="usrreset" value="취 소">
-					<input	type="button" id="deleteusr" value="삭 제" onclick="javascript:location.href = 'deleteUsrInfo.do'"></td>
+					</td>
 				</tr>
 			</table>
 		</form>

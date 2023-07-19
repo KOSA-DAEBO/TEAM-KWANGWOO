@@ -1,48 +1,59 @@
 package edu.kosa.third.dto;
 
 public class EmpDetailsDto {
-	private PosDto posdto;
-	private DeptDto deptdto;
-	private EmpDto empdto;
-	private UsrDto usrdto;
+	private PosDto posDto;
+	private DeptDto deptDto;
+	private EmpDto empDto;
+	private UsrDto usrDto;
 
-	public EmpDetailsDto(EmpDto empDto, PosDto posDto, DeptDto deptDto, UsrDto usrDto) {
-		this.empdto = empDto;
-		this.posdto = posDto;
-		this.deptdto = deptDto;
-		this.usrdto = usrDto;
+	public EmpDetailsDto(PosDto posDto, DeptDto deptDto) {
+		this.posDto = posDto;
+		this.deptDto = deptDto;
 	}
 
-	public UsrDto getUsrdto() {
-		return usrdto;
+	public EmpDetailsDto(UsrDto usrDto, EmpDto empDto) {
+		this.usrDto = usrDto;
+		this.empDto = empDto;
 	}
 
-	public void setUsrdto(UsrDto usrdto) {
-		this.usrdto = usrdto;
+
+	public EmpDetailsDto(PosDto posDto, DeptDto deptDto, UsrDto usrDto) {
+		this.deptDto = deptDto;
+		this.posDto = posDto;
+		this.usrDto = usrDto;
 	}
 
-	public PosDto getPosdto() {
-		return posdto;
+	public PosDto getPosDto() {
+		return posDto;
 	}
 
-	public void setPosdto(PosDto posdto) {
-		this.posdto = posdto;
+	public void setPosDto(PosDto posDto) {
+		this.posDto = posDto;
 	}
 
-	public DeptDto getDeptdto() {
-		return deptdto;
+	public DeptDto getDeptDto() {
+		return deptDto;
 	}
 
-	public void setDeptdto(DeptDto deptdto) {
-		this.deptdto = deptdto;
+	public void setDeptDto(DeptDto deptDto) {
+		this.deptDto = deptDto;
 	}
 
-	public EmpDto getEmpdto() {
-		return empdto;
+	public EmpDto getEmpDto() {
+		return empDto;
 	}
 
-	public void setEmpdto(EmpDto empdto) {
-		this.empdto = empdto;
+	public void setEmpDto(EmpDto empDto) {
+		this.empDto = empDto;
 	}
 
+	public UsrDto getUsrDto() {
+		return usrDto;
+	}
+
+	public void setUsrDto(UsrDto usrDto) {
+		this.usrDto = usrDto;
+	}
+
+	
 }

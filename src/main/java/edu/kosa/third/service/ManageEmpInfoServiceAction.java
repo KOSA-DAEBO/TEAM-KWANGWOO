@@ -14,12 +14,14 @@ public class ManageEmpInfoServiceAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		UsrInfoDao dao = new UsrInfoDao();
+		int empNo = Integer.parseInt(request.getParameter("empNo"));
 
-		EmpDetailsDto empDto = dao.detailEmpInfo(request);
+		EmpDetailsDto empInfo = dao.updateManageEmpInfo(empNo);
 		
-		request.setAttribute("empInfo", empDto);
+		request.setAttribute("empInfo", empInfo);
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
+		
 		forward.setPath("/WEB-INF/views/usrinfo/manageEmpInfo.jsp");
 		return forward;
 	}

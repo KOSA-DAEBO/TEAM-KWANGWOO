@@ -17,7 +17,6 @@ public class TotalEmpInfoServiceAction implements Action {
 		UsrInfoDao dao = new UsrInfoDao();
 
 		List<EmpDto> empList = dao.totalEmpInfo();
-
 		request.setAttribute("empList", empList);
 
 		ActionForward forward = new ActionForward();

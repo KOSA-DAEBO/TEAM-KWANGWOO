@@ -5,43 +5,43 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script defer="defer" type="text/javascript" src="./js/empScript.js"></script>
 <meta charset="UTF-8">
-<title>ShowEmpInfo</title>
+<title>Team KwangWoo</title>
 </head>
 <body>
-	<div align="center">
-		<table align="center">
-			<tr>
-				<c:forEach items="${empList}" var="emplist" varStatus="status">
-				 <c:if test="${status.count % 5 == 0}">
-			</tr>
-			<tr>
-				</c:if>
-				<td>
-					<table>
-						<tr>
-							<td colspan="2"><br> <a href="manageEmpInfo.do"> 
-							<img src="#" alt="#" onerror="this.onerror=null; this.src='./images/usericon.png';">
-							</a></td>
-						</tr>
-						<tr>
-							<th>이 름</th>
-							<td>${emplist.empName}</td>
-						</tr>
-						<tr>
-							<th>입사일</th>
-							<td>${emplist.hireDate}</td>
-						</tr>
-					</table>
-				</td>
-				</c:forEach>
-			</tr>
-		</table>
+	<div id="empinfoContent">
+		<div id="simpleList">
+			<form class="infoList">
+				<div id="allempinfo">
+					<c:forEach items="${empList}" var="empList">
+						<div id="simpleInfoAll">
+							<div>
+								<a href="manageEmpInfo.do?empNo=${empList.empNo }"> 
+									<img src="#" alt="#" onerror="this.onerror=null;
+									 this.src='./images/usericon.png';">
+								</a>
+							</div>
+							<div>
+								이 름<a href="manageEmpInfo.do?empNo=${empList.empNo }">${empList.empName}</a>
+							</div>
+							<div>
+								입사일<a href="manageEmpInfo.do?empNo=${empList.empNo }">${empList.hireDate}</a>
+							</div>
+						</div>
+					</c:forEach>
+				</div>
+				<div id="pagionation">
+					<button type="button" id="prevButton" disabled>이전</button>
+					<button type="button" id="nextButton">다음</button>
+				</div>
+			</form>
+		</div>
 	</div>
 	<br>
-	<h1 align="center">
+	<div id="empButtonHome">
 		<input type="button" value="돌아가기" onclick="location.href='index.html'">
-	</h1>
+	</div>
 </body>
 </html>
 <%@ include file="../../../fixed/footer.jsp"%>

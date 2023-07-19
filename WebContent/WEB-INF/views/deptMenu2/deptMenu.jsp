@@ -16,8 +16,9 @@
 			<option value="deleteDept">부서 삭제</option>
 			<option value="updateDept">부서 변경</option>
 		</select>
-		<div id="content"></div>
+		<button type="button" onclick="javascript:location.href ='totalDept.do'">부서확인</button>
 	</div>
+	<div id="content"></div>
 
 	<div hidden="" id="insertDept">
 		<form action="insertDept.do" method="post">
@@ -48,11 +49,11 @@
 	<div hidden="" id="updateDept">
 		<form action="updateDept.do" method="post">
 			<div align="center">
-				새로운 부서이름<br> <input type="text" id="deptName" name="newDeptName"><br>
-				새로운 부서번호<br> <input type="number" id="deptNo" name="newDeptNo"><br>
+				새로운 부서이름<br> <input type="text" id="deptName"
+					name="deptName"><br>
 				<div id="changeDept">
-				부서이름<br>
-				<input type="text" id="beforeDeptName" name="beforeDeptName">
+					부서번호<br> <input type="text" id="deptNo"
+						name="deptNo">
 				</div>
 				<div align="center">
 					<br> <br> <input type="submit" value="수 정">&nbsp;&nbsp;

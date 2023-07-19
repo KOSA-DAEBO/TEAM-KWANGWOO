@@ -26,7 +26,15 @@ public class AddDeptServiceAction implements Action {
 			DeptDao deptdao = new DeptDao();
 				
 			boolean result = deptdao.insertDept(new DeptDto(deptNo, deptName));
-
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter printer;
+			try {
+				printer = response.getWriter();
+				printer.println("<script>alert('부서가 추가 되었습니다.'); window.history.back();</script>");
+				printer.flush();
+				printer.close();
+			}catch (Exception e) {
+			}
 			if (result == false) {
 				response.setContentType("text/html;charset=UTF-8");
 				PrintWriter out;
