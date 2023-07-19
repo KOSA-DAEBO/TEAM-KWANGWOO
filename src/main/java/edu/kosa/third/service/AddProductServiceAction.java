@@ -13,7 +13,7 @@ import edu.kosa.third.dao.ProductDao;
 import edu.kosa.third.dto.ProductDto;
 import edu.kosa.third.utils.Thumbnail;
 
-public class addProductServiceAction implements Action {
+public class AddProductServiceAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {

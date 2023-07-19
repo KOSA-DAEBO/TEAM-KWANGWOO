@@ -55,3 +55,30 @@ window.addEventListener("DOMContentLoaded", function() {
 	// 초기 페이지 로드 시 페이지 업데이트
 	updatePage();
 });
+
+// price 합계를 저장할 변수
+var totalPrice = 0;
+
+// 각 itemNameValue 요소에 대해 반복
+var itemValues = document.querySelectorAll('.itemPrice');
+for (var i = 0; i < itemValues.length; i++) {
+	// price 값을 가져와서 totalPrice에 더함
+	var price = parseInt(itemValues[i].textContent);
+	totalPrice += price;
+}
+
+// totalPrice를 price 요소에 출력
+var priceElement = document.querySelector('.price');
+priceElement.textContent = ":  " + totalPrice.toLocaleString() + "원";
+
+function buyProduct(usrId) {
+	// 로그인 상태 확인
+	var customerDto = usrId;
+	console.log(customerDto)
+	if (customerDto === "") {
+		alert("로그인 후 가능한 기능입니다.");
+		window.location.href = "loginCustomer.do"; // 로그인 페이지로 이동
+	} else {
+		window.location.href = "buyProduct.do"; // 구매하기 기능
+	}
+}

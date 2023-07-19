@@ -123,7 +123,8 @@
 .product_content .card_form .card_list {display: grid; grid-template-rows: repeat(2, 1fr); grid-template-columns: repeat(4, 1fr); align-items: center;}
 .product_content .card_form .card_list .card {grid-template-columns: 90px 1fr; width: 80%; height: 120px; margin: 0px auto;}
 .product_content .card_form .card_list .card:hover {cursor: pointer;}
-.product_content .card_left, .card_right {border: 1px solid #005b23;}
+.product_content .card_left {border: 1px solid #005b23;}
+.product_content .card_right {border: 1px solid #005b23; width: 170px;}
 .product_content .p_content {font-size: 16px; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; margin: 10px 5px;}
 .product_content .pagination {margin-top: 20px; text-align: center;}
 .product_content .pagination button {border-radius: 20px; border-style: solid; border-color:#005b23; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #005b23; font-size: 20px; width: 150px; height: 40px; margin: 15px 50px;}
@@ -153,6 +154,7 @@
 .custom_productDetail .productDetailImg > img {width: 100%;}
 .custom_productDetail .productContent {display: grid; grid-template-rows: 1fr 50px;}
 .custom_productDetail .productContent .content {display:grid; grid-template-columns: 150px 1fr;}
+.custom_productDetail .productContent .itemValue, .itemPrice {display: none;}
 .custom_productDetail .productContent .buyBtn {border-radius: 20px; border-style: solid; border-color:#C40723; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #C40723; font-size: 20px; width: 150px; height: 40px; margin: 0px 200px;}
 .custom_productDetail .productContent .buyBtn:hover {background-color: #C40723; color: #ffffff;}
 

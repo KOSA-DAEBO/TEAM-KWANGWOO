@@ -14,7 +14,7 @@ import edu.kosa.third.dto.ItemClsDto;
 import edu.kosa.third.dto.ItemsDto;
 import edu.kosa.third.dto.ProductManageDto;
 
-public class customProductDetailServiceAction implements Action {
+public class CustomProductDetailServiceAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {

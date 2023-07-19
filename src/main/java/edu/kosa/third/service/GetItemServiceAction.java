@@ -12,7 +12,7 @@ import edu.kosa.third.dao.ItemDao;
 import edu.kosa.third.dto.ItemClsDto;
 import edu.kosa.third.dto.ItemsDto;
 
-public class getItemServiceAction implements Action {
+public class GetItemServiceAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {

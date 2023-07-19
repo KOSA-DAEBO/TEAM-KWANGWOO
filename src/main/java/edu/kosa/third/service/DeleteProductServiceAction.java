@@ -7,7 +7,7 @@ import edu.kosa.third.action.Action;
 import edu.kosa.third.action.ActionForward;
 import edu.kosa.third.dao.ProductDao;
 
-public class deleteProductServiceAction implements Action {
+public class DeleteProductServiceAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {

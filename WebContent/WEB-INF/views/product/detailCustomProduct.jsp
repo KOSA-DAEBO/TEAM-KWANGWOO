@@ -22,13 +22,17 @@
 				<c:forEach var="pimDto" items="${dto.pimDtoList}" varStatus="pimStatus">
 				<c:set var="itemsDto" value="${dto.itemsDtoList[pimStatus.index]}" />
 					<div class="clsName">${itemsDto.cDto.itemClsName}</div>
-					<div class="itemName">:  <span class="itemNameValue">${itemsDto.dto.itemName}</span><span style="display: none;" class="itemValue">${itemsDto.dto.itemNo}</span></div>
+					<div class="itemName">
+						:  <span class="itemNameValue">${itemsDto.dto.itemName}</span>
+						<span class="itemValue">${itemsDto.dto.itemNo}</span>
+						<span class="itemPrice">${itemsDto.dto.price}</span>
+					</div>
 				</c:forEach>
 				<div class="totalPrice">총가격</div>
 				<div class="price"></div>
 			</div>
 			<div>
-				<input class="buyBtn" type="button" value="구매하기">
+				<input class="buyBtn" type="button" value="구매하기" onclick="buyProduct('${loginCustomer.usrId}')">
 			</div>
 		</div>
 	</div>
