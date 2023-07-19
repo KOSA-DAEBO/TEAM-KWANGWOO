@@ -22,7 +22,7 @@
 	<div class="head" id="head">
 		<div class="head_top">
 			<h1>
-				<a href="/" title="메인으로 이동"><img src="./images/customLogo.jpg" alt="광우" class="logo" /></a>
+				<a href="./index.jsp" title="메인으로 이동"><img src="./images/customLogo.jpg" alt="광우" class="logo" /></a>
 			</h1>
 			<div>
 				<span class="material-symbols-outlined">login</span> <a	class="iconText" href="loginCustomer.do"> 로그인</a>
@@ -34,8 +34,8 @@
 		<div class="custom_head_bottom">
 			<div class="custom_head_menu">
 				<ul>
-					<li class=""><a href="#" title="제품구매">조립컴퓨터 구매</a></li>
-					<li class=""><a href="#" title="상품구매">컴퓨터부품 구매</a></li>
+					<li class=""><a href="./index.jsp" title="제품구매">조립컴퓨터 구매</a></li>
+					<li class=""><a href="customItemList.do" title="상품구매">DYI 컴퓨터</a></li>
 				</ul>
 			</div>
 			<!--// local_menu -->

@@ -295,4 +295,30 @@ public class ProductDao {
 		
 		return list;
 	}
+
+	public void buyProduct(String[] itemValue, int itemPrice) {
+		String sql = "UPDATE ITEM SET STOCK = STOCK - 1 WHERE ITEMNO = ?";
+		Connection conn = ConnectionHelper.getConnection("oracle");
+		PreparedStatement pstmt = null;
+		try {
+			for (int i = 0; i < itemValue.length; i++) {
+				int itemNo = Integer.parseInt(itemValue[i]);
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, itemNo);
+				pstmt.executeUpdate();
+				pstmt.clearParameters();
+			}
+			
+			sql = "INSERT INTO Money (profit, cost, tAmount, cause) VALUES (?, 0, (SELECT tAmount + ? FROM Money WHERE mNo = (SELECT MAX(mNo) FROM Money)), '제품 판매')";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, itemPrice);
+			pstmt.setInt(2, itemPrice);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
+		}
+	}
 }

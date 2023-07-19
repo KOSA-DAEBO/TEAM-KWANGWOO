@@ -18,7 +18,7 @@ import edu.kosa.third.dto.PIMappingDto;
 import edu.kosa.third.dto.ProductDto;
 import edu.kosa.third.utils.Thumbnail;
 
-public class updateProductServiceAction implements Action {
+public class UpdateProductServiceAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
