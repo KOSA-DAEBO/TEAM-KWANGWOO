@@ -10,22 +10,27 @@ import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import edu.kosa.third.action.Action;
 import edu.kosa.third.action.ActionForward;
 import edu.kosa.third.dao.LeaveDao;
+import edu.kosa.third.dto.EmpDto;
 
 public class LeaveApplyServiceAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		LeaveDao dao = new LeaveDao();
-
+		HttpSession session = request.getSession();
+		EmpDto dto = (EmpDto) session.getAttribute("login");
+		String usrId = dto.getUsrId();
+		System.out.println(usrId);
+		
 		String typeNo = request.getParameter("leaveType");
 		String startDay = request.getParameter("startDay");
 		String endDay = request.getParameter("endDay");
 		String reason = request.getParameter("reason");
-		String usrId = "crush0327";
 		String resultdata = "";
 		DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		long days = 0;
@@ -42,7 +47,7 @@ public class LeaveApplyServiceAction implements Action {
 		if (typeNo.equals("10") && dao.checkAnnual(usrId) < (int) (days + 1)) {
 			try {
 				out = response.getWriter();
-				out.println("<script>alert('연차 일수가 부족합니다.'); location.href='leave.do';</script>");
+				out.println("<script>alert('연차 일수가 부족합니다.'); window.history.back();</script>");
 				out.flush();
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -50,7 +55,7 @@ public class LeaveApplyServiceAction implements Action {
 		} else if (dao.checkDays(usrId, startDay, endDay)) {
 			try {
 				out = response.getWriter();
-				out.println("<script>alert('선택 하신 날짜에 중복으로 휴가가 신청되어 있습니다.'); location.href='leave.do';</script>");
+				out.println("<script>alert('선택 하신 날짜에 중복으로 휴가가 신청되어 있습니다.'); window.history.back();</script>");
 				out.flush();
 			} catch (IOException e) {
 				e.printStackTrace();
