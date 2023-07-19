@@ -4,30 +4,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet"
-	href="https://unpkg.com/nice-forms.css@0.1.7/dist/nice-forms.css" />
 <meta charset="UTF-8">
 <title>Team KwangWoo</title>
 
 </head>
 <body>
 
+국민연금 <c:out value="${map.NP}"/>
+건강보험<c:out value="${map.HI}"/>
+고용보험<c:out value="${map.EI}"/>
+장기요양보험<c:out value="${map.CI}"/>
+
 	<form action="leaveApply.do" method="post">
 		<div class="nice-form-group">
-			<label>휴가 종류</label> <select name="leaveType" id="leaveType">
-				<option value="10">연차</option>
-				<option value="20">공가</option>
-				<option value="30">병가</option>
-				<option value="40">특별휴가</option>
-			</select>
+			<label>사원 이름</label> <input type="text" id="empName"
+				name="empName">
 		</div>
 		<div class="nice-form-group">
-			<label>휴가 시작일</label> 
-			<input type="date" id="startDay" name="startDay">
+			<label>휴가 시작일</label> <input type="date" id="startDay"
+				name="startDay">
 		</div>
 		<div class="nice-form-group">
-			<label>휴가 종료일</label> 
-			<input type="date" id="endDay" name="endDay">
+			<label>휴가 종료일</label> <input type="date" id="endDay" name="endDay">
 		</div>
 		<div class="nice-form-group">
 			<label>휴가 사유</label>

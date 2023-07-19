@@ -25,7 +25,7 @@
 
                     <label for="usrId" class="join_list">아이디 :</label>
 
-                    <input type="text" class="join_input" id="usrId" placeholder="아이디 입력" name="usrId" style=" width : 240px;">
+                    <input type="text" class="join_input" id="usrId" placeholder="아이디 입력" name="usrId">
 
                     <button type="button" class="joinButton" id="idCheckButton" onclick="idChk()">중복확인</button>
 

@@ -10,7 +10,7 @@ import edu.kosa.third.action.ActionForward;
 import edu.kosa.third.dao.ProductDao;
 import edu.kosa.third.dto.ProductDto;
 
-public class customProductServiceAction implements Action {
+public class CustomProductServiceAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {

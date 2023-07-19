@@ -147,9 +147,8 @@ public class FrontRegisterController extends HttpServlet {
 			forward = action.execute(request, response);
 
 		} else if (urlcommand.equals("/commuteEmp.do")) {
-			forward = new ActionForward();
-			forward.setRedirect(false);
-			forward.setPath("/WEB-INF/views/commute/commuteEmp.jsp");
+			action = new CommuteCalendarServiceAction();
+			forward = action.execute(request, response);
 
 		} else if (urlcommand.equals("/commuteEmpChk.do")) {
 			action = new CommuteEmpServiceAction();
@@ -186,32 +185,61 @@ public class FrontRegisterController extends HttpServlet {
 		} else if (urlcommand.equals("/detailProduct.do")) {
 			action = new ProductInfoServiceAction();
 			forward = action.execute(request, response);
-			
+
 		} else if (urlcommand.equals("/addProduct.do")) {
-			action = new addProductServiceAction();
+			action = new AddProductServiceAction();
 			forward = action.execute(request, response);
-			
+
 		} else if (urlcommand.equals("/goAddProduct.do")) {
-			action = new getItemServiceAction();
+			action = new GetItemServiceAction();
 			forward = action.execute(request, response);
 			
 		} else if (urlcommand.equals("/updateDept.do")) {
 			action = new UpdateDeptServiceAction();
 			forward = action.execute(request, response);
+			
 		} else if (urlcommand.equals("/deleteProduct.do")) {
-			action = new deleteProductServiceAction();
+			action = new DeleteProductServiceAction();
 			forward = action.execute(request, response);
-			
+
 		} else if (urlcommand.equals("/updateProduct.do")) {
-			action = new updateProductServiceAction();
+			action = new UpdateProductServiceAction();
 			forward = action.execute(request, response);
-			
+
 		} else if (urlcommand.equals("/customList.do")) {
-			action = new customProductServiceAction();
+			action = new CustomProductServiceAction();
+			forward = action.execute(request, response);
+
+		} else if (urlcommand.equals("/detailCustomProduct.do")) {
+			action = new CustomProductDetailServiceAction();
 			forward = action.execute(request, response);
 			
-		} else if (urlcommand.equals("/detailCustomProduct.do")) {
-			action = new customProductDetailServiceAction();
+		} else if (urlcommand.equals("/buyProduct.do")) {
+			action = new BuyProductServiceAction();
+			forward = action.execute(request, response);
+			
+		} else if (urlcommand.equals("/customItemList.do")) {
+			action = new CustomItemListServiceAction();
+			forward = action.execute(request, response);
+			
+		} else if (urlcommand.equals("/buyDiyProduct.do")) {
+			action = new BuyDyiProductServiceAction();
+			forward = action.execute(request, response);
+
+		} else if (urlcommand.equals("/commuteAdmin.do")) {
+			action = new CommuteCalendarAdminServiceAction();
+			forward = action.execute(request, response);
+
+		} else if (urlcommand.equals("/leaveModify.do")) {
+			action = new LeaveModifyServiceAction();
+			forward = action.execute(request, response);
+
+		} else if (urlcommand.equals("/salList.do")) {
+			action = new SalListServiceAction();
+			forward = action.execute(request, response);
+			
+		} else if (urlcommand.equals("/salApply.do")) {
+			action = new SalApplyServiceAction();
 			forward = action.execute(request, response);
 			
 		}

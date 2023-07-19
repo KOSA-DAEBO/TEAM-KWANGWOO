@@ -28,7 +28,7 @@ public class LeaveModifyServiceAction implements Action {
 		String startDay = request.getParameter("startDay");
 		String endDay = request.getParameter("endDay");
 		String reason = request.getParameter("reason");
-		int leaveNo = Integer.parseInt(request.getParameter("leaveNo"));
+		String leaveNo = (String) (session.getAttribute("leaveNo"));
 		
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out;
@@ -43,7 +43,7 @@ public class LeaveModifyServiceAction implements Action {
 			}
 		}*/
 		
-		dao.modifyLeave(startDay, endDay, reason, Integer.parseInt(typeNo), leaveNo);
+		dao.modifyLeave(startDay, endDay, reason, Integer.parseInt(typeNo), Integer.parseInt(leaveNo));
 		
 		ActionForward forward = new ActionForward();
 		forward.setPath("/WEB-INF/views/leave/leaveDetail.jsp");

@@ -16,7 +16,8 @@
 .head_menu:hover + .local_menu {display: block;}
 .head_menu li {float:left;}
 .head_menu li:first-child a{width:191px;}
-.head_menu li a {display:flex; height:43px; line-height:50px; color:#fff;font-size:20px; width:191px; text-align:center; text-decoration: none; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; justify-content: center; align-items: c}
+.head_menu li a {display:flex; height:43px; line-height:50px; color:#fff;font-size:20px; width:191px; text-align:center; text-decoration: none; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; justify-content: center; align-items: center;}
+
 .head_menu li.on a {background:#00471b;}
 .head_menu li a:hover {background:#00471b;} 
 
@@ -95,6 +96,17 @@
 .check_table_body {display: grid; grid-template-columns: 100px 3fr 100px 100px 100px 100px; gap: 10px; text-align: center;}
 .check_table_body a:hover {transform: scale(2); color: #005b23; font-weight: bold; cursor: pointer;}
 
+/*custom_item*/
+.custom_item_content {margin: 10px auto 10px auto; width: 1200px; display: grid; justify-content: center; padding: 30px 0px; grid-template-rows: 90px 1fr 50px;}
+.custom_item_content .name {text-align:center; color:black; font-size:40px; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif;}
+.custom_item_content .item {border: 2px solid black; padding: 10px; display: grid; grid-template-columns: 150px 1fr; grid-template-rows: repeat(9, 50px); gap: 10px; width: 800px;}
+.custom_item_content .item .clsName {display: flex; justify-content: center; align-items: center;}
+.custom_item_content .item select {margin: 7px 0px;}
+.custom_item_content .item .totalPrice {margin-top: 16px; text-align: center;}
+.custom_item_content .buyBtnDiv {text-align: center; margin-top: 20px;}
+.custom_item_content input {border-radius: 20px; border-style: solid; border-color:#C40723; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #C40723; font-size: 20px; width: 150px; height: 40px;}
+.custom_item_content input:hover {background:#C40723; color: #ffffff;}
+
 /*buyItem*/
 .buy_item_nav {position: fixed; right: 10px; top: 250px; width: 300px; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif;}
 .buy_form {display: none; grid-template-rows: 50px 1fr; grid-template-columns: 1fr;}
@@ -123,7 +135,8 @@
 .product_content .card_form .card_list {display: grid; grid-template-rows: repeat(2, 1fr); grid-template-columns: repeat(4, 1fr); align-items: center;}
 .product_content .card_form .card_list .card {grid-template-columns: 90px 1fr; width: 80%; height: 120px; margin: 0px auto;}
 .product_content .card_form .card_list .card:hover {cursor: pointer;}
-.product_content .card_left, .card_right {border: 1px solid #005b23;}
+.product_content .card_left {border: 1px solid #005b23;}
+.product_content .card_right {border: 1px solid #005b23; width: 170px;}
 .product_content .p_content {font-size: 16px; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; margin: 10px 5px;}
 .product_content .pagination {margin-top: 20px; text-align: center;}
 .product_content .pagination button {border-radius: 20px; border-style: solid; border-color:#005b23; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #005b23; font-size: 20px; width: 150px; height: 40px; margin: 15px 50px;}
@@ -131,7 +144,7 @@
 .product_content .pagination button:disabled {opacity: 0.5; cursor: not-allowed;}
 
 /*custom_product*/
-.product_content .content_name {text-align:center; color:#C40723; font-size:40px; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif;}
+.product_content .content_name {text-align:center; color:black; font-size:40px; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif;}
 .product_content .pagination .custom_button {border-radius: 20px; border-style: solid; border-color:#C40723; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #C40723; font-size: 20px; width: 150px; height: 40px; margin: 15px 50px;}
 .product_content .pagination .custom_button:hover {background-color: #C40723; color: #ffffff;}
 .product_content .pagination .custom_button:disabled {opacity: 0.5; cursor: not-allowed;}
@@ -146,6 +159,16 @@
 .productDetail .productContent .deleteBtn {border-radius: 20px; border-style: solid; border-color:red; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: red; font-size: 20px; width: 150px; height: 40px; margin: 0px 50px;}
 .productDetail .productContent .updateBtn:hover {background-color: #005b23; color: #ffffff;}
 .productDetail .productContent .deleteBtn:hover {background-color: red; color: #ffffff;}
+
+/*custom_detail_product*/
+.custom_productDetail {display: grid; grid-template-columns: repeat(2, 1fr); gap:10px; width: 70%; height: 580px; margin: 30px auto; padding: 30px 0px; border: 1px solid #C40723; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; font-size: 20px;}
+.custom_productDetail .productDetailImg {width: 400px; margin: auto;}
+.custom_productDetail .productDetailImg > img {width: 100%;}
+.custom_productDetail .productContent {display: grid; grid-template-rows: 1fr 50px;}
+.custom_productDetail .productContent .content {display:grid; grid-template-columns: 150px 1fr;}
+.custom_productDetail .productContent .itemValue, .itemPrice {display: none;}
+.custom_productDetail .productContent .buyBtn {border-radius: 20px; border-style: solid; border-color:#C40723; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #C40723; font-size: 20px; width: 150px; height: 40px; margin: 0px 200px;}
+.custom_productDetail .productContent .buyBtn:hover {background-color: #C40723; color: #ffffff;}
 
 /*add_product*/
 .addProduct {margin: 10px auto 10px auto; width: 1000px; display: grid; justify-content: center; padding: 30px 0px; grid-template-rows: 90px 1fr;}
@@ -221,12 +244,13 @@ table.type09 td{width:300px;padding:10px;vertical-align:top;border-bottom:1px so
 table.type02{border-collapse:separate;border-spacing:0;text-align:center;line-height:1.5;border-top:1px solid #ccc;border-left:1px solid #ccc;margin-left:auto;margin-right:auto}
 table.type02 th{font-weight:700;vertical-align:top;text-align:center;border-right:1px solid #ccc;border-bottom:1px solid #ccc;border-top:1px solid #fff;border-left:1px solid #fff;background:#eee}
 table.type02 input.lbutton{font-size:17px}
-.leave_content {margin: 5px auto 5px auto; width: 1200px; display: grid; justify-content: center; padding: 0px 0px; grid-template-rows: 60px 3fr 0px;}
+.leave_content {margin: 5px auto 5px auto; width: 1200px; display: grid; justify-content: center; padding: 0px 0px; grid-template-rows: 60px 50px 1fr;}
 .leave_content .name {text-align:center; color:#005b23; font-size:40px; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif;}
 .levForm{text-align: center;}
 .leaveButton{justify-content: center; border-radius: 20px; border-style: solid; border-color:#005b23; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #005b23; font-size: 20px; width: 150px; height: 40px; margin: 15px 30px;}
 .leaveButton2{justify-content: center; border-radius: 20px; border-style: solid; border-color:#005b23; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #005b23; font-size: 20px; width: 250px; height: 40px; margin: 15px 30px;}
 .leaveButton:hover , .leaveButton2:hover {background:#005b23; color: #ffffff;}
+.paySearch{width:150px}
 
 /*login*/	
 .loginPage{width:420px;padding:40px;height:auto;top:20%;left:30%;margin:0 auto 11%;border-bottom:5px solid #005B23;border-top:5px solid #005B23}
@@ -237,6 +261,9 @@ table.type02 input.lbutton{font-size:17px}
 #loginButton{width:300px;height:36px;margin-left:60px;margin-top:20px;border:none;display:inline-block;border-radius:15px;box-shadow:0 15px 35px rgba(0,0,0,0.1);text-decoration:none;font-weight:600;transition:.25s;color:#f8f8ff;background-color:#005B23}
 #loginButton:hover{transform:scale(1.2)}
 #atag{text-align:right;margin-right:1%}
+.loginCustomer .loginPage{border-top:5px solid #C40723;border-bottom:5px solid #C40723}
+.loginCustomer .login_input{border:1px solid #C40723;}
+.loginCustomer #loginButton{background-color:#C40723}
 
 /*join*/
 .joinPage{width:540px;padding:40px;height:auto;top:20%;left:30%;margin:0 auto 3%;border-bottom:5px solid #005B23;border-top:5px solid #005B23}
@@ -251,6 +278,11 @@ table.type02 input.lbutton{font-size:17px}
 #idChecklist{padding-left:30px}
 #idCheckTitle{size:20px;text-indent:0;margin:20px}
 #idCheckPage{overflow-x:hidden}
+.joinPage #usrId{width : 240px}
+.joinCustomer .joinPage{border-top:5px solid #C40723;border-bottom:5px solid #C40723}
+.joinCustomer .join_input{border:1px solid #C40723}
+.joinCustomer .joinButton{background-color:#C40723}
+.joinCustomer .join_radio_input{accent-color: #C40723}
 
 /*usrDetail*/
 #usrcontainer{display: grid; place-items: center; width: 100%; height: 700px;}
@@ -273,4 +305,20 @@ table.type02 input.lbutton{font-size:17px}
 .commute_table{font-size:30px;margin:0 auto}
 #commuteButton{width:360px;height:43px;margin-left:30px;margin-top:40px;border:none;display:inline-block;border-radius:15px;box-shadow:0 15px 35px rgba(0,0,0,0.1);text-decoration:none;font-weight:600;transition:.25s;color:#f8f8ff;background-color:#005B23;font-size:26px}
 #commuteButton:hover{transform:scale(1.2)}
+.commutePage{margin:5% 23%}
+#commuteInfo{position:absolute;top:103px;left:0;margin:5% 23%;font-size:16px;font-weight:700;z-index:1;line-height:25px}
+.commuteRounded-bar{display:inline-block;height:14px;width:45px;vertical-align:center;border-radius:10px}
+#commuteWork{background-color:#50bcdf}
+#commuteLeave{background-color:#ef6c00}
 
+/* fullcalendar weekend color change */
+.fc-day-sun a{color:red;text-decoration:none}
+.fc-day-sat a{color:blue;text-decoration:none}
+
+/*sal*/
+table.type091{border-collapse:collapse;text-align:left;line-height:1.5;margin-left:auto;margin-right:auto}
+table.type091 thead th{width:200px;padding:10px;font-weight:700;vertical-align:top;color:#369;border-bottom:3px solid #036;background:#dcdcd1}
+table.type091 thead td{width:100px; text-align:center; padding:10px;font-weight:700;vertical-align:top;color:#369;border-bottom:3px solid #036;background:#dcdcd1}
+table.type091 tbody th{width:70px; text-align:center; padding:10px;font-weight:700;vertical-align:top;border-bottom:1px solid #ccc;border-top:1px solid #ccc;background:#f3f6f7}
+table.type091 tbody td.empnumber{width:20px; text-align:center;}
+table.type091 td{text-align:center; width:100px;padding:10px;vertical-align:top;border-bottom:1px solid #ccc}

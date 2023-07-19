@@ -36,7 +36,7 @@
                <div class="head_menu">
                   <ul>
                      <li class=""><a href="#" title="인사">인사</a></li>
-                     <li class=""><a href="leaveList.do" title="휴가">휴가</a></li>
+                     <li class=""><a href="leaveList.do?listNum=3" title="휴가">휴가</a></li>
                      <li class=""><a href="#" title="급여">급여</a></li>
                      <li class=""><a href="#" title="출퇴근">출퇴근</a></li>
                      <li class=""><a href="productList.do" title="제품관리">제품관리</a></li>
@@ -60,7 +60,7 @@
             </div>
             <div class="lm group3">
                <ul>
-                  <li><a href="#">급여관리</a></li>
+                  <li><a href="salList.do">급여관리</a></li>
                   <li><a href="#">급여지급</a></li>
                   <li><a href="#">등등등</a></li>
                </ul>
@@ -68,9 +68,9 @@
             <div class="lm group4">
                <ul>
                    <li><a href="commuteEmpChk.do">출퇴근체크</a></li>
-                   <li><a href="#">출퇴근확인</a></li>
+                   <li><a href="commuteEmp.do">출퇴근확인</a></li>
                    <c:if test="${login.role}"> <%--관리자 로그인--%>
-                       <li><a href="#">출퇴근관리</a></li>
+                       <li><a href="commuteAdmin.do">출퇴근관리</a></li>
                    </c:if>
                </ul>
             </div>
