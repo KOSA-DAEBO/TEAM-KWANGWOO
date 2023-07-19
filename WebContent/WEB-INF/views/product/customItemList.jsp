@@ -17,7 +17,7 @@
 			<div class="item">
 				<c:forEach var="clsList" items="${clsList}">
 					<div class="clsName">${clsList.itemClsName}</div>
-					<select onchange="updateTotalPrice()">
+					<select class="buyProductSelect" onchange="updateTotalPrice()">
 						<option>--선택하세요.(필수사항)</option>
 						<c:forEach var="list" items="${list}">
 							<c:if test="${clsList.itemClsNo == list.cDto.itemClsNo && list.dto.stock != 0}">
