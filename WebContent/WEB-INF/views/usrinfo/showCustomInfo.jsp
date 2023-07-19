@@ -6,45 +6,45 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원개인정보 페이지</title>
+<title>Team KwangWoo</title>
 </head>
 <body>
 	<div align="center">
 		<table>
 			<tr>
 				<td>계정</td>
-				<td>${customInfo.usrId }</td>
+				<td>${login.usrId }</td>
 			</tr>
 			<tr>
 				<td>이름</td>
-				<td>${customInfo.customerName }</td>
+				<td>${login.customerName }</td>
 			</tr>
 			<tr>
 				<td>주소</td>
-				<td>${customInfo.customerAddr }</td>
+				<td>${login.customerAddr }</td>
 			</tr>
 			<tr>
 				<td>전화번호</td>
-				<td>${customInfo.customerTel }</td>
+				<td>${login.customerTel }</td>
 			</tr>
 			<tr>
 				<td>이메일</td>
-				<td>${customInfo.customerEmail }</td>
+				<td>${login.customerEmail }</td>
 			</tr>
 			<tr>
 				<td>성별:</td>
 				<td><c:choose>
-						<c:when test="${customInfo.customerGender == '1'  }">
+						<c:when test="${login.customerGender == '1'  }">
 								남
 							</c:when>
-						<c:when test="${customInfo.customerGender == '0'  }">
+						<c:when test="${login.customerGender == '0'  }">
 								여
 							</c:when>
 					</c:choose></td>
 			</tr>
 			<tr>
 				<td>생년월일:</td>
-				<td>${customInfo.customerBirth }</td>
+				<td>${login.customerBirth }</td>
 			</tr>
 		</table>
 	</div>

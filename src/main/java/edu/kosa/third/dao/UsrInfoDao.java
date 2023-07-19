@@ -6,89 +6,112 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.kosa.third.dto.CustomerDto;
 import edu.kosa.third.dto.DeptDto;
-import edu.kosa.third.dto.EmpDto;
 import edu.kosa.third.dto.EmpDetailsDto;
+import edu.kosa.third.dto.EmpDto;
 import edu.kosa.third.dto.PosDto;
+import edu.kosa.third.dto.UsrDto;
 import edu.kosa.third.utils.ConnectionHelper;
 
 public class UsrInfoDao {
 
-	
-	// 소비자 개인정보 조회
-	public CustomerDto customerInfoAll() {
-		String sql = "select * from customer where usrid=?";
-		Connection conn = null;
+	//관리자 - 퇴사 처리
+	public boolean deleteEmpInfo(EmpDetailsDto empDetailDto) {
+		String delete = "update usr set status = ?  where usrid = ?";
+		String delete2 = "update emp set DEPARTUREDATE = ? where  empno = ?";
+		Connection conn = ConnectionHelper.getConnection("oracle");
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		CustomerDto customdto = null;
+		PreparedStatement pstmt2 = null;
+		boolean result = false;
 		try {
-			conn = ConnectionHelper.getConnection("oracle");
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, "zxczxc");
-			rs = pstmt.executeQuery();
-			customdto = new CustomerDto();
-
-			while (rs.next()) {
-				customdto.setCustomerNo(rs.getString(1));
-				customdto.setUsrId(rs.getString(2));
-				customdto.setCustomerEmail(rs.getString(3));
-				customdto.setCustomerTel(rs.getString(4));
-				customdto.setCustomerGender(rs.getString(5));
-				customdto.setCustomerBirth(rs.getDate(6));
-				customdto.setCustomerAddr(rs.getString(7));
-				customdto.setCustomerName(rs.getString(8));
+			pstmt = conn.prepareStatement(delete);
+			pstmt.setString(1, empDetailDto.getUsrDto().getStatus());
+			pstmt.setString(2, empDetailDto.getUsrDto().getUsrId());
+			pstmt.execute();
+		
+			pstmt2 = conn.prepareStatement(delete2);
+			pstmt2.setDate(1, empDetailDto.getEmpDto().getDepartureDate());
+			pstmt2.setInt(2, empDetailDto.getEmpDto().getEmpNo());
+			pstmt2.execute();
 				
-			}
-		} catch (Exception e) {
+			result = true;
+		}catch(Exception e) {
 			e.printStackTrace();
-		} finally {
-			ConnectionHelper.close(rs);
+		}finally {
 			ConnectionHelper.close(pstmt);
 			ConnectionHelper.close(conn);
 		}
-		return customdto;
+		return result;
 	}
+	
+	//관리자 - 인사 정보 변경
+	public void updateManageEmpInfo(EmpDto empDto) {
+		String update="update emp set deptno = ? , posno = ? , salary = ? where empno = ?";
+		Connection conn = ConnectionHelper.getConnection("oracle");
+		PreparedStatement pstmt;
+		try {
+		pstmt = conn.prepareStatement(update);
+		pstmt.setInt(1, empDto.getDeptNo());
+		pstmt.setInt(2, empDto.getPosNo());
+		pstmt.setInt(3, empDto.getSarlary());
+		pstmt.setInt(4, empDto.getEmpNo());
+		pstmt.execute();
+		
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	//직원 -  개인 정보 변경
+	public void updateEmpInfo(EmpDto empDto) {
+		String update = "update emp set empname = ? , empaddr = ?, emptel = ?, empemail = ? where empno = ? ";
+		Connection conn = ConnectionHelper.getConnection("oracle");
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = conn.prepareStatement(update);
+			pstmt.setString(1, empDto.getEmpName());
+			pstmt.setString(2, empDto.getEmpAddr());
+			pstmt.setString(3, empDto.getEmpTel());
+			pstmt.setString(4, empDto.getEmpEmail());
+			pstmt.setInt(5, empDto.getEmpNo());
+			pstmt.execute();
 
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
+		}
+	}
+	
+	
 	// 직원 - 직원 개인 정보 상세조회
-	public EmpDetailsDto detailEmpInfo() {
-		String sql = "select e.empno, e.usrid, e.empname, empbirth, e.empemail, e.empstatus,"
-				+ "  e.emptel, e.empgender, e.empaddr, e.hiredate, " + " e.annualleave, d.deptname, p.posname"
-				+ "				 from emp e, pos p, dept d where e.deptNo = d.deptNo and e.posNo = p.posNo and usrId = ?";
-		Connection conn = null;
+	public EmpDetailsDto detailEmpInfo(int empNo) {
+		String sql = "SELECT d.deptname, p.posname, u.status"
+				+ "	 FROM emp e JOIN pos p ON e.posNo = p.posNo JOIN dept d ON e.deptNo = d.deptNo JOIN usr u ON u.usrid = e.usrid"
+				+ "	 WHERE e.empNo = ?";
+		Connection conn = ConnectionHelper.getConnection("oracle");
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
-		EmpDetailsDto dto = null;
+		EmpDetailsDto dto =  null;
 		try {
-			conn = ConnectionHelper.getConnection("oracle");
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, "asdsaad2114");//나중에 로그인 기능 연동 후 usrId 로 바꿀것
+
+			pstmt.setInt(1, empNo);
 			rs = pstmt.executeQuery();
+
+			PosDto posDto = new PosDto();
+			DeptDto deptDto = new DeptDto();
+			UsrDto usrDto = new UsrDto();
+
+			while (rs.next()) {
+				deptDto.setDeptName(rs.getString("DeptName"));
+				posDto.setPosName(rs.getString("PosName"));
+				usrDto.setStatus(rs.getString("Status"));
+//				usr.setUsrimage(rs.getString("UsrimagePath"));
 				
-			
-				EmpDto emp = new EmpDto();
-				PosDto pos = new PosDto();
-				DeptDto dept = new DeptDto();
-					
-				while(rs.next()) {
-					
-					emp.setEmpNo(rs.getInt(1));
-					emp.setUsrId(rs.getString(2));
-					emp.setEmpName(rs.getString(3));
-					emp.setEmpBirth(rs.getDate(4));
-					emp.setEmpEmail(rs.getString(5));
-					emp.setEmpStatus(rs.getBoolean(6));
-					emp.setEmpTel(rs.getString(7));
-					emp.setEmpGender(rs.getString(8));
-					emp.setEmpAddr(rs.getString(9));
-					emp.setHireDate(rs.getDate(10));
-					emp.setAnnualLeave(rs.getInt(11));
-					dept.setDeptName(rs.getString(12));
-					pos.setPosName(rs.getString(13));
-					dto = new EmpDetailsDto(emp, pos, dept);
-				}
+				dto = new EmpDetailsDto(posDto, deptDto, usrDto);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -98,8 +121,8 @@ public class UsrInfoDao {
 		}
 		return dto;
 	}
- 
-	// 전체 직원 조회 반복문 사용
+
+	// 관리자 - 전직원 조회 반복문 사용
 	public List<EmpDto> totalEmpInfo() {
 		String select = "select usrid, empno, empname, hiredate from emp";
 		List<EmpDto> list = null;
@@ -114,10 +137,10 @@ public class UsrInfoDao {
 			while (rs.next()) {
 				EmpDto empdto = new EmpDto();
 
-				empdto.setUsrId(rs.getString(1));
-				empdto.setEmpNo(rs.getInt(2));
-				empdto.setEmpName(rs.getString(3));
-				empdto.setHireDate(rs.getDate(4));
+				empdto.setUsrId(rs.getString("UsrId"));
+				empdto.setEmpNo(rs.getInt("EmpNo"));
+				empdto.setEmpName(rs.getString("EmpName"));
+				empdto.setHireDate(rs.getDate("HireDate"));
 				list.add(empdto);
 			}
 		} catch (Exception e) {
@@ -129,4 +152,5 @@ public class UsrInfoDao {
 		}
 		return list;
 	}
+
 }
