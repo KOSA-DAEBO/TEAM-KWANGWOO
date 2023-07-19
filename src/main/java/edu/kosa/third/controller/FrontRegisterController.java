@@ -199,6 +199,14 @@ public class FrontRegisterController extends HttpServlet {
 			action = new CustomProductDetailServiceAction();
 			forward = action.execute(request, response);
 			
+		} else if (urlcommand.equals("/buyProduct.do")) {
+			action = new BuyProductServiceAction();
+			forward = action.execute(request, response);
+			
+		} else if (urlcommand.equals("/customItemList.do")) {
+			action = new CustomItemListServiceAction();
+			forward = action.execute(request, response);
+			
 		}
 		
 		

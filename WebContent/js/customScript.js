@@ -74,11 +74,42 @@ priceElement.textContent = ":  " + totalPrice.toLocaleString() + "원";
 function buyProduct(usrId) {
 	// 로그인 상태 확인
 	var customerDto = usrId;
-	console.log(customerDto)
 	if (customerDto === "") {
 		alert("로그인 후 가능한 기능입니다.");
 		window.location.href = "loginCustomer.do"; // 로그인 페이지로 이동
 	} else {
-		window.location.href = "buyProduct.do"; // 구매하기 기능
+		var confirmed = confirm("정말 구매하시겠습니까?");
+		if (confirmed) {
+			sendDataToServer(); // 구매하기 기능
+		}
 	}
+}
+
+function sendDataToServer() {
+	// forEach 문에서 추출한 데이터를 배열에 저장
+	var itemData = [];
+	var itemValues = $(".itemValue");
+	var itemPrices = $(".itemPrice");
+
+	for (var i = 0; i < itemValues.length; i++) {
+		var item = {
+			itemValue: $(itemValues[i]).text(),
+			itemPrice: $(itemPrices[i]).text()
+		};
+		itemData.push(item);
+	}
+
+	// AJAX 호출
+	$.ajax({
+		url: "./buyProduct.do",
+		type: "POST",
+		data: JSON.stringify(itemData),
+		contentType: "application/json;charset=UTF-8",
+		success: function(response) {
+			window.location.href = "index.jsp";
+		},
+		error: function(xhr, status, error) {
+			console.error(error);
+		}
+	});
 }

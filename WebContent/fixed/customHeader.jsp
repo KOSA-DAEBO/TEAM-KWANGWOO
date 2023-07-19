@@ -35,7 +35,7 @@
 			<div class="custom_head_menu">
 				<ul>
 					<li class=""><a href="./index.jsp" title="제품구매">조립컴퓨터 구매</a></li>
-					<li class=""><a href="#" title="상품구매">컴퓨터부품 구매</a></li>
+					<li class=""><a href="customItemList.do" title="상품구매">컴퓨터부품 구매</a></li>
 				</ul>
 			</div>
 			<!--// local_menu -->

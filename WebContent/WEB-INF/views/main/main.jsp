@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div class="product_content">
-	<div class="content_name">제품 리스트</div>
+	<div class="content_name">판매 상품</div>
 	<form class="card_form">
 		<div class="card_list">
 			<c:forEach var="list" items="${list}">
