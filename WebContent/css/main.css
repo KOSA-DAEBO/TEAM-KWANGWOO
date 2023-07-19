@@ -104,9 +104,8 @@
 .custom_item_content .item select {margin: 7px 0px;}
 .custom_item_content .item .totalPrice {margin-top: 16px; text-align: center;}
 .custom_item_content .buyBtnDiv {text-align: center; margin-top: 20px;}
-.custom_item_content .buyDyiProduct {border-radius: 20px; border-style: solid; border-color:#C40723; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #C40723; font-size: 20px; width: 150px; height: 40px;}
-.custom_item_content .buyDyiProduct:hover {background:#C40723; color: #ffffff;}
-
+.custom_item_content input {border-radius: 20px; border-style: solid; border-color:#C40723; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #C40723; font-size: 20px; width: 150px; height: 40px;}
+.custom_item_content input:hover {background:#C40723; color: #ffffff;}
 
 /*buyItem*/
 .buy_item_nav {position: fixed; right: 10px; top: 250px; width: 300px; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif;}
