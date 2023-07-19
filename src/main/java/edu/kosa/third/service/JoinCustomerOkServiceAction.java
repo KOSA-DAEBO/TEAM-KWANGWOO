@@ -22,7 +22,7 @@ public class JoinCustomerOkServiceAction implements Action {
         String name = request.getParameter("usrName"); // 필수 입력값은 아이디 비번 이름 주소 전화번호뿐이니 구분해서 호출
         String email = request.getParameter("usrEmail") == null ? "" : request.getParameter("usrEmail");//null 값처리
         String tel = request.getParameter("usrTel");
-        String addr = request.getParameter("usrAddr");
+        String addr = request.getParameter("sample6_address") + " " + request.getParameter("sample6_detailAddress");
         String gender = request.getParameter("usrGender");
         Date birth = Date.valueOf(request.getParameter("usrBirth"));
 
@@ -45,7 +45,7 @@ public class JoinCustomerOkServiceAction implements Action {
 
         ActionForward forward = new ActionForward();
         forward.setRedirect(false);
-        forward.setPath("/WEB-INF/views/main/main.jsp"); //로그인 완료 메인 페이지로 이동
+        forward.setPath("loginCustomer.do"); //로그인 페이지로 이동
         return forward;
     }
 }

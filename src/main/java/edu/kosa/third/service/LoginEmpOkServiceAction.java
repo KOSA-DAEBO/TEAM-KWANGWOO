@@ -49,7 +49,7 @@ public class LoginEmpOkServiceAction implements Action {
             out.println("<script>alert('아이디 혹은 비밀번호가 틀렸습니다.'); window.history.back();</script>");
             out.flush();
         }else{
-            forward.setPath("/WEB-INF/views/main/main.jsp");
+            forward.setPath("commuteEmpChk.do"); //출근체크 페이지로 이동
         }
         return forward;
 

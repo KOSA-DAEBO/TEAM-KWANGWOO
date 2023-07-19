@@ -221,6 +221,7 @@ public class FrontRegisterController extends HttpServlet {
 		} else if (urlcommand.equals("/salList.do")) {
 			action = new SalListServiceAction();
 			forward = action.execute(request, response);
+
 		} else if (urlcommand.equals("/salApply.do")) {
 			action = new SalApplyServiceAction();
 			forward = action.execute(request, response);

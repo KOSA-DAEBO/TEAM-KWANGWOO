@@ -21,17 +21,25 @@
                   alt="광우" class="logo" /></a>
             </h1>
             <div>
-               <span class="material-symbols-outlined">login</span>
-                <a class="iconText" href="loginCustomer.do"> 로그인</a>
-               <span class="material-symbols-outlined">logout</span>
-                <a class="iconText" href="logout.do"> 로그아웃</a>
-               <span class="material-symbols-outlined">person_add</span>
-                <a class="iconText" href="joinCustomer.do"> 회원가입</a>
+                <c:choose>
+                    <c:when test="${not empty sessionScope.login}">
+                        <span class="material-symbols-outlined">logout</span>
+                        <a class="iconText" href="logout.do"> 로그아웃</a>
+                        <a class="iconText"> ${sessionScope.login.usrId}님 안녕하세요.</a>
+                    </c:when>
+                    <c:otherwise>
+                        <span class="material-symbols-outlined">login</span>
+                        <a class="iconText" href="loginCustomer.do"> 로그인</a>
+                        <span class="material-symbols-outlined">person_add</span>
+                        <a class="iconText" href="joinCustomer.do"> 회원가입</a>
+                    </c:otherwise>
+                </c:choose>
             </div>
          </div>
          <!-- //head_top -->
 
          <div class="head_bottom">
+             <c:if test="${not empty sessionScope.login}">
             <div class="head_bottom_in">
                <div class="head_menu">
                   <ul>
@@ -89,6 +97,7 @@
       <!--// local_menu -->
             </div>
             <!-- //head_bottom_in -->
+             </c:if>
          </div>
       </div>
    </div>
