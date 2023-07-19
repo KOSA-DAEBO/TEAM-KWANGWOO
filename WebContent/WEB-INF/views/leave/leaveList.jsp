@@ -73,6 +73,7 @@ window.addEventListener("DOMContentLoaded", function() {
 	<br>
 	<div class="leave_content">
 		<div class="name">휴가 전체 목록</div>
+		
 		<table>
 			<tr>
 				<td><select name="searchField">
@@ -83,6 +84,7 @@ window.addEventListener("DOMContentLoaded", function() {
 				</select></td>
 			</tr>
 		</table>
+		
 		<table class="type07">
 			<thead>
 				<tr>

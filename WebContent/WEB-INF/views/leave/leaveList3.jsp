@@ -15,6 +15,7 @@
 	<br>
 	<div class="leave_content">
 		<div class="name">휴가 신청 내역</div>
+		
 		<table class="type07">
 			<thead>
 				<tr>

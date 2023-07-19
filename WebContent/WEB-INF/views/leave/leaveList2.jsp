@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>Team KwangWoo</title>
 </head>
+
 <body>
 	<br>
 	<br>
@@ -71,8 +72,8 @@
 		</table>
 	</div>
 	<form class="levForm" action="leaveList.do" method="post">
-		<input type="hidden" name="listNum" id="listNum" value="1"> <input
-			type="submit" class="leaveButton" value="전체 휴가 확인">
+		<input type="hidden" name="slistNum" id="slistNum" value="2"> <input
+			type="submit" class="leaveButton" value="전체 직원 확인">
 	</form>
 </body>
 </html>

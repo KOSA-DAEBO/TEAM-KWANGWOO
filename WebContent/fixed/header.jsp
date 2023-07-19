@@ -60,7 +60,7 @@
             </div>
             <div class="lm group3">
                <ul>
-                  <li><a href="#">급여관리</a></li>
+                  <li><a href="salList.do">급여관리</a></li>
                   <li><a href="#">급여지급</a></li>
                   <li><a href="#">등등등</a></li>
                </ul>
