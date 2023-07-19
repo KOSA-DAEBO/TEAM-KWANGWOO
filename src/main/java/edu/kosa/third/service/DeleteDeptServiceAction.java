@@ -5,20 +5,22 @@ import javax.servlet.http.HttpServletResponse;
 
 import edu.kosa.third.action.Action;
 import edu.kosa.third.action.ActionForward;
-import edu.kosa.third.dao.UsrInfoDao;
-import edu.kosa.third.dto.CustomerDto;
+import edu.kosa.third.dao.DeptDao;
+import edu.kosa.third.dto.DeptDto;
 
-public class DetailCustomerInfoServiceAction implements Action {
+public class DeleteDeptServiceAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
-		UsrInfoDao dao = new UsrInfoDao();
-		
-		CustomerDto customInfo = dao.customerInfoAll();
-		request.setAttribute("customInfo", customInfo);
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("/WEB-INF/views/usrinfo/showCustomInfo.jsp");
+		String deptname = request.getParameter("deptName");
+		int deptno = Integer.parseInt(request.getParameter("deptNo"));
+		
+		DeptDao dao = new DeptDao();
+		dao.deleteDept(new DeptDto(deptno, deptname));
+		
+		forward.setPath("/deptMenu.do");
 		return forward;
 	}
 }

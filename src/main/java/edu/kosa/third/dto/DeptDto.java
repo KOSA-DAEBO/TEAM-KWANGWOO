@@ -4,6 +4,15 @@ public class DeptDto {
 	private int deptNo;
 	private String deptName;
 
+	public DeptDto() {
+		
+	}
+	
+	public DeptDto(int deptNo, String deptName) {
+		this.deptName = deptName;
+		this.deptNo = deptNo;
+	}
+
 	public int getDeptNo() {
 		return deptNo;
 	}

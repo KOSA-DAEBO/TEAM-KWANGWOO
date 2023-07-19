@@ -5,7 +5,10 @@ public class UsrDto {
 	private String pwd;
 	private String salt;
 	private String status;
-
+	private String imagePath;
+	private String thumbnailPath;
+	
+	
 	public UsrDto(String usrId, String pwd, String salt, String status) {
 		this.usrId = usrId;
 		this.pwd = pwd;
@@ -15,6 +18,22 @@ public class UsrDto {
 
 	public UsrDto() {
 
+	}
+
+	public String getImagePath() {
+		return imagePath;
+	}
+
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+	}
+
+	public String getThumbnailPath() {
+		return thumbnailPath;
+	}
+
+	public void setThumbnailPath(String thumbnailPath) {
+		this.thumbnailPath = thumbnailPath;
 	}
 
 	public String getUsrId() {

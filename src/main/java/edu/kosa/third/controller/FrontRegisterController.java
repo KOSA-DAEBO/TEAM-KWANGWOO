@@ -129,7 +129,7 @@ public class FrontRegisterController extends HttpServlet {
 		} else if (urlcommand.equals("/empDetail.do")) {
 			action = new DetailEmpInfoServiceAction();
 			forward = action.execute(request, response);
-
+			
 		} else if (urlcommand.equals("/leaveDelete.do")) {
 			action = new LeaveDeleteServiceAction();
 			forward = action.execute(request, response);
@@ -140,10 +140,6 @@ public class FrontRegisterController extends HttpServlet {
 
 		} else if (urlcommand.equals("/logout.do")) {
 			action = new LogoutServiceAction();
-			forward = action.execute(request, response);
-
-		} else if (urlcommand.equals("/customDetail.do")) {
-			action = new DetailCustomerInfoServiceAction();
 			forward = action.execute(request, response);
 
 		} else if (urlcommand.equals("/commuteEmp.do")) {
@@ -160,7 +156,7 @@ public class FrontRegisterController extends HttpServlet {
 
 		} else if (urlcommand.equals("/deptMenu.do")) {
 			forward = new ActionForward();
-			forward.setPath("/WEB-INF/views/deptMenu/deptMenu.jsp");
+			forward.setPath("/WEB-INF/views/deptMenu2/deptMenu.jsp");
 
 		} else if (urlcommand.equals("/manageEmpInfo.do")) {
 			action = new ManageEmpInfoServiceAction();
@@ -170,7 +166,15 @@ public class FrontRegisterController extends HttpServlet {
 			action = new TotalEmpInfoServiceAction();
 			forward = action.execute(request, response);
 
-		} else if (urlcommand.equals("/detailProduct.do")) {
+		} else if (urlcommand.equals("/insertDept.do")) {
+			action = new AddDeptServiceAction();
+			forward = action.execute(request, response);
+			
+		} else if (urlcommand.equals("/deleteDept.do")) {
+			action = new DeleteDeptServiceAction();
+			forward = action.execute(request, response);
+			
+		}  else if (urlcommand.equals("/detailProduct.do")) {
 			action = new ProductInfoServiceAction();
 			forward = action.execute(request, response);
 
@@ -181,7 +185,11 @@ public class FrontRegisterController extends HttpServlet {
 		} else if (urlcommand.equals("/goAddProduct.do")) {
 			action = new GetItemServiceAction();
 			forward = action.execute(request, response);
-
+			
+		} else if (urlcommand.equals("/updateDept.do")) {
+			action = new UpdateDeptServiceAction();
+			forward = action.execute(request, response);
+			
 		} else if (urlcommand.equals("/deleteProduct.do")) {
 			action = new DeleteProductServiceAction();
 			forward = action.execute(request, response);
@@ -226,8 +234,24 @@ public class FrontRegisterController extends HttpServlet {
 			action = new SalApplyServiceAction();
 			forward = action.execute(request, response);
 			
+		} else if (urlcommand.equals("/updateUsrInfo.do")) {
+			action = new UpdateEmpInfoServiceAction();
+			forward = action.execute(request, response);
+			
+		} else if (urlcommand.equals("/totalDept.do")) {
+			action = new TotalDeptServiceAction();
+			forward = action.execute(request, response);
+			
+		} else if (urlcommand.equals("/deleteUsrInfo.do")) {
+			action = new deleteUsrInfoServiceAction();
+			forward = action.execute(request, response);
+			
+		} else if (urlcommand.equals("/customDetail.do")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("/WEB-INF/views/usrinfo/showCustomInfo.jsp");
 		}
-
+		
 		if (forward != null) {
 			if (forward.isRedirect()) { // true 페이지 재 요청 (location.href="페이지"
 				response.sendRedirect(forward.getPath());
