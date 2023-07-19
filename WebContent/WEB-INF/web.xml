@@ -2,7 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
   <display-name>project_KW</display-name>
 
-<!--  emp 로그인 체크-->
+<!--로그인 체크-->
   <filter>
     <filter-name>loginCheckFilter</filter-name>
     <filter-class>edu.kosa.third.utils.LoginCheckFilter</filter-class>

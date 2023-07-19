@@ -22,9 +22,9 @@ public class LoginCheckFilter implements Filter {
         EmpDto login = (EmpDto) req.getSession().getAttribute("login");
         CustomerDto loginCustomer =  (CustomerDto) req.getSession().getAttribute("Customerlogin");
 
-        if(login==null && isEmpChkUri(req)){
+        if(login==null && isEmpChkUrl(req)){
             request.getRequestDispatcher("loginEmp.do").forward(request, response);
-        }else if(loginCustomer==null && isCustomerChkUri(req)){
+        }else if(loginCustomer==null && isCustomerChkUrl(req)){
             request.getRequestDispatcher("loginCustomer.do").forward(request, response);
         }else {
             chain.doFilter(request, response);
@@ -32,7 +32,7 @@ public class LoginCheckFilter implements Filter {
     }
 
     //로그인 제외 uri
-    private boolean isEmpChkUri(HttpServletRequest req) {
+    private boolean isEmpChkUrl(HttpServletRequest req) {
         //true : 검사
         String uri = req.getRequestURI();
         //cp/bbs/list.do
@@ -60,6 +60,7 @@ public class LoginCheckFilter implements Filter {
                 "/deptMenu.do",
                 "/manageEmpInfo.do",
                 "/empList.do"
+
         };
 
         for(String str:empUrl) {
@@ -76,7 +77,7 @@ public class LoginCheckFilter implements Filter {
         return false;
     }
 
-    private boolean isCustomerChkUri(HttpServletRequest req) {
+    private boolean isCustomerChkUrl(HttpServletRequest req) {
         //true : 검사
         String uri = req.getRequestURI();
         //cp/bbs/list.do
