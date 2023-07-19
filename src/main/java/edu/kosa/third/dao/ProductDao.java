@@ -152,7 +152,6 @@ public class ProductDao {
 		Connection conn = ConnectionHelper.getConnection("oracle");
 		PreparedStatement pstmt = null;
 		
-		System.out.println(productNo);
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
@@ -168,5 +167,132 @@ public class ProductDao {
 			ConnectionHelper.close(pstmt);
 			ConnectionHelper.close(conn);
 		}
+	}
+
+	public void deleteProduct(int productNo) {
+		String sql;
+		
+		Connection conn = ConnectionHelper.getConnection("oracle");
+		PreparedStatement pstmt = null;
+		
+		try {
+			sql = "DELETE FROM PIMAPPING WHERE PRODUCTNO = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, productNo);
+			pstmt.executeUpdate();
+			pstmt.clearParameters();
+			
+			sql = "DELETE FROM PRODUCT WHERE PRODUCTNO = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, productNo);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
+		}
+	}
+
+	public ProductDto selectProduct(int productNo) {
+		String sql = "SELECT * FROM PRODUCT WHERE PRODUCTNO = ?";
+		
+		Connection conn = ConnectionHelper.getConnection("oracle");
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ProductDto dto = new ProductDto();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, productNo);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				dto.setProductNo(productNo);
+				dto.setProductName(rs.getString("productName"));
+				dto.setImagePath(rs.getString("imagePath"));
+				dto.setThumbnailPath(rs.getString("thumbnailPath"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(rs);
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
+		}
+		
+		return dto;
+	}
+
+	public void updateProduct(ProductDto productDto) {
+		String sql = "UPDATE PRODUCT SET PRODUCTNAME = ?, IMAGEPATH = ?, THUMBNAILPATH = ? WHERE PRODUCTNO = ?";
+		Connection conn = ConnectionHelper.getConnection("oracle");
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, productDto.getProductName());
+			pstmt.setString(2, productDto.getImagePath());
+			pstmt.setString(3, productDto.getThumbnailPath());
+			pstmt.setInt(4, productDto.getProductNo());
+			
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
+		}
+	}
+
+	public void updatePIMapping(ArrayList<PIMappingDto> dtos, String[] values) {
+		String sql = "UPDATE PIMAPPING SET ITEMNO = ? WHERE MAPPINGNO = ?";
+		Connection conn = ConnectionHelper.getConnection("oracle");
+		PreparedStatement pstmt = null;
+		
+		try {
+			for (int i = 0; i < values.length; i++) {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, Integer.parseInt(values[i]));
+				pstmt.setInt(2, dtos.get(i).getMappingNo());
+				pstmt.executeUpdate();
+				pstmt.clearParameters();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
+		}
+	}
+
+	public ArrayList<PIMappingDto> getMapping(int productNo) {
+		String sql = "SELECT MAPPINGNO FROM PIMAPPING WHERE PRODUCTNO = ?";
+		Connection conn = ConnectionHelper.getConnection("oracle");
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<PIMappingDto> list = new ArrayList<>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, productNo);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				PIMappingDto dto = new PIMappingDto();
+				dto.setMappingNo(rs.getInt("mappingNo"));
+				
+				list.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(rs);
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
+		}
+		
+		return list;
 	}
 }
