@@ -68,9 +68,9 @@
             <div class="lm group4">
                <ul>
                    <li><a href="commuteEmpChk.do">출퇴근체크</a></li>
-                   <li><a href="#">출퇴근확인</a></li>
+                   <li><a href="commuteEmp.do">출퇴근확인</a></li>
                    <c:if test="${login.role}"> <%--관리자 로그인--%>
-                       <li><a href="#">출퇴근관리</a></li>
+                       <li><a href="commuteAdmin.do">출퇴근관리</a></li>
                    </c:if>
                </ul>
             </div>

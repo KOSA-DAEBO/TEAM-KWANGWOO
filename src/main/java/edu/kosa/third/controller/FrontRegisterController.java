@@ -147,9 +147,8 @@ public class FrontRegisterController extends HttpServlet {
 			forward = action.execute(request, response);
 
 		} else if (urlcommand.equals("/commuteEmp.do")) {
-			forward = new ActionForward();
-			forward.setRedirect(false);
-			forward.setPath("/WEB-INF/views/commute/commuteEmp.jsp");
+			action = new CommuteCalendarServiceAction();
+			forward = action.execute(request, response);
 
 		} else if (urlcommand.equals("/commuteEmpChk.do")) {
 			action = new CommuteEmpServiceAction();
@@ -197,6 +196,10 @@ public class FrontRegisterController extends HttpServlet {
 
 		} else if (urlcommand.equals("/detailCustomProduct.do")) {
 			action = new customProductDetailServiceAction();
+			forward = action.execute(request, response);
+
+		} else if (urlcommand.equals("/commuteAdmin.do")) {
+			action = new CommuteCalendarAdminServiceAction();
 			forward = action.execute(request, response);
 
 		} else if (urlcommand.equals("/leaveModify.do")) {

@@ -16,7 +16,7 @@
 .head_menu:hover + .local_menu {display: block;}
 .head_menu li {float:left;}
 .head_menu li:first-child a{width:191px;}
-.head_menu li a {display:flex; height:43px; line-height:50px; color:#fff;font-size:20px; width:191px; text-align:center; text-decoration: none; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; justify-content: center; align-items: c}
+.head_menu li a {display:flex; height:43px; line-height:50px; color:#fff;font-size:20px; width:191px; text-align:center; text-decoration: none; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; justify-content: center; align-items: center}
 .head_menu li.on a {background:#00471b;}
 .head_menu li a:hover {background:#00471b;} 
 
@@ -237,6 +237,9 @@ table.type02 input.lbutton{font-size:17px}
 #loginButton{width:300px;height:36px;margin-left:60px;margin-top:20px;border:none;display:inline-block;border-radius:15px;box-shadow:0 15px 35px rgba(0,0,0,0.1);text-decoration:none;font-weight:600;transition:.25s;color:#f8f8ff;background-color:#005B23}
 #loginButton:hover{transform:scale(1.2)}
 #atag{text-align:right;margin-right:1%}
+.loginCustomer .loginPage{border-top:5px solid #C40723;border-bottom:5px solid #C40723}
+.loginCustomer .login_input{border:1px solid #C40723;}
+.loginCustomer #loginButton{background-color:#C40723}
 
 /*join*/
 .joinPage{width:540px;padding:40px;height:auto;top:20%;left:30%;margin:0 auto 3%;border-bottom:5px solid #005B23;border-top:5px solid #005B23}
@@ -251,6 +254,11 @@ table.type02 input.lbutton{font-size:17px}
 #idChecklist{padding-left:30px}
 #idCheckTitle{size:20px;text-indent:0;margin:20px}
 #idCheckPage{overflow-x:hidden}
+.joinPage #usrId{width : 240px}
+.joinCustomer .joinPage{border-top:5px solid #C40723;border-bottom:5px solid #C40723}
+.joinCustomer .join_input{border:1px solid #C40723}
+.joinCustomer .joinButton{background-color:#C40723}
+.joinCustomer .join_radio_input{accent-color: #C40723}
 
 /*commute*/
 .commute_title{margin:6% auto 0;text-align:center;text-indent:-365px;padding:20px;font-size:30px}
@@ -259,3 +267,12 @@ table.type02 input.lbutton{font-size:17px}
 .commute_table{font-size:30px;margin:0 auto}
 #commuteButton{width:360px;height:43px;margin-left:30px;margin-top:40px;border:none;display:inline-block;border-radius:15px;box-shadow:0 15px 35px rgba(0,0,0,0.1);text-decoration:none;font-weight:600;transition:.25s;color:#f8f8ff;background-color:#005B23;font-size:26px}
 #commuteButton:hover{transform:scale(1.2)}
+.commutePage{margin:5% 23%}
+#commuteInfo{position:absolute;top:103px;left:0;margin:5% 23%;font-size:16px;font-weight:700;z-index:1;line-height:25px}
+.commuteRounded-bar{display:inline-block;height:14px;width:45px;vertical-align:center;border-radius:10px}
+#commuteWork{background-color:#50bcdf}
+#commuteLeave{background-color:#ef6c00}
+
+/* fullcalendar weekend color change */
+.fc-day-sun a{color:red;text-decoration:none}
+.fc-day-sat a{color:blue;text-decoration:none}
