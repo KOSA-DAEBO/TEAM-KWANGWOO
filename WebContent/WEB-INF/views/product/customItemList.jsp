@@ -13,11 +13,11 @@
 <body>
 	<div class="custom_item_content">
 		<div class="name">컴퓨터 조립</div>
-		<form class="buyForm" action="buyDiyProduct.do" method="post">
+		<form class="buyForm" action="buyDiyProduct.do" method="post" onsubmit="return buyDiyProduct()">
 			<div class="item">
 				<c:forEach var="clsList" items="${clsList}">
 					<div class="clsName">${clsList.itemClsName}</div>
-					<select class="buyProductSelect" onchange="updateTotalPrice()">
+					<select class="buyProductSelect" onchange="updateTotalPrice()" id="buyProductSelect" name="buyProductSelect">
 						<option>--선택하세요.(필수사항)</option>
 						<c:forEach var="list" items="${list}">
 							<c:if test="${clsList.itemClsNo == list.cDto.itemClsNo && list.dto.stock != 0}">
@@ -31,7 +31,7 @@
 				<div class="clsName">총 합계</div>
 				<div class="totalPrice">0원</div>
 			</div>
-			<div class="buyBtnDiv"><button type="button" class="buyDyiProduct" onclick="buyDiyProduct()">구매하기</button></div>
+			<div class="buyBtnDiv"><input type="submit" value="구매하기"></div>
 		</form>
 	</div>
 </body>

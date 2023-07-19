@@ -116,7 +116,6 @@ function sendDataToServer() {
 
 function updateTotalPrice() {
 	let totalPrice = 0;
-	let selectedItems = [];
 	let selects = document.getElementsByTagName("select");
 	let isOptionSelected = false;
 
@@ -128,49 +127,36 @@ function updateTotalPrice() {
 
 		let selectedOption = selects[i].options[selects[i].selectedIndex];
 		let price = selectedOption.getAttribute("data-price");
-		let itemNo = selectedOption.value;
 		if (price) {
 			totalPrice += Number(price);
-			selectedItems.push(itemNo);
 		}
 	}
 
 	let totalPriceDiv = document.querySelector(".totalPrice");
 	totalPriceDiv.textContent = totalPrice.toLocaleString() + " 원";
 
-	return {
-		isOptionSelected: isOptionSelected,
-		selectedItems: selectedItems,
-		totalPrice: totalPrice
-	};
+	return isOptionSelected;
 }
 
 function buyDiyProduct() {
-	let { isOptionSelected, selectedItems, totalPrice } = updateTotalPrice();
+	let isOptionSelected = updateTotalPrice();
 
 	if (isOptionSelected) {
 		alert("필수사항을 모두 선택해주세요.");
+		return false;
 	} else {
-		let url = "buyDiyProduct.do";
-
-		let requestData = {
-			totalPrice: totalPrice,
-			selectedItems: selectedItems
-		};
-
-		let xhr = new XMLHttpRequest();
-		xhr.open("POST", url, true);
-		xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-		xhr.onreadystatechange = function() {
-			if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-				// 요청 완료 후 처리할 작업
-				console.log("잘돌아가나?")
-				window.location.href = "buyDiyProduct.do";
-			} else if (xhr.readyState === XMLHttpRequest.DONE) {
-				// 요청 실패 시 처리할 작업
-				console.error("Error:", xhr.status);
-			}
-		};
-		xhr.send(JSON.stringify(requestData));
+		let confirmResult = confirm("정말 구매하시겠습니까?");
+		if (confirmResult) {
+			let totalPrice = document.querySelector(".totalPrice").textContent;
+			let buyForm = document.querySelector(".buyForm");
+			let totalPriceInput = document.createElement("input");
+			totalPriceInput.type = "hidden";
+			totalPriceInput.name = "totalPrice";
+			totalPriceInput.value = totalPrice;
+			buyForm.appendChild(totalPriceInput);
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
