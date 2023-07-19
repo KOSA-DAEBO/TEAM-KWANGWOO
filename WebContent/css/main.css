@@ -17,6 +17,7 @@
 .head_menu li {float:left;}
 .head_menu li:first-child a{width:191px;}
 .head_menu li a {display:flex; height:43px; line-height:50px; color:#fff;font-size:20px; width:191px; text-align:center; text-decoration: none; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; justify-content: center; align-items: center;}
+
 .head_menu li.on a {background:#00471b;}
 .head_menu li a:hover {background:#00471b;} 
 
@@ -244,12 +245,13 @@ table.type09 td{width:300px;padding:10px;vertical-align:top;border-bottom:1px so
 table.type02{border-collapse:separate;border-spacing:0;text-align:center;line-height:1.5;border-top:1px solid #ccc;border-left:1px solid #ccc;margin-left:auto;margin-right:auto}
 table.type02 th{font-weight:700;vertical-align:top;text-align:center;border-right:1px solid #ccc;border-bottom:1px solid #ccc;border-top:1px solid #fff;border-left:1px solid #fff;background:#eee}
 table.type02 input.lbutton{font-size:17px}
-.leave_content {margin: 5px auto 5px auto; width: 1200px; display: grid; justify-content: center; padding: 0px 0px; grid-template-rows: 60px 3fr 0px;}
+.leave_content {margin: 5px auto 5px auto; width: 1200px; display: grid; justify-content: center; padding: 0px 0px; grid-template-rows: 60px 50px 1fr;}
 .leave_content .name {text-align:center; color:#005b23; font-size:40px; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif;}
 .levForm{text-align: center;}
 .leaveButton{justify-content: center; border-radius: 20px; border-style: solid; border-color:#005b23; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #005b23; font-size: 20px; width: 150px; height: 40px; margin: 15px 30px;}
 .leaveButton2{justify-content: center; border-radius: 20px; border-style: solid; border-color:#005b23; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #005b23; font-size: 20px; width: 250px; height: 40px; margin: 15px 30px;}
 .leaveButton:hover , .leaveButton2:hover {background:#005b23; color: #ffffff;}
+.paySearch{width:150px}
 
 /*login*/	
 .loginPage{width:420px;padding:40px;height:auto;top:20%;left:30%;margin:0 auto 11%;border-bottom:5px solid #005B23;border-top:5px solid #005B23}
@@ -260,6 +262,9 @@ table.type02 input.lbutton{font-size:17px}
 #loginButton{width:300px;height:36px;margin-left:60px;margin-top:20px;border:none;display:inline-block;border-radius:15px;box-shadow:0 15px 35px rgba(0,0,0,0.1);text-decoration:none;font-weight:600;transition:.25s;color:#f8f8ff;background-color:#005B23}
 #loginButton:hover{transform:scale(1.2)}
 #atag{text-align:right;margin-right:1%}
+.loginCustomer .loginPage{border-top:5px solid #C40723;border-bottom:5px solid #C40723}
+.loginCustomer .login_input{border:1px solid #C40723;}
+.loginCustomer #loginButton{background-color:#C40723}
 
 /*join*/
 .joinPage{width:540px;padding:40px;height:auto;top:20%;left:30%;margin:0 auto 3%;border-bottom:5px solid #005B23;border-top:5px solid #005B23}
@@ -274,6 +279,11 @@ table.type02 input.lbutton{font-size:17px}
 #idChecklist{padding-left:30px}
 #idCheckTitle{size:20px;text-indent:0;margin:20px}
 #idCheckPage{overflow-x:hidden}
+.joinPage #usrId{width : 240px}
+.joinCustomer .joinPage{border-top:5px solid #C40723;border-bottom:5px solid #C40723}
+.joinCustomer .join_input{border:1px solid #C40723}
+.joinCustomer .joinButton{background-color:#C40723}
+.joinCustomer .join_radio_input{accent-color: #C40723}
 
 /*commute*/
 .commute_title{margin:6% auto 0;text-align:center;text-indent:-365px;padding:20px;font-size:30px}
@@ -282,3 +292,20 @@ table.type02 input.lbutton{font-size:17px}
 .commute_table{font-size:30px;margin:0 auto}
 #commuteButton{width:360px;height:43px;margin-left:30px;margin-top:40px;border:none;display:inline-block;border-radius:15px;box-shadow:0 15px 35px rgba(0,0,0,0.1);text-decoration:none;font-weight:600;transition:.25s;color:#f8f8ff;background-color:#005B23;font-size:26px}
 #commuteButton:hover{transform:scale(1.2)}
+.commutePage{margin:5% 23%}
+#commuteInfo{position:absolute;top:103px;left:0;margin:5% 23%;font-size:16px;font-weight:700;z-index:1;line-height:25px}
+.commuteRounded-bar{display:inline-block;height:14px;width:45px;vertical-align:center;border-radius:10px}
+#commuteWork{background-color:#50bcdf}
+#commuteLeave{background-color:#ef6c00}
+
+/* fullcalendar weekend color change */
+.fc-day-sun a{color:red;text-decoration:none}
+.fc-day-sat a{color:blue;text-decoration:none}
+
+/*sal*/
+table.type091{border-collapse:collapse;text-align:left;line-height:1.5;margin-left:auto;margin-right:auto}
+table.type091 thead th{width:200px;padding:10px;font-weight:700;vertical-align:top;color:#369;border-bottom:3px solid #036;background:#dcdcd1}
+table.type091 thead td{width:100px; text-align:center; padding:10px;font-weight:700;vertical-align:top;color:#369;border-bottom:3px solid #036;background:#dcdcd1}
+table.type091 tbody th{width:70px; text-align:center; padding:10px;font-weight:700;vertical-align:top;border-bottom:1px solid #ccc;border-top:1px solid #ccc;background:#f3f6f7}
+table.type091 tbody td.empnumber{width:20px; text-align:center;}
+table.type091 td{text-align:center; width:100px;padding:10px;vertical-align:top;border-bottom:1px solid #ccc}

@@ -17,20 +17,22 @@ CREATE TABLE Usr (
 DROP TABLE Emp;
 
 CREATE TABLE Emp (
-	empNo	number	generated always as identity	NOT NULL,
-	usrId	varchar2(20)		NOT NULL,
-	empName	varchar2(20)		NULL,
-	empBirth	date		NULL,
-	empEmail	varchar2(30)		NULL,
-	empTel	varchar2(30)		NULL,
-	empStatus	char(1)	DEFAULT 0	NULL,
-	role	char(1)	DEFAULT 0	NOT NULL,
-	empGender	char(1)		NULL,
-	empAddr	varchar2(50)		NULL,
-	hireDate	Date		NOT NULL,
-	annualLeave	number	DEFAULT 0	NULL,
-	deptNo	number(2)		NOT NULL,
-	posNo	number		NOT NULL
+	empNo	number	NOT NULL,
+	usrId	varchar2(20)	NOT NULL,
+	empName	varchar2(20)	NULL,
+	empBirth	date	NULL,
+	empEmail	varchar2(30)	NULL,
+	empTel	varchar2(30)	NULL,
+	empStatus	char(1)	NULL	DEFAULT 0,
+	role	char(1)	NOT NULL	DEFAULT 0,
+	empGender	char(1)	NULL,
+	empAddr	varchar2(50)	NULL,
+	hireDate	Date	NOT NULL,
+	departuredate	date	NULL,
+	annualLeave	number	NULL	DEFAULT 0,
+	salary	number	NULL	DEFAULT 0,
+	deptNo	number(2)	NOT NULL,
+	posNo	number	NOT NULL
 );
 
 DROP TABLE Customer;
@@ -58,6 +60,7 @@ DROP TABLE Sal;
 CREATE TABLE Sal (
 	salNo	number	generated always as identity	NOT NULL,
 	amount	number		NOT NULL,
+	payDay	Date	NOT NULL,
 	empNo	number		NOT NULL,
 	usrId	varchar2(20)		NOT NULL
 );
@@ -293,27 +296,48 @@ REFERENCES Item (
 	itemNo
 );
 
-
---프로시저 생성
+--출근 여부 초기화 프로시저
 CREATE OR REPLACE PROCEDURE update_emp_status IS
 BEGIN
     UPDATE emp
     SET empstatus = 0;
     COMMIT;
+    DBMS_OUTPUT.PUT_LINE('Employee status updated successfully.');
+EXCEPTION
+    WHEN OTHERS THEN
+        ROLLBACK;
+        DBMS_OUTPUT.PUT_LINE('Error occurred: ' || SQLERRM);
 END;
 /
+--탈퇴한 직원 30일 지나면 개인정보 삭제 프로시저
+CREATE OR REPLACE PROCEDURE delete_old_employees IS
+BEGIN
+    UPDATE emp
+    SET empemail = null,
+        emptel = null,
+        role = 0,
+        empaddr = null,
+        salary = null
+    WHERE departuredate < SYSDATE - 30;
 
---스케줄러 생성
+    COMMIT;
+    DBMS_OUTPUT.PUT_LINE('Old employees updated successfully.');
+EXCEPTION
+    WHEN OTHERS THEN
+        ROLLBACK;
+        DBMS_OUTPUT.PUT_LINE('Error occurred: ' || SQLERRM);
+END;
+/
+--매일 00시마다 실행하는 스케줄러
 BEGIN
     DBMS_SCHEDULER.CREATE_JOB (
-            job_name        => 'UPDATE_EMP_STATUS_JOB',
-            job_type        => 'STORED_PROCEDURE',
-            job_action      => 'update_emp_status',
-            start_date      => SYSTIMESTAMP,
-            repeat_interval => 'FREQ=DAILY; BYHOUR=0;',
-            end_date        => NULL,
-            enabled         => TRUE,
-            comments        => '00시마다 출근 여부 초기화'
-        );
+            job_name            => 'EMP_MAINTENANCE_JOB',
+            job_type            => 'PLSQL_BLOCK',
+            job_action          => 'BEGIN update_emp_status; delete_old_employees; END;',
+            start_date          => TRUNC(SYSDATE) + INTERVAL '1' DAY, -- 다음날 자정
+            repeat_interval     => 'FREQ=DAILY; BYHOUR=0;',
+            end_date            => NULL,
+            enabled             => TRUE,
+            comments            => 'Update employee status and delete old employees at midnight.');
 END;
 /

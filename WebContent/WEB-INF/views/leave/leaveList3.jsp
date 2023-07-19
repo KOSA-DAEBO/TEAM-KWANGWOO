@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>leaveList.jsp</title>
+<title>Team KwangWoo</title>
 
 <script type="text/javascript" src="./js/leaveScript.js"></script>
 </head>
@@ -15,6 +15,7 @@
 	<br>
 	<div class="leave_content">
 		<div class="name">휴가 신청 내역</div>
+		
 		<table class="type07">
 			<thead>
 				<tr>

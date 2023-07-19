@@ -8,7 +8,7 @@
 <link rel="stylesheet"
 	href="https://unpkg.com/nice-forms.css@0.1.7/dist/nice-forms.css" />
 <meta charset="UTF-8">
-<title>leaveDetail.jsp</title>
+<title>Team KwangWoo</title>
 <script type="text/javascript" src="./js/leaveScript.js"></script>
 </head>
 
@@ -49,6 +49,7 @@
 				<c:set var="endDay" value="${list.get('endDay')}" scope="session" />
 				<c:set var="enpNo" value="${list.get('enpNo')}" scope="session" />
 				<c:set var="reason" value="${list.get('reason')}" scope="session" />
+				<c:set var="usrId" value="${list.get('usrId')}" scope="session" />
 				<tr>
 					<th scope="col">신청 번호</th>
 					<td scope="col">${list.get('leaveNo')}</td>
@@ -96,20 +97,22 @@
 
 	<table class="type100">
 		<tr>
-			<td>
-				<form class="levForm" action="leaveApprove.do" method="post">
-					<input type="hidden" name="approveType" id="approveType"
-						value="${app}"> <input type="submit" value="승인"
-						class="leaveButton">
-				</form>
-			</td>
-			<td>
-			<form class="levForm" action="leaveApprove.do" method="post">
-				<input type="hidden" name="approveType" id="approveType"
-					value="${rej}"> <input type="submit" class="leaveButton"
-					value="거절">
-			</form>
-			</td>
+			<c:if test="${login.role==true}">
+				<td>
+					<form class="levForm" action="leaveApprove.do" method="post">
+						<input type="hidden" name="approveType" id="approveType"
+							value="${app}"> <input type="submit" value="승인"
+							class="leaveButton">
+					</form>
+				</td>
+				<td>
+					<form class="levForm" action="leaveApprove.do" method="post">
+						<input type="hidden" name="approveType" id="approveType"
+							value="${rej}"> <input type="submit" class="leaveButton"
+							value="거절">
+					</form>
+				</td>
+			</c:if>
 			<td>
 				<button type="button" class="leaveButton" onclick="openModal()">수정</button>
 			</td>

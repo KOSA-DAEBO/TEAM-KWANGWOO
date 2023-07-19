@@ -1,8 +1,11 @@
 package edu.kosa.third.dto;
 
+import java.sql.Date;
+
 public class SalDto {
 	private int salNo, amount, empNo;
 	private String usrId;
+	private Date payDay;
 
 	public int getEmpNo() {
 		return empNo;
@@ -35,4 +38,13 @@ public class SalDto {
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
+
+	public Date getPayDay() {
+		return payDay;
+	}
+
+	public void setPayDay(Date payDay) {
+		this.payDay = payDay;
+	}
+	
 }
