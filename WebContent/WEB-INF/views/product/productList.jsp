@@ -12,7 +12,7 @@
 <body>
 <div class="goAddProduct" onclick="javascript:location.href='goAddProduct.do'"><a>제품추가</a></div>
 <div class="product_content">
-	<div class="name">상품 리스트</div>
+	<div class="name">제품 리스트</div>
 	<form class="card_form">
 		<div class="card_list">
 			<c:forEach var="list" items="${list}">
@@ -30,8 +30,8 @@
 		</div>
 		<div class="pagination">
 			<input type="hidden" id="listSize" value="${list.size()}">
-			<button id="prevButton" disabled>&lt; 이전</button>
-			<button id="nextButton">다음 &gt;</button>
+			<button type="button" id="prevButton" disabled> 이전</button>
+			<button type="button" id="nextButton">다음</button>
 		</div>
 	</form>
 </div>

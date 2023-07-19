@@ -1,15 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <meta charset="UTF-8">
-<link href="./css/headerCss.css" rel="stylesheet">
-<title>Insert title here</title>
+<script>
+	$(document).ready(function() {
+		window.location.href="customList.do";
+	});
+</script>
 </head>
 <body>
-<c:import url="./fixed/header.jsp"></c:import>
 
 </body>
 </html>
