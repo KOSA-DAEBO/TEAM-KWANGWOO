@@ -6,25 +6,24 @@ import javax.servlet.http.HttpServletResponse;
 import edu.kosa.third.action.Action;
 import edu.kosa.third.action.ActionForward;
 import edu.kosa.third.dao.UsrInfoDao;
-import edu.kosa.third.dto.EmpDto;
+import edu.kosa.third.dto.CustomerDto;
 
-public class ManageEmpInfoServiceAction implements Action {
-
+public class ManageCustomInfoServiceAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
-
-		
-		UsrInfoDao dao = new UsrInfoDao();
-		int empNo = Integer.parseInt(request.getParameter("empNo"));
-
- 		EmpDto empDto = dao.selectEmpDetail(empNo);;
-		 
-		request.setAttribute("empDto", empDto);
-
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("/WEB-INF/views/usrinfo/manageEmpInfo.jsp");
+		
+		UsrInfoDao usrInfoDao = new UsrInfoDao();
+		int customNo = Integer.parseInt(request.getParameter("customerNo"));
+
+		CustomerDto customDto = usrInfoDao.customDetail(customNo);
+		
+		request.setAttribute("customInfo", customDto);
+		System.out.println();
+		forward.setPath("/WEB-INF/views/usrinfo/customManage.jsp");
 		return forward;
 	}
+
 }

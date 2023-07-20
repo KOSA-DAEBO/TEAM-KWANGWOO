@@ -16,12 +16,44 @@ import edu.kosa.third.utils.ConnectionHelper;
 
 public class UsrInfoDao {
 
+	public List<CustomerDto> totalCustom(){
+		String sql = "select * from customer";
+		Connection conn = ConnectionHelper.getConnection("oracle");
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<CustomerDto> list = new ArrayList<>();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				CustomerDto customDto = new CustomerDto();
+				
+				customDto.setCustomerNo(rs.getInt("customerNo"));
+				customDto.setUsrId(rs.getString("usrId"));
+				customDto.setCustomerEmail(rs.getString("customerEmail"));
+				customDto.setCustomerTel(rs.getString("customerTel"));
+				customDto.setCustomerGender(rs.getString("customerGender"));
+				customDto.setCustomerBirth(rs.getDate("customerBirth"));
+				customDto.setCustomerAddr(rs.getString("customerAddr"));
+				customDto.setCustomerName(rs.getString("customerName"));
+				
+				list.add(customDto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(rs);
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
+		}
+		return list;
+	}
 	//관리자 - 소비자 개인정보 조회
 	public CustomerDto customDetail (int customNo) {
 		Connection conn = ConnectionHelper.getConnection("oracle");
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String select = "Select * from custom where customerNo = ?";
+		String select = "Select * from customer where customerNo = ?";
 		CustomerDto dto = new CustomerDto();
 		try {
 			pstmt=conn.prepareStatement(select);
@@ -29,7 +61,7 @@ public class UsrInfoDao {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				dto.setCustomerNo(rs.getString("customerNo"));
+				dto.setCustomerNo(rs.getInt("customerNo"));
 				dto.setUsrId(rs.getString("usrId"));
 				dto.setCustomerEmail(rs.getString("customerEmail"));
 				dto.setCustomerTel(rs.getString("customerTel"));
