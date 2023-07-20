@@ -17,7 +17,7 @@ CREATE TABLE Usr (
 DROP TABLE Emp;
 
 CREATE TABLE Emp (
-	empNo	number	NOT NULL,
+	empNo	number	generated always as identity NOT NULL,
 	usrId	varchar2(20)	NOT NULL,
 	empName	varchar2(20)	NULL,
 	empBirth	date	NULL,
@@ -63,7 +63,8 @@ CREATE TABLE Sal (
 	amount	number		NOT NULL,
 	payDay	Date	NOT NULL,
 	empNo	number		NOT NULL,
-	usrId	varchar2(20)		NOT NULL
+	usrId	varchar2(20)		NOT NULL,
+	bonus number NOT NULL
 );
 
 DROP TABLE leave;

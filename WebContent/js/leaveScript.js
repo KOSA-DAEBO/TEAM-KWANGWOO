@@ -14,6 +14,7 @@ window.onclick = function(event) {
 		modal.style.display = "none";
 	}
 }
+
 function dataCheck() {
 	if (document.getElementById("search").value == "") {
 		alert("검색할 단어를 입력하세요");
