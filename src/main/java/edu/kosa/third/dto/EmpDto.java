@@ -32,15 +32,13 @@ public class EmpDto {
 		this.role = role;
 	}
 	
-	public EmpDto(String empName, String empAddr, String empTel, String empEmail) {
-		this.empName = empName;
+	public EmpDto(String empAddr, String empTel, String empEmail) {
 		this.empAddr = empAddr;
 		this.empTel = empTel;
 		this.empEmail = empEmail;
 	}
 
-	public EmpDto(String empName, String empAddr, String empTel, String empEmail, int empNo) {
-		this.empName = empName;
+	public EmpDto( String empAddr, String empTel, String empEmail, int empNo) {
 		this.empAddr = empAddr;
 		this.empTel = empTel;
 		this.empEmail = empEmail;
@@ -50,6 +48,15 @@ public class EmpDto {
 	public EmpDto() {
 
 	}
+
+	public EmpDto(String empName, int deptNo, int posNo, int salary, int empNo) {
+		this.empName = empName;
+		this.deptNo = deptNo;
+		this.posNo = posNo;
+		this.salary = salary;
+		this.empNo = empNo;
+	}
+
 
 	public String getUsrId() {
 		return usrId;

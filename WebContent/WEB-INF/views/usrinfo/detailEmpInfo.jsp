@@ -21,9 +21,7 @@
 						<table>
 							<tr>
 								<td class="usrinfocategory">이름</td>
-								<td class="usrinfocontent">
-								<input type="text" id="empName" class="usrinput" name="empName"
-									placeholder="${login.empName}"></td>
+								<td class="usrinfocontent">${login.empName}</td>
 							</tr>
 							<tr>
 								<td class="usrinfocategory">사번</td>

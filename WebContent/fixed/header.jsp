@@ -25,7 +25,7 @@
                     <c:when test="${not empty sessionScope.login}">
                         <span class="material-symbols-outlined">logout</span>
                         <a class="iconText" href="logout.do"> 로그아웃</a>
-                        <button class="iconText joinButton" id="myPageButton" onClick="location.href='#'">마이페이지</button>
+                        <button class="iconText joinButton" id="myPageButton" onClick="location.href='empDetail.do'">마이페이지</button>
                         <a class="iconText"> ${sessionScope.login.usrId}님 안녕하세요&nbsp&nbsp</a>
                     </c:when>
                     <c:otherwise>
@@ -56,8 +56,9 @@
             <div class="lm group1">
                <ul>
                   <li><a href="deptMenu.do">부서관리</a></li>
-                  <li><a href="#">마이페이지</a></li>
-                  <li><a href="#">등등등</a></li>
+                  <li><a href="empDetail.do">마이페이지</a></li>
+                  <li><a href="empList.do">직원관리</a></li>
+                  <li><a href="customInfoList.do">소비자 마이페이지</a></li>
                </ul>
             </div>
             <div class="lm group2">

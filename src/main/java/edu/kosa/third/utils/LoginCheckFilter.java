@@ -20,7 +20,7 @@ public class LoginCheckFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
 
         EmpDto login = (EmpDto) req.getSession().getAttribute("login");
-        CustomerDto loginCustomer =  (CustomerDto) req.getSession().getAttribute("Customerlogin");
+        CustomerDto loginCustomer =  (CustomerDto) req.getSession().getAttribute("loginCustomer");
 
         if(login==null && isEmpChkUrl(req)){
             request.getRequestDispatcher("loginEmp.do").forward(request, response);
@@ -53,7 +53,6 @@ public class LoginCheckFilter implements Filter {
                 "/empDetail.do",
                 "/leaveDelete.do",
                 "/productList.do",
-                "/customDetail.do",
                 "/commuteEmp.do",
                 "/commuteEmpChk.do",
                 "/commuteEmpChkOk.do",
@@ -91,6 +90,7 @@ public class LoginCheckFilter implements Filter {
         // /bbs/list.do
 
         String []customerUrl = { //고객 로그인 체크 해야할 URL
+
                 "/buyDiyProduct.do"
         };
         if(uri.length()<=1) {

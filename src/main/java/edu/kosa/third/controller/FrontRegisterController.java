@@ -246,12 +246,24 @@ public class FrontRegisterController extends HttpServlet {
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("/WEB-INF/views/usrinfo/showCustomInfo.jsp");
+			
+		} else if (urlcommand.equals("/updateManageEmpInfo.do")) {
+			action = new UpdateManageEmpInfoServiceAction();
+			forward = action.execute(request, response);
 
 		} else if (urlcommand.equals("/salPayStub.do")) {
 			action = new SalPayStubServiceAction();
 			forward = action.execute(request, response);
 
+		} else if (urlcommand.equals("/customInfoList.do")) {
+			action = new CustomerInfoListServiceAction();
+			forward = action.execute(request, response);
+
+		} else if (urlcommand.equals("/customManage.do")) {
+			action = new ManageCustomInfoServiceAction();
+			forward = action.execute(request, response);
 		}
+		
 		if (forward != null) {
 			if (forward.isRedirect()) { // true 페이지 재 요청 (location.href="페이지"
 				response.sendRedirect(forward.getPath());

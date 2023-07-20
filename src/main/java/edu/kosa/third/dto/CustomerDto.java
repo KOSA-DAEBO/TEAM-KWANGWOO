@@ -38,7 +38,7 @@ public class CustomerDto {
   }
 
 
-  public String getUsrId() {
+public String getUsrId() {
     return usrId;
   }
 

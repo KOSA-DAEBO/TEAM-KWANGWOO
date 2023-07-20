@@ -18,9 +18,29 @@ public class AddDeptServiceAction implements Action {
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
 		if (request.getParameter("deptName") == null) {
+			PrintWriter printer;
+			try {
+				printer = response.getWriter();
+				printer.println("<script>alert('부서이름이 입력되지 않았습니다.'); window.history.back();</script>");
+				printer.flush();
+				printer.close();
+			}catch(Exception e) {}
 			forward.setPath("deptMenu.do");
 			return forward;
-		} else {
+		} else if(request.getParameter("deptNo") == null) {
+			PrintWriter printer;
+			try {
+				printer = response.getWriter();
+				printer.println("<script>alert('부서번호가 입력되지 않았습니다.'); window.history.back();</script>");
+				printer.flush();
+				printer.close();
+			}catch(Exception e) {}
+			forward.setPath("deptMenu.do");
+			return forward;
+		} 
+		
+		
+		else {
 			String deptName = request.getParameter("deptName");
 			int deptNo = Integer.parseInt(request.getParameter("deptNo"));
 			DeptDao deptdao = new DeptDao();
@@ -35,6 +55,7 @@ public class AddDeptServiceAction implements Action {
 				printer.close();
 			}catch (Exception e) {
 			}
+			
 			if (result == false) {
 				response.setContentType("text/html;charset=UTF-8");
 				PrintWriter out;
