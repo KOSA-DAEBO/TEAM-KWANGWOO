@@ -13,16 +13,18 @@ public class UpdateManageEmpInfoServiceAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
-		
-		String empName = request.getParameter("empName");
-		int deptNo = Integer.parseInt(request.getParameter("deptNo"));
-		int posNo = Integer.parseInt(request.getParameter("posNo"));
-		int salary = Integer.parseInt(request.getParameter("salary"));
+
 		int empNo = Integer.parseInt(request.getParameter("empNo"));
+		int posNo = Integer.parseInt(request.getParameter("posNo"));
+		int salary = Integer.parseInt(request.getParameter("ManageEmpSalary"));
+		int deptNo = Integer.parseInt(request.getParameter("deptNo"));
+
+
+
 		UsrInfoDao usrInfoDao = new UsrInfoDao();
-		usrInfoDao.updateManageEmpInfo(new EmpDto(empName, deptNo, posNo, salary, empNo));
-		
-		forward.setPath("/WEB-INF/views/usrinfo/manageEmpInfo.jsp");
+		usrInfoDao.updateManageEmpInfo(empNo,posNo,salary,deptNo);
+
+		forward.setPath("manageEmpInfo.do?empNo="+empNo);
         return forward;
 	}
 
