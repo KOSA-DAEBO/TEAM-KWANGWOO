@@ -1,5 +1,5 @@
 window.addEventListener("DOMContentLoaded", function() {
-	let empsPerPage = 5; //페이지당 출력할 항목
+	let empsPerPage = 10; //페이지당 출력할 항목
 	let currentPage = 1; // 현 페이지 번호
 
 	let allEmps = document.querySelectorAll("#allempinfo > div").length;
