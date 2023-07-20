@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletResponse;
 import edu.kosa.third.action.Action;
 import edu.kosa.third.action.ActionForward;
 import edu.kosa.third.dao.UsrInfoDao;
-
 import edu.kosa.third.dto.EmpDto;
 
 public class ManageEmpInfoServiceAction implements Action {
@@ -19,12 +18,14 @@ public class ManageEmpInfoServiceAction implements Action {
 		UsrInfoDao dao = new UsrInfoDao();
 		int empNo = Integer.parseInt(request.getParameter("empNo"));
 
-		EmpDto empDto = dao.selectEmpDetail(empNo);;
+ 		EmpDto empDto = dao.selectEmpDetail(empNo);;
 		 
 		request.setAttribute("empDto", empDto);
+
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
 		forward.setPath("/WEB-INF/views/usrinfo/manageEmpInfo.jsp");
+		System.out.println("서비스액션"+empDto.getEmpName());
 		return forward;
 	}
 }

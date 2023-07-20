@@ -91,7 +91,7 @@ public class LoginCheckFilter implements Filter {
 
         String []customerUrl = { //고객 로그인 체크 해야할 URL
 
-        		"/customDetail.do"
+        		"/customDetail.do",
                 "/buyDiyProduct.do"
         };
         if(uri.length()<=1) {
