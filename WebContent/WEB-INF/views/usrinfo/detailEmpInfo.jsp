@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div id="usrcontainer">
-		<form class="manageForm" action="updateUsrInfo.do" method="post">
+		<form class="manageForm" action="updateUsrInfo.do" method="post" enctype="multipart/form-data">
 			<div class="usrInfo">
 				<div class="head_name">마이페이지</div>
 				<div class="table1">
@@ -40,9 +40,9 @@
 						</div>
 						<div class="innerContent">
 							<div>이메일</div>
-							<div><input value="${login.empEmail}"></div>
+							<div><input type="text" name="empEmail" value="${login.empEmail}"></div>
 							<div>전화번호</div>
-							<div><input value="${login.empTel}"></div>
+							<div><input type="text" name="empTel" value="${login.empTel}"></div>
 						</div>
 						<div class="innerContent">
 							<div>연차개수</div>

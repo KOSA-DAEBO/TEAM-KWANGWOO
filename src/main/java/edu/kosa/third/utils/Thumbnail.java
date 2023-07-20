@@ -31,6 +31,7 @@ public class Thumbnail {
 	
 	public static void createUsrImage(String loadFile, String saveFile, String fileExt) throws Exception {
 
+		System.out.println("여긴 썸네일");
 		File save = new File(saveFile); // 썸네일 이미지
 
 		// loadFile은 원본이미지 파일
@@ -48,5 +49,6 @@ public class Thumbnail {
 		// 실제로 그려주는 부분
 		g2.drawImage(im, 0, 0, width, height, null);
 		ImageIO.write(thumb, fileExt.toUpperCase(), save); // 메모리에 그린 이미지를 파일로 저장
+		System.out.println("이미지 저장");
 	}
 }
