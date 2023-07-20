@@ -131,7 +131,7 @@ public class UsrInfoDao {
 
 	// 직원 - 개인 정보 변경
 	public void updateEmpInfo(EmpDto empDto) {
-		String update = "update emp set empaddr = ?, emptel = ?, empemail = ? where empno = ? ";
+		String update = "update emp set empaddr = ?, emptel = ?, empemail = ?, imagepath = ? where empno = ?";
 		Connection conn = ConnectionHelper.getConnection("oracle");
 		PreparedStatement pstmt = null;
 		try {
@@ -139,7 +139,8 @@ public class UsrInfoDao {
 			pstmt.setString(1, empDto.getEmpAddr());
 			pstmt.setString(2, empDto.getEmpTel());
 			pstmt.setString(3, empDto.getEmpEmail());
-			pstmt.setInt(4, empDto.getEmpNo());
+			pstmt.setString(4, empDto.getImagePath());
+			pstmt.setInt(5, empDto.getEmpNo());
 			pstmt.execute();
 
 		} catch (Exception e) {
@@ -188,7 +189,7 @@ public class UsrInfoDao {
 
 	// 관리자 - 전직원 요약 정보 조회 반복문 사용
 	public List<EmpDto> totalEmpInfo() {
-		String select = "select usrid, empno, empname, hiredate from emp";
+		String select = "select usrid, empno, empname, hiredate, imagepath from emp";
 		List<EmpDto> list = null;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -200,13 +201,14 @@ public class UsrInfoDao {
 			pstmt = conn.prepareStatement(select);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				EmpDto empdto = new EmpDto();
+				EmpDto empDto = new EmpDto();
 
-				empdto.setUsrId(rs.getString("UsrId"));
-				empdto.setEmpNo(rs.getInt("EmpNo"));
-				empdto.setEmpName(rs.getString("EmpName"));
-				empdto.setHireDate(rs.getDate("HireDate"));
-				list.add(empdto);
+				empDto.setUsrId(rs.getString("UsrId"));
+				empDto.setEmpNo(rs.getInt("EmpNo"));
+				empDto.setEmpName(rs.getString("EmpName"));
+				empDto.setHireDate(rs.getDate("HireDate"));
+				empDto.setImagePath(rs.getString("imagePath"));
+				list.add(empDto);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

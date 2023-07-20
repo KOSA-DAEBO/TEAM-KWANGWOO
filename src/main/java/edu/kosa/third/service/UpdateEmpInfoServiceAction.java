@@ -1,5 +1,7 @@
 package edu.kosa.third.service;
 
+import java.io.File;
+
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,6 +12,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import edu.kosa.third.action.Action;
 import edu.kosa.third.action.ActionForward;
+import edu.kosa.third.dao.UsrInfoDao;
 import edu.kosa.third.dto.EmpDto;
 import edu.kosa.third.utils.Thumbnail;
 
@@ -35,9 +38,10 @@ public class UpdateEmpInfoServiceAction implements Action {
         	realPath2 = context.getRealPath(usrImagePath);
         	
         	MultipartRequest multi = new MultipartRequest(request, realPath, maxSize, encType, new DefaultFileRenamePolicy());
+        	String fileName = "";
         	
         	if(multi.getFilesystemName("file") != null) {
-        		String fileName = multi.getFilesystemName("file");
+        		fileName = multi.getFilesystemName("file");
         		String originalFileName = multi.getOriginalFileName("file");
         		int index = originalFileName.indexOf(".");
         		String fileExt = originalFileName.substring(index + 1);
@@ -48,11 +52,46 @@ public class UpdateEmpInfoServiceAction implements Action {
         		Thumbnail.createUsrImage(original, thumbnail, fileExt);
         	}
         	
+        	String deleteOriginal = realPath + "\\" + fileName;
+        	File deleteFile = new File(deleteOriginal);
+        	if(deleteFile.exists() && deleteFile.isFile()) {
+        		deleteFile.delete();
+        	}
+        	
+        	if(fileName.equals("")) {
+        		fileName = dto.getImagePath();
+        	}
+        	
         	String empTel = multi.getParameter("empTel");
         	String empEmail = multi.getParameter("empEmail");
+        	String empAddr = multi.getParameter("sample6_address") + " " + multi.getParameter("sample6_detailAddress");
+        	
+        	String saveImage = usrImagePath + "/" + fileName;
+        	
+        	String beforeImg = dto.getImagePath().substring(9);
+        	if(beforeImg.equals("usericon.png")) {
+        		beforeImg = "";
+        	}
+        	
+        	String deleteImg = realPath2 + "\\" + beforeImg;
+        	File deleteImage = new File(deleteImg);
+        	if(deleteImage.exists() && deleteImage.isFile()) {
+        		deleteImage.delete();
+        	}
+        	
+        	UsrInfoDao dao = new UsrInfoDao();
+        	
+        	dto.setEmpTel(empTel);
+        	dto.setEmpEmail(empEmail);
+        	dto.setEmpAddr(empAddr);
+        	dto.setImagePath(saveImage);
+        	
+        	dao.updateEmpInfo(dto);
+        	
+        	session.setAttribute("login", dto);
         	
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		
 		forward.setPath("empDetail.do");
