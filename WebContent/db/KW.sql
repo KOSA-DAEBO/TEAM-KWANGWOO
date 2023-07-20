@@ -23,17 +23,17 @@ CREATE TABLE Emp (
 	empBirth	date	NULL,
 	empEmail	varchar2(30)	NULL,
 	empTel	varchar2(30)	NULL,
-	empStatus	char(1)	NULL	DEFAULT 0,
-	role	char(1)	NOT NULL	DEFAULT 0,
+	empStatus	char(1)		DEFAULT 0,
+	role	char(1)		DEFAULT 0,
 	empGender	char(1)	NULL,
 	empAddr	varchar2(50)	NULL,
 	hireDate	Date	NOT NULL,
 	departuredate	date	NULL,
-	annualLeave	number	NULL	DEFAULT 0,
-	salary	number	NULL	DEFAULT 0,
+	annualLeave	number	DEFAULT 0,
+	salary	number	DEFAULT 0,
 	deptNo	number(2)	NOT NULL,
 	posNo	number	NOT NULL,
-	imagePath varchar2(100)  null DEFAULT './images/usericon.png'
+	imagePath varchar2(100)  DEFAULT './images/usericon.png'
 );
 
 DROP TABLE Customer;

@@ -276,13 +276,13 @@ table.type02 input.lbutton{font-size:17px}
 .join_Row{padding:10px}
 .join_list{display:inline-block;width:140px}
 .join_radio_input{margin: 12px 5px;vertical-align: middle;accent-color: #005b23;margin : 0 20px 0 70px;}
-#idCheckButton, #sample6_button{margin:0;width:85px;height:30px}
+#idCheckButton, .join_Row #sample6_button{margin:0;width:85px;height:30px}
 #idChecklist{padding-left:30px}
 #idCheckTitle{size:20px;text-indent:0;margin:20px}
 #idCheckPage{overflow-x:hidden}
-.joinPage #usrId,#sample6_postcode{width : 240px}
-#sample6_button{font-size:12px}
-#sample6_address, #sample6_detailAddress{width:160px}
+.joinPage #usrId,.join_Row #sample6_postcode{width : 240px}
+.join_Row #sample6_button{font-size:12px}
+.join_Row #sample6_address, #sample6_detailAddress{width:160px}
 .joinCustomer .joinPage{border-top:5px solid #C40723;border-bottom:5px solid #C40723}
 .joinCustomer .join_input{border:1px solid #C40723}
 .joinCustomer .joinButton{background-color:#C40723}
