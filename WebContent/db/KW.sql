@@ -33,7 +33,7 @@ CREATE TABLE Emp (
 	salary	number	DEFAULT 0,
 	deptNo	number(2)	NOT NULL,
 	posNo	number	NOT NULL,
-	imagePath varchar2(100)  DEFAULT './images/usericon.png'
+	imagePath varchar2(100) DEFAULT './images/usericon.png'
 );
 
 DROP TABLE Customer;
