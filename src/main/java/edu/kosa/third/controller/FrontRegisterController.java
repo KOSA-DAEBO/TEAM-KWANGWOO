@@ -238,10 +238,6 @@ public class FrontRegisterController extends HttpServlet {
 			action = new DeptMenuServiceAction();
 			forward = action.execute(request, response);
 
-		} else if (urlcommand.equals("/totalDept.do")) {
-			action = new TotalDeptServiceAction();
-			forward = action.execute(request, response);
-
 		} else if (urlcommand.equals("/deleteUsrInfo.do")) {
 			action = new DeleteUsrInfoServiceAction();
 			forward = action.execute(request, response);
