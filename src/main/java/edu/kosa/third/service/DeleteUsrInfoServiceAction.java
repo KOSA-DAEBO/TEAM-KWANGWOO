@@ -14,7 +14,7 @@ import edu.kosa.third.dto.EmpDetailsDto;
 import edu.kosa.third.dto.EmpDto;
 import edu.kosa.third.dto.UsrDto;
 
-public class deleteUsrInfoServiceAction implements Action{
+public class DeleteUsrInfoServiceAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {

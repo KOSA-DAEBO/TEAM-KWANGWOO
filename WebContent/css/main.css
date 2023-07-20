@@ -244,7 +244,7 @@ table.type09 td{width:300px;padding:10px;vertical-align:top;border-bottom:1px so
 table.type02{border-collapse:separate;border-spacing:0;text-align:center;line-height:1.5;border-top:1px solid #ccc;border-left:1px solid #ccc;margin-left:auto;margin-right:auto}
 table.type02 th{font-weight:700;vertical-align:top;text-align:center;border-right:1px solid #ccc;border-bottom:1px solid #ccc;border-top:1px solid #fff;border-left:1px solid #fff;background:#eee}
 table.type02 input.lbutton{font-size:17px}
-.leave_content {margin: 5px auto 5px auto; width: 1200px; display: grid; justify-content: center; padding: 0px 0px; grid-template-rows: 60px 50px 1fr;}
+.leave_content {margin: 5px auto 5px auto; width: 1200px; display: grid; justify-content: center; padding: 0px 0px; grid-template-rows: 60px 1fr 50px; height: 480px;}
 .leave_content .name {text-align:center; color:#005b23; font-size:40px; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif;}
 .levForm{text-align: center;}
 .leaveButton{justify-content: center; border-radius: 20px; border-style: solid; border-color:#005b23; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #005b23; font-size: 20px; width: 150px; height: 40px; margin: 15px 30px;}
@@ -326,5 +326,6 @@ table.type091 tbody td.empnumber{width:20px; text-align:center;}
 table.type091 td{text-align:center; width:100px;padding:10px;vertical-align:top;border-bottom:1px solid #ccc}
 
 /*deptList*/
-.deptTable {justify-content: center; display: grid; grid-template-rows: 1fr; margin: 10px auto; }
-
+.deptList {margin: 10px auto; width: 500px; text-align: center; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif;}
+.deptList .dept_head th {border: 1px solid #005b23; font-size: 20px; padding: 10px;}
+.deptList .dept_body td {border: 1px solid #005b23; font-size: 17px; padding: 10px;}

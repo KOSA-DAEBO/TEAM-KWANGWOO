@@ -154,10 +154,6 @@ public class FrontRegisterController extends HttpServlet {
 			action = new CommuteEmpChkServiceAction();
 			forward = action.execute(request, response);
 
-		} else if (urlcommand.equals("/deptMenu.do")) {
-			forward = new ActionForward();
-			forward.setPath("/WEB-INF/views/deptMenu2/deptMenu.jsp");
-
 		} else if (urlcommand.equals("/manageEmpInfo.do")) {
 			action = new ManageEmpInfoServiceAction();
 			forward = action.execute(request, response);
@@ -238,12 +234,12 @@ public class FrontRegisterController extends HttpServlet {
 			action = new UpdateEmpInfoServiceAction();
 			forward = action.execute(request, response);
 			
-		} else if (urlcommand.equals("/totalDept.do")) {
-			action = new TotalDeptServiceAction();
+		} else if (urlcommand.equals("/deptMenu.do")) {
+			action = new DeptMenuServiceAction();
 			forward = action.execute(request, response);
 			
 		} else if (urlcommand.equals("/deleteUsrInfo.do")) {
-			action = new deleteUsrInfoServiceAction();
+			action = new DeleteUsrInfoServiceAction();
 			forward = action.execute(request, response);
 			
 		} else if (urlcommand.equals("/customDetail.do")) {
