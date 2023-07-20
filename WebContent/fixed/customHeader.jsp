@@ -28,7 +28,8 @@
 				<c:choose>
 					<c:when test="${not empty sessionScope.loginCustomer}">
 						<span class="material-symbols-outlined">logout</span> <a class="iconText" href="logout.do"> 로그아웃</a>
-						<a class="iconText"> ${sessionScope.loginCustomer.usrId}님 안녕하세요.</a>
+						<button class="iconText joinButton" id="myPageCustomerButton" onClick="location.href='#'">마이페이지</button>
+						<a class="iconText"> ${sessionScope.loginCustomer.usrId}님 안녕하세요&nbsp&nbsp</a>
 					</c:when>
 					<c:otherwise>
 						<span class="material-symbols-outlined">login</span> <a	class="iconText" href="loginCustomer.do"> 로그인</a>

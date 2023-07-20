@@ -33,7 +33,7 @@ public class CommuteEmpChkServiceAction  implements Action {
 
         ActionForward forward = new ActionForward();
         forward.setRedirect(false);
-        forward.setPath("commuteEmp.do"); //emp 출근 캘린더 페이지
+        forward.setPath("commuteEmpChk.do"); //emp 출근 캘린더 페이지
         return forward;
     }
 }
