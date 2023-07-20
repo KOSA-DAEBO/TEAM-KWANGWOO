@@ -90,8 +90,8 @@ public class LoginCheckFilter implements Filter {
         // /bbs/list.do
 
         String []customerUrl = { //고객 로그인 체크 해야할 URL
-
-                "/buyDiyProduct.do"
+                "/buyDiyProduct.do",
+        		"/customDetail.do"
         };
         if(uri.length()<=1) {
             return true;

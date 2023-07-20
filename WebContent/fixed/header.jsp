@@ -17,7 +17,7 @@
       <div class="head" id="head">
          <div class="head_top">
             <h1>
-               <a href="/" title="메인으로 이동"><img src="./images/logo.png"
+               <a href="commuteEmpChk.do" title="메인으로 이동"><img src="./images/logo.png"
                   alt="광우" class="logo" /></a>
             </h1>
             <div>
@@ -47,7 +47,7 @@
                      <li class=""><a href="#" title="인사">인사</a></li>
                      <li class=""><a href="leaveList.do?listNum=3" title="휴가">휴가</a></li>
                      <li class=""><a href="#" title="급여">급여</a></li>
-                     <li class=""><a href="#" title="출퇴근">출퇴근</a></li>
+                     <li class=""><a href="commuteEmpChk.do" title="출퇴근">출퇴근</a></li>
                      <li class=""><a href="productList.do" title="제품관리">제품관리</a></li>
                   </ul>
                </div>
@@ -58,7 +58,6 @@
                   <li><a href="deptMenu.do">부서관리</a></li>
                   <li><a href="empDetail.do">마이페이지</a></li>
                   <li><a href="empList.do">직원관리</a></li>
-                  <li><a href="customInfoList.do">소비자 마이페이지</a></li>
                </ul>
             </div>
             <div class="lm group2">
