@@ -9,17 +9,7 @@
 <title>Team KwangWoo</title>
 <script
 	type="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script type="text/javascript">
-	function dataCheck() {
-		if (document.getElementById("search").value == "") {
-			alert("검색할 단어를 입력하세요");
-			document.getElementById("search").focus();
-			return;
-		}
-		document.form.submit();
-	}		
-</script>
-
+<script type="text/javascript" src="./js/leaveScript.js"></script>
 </head>
 <body>
 	<br>
