@@ -34,8 +34,8 @@
 							<div>성별</div>
 							<div>
 								<c:choose>
-									<c:when test="${login.empGender == '1'}">남</c:when>
-									<c:when test="${login.empGender == '0'}">여</c:when>
+									<c:when test="${login.empGender == '0'}">남</c:when>
+									<c:when test="${login.empGender == '1'}">여</c:when>
 								</c:choose>
 							</div>
 						</div>
