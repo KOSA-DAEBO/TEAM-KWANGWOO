@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div align="center">
-		<form>
+		<form action="" method="post">
 			<table>
 				<tr>
 					<td>계정</td>

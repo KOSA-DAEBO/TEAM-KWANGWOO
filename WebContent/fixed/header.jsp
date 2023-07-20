@@ -25,7 +25,7 @@
                     <c:when test="${not empty sessionScope.login}">
                         <span class="material-symbols-outlined">logout</span>
                         <a class="iconText" href="logout.do"> 로그아웃</a>
-                        <button class="iconText joinButton" id="myPageButton" onClick="location.href='#'">마이페이지</button>
+                        <button class="iconText joinButton" id="myPageButton" onClick="location.href='empDetail.do'">마이페이지</button>
                         <a class="iconText"> ${sessionScope.login.usrId}님 안녕하세요&nbsp&nbsp</a>
                     </c:when>
                     <c:otherwise>
