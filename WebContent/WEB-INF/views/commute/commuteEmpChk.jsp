@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>출근 체크</title>
+    <title>Team KwangWoo</title>
 </head>
 <body>
 <div class="commute_title">출퇴근 체크</div>

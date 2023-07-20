@@ -19,7 +19,7 @@
 	<table class="type091">
 		<thead>
 			<tr>
-				<th scope="col" colspan="10">급여 기록 전 리스트</th>
+				<th scope="col" colspan="10">금월 급여 미기록 사원</th>
 			</tr>
 		</thead>
 		<c:forEach var="list" items="${list}">
@@ -44,3 +44,4 @@
 
 </body>
 </html>
+<%@ include file="../../../fixed/footer.jsp"%>

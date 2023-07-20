@@ -58,7 +58,12 @@ public class LoginCheckFilter implements Filter {
                 "/commuteEmpChkOk.do",
                 "/deptMenu.do",
                 "/manageEmpInfo.do",
-                "/empList.do"
+                "/empList.do",
+                "/commuteAdmin.do",
+                "/addProduct.do",
+                "/goAddProduct.do",
+                "/updateProduct.do",
+                "/salList.do"
 
         };
 
@@ -85,7 +90,9 @@ public class LoginCheckFilter implements Filter {
         // /bbs/list.do
 
         String []customerUrl = { //고객 로그인 체크 해야할 URL
+
         		"/customDetail.do"
+                "/buyDiyProduct.do"
         };
         if(uri.length()<=1) {
             return true;
