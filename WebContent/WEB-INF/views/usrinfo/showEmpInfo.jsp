@@ -39,7 +39,7 @@
 	</div>
 	<br>
 	<div id="empButtonHome">
-		<button type="button" onclick="commuteEmpChk.do" >돌아가기</button>
+		<button type="button" onclick="javascript:location.href='commuteEmpChk.do'" >돌아가기</button>
 	</div>
 </body>
 </html>
