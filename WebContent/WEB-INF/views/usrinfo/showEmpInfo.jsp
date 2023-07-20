@@ -17,7 +17,7 @@
 					<c:forEach items="${empList}" var="empList">
 						<div id="simpleInfoAll">
 							<div>
-								<a href="manageEmpInfo.do?empNo=${empList.empNo }"> 
+								<a href="manageEmpInfo.do?empNo=${empList.empNo }">
 									<img src="#" alt="#" onerror="this.onerror=null;
 									 this.src='./images/usericon.png';">
 								</a>

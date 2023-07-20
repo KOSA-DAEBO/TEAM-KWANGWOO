@@ -85,22 +85,20 @@ public class UsrInfoDao {
 	}
 
 	// 관리자 - 퇴사 처리
-	public boolean deleteEmpInfo(EmpDetailsDto empDetailDto) {
-		String delete = "update usr set status = ?  where usrid = ?";
-		String delete2 = "update emp set DEPARTUREDATE = ? where  empno = ?";
+	public boolean deleteEmpInfo(String usrId, int empNo) {
+		String delete = "update emp set DEPARTUREDATE = current_timestamp where  empno = ?";
+		String delete2 = "update usr set status = 1 , IMAGEPATH = null, THUMBNAILPATH = null where usrid = ?";
 		Connection conn = ConnectionHelper.getConnection("oracle");
 		PreparedStatement pstmt = null;
 		PreparedStatement pstmt2 = null;
 		boolean result = false;
 		try {
 			pstmt = conn.prepareStatement(delete);
-			pstmt.setString(1, empDetailDto.getUsrDto().getStatus());
-			pstmt.setString(2, empDetailDto.getUsrDto().getUsrId());
+			pstmt.setInt(1, empNo);
 			pstmt.execute();
 
 			pstmt2 = conn.prepareStatement(delete2);
-			pstmt2.setDate(1, empDetailDto.getEmpDto().getDepartureDate());
-			pstmt2.setInt(2, empDetailDto.getEmpDto().getEmpNo());
+			pstmt2.setString(1, usrId);
 			pstmt2.execute();
 
 			result = true;
@@ -108,6 +106,7 @@ public class UsrInfoDao {
 			e.printStackTrace();
 		} finally {
 			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(pstmt2);
 			ConnectionHelper.close(conn);
 		}
 		return result;

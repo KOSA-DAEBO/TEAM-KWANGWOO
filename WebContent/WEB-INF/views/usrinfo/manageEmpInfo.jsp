@@ -37,14 +37,14 @@
 				<td class="updateDept">부서</td>
 				<td class="updateDeptRadio">
 					<div id="empDeptList">
-						<input type="radio" value="5" name="deptNo" id="deptNo" ${empDto.deptNo == "5" ? "checked" : ""}/>발령전 
-						<input type="radio" value="10" name="deptNo" id="deptNo" ${empDto.deptNo == "10" ? "checked" : ""}/>경영관리 
-						<input type="radio" value="20" name="deptNo" id="deptNo" ${empDto.deptNo == "20" ? "checked" : ""}/>기획 
-						<input type="radio" value="30" name="deptNo" id="deptNo" ${empDto.deptNo == "30" ? "checked" : ""}/>마케팅<br> 
-						<input type="radio" value="40" name="deptNo" id="deptNo" ${empDto.deptNo == "40" ? "checked" : ""}/>영상 
-						<input type="radio" value="50" name="deptNo" id="deptNo" ${empDto.deptNo == "50" ? "checked" : ""}/>개발 
-						<input type="radio" value="60" name="deptNo" id="deptNo" ${empDto.deptNo == "60" ? "checked" : ""}/>영업 
-						<input type="radio" value="70" name="deptNo" id="deptNo" ${empDto.deptNo == "70" ? "checked" : ""}/>생산
+						<input type="radio" value="5" name="deptNo" ${empDto.deptNo == "5" ? "checked" : ""}/>발령전
+						<input type="radio" value="10" name="deptNo"${empDto.deptNo == "10" ? "checked" : ""}/>경영관리
+						<input type="radio" value="20" name="deptNo"${empDto.deptNo == "20" ? "checked" : ""}/>기획
+						<input type="radio" value="30" name="deptNo"${empDto.deptNo == "30" ? "checked" : ""}/>마케팅<br>
+						<input type="radio" value="40" name="deptNo"${empDto.deptNo == "40" ? "checked" : ""}/>영상
+						<input type="radio" value="50" name="deptNo"${empDto.deptNo == "50" ? "checked" : ""}/>개발
+						<input type="radio" value="60" name="deptNo"${empDto.deptNo == "60" ? "checked" : ""}/>영업
+						<input type="radio" value="70" name="deptNo" ${empDto.deptNo == "70" ? "checked" : ""}/>생산
 					</div>
 				</td>
 			</tr>
@@ -52,16 +52,16 @@
 				<td class="updatePos">직위</td>
 				<td class="updatePosRadio">
 					<div id="empPosList">
-						<input type="radio" value="10" name="posNo" id="posNo"  ${empDto.posNo == "10" ? "checked" : ""}/>대표이사 
-						<input type="radio" value="20" name="posNo" id="posNo"  ${empDto.posNo == "20" ? "checked" : ""}/>이사 
-						<input type="radio" value="30" name="posNo" id="posNo"  ${empDto.posNo == "30" ? "checked" : ""}/>부장 
-						<input type="radio" value="40" name="posNo" id="posNo"  ${empDto.posNo == "40" ? "checked" : ""}/>차장<br> 
-						<input type="radio" value="50" name="posNo" id="posNo"  ${empDto.posNo == "50" ? "checked" : ""}/>과장 
-						<input type="radio" value="60" name="posNo" id="posNo"  ${empDto.posNo == "60" ? "checked" : ""}/>대리 
-						<input type="radio" value="70" name="posNo" id="posNo"  ${empDto.posNo == "70" ? "checked" : ""}/>주임 
-						<input type="radio" value="80" name="posNo" id="posNo"  ${empDto.posNo == "80" ? "checked" : ""}/>사원 
-						<input type="radio" value="100" name="posNo" id="posNo"  ${empDto.posNo == "100" ? "checked" : ""}/>인턴<br> 
-						<input type="radio" value="5" name="posNo" id="posNo"  ${empDto.posNo == "5" ? "checked" : ""}/>임시직
+						<input type="radio" value="10" name="posNo"  ${empDto.posNo == "10" ? "checked" : ""}/>대표이사
+						<input type="radio" value="20" name="posNo"  ${empDto.posNo == "20" ? "checked" : ""}/>이사
+						<input type="radio" value="30" name="posNo"  ${empDto.posNo == "30" ? "checked" : ""}/>부장
+						<input type="radio" value="40" name="posNo"  ${empDto.posNo == "40" ? "checked" : ""}/>차장<br>
+						<input type="radio" value="50" name="posNo"  ${empDto.posNo == "50" ? "checked" : ""}/>과장
+						<input type="radio" value="60" name="posNo"  ${empDto.posNo == "60" ? "checked" : ""}/>대리
+						<input type="radio" value="70" name="posNo"  ${empDto.posNo == "70" ? "checked" : ""}/>주임
+						<input type="radio" value="80" name="posNo"  ${empDto.posNo == "80" ? "checked" : ""}/>사원
+						<input type="radio" value="100" name="posNo" ${empDto.posNo == "100" ? "checked" : ""}/>인턴<br>
+						<input type="radio" value="5" name="posNo"  ${empDto.posNo == "5" ? "checked" : ""}/>임시직
 					</div>
 				</td>
 			</tr>
@@ -119,7 +119,7 @@
 			<tr>
 				<td><input type="submit" id="usrupdate" value="수 정"></td>
 				<td><input type="reset" id="usrreset" value="취 소"></td>
-				<td><input type="button" id="empdelete" value="퇴 사" onclick="deleteUsrInfo.do"></td>
+				<td><input type="button" id="empdelete" value="퇴 사" onclick="location.href='deleteUsrInfo.do?empNo=${empDto.empNo}&&usrId=${empDto.usrId}'"></td>
 			</tr>
 		</table>
 		</form>
