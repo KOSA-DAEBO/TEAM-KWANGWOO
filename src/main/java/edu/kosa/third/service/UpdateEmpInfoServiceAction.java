@@ -17,7 +17,7 @@ public class UpdateEmpInfoServiceAction implements Action {
 		String empAddr = request.getParameter("empAddr");
 		String empTel = request.getParameter("empTel");
 		String empEmail = request.getParameter("empEmail");
-		int empNo = Integer.parseInt(request.getParameter("empNo"));
+		int empNo = Integer.parseInt("");
 		
 		UsrInfoDao usrInfoDao = new UsrInfoDao();
 		usrInfoDao.updateEmpInfo(new EmpDto(empAddr, empTel, empEmail, empNo));

@@ -176,7 +176,6 @@ public class UsrInfoDao {
 				deptDto.setDeptName(rs.getString("DeptName"));
 				posDto.setPosName(rs.getString("PosName"));
 				usrDto.setStatus(rs.getString("Status"));
-//				usr.setUsrimage(rs.getString("UsrimagePath"));
 
 				dto = new EmpDetailsDto(posDto, deptDto, usrDto);
 			}

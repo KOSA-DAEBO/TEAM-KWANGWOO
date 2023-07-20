@@ -47,3 +47,27 @@ window.addEventListener("DOMContentLoaded", function() {
 	});
 	updatePage();
 });
+
+function showFileInput() {
+	document.getElementById("fileInput").click();
+}
+
+function previewImage(input) {
+	const preview = document.getElementById('imgPreview');
+	const test = document.getElementById('fileInputText');
+	const file = input.files[0];
+	const reader = new FileReader();
+
+	reader.onload = function(e) {
+		preview.src = e.target.result;
+		preview.style.display = 'block';
+		test.style.display = 'none';
+	};
+
+	if (file) {
+		reader.readAsDataURL(file);
+	} else {
+		preview.src = '#';
+		preview.style.display = 'none';
+	}
+}
