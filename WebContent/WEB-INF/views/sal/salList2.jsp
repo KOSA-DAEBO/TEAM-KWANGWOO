@@ -24,7 +24,7 @@
 	<br>
 	<br>
 	<div class="leave_content">
-		<div class="name">이번달 급여 목록</div>
+		<div class="name">나의 급여 목록</div>
 
 		<form name="" action="salList.do" method=post>
 				<select name="field">
@@ -69,11 +69,6 @@
 		</table>
 	</div>
 
-	<form class="levForm" action="salList.do" method="post">
-		<input type="hidden" name="slistNum" id="slistNum" value="1"> <input
-			type="submit" class="leaveButton" value="급여 기록 추가">
-	</form>
-	
 	
 </body>
 </html>

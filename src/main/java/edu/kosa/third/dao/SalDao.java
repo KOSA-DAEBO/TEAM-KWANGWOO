@@ -26,6 +26,7 @@ public class SalDao {
 		sb.append(" left join pos p on p.posNo = e.posNo");
 		sb.append(" WHERE EXTRACT(MONTH FROM payday) = EXTRACT(MONTH FROM SYSDATE)");
 		sb.append(" AND EXTRACT(YEAR FROM payday) = EXTRACT(YEAR FROM SYSDATE)");
+		sb.append(" order by amount desc");
 		String sql = sb.toString();
 		Connection conn = ConnectionHelper.getConnection("oracle");
 		ArrayList<HashMap<String, String>> list = new ArrayList<>();
@@ -35,7 +36,7 @@ public class SalDao {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				map = new HashMap<String, String>();
-				String s = rs.getDate(6)+"";
+				String s = rs.getDate(6) + "";
 				String payMonth = s.substring(2, 7);
 				map.put("payMonth", payMonth);
 				map.put("amount", rs.getInt(1) + "");
@@ -45,7 +46,7 @@ public class SalDao {
 				map.put("posName", rs.getString(5));
 				map.put("payDay", rs.getDate(6) + "");
 				map.put("salary", rs.getInt(7) + "");
-				
+
 				list.add(map);
 			}
 		} catch (SQLException e) {
@@ -57,7 +58,7 @@ public class SalDao {
 		}
 		return list;
 	}
-	
+
 	public ArrayList<HashMap<String, String>> selectEmpAll() {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -79,8 +80,8 @@ public class SalDao {
 				map.put("empName", rs.getString(2));
 				map.put("deptName", rs.getString(3));
 				map.put("posName", rs.getString(4));
-				map.put("salary", rs.getInt(5) + "");
-				
+				map.put("salary", rs.getDouble(5) + "");
+
 				list.add(map);
 			}
 		} catch (SQLException e) {
@@ -92,7 +93,7 @@ public class SalDao {
 		}
 		return list;
 	}
-	
+
 	public ArrayList<HashMap<String, String>> selectEmpTM() {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -120,7 +121,7 @@ public class SalDao {
 				map.put("deptName", rs.getString(3));
 				map.put("posName", rs.getString(4));
 				map.put("salary", rs.getInt(5) + "");
-				
+
 				list.add(map);
 			}
 		} catch (SQLException e) {
@@ -132,7 +133,6 @@ public class SalDao {
 		}
 		return list;
 	}
-	
 
 	public int checkSalary(String empNo) {
 		PreparedStatement pstmt = null;
@@ -156,10 +156,10 @@ public class SalDao {
 		}
 		return num;
 	}
-	
-		//^(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])$
-		//^(2[0-3])(0[1-9]|1[0-2])$
-	
+
+	// ^(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])$
+	// ^(2[0-3])(0[1-9]|1[0-2])$
+
 	public HashMap<String, String> selectByNo(String empNo) {
 		PreparedStatement pstmt = null;
 		StringBuilder sb = new StringBuilder();
@@ -171,7 +171,7 @@ public class SalDao {
 
 		Connection conn = ConnectionHelper.getConnection("oracle");
 		ResultSet rs = null;
-		HashMap<String, String> map= new HashMap<>();
+		HashMap<String, String> map = new HashMap<>();
 
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -179,21 +179,42 @@ public class SalDao {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				int salary = rs.getInt(5)*10000;
-				int a = (int)(salary*0.045);
-				int b = (int)(salary*0.035);
-				int c = (int)(salary*0.0045);
-				int d = (int)(salary*0.009);
-				
-				map.put("empNo",rs.getInt(1) + "");
-				map.put("empName",rs.getString(2));
-				map.put("deptName",rs.getString(3));
-				map.put("posName",rs.getString(4));
-				map.put("NP",a + "");
-				map.put("HI",b + "");
-				map.put("EI",c + "");
-				map.put("CI",d + "");
-				
+				double salary = rs.getInt(5) * 10000;
+				int a = (int) (salary * 0.045);
+				int b = (int) (salary * 0.035);
+				int c = (int) (salary * 0.0045);
+				int d = (int) (salary * 0.009);
+				int rankAllowance = 0;
+
+				switch (rs.getString(4)) {
+				case "부장":
+					rankAllowance = 500000;
+					break;
+				case "차장":
+					rankAllowance = 400000;
+					break;
+				case "과장":
+					rankAllowance = 300000;
+					break;
+				case "대리":
+					rankAllowance = 200000;
+					break;
+				case "주임":
+					rankAllowance = 100000;
+					break;
+				}
+
+				map.put("empNo", rs.getInt(1) + "");
+				map.put("empName", rs.getString(2));
+				map.put("deptName", rs.getString(3));
+				map.put("posName", rs.getString(4));
+				map.put("salary", (rs.getInt(5) * 10000) + "");
+				map.put("rankAllowance", rankAllowance + "");
+				map.put("NP", a + "");
+				map.put("HI", b + "");
+				map.put("EI", c + "");
+				map.put("CI", d + "");
+
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -205,15 +226,17 @@ public class SalDao {
 		return map;
 	}
 
-	public int approveLeave(int num, int leaveNo) {
+	public int applySal(String total, String empNo) {
 		PreparedStatement pstmt = null;
-		String sql = "update leave set LEVSTATUS = ? where leaveno= ?";
+		String sql = "insert into sal(amount,payday,empno,usrid) values (?,TRUNC(SYSDATE, 'MM') + INTERVAL '19' DAY,?,?)";
 		Connection conn = ConnectionHelper.getConnection("oracle");
 		int resultrow = 0;
+		double amount = Double.parseDouble(total) / 10000;
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, num);
-			pstmt.setInt(2, leaveNo);
+			pstmt.setDouble(1, amount);
+			pstmt.setInt(2, Integer.parseInt(empNo));
+			pstmt.setString(3, searchUsrId(empNo));
 			resultrow = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -224,6 +247,146 @@ public class SalDao {
 		return resultrow;
 	}
 
+	public String searchUsrId(String empNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select usrId from EMP where empNo = ?";
+		Connection conn = ConnectionHelper.getConnection("oracle");
+		String usrId = "";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(empNo));
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				usrId = rs.getString(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(rs);
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
+		}
+		return usrId;
+	}
+
+	public HashMap<String, String> selectBySalNo(String empNo, String payDay) {
+		PreparedStatement pstmt = null;
+		StringBuilder sb = new StringBuilder();
+		sb.append("SELECT amount, empname, e.empno, deptname, posname, payday , e.salary FROM sal s");
+		sb.append(" left join emp e on e.empNo = s.empno");
+		sb.append(" left join dept d on e.deptNo = d.deptNo");
+		sb.append(" left join pos p on p.posNo = e.posNo");
+		sb.append(" where payday=? and e.empno=?");
+		String sql = sb.toString();
+
+		Connection conn = ConnectionHelper.getConnection("oracle");
+		ResultSet rs = null;
+		HashMap<String, String> map = new HashMap<>();
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, payDay);
+			pstmt.setInt(2, Integer.parseInt(empNo));
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				int salary = rs.getInt(7) * 10000;
+				int a = (int) (salary * 0.045);
+				int b = (int) (salary * 0.035);
+				int c = (int) (salary * 0.0045);
+				int d = (int) (salary * 0.009);
+				int totalExpense = a + b + c + d;
+				int rankAllowance = 0;
+
+				switch (rs.getString(5)) {
+				case "부장":
+					rankAllowance = 500000;
+					break;
+				case "차장":
+					rankAllowance = 400000;
+					break;
+				case "과장":
+					rankAllowance = 300000;
+					break;
+				case "대리":
+					rankAllowance = 200000;
+					break;
+				case "주임":
+					rankAllowance = 100000;
+					break;
+				}
+				int totalAllowance = rankAllowance + salary + 200000;
+
+				map.put("amount", rs.getDouble(1) + "");
+				map.put("empName", rs.getString(2));
+				map.put("empNo", rs.getInt(3) + "");
+				map.put("deptName", rs.getString(4));
+				map.put("posName", rs.getString(5));
+				map.put("payDay", rs.getDate(6) + "");
+				map.put("salary", (rs.getInt(7) * 10000) + "");
+				map.put("rankAllowance", rankAllowance + "");
+				map.put("totalExpense", totalExpense + "");
+				map.put("totalAllowance", totalAllowance + "");
+				map.put("NP", a + "");
+				map.put("HI", b + "");
+				map.put("EI", c + "");
+				map.put("CI", d + "");
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(rs);
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
+		}
+		return map;
+	}
+
+	public ArrayList<HashMap<String, String>> selectAllById(String usrId){
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		StringBuilder sb = new StringBuilder();
+		sb.append("SELECT amount, e.empno, empname, deptname, posname, payday , e.salary FROM sal s");
+		sb.append(" left join emp e on e.empNo = s.empno");
+		sb.append(" left join dept d on d.deptNo = e.deptNo");
+		sb.append(" left join pos p on p.posNo = e.posNo");
+		sb.append(" where e.usrId=?");
+		sb.append(" order by payDay desc");
+		String sql = sb.toString();
+		Connection conn = ConnectionHelper.getConnection("oracle");
+		ArrayList<HashMap<String, String>> list = new ArrayList<>();
+		HashMap<String, String> map;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, usrId);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				map = new HashMap<String, String>();
+				String s = rs.getDate(6) + "";
+				String payMonth = s.substring(2, 7);
+				map.put("payMonth", payMonth);
+				map.put("amount", rs.getInt(1) + "");
+				map.put("empNo", rs.getInt(2) + "");
+				map.put("empName", rs.getString(3));
+				map.put("deptName", rs.getString(4));
+				map.put("posName", rs.getString(5));
+				map.put("payDay", rs.getDate(6) + "");
+				map.put("salary", rs.getInt(7) + "");
+
+				list.add(map);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(rs);
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
+		}
+		return list;
+	}
+	
 	public boolean checkDays(String usrId, String startDay, String endDay) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -247,7 +410,6 @@ public class SalDao {
 		return flag;
 	}
 
-
 	public void deleteLeave(int leaveNo) {
 		PreparedStatement pstmt = null;
 		String sql = "delete from leave where leaveno= ?";
@@ -264,53 +426,7 @@ public class SalDao {
 		}
 	}
 
-	public ArrayList<HashMap<String, String>> selectById(String usrId) {
-		PreparedStatement pstmt = null;
-		StringBuilder sb = new StringBuilder();
-		sb.append(
-				"SELECT leaveno, e.empno, empname, deptname, posname, typeno, startday, endday, levstatus, e.annualLeave FROM leave l");
-		sb.append(" left join emp e on e.empNo = l.empNo");
-		sb.append(" left join dept d on d.deptNo = e.deptNo");
-		sb.append(" left join pos p on p.posNo = e.posNo");
-		sb.append(" where l.usrId= ?");
-		sb.append(" order by leaveno");
-		String sql = sb.toString();
 
-		/// Pool ///////////////////////////////////
-		ResultSet rs = null;
-		Connection conn = ConnectionHelper.getConnection("oracle");
-		////////////////////////////////////////////
-		ArrayList<HashMap<String, String>> list = new ArrayList<>();
-		HashMap<String, String> map;
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, usrId);
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				map = new HashMap<String, String>();
-				map.put("leaveNo", rs.getInt(1) + "");
-				map.put("empNo", rs.getInt(2) + "");
-				map.put("empName", rs.getString(3));
-				map.put("deptName", rs.getString(4));
-				map.put("posName", rs.getString(5));
-				map.put("typeNo", rs.getInt(6) + "");
-				map.put("startDay", rs.getDate(7) + "");
-				map.put("endDay", rs.getDate(8) + "");
-				map.put("levStatus", rs.getInt(9) + "");
-				map.put("annualLeave", rs.getInt(10) + "");
-				list.add(map);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			ConnectionHelper.close(rs);
-			ConnectionHelper.close(pstmt);
-			ConnectionHelper.close(conn);
-		}
-		return list;
-	}
-
- 
 	public void modifyLeave(String startDay, String endDay, String reason, int typeNo, int leaveNo) {
 		PreparedStatement pstmt = null;
 		String sql = "update Leave set startday = ?, endday = ?, reason=?, typeno=? where leaveno = ?";
@@ -423,7 +539,7 @@ public class SalDao {
 		}
 		return list;
 	}
-	
+
 	public ArrayList<HashMap<String, String>> selectByDeptName(String deptName) {
 		PreparedStatement pstmt = null;
 		StringBuilder sb = new StringBuilder();

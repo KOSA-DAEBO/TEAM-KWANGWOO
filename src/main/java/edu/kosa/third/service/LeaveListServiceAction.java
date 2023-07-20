@@ -25,7 +25,6 @@ public class LeaveListServiceAction implements Action {
 
 		String field = request.getParameter("field");
 		String search = request.getParameter("search");
-		System.out.println(field+" "+search);
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false); // True 클라이언트가 새로운 페이지를 요청하게 할 거예요
 

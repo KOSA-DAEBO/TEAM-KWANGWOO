@@ -327,7 +327,11 @@ table.type091 thead td{width:100px; text-align:center; padding:10px;font-weight:
 table.type091 tbody th{width:70px; text-align:center; padding:10px;font-weight:700;vertical-align:top;border-bottom:1px solid #ccc;border-top:1px solid #ccc;background:#f3f6f7}
 table.type091 tbody td.empnumber{width:20px; text-align:center;}
 table.type091 td{text-align:center; width:100px;padding:10px;vertical-align:top;border-bottom:1px solid #ccc}
+table.type071{border-collapse:collapse;text-align:left;line-height:1.5;border:1px solid #ccc;margin-left:auto;margin-right:auto}
+table.type071 thead{border-right:1px solid #ccc;border-left:1px solid #ccc;background:#e7708d}
+table.type071 thead th{padding:10px;font-weight:700;vertical-align:top;color:#fff;text-align:center}
+table.type071 tbody th{width:470px;padding:10px;font-weight:700;vertical-align:top;border-bottom:1px solid #ccc;background:#fcf1f4;text-align:center}
+table.type071 td{width:470px;padding:10px;vertical-align:top;border-bottom:1px solid #ccc;text-align:center}
 
 /*deptList*/
 .deptTable {justify-content: center; display: grid; grid-template-rows: 1fr; margin: 10px auto; }
-

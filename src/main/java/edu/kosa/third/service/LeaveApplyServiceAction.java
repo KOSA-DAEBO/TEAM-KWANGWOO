@@ -25,7 +25,6 @@ public class LeaveApplyServiceAction implements Action {
 		HttpSession session = request.getSession();
 		EmpDto dto = (EmpDto) session.getAttribute("login");
 		String usrId = dto.getUsrId();
-		System.out.println(usrId);
 		
 		String typeNo = request.getParameter("leaveType");
 		String startDay = request.getParameter("startDay");

@@ -63,14 +63,12 @@
                <ul>
                   <li><a href="leaveList.do?listNum=1">휴가관리</a></li>
                   <li><a href="leaveList.do?listNum=3">휴가신청</a></li>
-                  <li><a href="#">등등등</a></li>
                </ul>
             </div>
             <div class="lm group3">
                <ul>
                   <li><a href="salList.do">급여관리</a></li>
-                  <li><a href="#">급여지급</a></li>
-                  <li><a href="#">등등등</a></li>
+                  <li><a href="salList.do?slistNum=4">급여확인</a></li>
                </ul>
             </div>
             <div class="lm group4">
