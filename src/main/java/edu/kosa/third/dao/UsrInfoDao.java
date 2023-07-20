@@ -45,16 +45,16 @@ public class UsrInfoDao {
 	}
 	
 	//관리자 - 인사 정보 변경
-	public void updateManageEmpInfo(EmpDto empDto) {
+	public void updateManageEmpInfo(int empNo) {
 		String update="update emp set deptno = ? , posno = ? , salary = ? where empno = ?";
 		Connection conn = ConnectionHelper.getConnection("oracle");
 		PreparedStatement pstmt;
 		try {
 		pstmt = conn.prepareStatement(update);
-		pstmt.setInt(1, empDto.getDeptNo());
-		pstmt.setInt(2, empDto.getPosNo());
-		pstmt.setInt(3, empDto.getSarlary());
-		pstmt.setInt(4, empDto.getEmpNo());
+//		pstmt.setInt(1, empDto.getDeptNo());
+//		pstmt.setInt(2, empDto.getPosNo());
+//		pstmt.setInt(3, empDto.getSalary());
+//		pstmt.setInt(4, empDto.getEmpNo());
 		pstmt.execute();
 		
 		}catch(Exception e) {
@@ -129,6 +129,7 @@ public class UsrInfoDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		
 		try {
 			list = new ArrayList<>();
 			conn = ConnectionHelper.getConnection("oracle");
@@ -150,7 +151,49 @@ public class UsrInfoDao {
 			ConnectionHelper.close(pstmt);
 			ConnectionHelper.close(conn);
 		}
+		
 		return list;
+	}
+
+	public EmpDto selectEmpDetail(int empNo) {
+		String sql = "SELECT * FROM EMP WHERE EMPNO = ?";
+		Connection conn = ConnectionHelper.getConnection("oracle");
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		EmpDto dto = new EmpDto();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, empNo);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				dto.setEmpNo(rs.getInt("empNo"));
+				dto.setUsrId(rs.getString("usrId"));
+				dto.setEmpName(rs.getString("empName"));
+				dto.setEmpBirth(rs.getDate("empBirth"));
+				dto.setEmpEmail(rs.getString("empEmail"));
+				dto.setEmpTel(rs.getString("empTel"));
+				dto.setEmpStatus(rs.getBoolean("empStatus"));
+				dto.setRole(rs.getBoolean("role"));
+				dto.setEmpGender(rs.getString("empGender"));
+				dto.setEmpAddr(rs.getString("empAddr"));
+				dto.setHireDate(rs.getDate("hireDate"));
+				dto.setAnnualLeave(rs.getInt("annualLeave"));
+				dto.setDeptNo(rs.getInt("deptNo"));
+				dto.setPosNo(rs.getInt("posNo"));
+				dto.setSalary(rs.getInt("salary"));
+				dto.setDepartureDate(rs.getDate("departureDate"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(rs);
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
+		}
+		
+		return dto;
 	}
 
 }
