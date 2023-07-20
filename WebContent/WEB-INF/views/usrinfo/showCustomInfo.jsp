@@ -13,38 +13,38 @@
 		<table>
 			<tr>
 				<td>계정</td>
-				<td>${login.usrId }</td>
+				<td>${loginCustomer.usrId }</td>
 			</tr>
 			<tr>
 				<td>이름</td>
-				<td>${login.customerName }</td>
+				<td>${loginCustomer.customerName }</td>
 			</tr>
 			<tr>
 				<td>주소</td>
-				<td>${login.customerAddr }</td>
+				<td>${loginCustomer.customerAddr }</td>
 			</tr>
 			<tr>
 				<td>전화번호</td>
-				<td>${login.customerTel }</td>
+				<td>${loginCustomer.customerTel }</td>
 			</tr>
 			<tr>
 				<td>이메일</td>
-				<td>${login.customerEmail }</td>
+				<td>${loginCustomer.customerEmail }</td>
 			</tr>
 			<tr>
 				<td>성별:</td>
 				<td><c:choose>
-						<c:when test="${login.customerGender == '1'  }">
+						<c:when test="${loginCustomer.customerGender == '1'  }">
 								남
 							</c:when>
-						<c:when test="${login.customerGender == '0'  }">
+						<c:when test="${loginCustomer.customerGender == '0'  }">
 								여
 							</c:when>
 					</c:choose></td>
 			</tr>
 			<tr>
 				<td>생년월일:</td>
-				<td>${login.customerBirth }</td>
+				<td>${loginCustomer.customerBirth }</td>
 			</tr>
 		</table>
 	</div>
