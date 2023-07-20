@@ -1,17 +1,18 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" %>
-<%@ include file="../../../fixed/header.jsp" %>
+<%@ include file="../../../fixed/customHeader.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>고객 로그인</title>
+    <title>Com KwangWoo</title>
 
-    <script type="text/javascript" src="./js/joinScript.js"></script>
+    <script type="text/javascript" src="./js/loginScript.js"></script>
 </head>
-<body>
+<body class="loginCustomer">
 
 <div class="login_title">고객 로그인</div>
 <section class="loginPage">
-    <form action="loginCustomerOk.do" method="post" onsubmit="return loginChk();" name="login">
+    <form action="loginCustomerOk.do" method="post" onsubmit="return loginChk();" name="loginForm">
         <div>
             <table class=login_table>
                 <tr>
@@ -42,4 +43,4 @@
 </div>
 </body>
 </html>
-<%@ include file="../../../fixed/footer.jsp" %>
+<%@ include file="../../../fixed/customFooter.jsp" %>

@@ -26,7 +26,6 @@ public class SalListServiceAction implements Action {
 
 		String field = request.getParameter("field");
 		String search = request.getParameter("search");
-		System.out.println(field + " " + search);
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false); // True 클라이언트가 새로운 페이지를 요청하게 할 거예요
 
@@ -41,6 +40,11 @@ public class SalListServiceAction implements Action {
 		} else if (slistNum != null && slistNum.equals("2")) {
 			forward.setPath("/WEB-INF/views/sal/salEmpList.jsp");
 			ArrayList<HashMap<String, String>> list = dao.selectEmpAll();
+			request.setAttribute("list", list);
+			return forward;
+		} else if (slistNum != null && slistNum.equals("4")) {
+			forward.setPath("/WEB-INF/views/sal/salList2.jsp");
+			ArrayList<HashMap<String, String>> list = dao.selectAllById(dto.getUsrId());
 			request.setAttribute("list", list);
 			return forward;
 		}

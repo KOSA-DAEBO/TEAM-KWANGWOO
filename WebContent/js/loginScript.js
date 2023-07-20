@@ -1,15 +1,15 @@
 
 function loginChk(){
 
-    if (!document.login.usrId.value) {
-        document.login.usrId.focus();
+    if (!document.loginForm.usrId.value) {
+        document.loginForm.usrId.focus();
         alert("아이디를 입력하십시요.");
         return false;
     }
 
-    if (!document.login.usrPwd.value) {
+    if (!document.loginForm.usrPwd.value) {
         alert("비밀번호를 입력하십시요.");
-        document.login.usrPwd.focus();
+        document.loginForm.usrPwd.focus();
         return false;
     }
 

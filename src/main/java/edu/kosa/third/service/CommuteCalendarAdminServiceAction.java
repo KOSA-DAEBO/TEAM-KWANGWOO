@@ -17,15 +17,22 @@ public class CommuteCalendarAdminServiceAction  implements Action {
         HttpSession session = request.getSession(false);
         EmpDto dto = (EmpDto)session.getAttribute("login");
 
-        CommuteDao dao = new CommuteDao();
-        JSONArray jsonArray = dao.calendarAdmin(dto);
-
-        //POST 방식으로 JsonArray 전달
-        request.setAttribute("jsonArray", jsonArray);
-
         ActionForward forward = new ActionForward();
         forward.setRedirect(false);
-        forward.setPath("/WEB-INF/views/commute/commuteAdmin.jsp"); //관리자 출결확인
+
+        if(dto.isRole()){
+            CommuteDao dao = new CommuteDao();
+            JSONArray jsonArray = dao.calendarAdmin(dto);
+
+            //POST 방식으로 JsonArray 전달
+            request.setAttribute("jsonArray", jsonArray);
+
+            forward.setPath("/WEB-INF/views/commute/commuteAdmin.jsp"); //관리자 출결확인
+            return forward;
+        }
+        forward.setPath("commuteEmpChk.do"); //관리자 출결확인
         return forward;
+
+
     }
 }

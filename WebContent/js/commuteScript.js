@@ -1,4 +1,3 @@
-// 캘린더 js 임시
 $(function () {
 
     const googleApikey = config.googleApikey;

@@ -1,18 +1,18 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <%@ include file="../../../fixed/header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>직원 로그인</title>
+    <title>Team KwangWoo</title>
 
-    <script type="text/javascript" src="./js/joinScript.js"></script>
+    <script type="text/javascript" src="./js/loginScript.js"></script>
 
 </head>
 <body>
-
 <div class="login_title">직원 로그인</div>
 <section class="loginPage">
-    <form action="loginEmpOk.do" method="post" onsubmit="return loginChk();" name="login">
+    <form action="loginEmpOk.do" method="post" onsubmit="return loginChk();" name="loginForm">
         <div>
             <table class=login_table>
                 <tr>

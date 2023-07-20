@@ -8,6 +8,8 @@
 .head_top h1 {float:left; margin-top:8px;}
 .head_top .material-symbols-outlined {float: right; margin-top: 10px;}
 .head_top .iconText{float: right; margin: 13px 0 0 15px; text-decoration: none; color:black;}
+.head_top #myPageButton{width:120px;height:28px;margin:8px 0 3px 0;color:white}
+.head_top #myPageCustomerButton{width:120px;height:28px;margin:8px 0 3px 0;color:white;background-color:#C40723}
 
 .head_bottom { height:43px; background:#005b23; clear:both;}
 .head_bottom_in {width:1100px; margin:0 auto; overflow:hidden;}
@@ -274,11 +276,13 @@ table.type02 input.lbutton{font-size:17px}
 .join_Row{padding:10px}
 .join_list{display:inline-block;width:140px}
 .join_radio_input{margin: 12px 5px;vertical-align: middle;accent-color: #005b23;margin : 0 20px 0 70px;}
-#idCheckButton{margin:0;width:85px;height:30px}
+#idCheckButton, #sample6_button{margin:0;width:85px;height:30px}
 #idChecklist{padding-left:30px}
 #idCheckTitle{size:20px;text-indent:0;margin:20px}
 #idCheckPage{overflow-x:hidden}
-.joinPage #usrId{width : 240px}
+.joinPage #usrId,#sample6_postcode{width : 240px}
+#sample6_button{font-size:12px}
+#sample6_address, #sample6_detailAddress{width:160px}
 .joinCustomer .joinPage{border-top:5px solid #C40723;border-bottom:5px solid #C40723}
 .joinCustomer .join_input{border:1px solid #C40723}
 .joinCustomer .joinButton{background-color:#C40723}
@@ -307,13 +311,14 @@ table.type02 input.lbutton{font-size:17px}
 .commute_table{font-size:30px;margin:0 auto}
 #commuteButton{width:360px;height:43px;margin-left:30px;margin-top:40px;border:none;display:inline-block;border-radius:15px;box-shadow:0 15px 35px rgba(0,0,0,0.1);text-decoration:none;font-weight:600;transition:.25s;color:#f8f8ff;background-color:#005B23;font-size:26px}
 #commuteButton:hover{transform:scale(1.2)}
-.commutePage{margin:5% 23%}
-#commuteInfo{position:absolute;top:103px;left:0;margin:5% 23%;font-size:16px;font-weight:700;z-index:1;line-height:25px}
+.commutePage{margin:8% 23%}
+#commuteInfo{position:absolute;top:103px;left:0;margin:8% 23%;font-size:16px;font-weight:700;z-index:1;line-height:25px}
 .commuteRounded-bar{display:inline-block;height:14px;width:45px;vertical-align:center;border-radius:10px}
 #commuteWork{background-color:#50bcdf}
 #commuteLeave{background-color:#ef6c00}
+.commuteTitle{position : absolute;top:103px;margin:2% 23%;font-size:40px;color:#005B23; z-index:-1; font-weight:500}
 
-/* fullcalendar weekend color change */
+/* fullcalendar*/
 .fc-day-sun a{color:red;text-decoration:none}
 .fc-day-sat a{color:blue;text-decoration:none}
 
@@ -324,6 +329,11 @@ table.type091 thead td{width:100px; text-align:center; padding:10px;font-weight:
 table.type091 tbody th{width:70px; text-align:center; padding:10px;font-weight:700;vertical-align:top;border-bottom:1px solid #ccc;border-top:1px solid #ccc;background:#f3f6f7}
 table.type091 tbody td.empnumber{width:20px; text-align:center;}
 table.type091 td{text-align:center; width:100px;padding:10px;vertical-align:top;border-bottom:1px solid #ccc}
+table.type071{border-collapse:collapse;text-align:left;line-height:1.5;border:1px solid #ccc;margin-left:auto;margin-right:auto}
+table.type071 thead{border-right:1px solid #ccc;border-left:1px solid #ccc;background:#e7708d}
+table.type071 thead th{padding:10px;font-weight:700;vertical-align:top;color:#fff;text-align:center}
+table.type071 tbody th{width:470px;padding:10px;font-weight:700;vertical-align:top;border-bottom:1px solid #ccc;background:#fcf1f4;text-align:center}
+table.type071 td{width:470px;padding:10px;vertical-align:top;border-bottom:1px solid #ccc;text-align:center}
 
 /*deptList*/
 .deptList {margin: 10px auto; width: 500px; text-align: center; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif;}

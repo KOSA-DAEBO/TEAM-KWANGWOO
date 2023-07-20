@@ -21,17 +21,26 @@
                   alt="광우" class="logo" /></a>
             </h1>
             <div>
-               <span class="material-symbols-outlined">login</span>
-                <a class="iconText" href="loginCustomer.do"> 로그인</a>
-               <span class="material-symbols-outlined">logout</span>
-                <a class="iconText" href="logout.do"> 로그아웃</a>
-               <span class="material-symbols-outlined">person_add</span>
-                <a class="iconText" href="joinCustomer.do"> 회원가입</a>
+                <c:choose>
+                    <c:when test="${not empty sessionScope.login}">
+                        <span class="material-symbols-outlined">logout</span>
+                        <a class="iconText" href="logout.do"> 로그아웃</a>
+                        <button class="iconText joinButton" id="myPageButton" onClick="location.href='#'">마이페이지</button>
+                        <a class="iconText"> ${sessionScope.login.usrId}님 안녕하세요&nbsp&nbsp</a>
+                    </c:when>
+                    <c:otherwise>
+                        <span class="material-symbols-outlined">login</span>
+                        <a class="iconText" href="loginCustomer.do"> 로그인</a>
+                        <span class="material-symbols-outlined">person_add</span>
+                        <a class="iconText" href="joinCustomer.do"> 회원가입</a>
+                    </c:otherwise>
+                </c:choose>
             </div>
          </div>
          <!-- //head_top -->
 
          <div class="head_bottom">
+             <c:if test="${not empty sessionScope.login}">
             <div class="head_bottom_in">
                <div class="head_menu">
                   <ul>
@@ -55,14 +64,12 @@
                <ul>
                   <li><a href="leaveList.do?listNum=1">휴가관리</a></li>
                   <li><a href="leaveList.do?listNum=3">휴가신청</a></li>
-                  <li><a href="#">등등등</a></li>
                </ul>
             </div>
             <div class="lm group3">
                <ul>
                   <li><a href="salList.do">급여관리</a></li>
-                  <li><a href="#">급여지급</a></li>
-                  <li><a href="#">등등등</a></li>
+                  <li><a href="salList.do?slistNum=4">급여확인</a></li>
                </ul>
             </div>
             <div class="lm group4">
@@ -89,6 +96,7 @@
       <!--// local_menu -->
             </div>
             <!-- //head_bottom_in -->
+             </c:if>
          </div>
       </div>
    </div>

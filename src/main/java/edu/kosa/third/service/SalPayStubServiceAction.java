@@ -13,22 +13,24 @@ import edu.kosa.third.action.Action;
 import edu.kosa.third.action.ActionForward;
 import edu.kosa.third.dao.SalDao;
 
-public class SalApplyServiceAction implements Action {
+public class SalPayStubServiceAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		SalDao dao = new SalDao();
 		HttpSession session = request.getSession();
-		String slistNum = request.getParameter("slistNum");
+		String empNo = request.getParameter("empNo");
+		String payDay = request.getParameter("payDay");
 
-		String sNo = request.getParameter("sNo");
-
+		System.out.println(empNo);
+		System.out.println(payDay);
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out;
 
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false); // True 클라이언트가 새로운 페이지를 요청하게 할 거예요
 
+		/*
 		if (slistNum != null && slistNum.equals("3")) {
 			String total = request.getParameter("total");
 			String empNo = request.getParameter("empNo");
@@ -45,9 +47,13 @@ public class SalApplyServiceAction implements Action {
 			forward.setPath("/salList.do");
 			return forward;
 		}
-
 		forward.setPath("/WEB-INF/views/sal/payInsertForm.jsp");
 		HashMap<String, String> map = dao.selectByNo(sNo);
+		request.setAttribute("map", map);
+		return forward;
+		*/
+		forward.setPath("/WEB-INF/views/sal/payStub.jsp");
+		HashMap<String, String> map = dao.selectBySalNo(empNo,payDay);
 		request.setAttribute("map", map);
 		return forward;
 	}

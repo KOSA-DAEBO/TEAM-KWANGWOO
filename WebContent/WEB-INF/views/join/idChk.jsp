@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>Team KwangWoo</title>
     <script type="text/javascript" src="./js/joinScript.js"></script>
 </head>
 <body id="idCheckPage">
