@@ -315,7 +315,8 @@ table.type02 input.lbutton{font-size:17px}
 #commuteWork{background-color:#50bcdf}
 #commuteLeave{background-color:#ef6c00}
 .commuteTitle{position : absolute;top:103px;margin:2% 23%;font-size:40px;color:#005B23; z-index:-1; font-weight:500}
-/* fullcalendar weekend color change */
+
+/* fullcalendar*/
 .fc-day-sun a{color:red;text-decoration:none}
 .fc-day-sat a{color:blue;text-decoration:none}
 
