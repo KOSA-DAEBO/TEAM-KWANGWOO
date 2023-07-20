@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="../../../fixed/header.jsp"%>
 <!DOCTYPE html>
 <html>
@@ -9,7 +10,18 @@
 <script type="text/javascript" src="./js/deptScript.js" defer="defer"></script>
 </head>
 <body>
-	<br>
+	<table class="deptList">
+		<tr class="dept_head">
+			<th>부서 번호</th>
+			<th>부서 이름</th>
+		</tr>
+		<c:forEach var="list" items="${deptList}">
+			<tr class="dept_body">
+				<td>${list.deptNo}</td>
+				<td>${list.deptName}</td>
+			</tr>
+		</c:forEach>
+	</table>
 	<div align="center">
 		<select id="selectDept" onchange="changeContent()">
 			<option value="insertDept">부서 추가</option>

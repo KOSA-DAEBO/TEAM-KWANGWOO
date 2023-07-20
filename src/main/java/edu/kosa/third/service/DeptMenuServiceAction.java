@@ -10,7 +10,7 @@ import edu.kosa.third.action.ActionForward;
 import edu.kosa.third.dao.DeptDao;
 import edu.kosa.third.dto.DeptDto;
 
-public class TotalDeptServiceAction implements Action{
+public class DeptMenuServiceAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
@@ -21,7 +21,7 @@ public class TotalDeptServiceAction implements Action{
 
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("/WEB-INF/views/deptMenu2/deptList.jsp");
+		forward.setPath("/WEB-INF/views/deptMenu2/deptMenu.jsp");
 		return forward;
 	}
 }
