@@ -29,7 +29,7 @@ public class DeleteUsrInfoServiceAction implements Action{
 			PrintWriter out;
 			try {
 				out = response.getWriter();
-				out.println("<script>alert('퇴사처리가 되었습니다. ');location.href='empList.do'</script>");
+				out.println("<script>alert('퇴사처리가 되었습니다.');location.href='empList.do'</script>");
 				out.flush();
 				out.close();
 			} catch (IOException e) {

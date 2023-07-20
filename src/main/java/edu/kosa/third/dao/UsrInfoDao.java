@@ -13,7 +13,6 @@ import edu.kosa.third.dto.EmpDto;
 import edu.kosa.third.dto.PosDto;
 import edu.kosa.third.dto.UsrDto;
 import edu.kosa.third.utils.ConnectionHelper;
-import oracle.jdbc.proxy.annotation.Pre;
 
 public class UsrInfoDao {
 
@@ -113,17 +112,16 @@ public class UsrInfoDao {
 	}
 
 	// 관리자 - 인사 정보 변경
-	public void updateManageEmpInfo(EmpDto empDto) {
-		String update = "update emp set empName = ?, deptno = ? , posno = ? , salary = ? where empno = ?";
+	public void updateManageEmpInfo(int empNo, int posNo, int salary, int deptNo) {
+		String update = "update emp set deptno = ? , posno = ? , salary = ? where empno = ?";
 		Connection conn = ConnectionHelper.getConnection("oracle");
 		PreparedStatement pstmt;
 		try {
 			pstmt = conn.prepareStatement(update);
-			pstmt.setString(1, empDto.getEmpName());
-			pstmt.setInt(2, empDto.getDeptNo());
-			pstmt.setInt(3, empDto.getPosNo());
-			pstmt.setInt(4, empDto.getSalary());
-			pstmt.setInt(5, empDto.getEmpNo());
+			pstmt.setInt(1, deptNo);
+			pstmt.setInt(2, posNo);
+			pstmt.setInt(3, salary);
+			pstmt.setInt(4, empNo);
 			pstmt.execute();
 
 		} catch (Exception e) {

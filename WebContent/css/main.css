@@ -361,3 +361,4 @@ table.type071 td{width:470px;padding:10px;vertical-align:top;border-bottom:1px s
 .usrInfo .manageBtn .manageUpdateBtn:hover, .manageResetBtn:hover {background-color: #005b23; color: #ffffff;}
 .usrInfo .manageBtn .manageDeleteBtn {border-radius: 20px; border-style: solid; border-color:#C40723; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #C40723; font-size: 15px; width: 100px; height: 30px; margin: 10px 0px 10px 80px;}
 .usrInfo .manageBtn .manageDeleteBtn:hover {background-color: #C40723; color: #ffffff;}
+#ManageEmpSalary{width: 120px;}
