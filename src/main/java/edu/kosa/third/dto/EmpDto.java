@@ -6,13 +6,12 @@ public class EmpDto {
 	private int empNo, annualLeave, deptNo, posNo, salary;
 
 	private Date empBirth, hireDate, departureDate;
-	private String usrId, empName, empEmail, empTel, empAddr , empGender;
+	private String usrId, empName, empEmail, empTel, empAddr, empGender, imagePath;
 	private boolean empStatus, role;
 
 	public EmpDto(int empNo, int annualLeave, int deptNo, int posNo, int salary, Date empBirth, Date hireDate,
 			Date departureDate, String usrId, String empName, String empEmail, String empTel, String empAddr,
 			String empGender, boolean empStatus, boolean role) {
-		super();
 
 		this.empNo = empNo;
 		this.annualLeave = annualLeave;
@@ -32,13 +31,36 @@ public class EmpDto {
 		this.role = role;
 	}
 	
+	public EmpDto(int empNo, int annualLeave, int deptNo, int posNo, int salary, Date empBirth, Date hireDate,
+			Date departureDate, String usrId, String empName, String empEmail, String empTel, String empAddr,
+			String empGender, boolean empStatus, boolean role, String imagePath) {
+		
+		this.empNo = empNo;
+		this.annualLeave = annualLeave;
+		this.deptNo = deptNo;
+		this.posNo = posNo;
+		this.salary = salary;
+		this.empBirth = empBirth;
+		this.hireDate = hireDate;
+		this.departureDate = departureDate;
+		this.usrId = usrId;
+		this.empName = empName;
+		this.empEmail = empEmail;
+		this.empTel = empTel;
+		this.empAddr = empAddr;
+		this.empGender = empGender;
+		this.empStatus = empStatus;
+		this.role = role;
+		this.imagePath = imagePath;
+	}
+
 	public EmpDto(String empAddr, String empTel, String empEmail) {
 		this.empAddr = empAddr;
 		this.empTel = empTel;
 		this.empEmail = empEmail;
 	}
 
-	public EmpDto( String empAddr, String empTel, String empEmail, int empNo) {
+	public EmpDto(String empAddr, String empTel, String empEmail, int empNo) {
 		this.empAddr = empAddr;
 		this.empTel = empTel;
 		this.empEmail = empEmail;
@@ -57,6 +79,13 @@ public class EmpDto {
 		this.empNo = empNo;
 	}
 
+	public String getImagePath() {
+		return imagePath;
+	}
+
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+	}
 
 	public String getUsrId() {
 		return usrId;
@@ -65,7 +94,6 @@ public class EmpDto {
 	public void setUsrId(String usrId) {
 		this.usrId = usrId;
 	}
-
 
 	public int getDeptNo() {
 		return deptNo;
@@ -187,5 +215,4 @@ public class EmpDto {
 		this.departureDate = departureDate;
 	}
 
-	
 }

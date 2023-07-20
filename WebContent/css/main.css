@@ -344,10 +344,12 @@ table.type071 td{width:470px;padding:10px;vertical-align:top;border-bottom:1px s
 .usrInfo {display: grid; grid-template-rows: 100px 1fr 50px 50px 50px 50px 50px; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; width: 650px; gap: 10px;}
 .usrInfo .head_name {text-align: center; font-size: 40px; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #005b23; margin-top: 30px;}
 .usrInfo .table1 {display: grid; grid-template-columns: 150px 500px;}
-.usrInfo .table1 img {width: 100%; height: 198.67px; border: 1px solid #005b23;}
+.usrInfo .table1 .empImage .addImageLabel {position: absolute; top:54%; left:30.8%; color: #777; font-size: 14px; pointer-events: none;}
+.usrInfo .table1 img {width: 100%; height: 198.67px; border: 1px solid #005b23; cursor: pointer;}
 .usrInfo .table1 .innerTable {display: grid; grid-template-rows: repeat(4, 50px);}
 .usrInfo .table1 .innerTable .innerContent {display: grid; grid-template-rows: repeat(4, 50px); grid-template-columns: 80px 170px 80px 170px;}
 .usrInfo .table1 .innerTable .innerContent div {border: 1px solid #005b23; text-align: center; vertical-align: middle; padding-top: 15px;}
+.usrInfo .table1 .innerTable .innerContent div input {width: 150px;}
 .usrInfo .table2 {display: grid; grid-template-columns: 80px 570px; border: 1px solid #005b23; height: 50px; width: 650px;}
 .usrInfo .table2 .name {text-align: center; vertical-align: middle; padding-top: 15px; border-right: 1px solid #005b23;}
 .usrInfo .table2 .content {text-align: center; vertical-align: middle; padding-top: 15px;}
@@ -357,8 +359,18 @@ table.type071 td{width:470px;padding:10px;vertical-align:top;border-bottom:1px s
 .usrInfo .table2 #empPosList input[type=radio] {margin: 20px 1px; vertical-align: middle;}
 .usrInfo .table3 {display: grid; grid-template-columns: 80px 137px 80px 137px 80px 137px; height: 50px;}
 .usrInfo .table3 div { border: 1px solid #005b23; text-align: center; vertical-align: middle; padding-top: 15px;}
+.usrInfo .table4 {display: grid; grid-template-columns: 125px 200px 125px 200px; height: 50px;}
+.usrInfo .table4 div {border: 1px solid #005b23; text-align: center; vertical-align: middle; padding-top: 15px;}
+.usrInfo .table4 div .content input {height: 20px;}
+.usrInfo .table5 {display: grid; grid-template-columns: 125px 325px 200px; border: 1px solid #005b23; height: 50px; width: 650px;}
+.usrInfo .table5 .name {text-align: center; vertical-align: middle; padding-top: 15px; border-right: 1px solid #005b23;}
+.usrInfo .table5 div {border: 1px solid #005b23; text-align: center; vertical-align: middle; padding-top: 15px;}
+.usrInfo .table5 .content input {width: 300px;}
+.usrInfo .table5 button {width:150px;height:20px;border:none;display:inline-block;border-radius:15px;box-shadow:0 15px 35px rgba(0,0,0,0.1);text-decoration:none;font-weight:600;transition:.25s;color:#f8f8ff;background-color:#005B23}
 .usrInfo .manageBtn .manageUpdateBtn, .manageResetBtn {border-radius: 20px; border-style: solid; border-color:#005b23; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #005b23; font-size: 15px; width: 100px; height: 30px; margin: 10px 0px 10px 80px;}
 .usrInfo .manageBtn .manageUpdateBtn:hover, .manageResetBtn:hover {background-color: #005b23; color: #ffffff;}
+.usrInfo .empUpdateBtn .manageUpdateBtn, .manageResetBtn {border-radius: 20px; border-style: solid; border-color:#005b23; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #005b23; font-size: 15px; width: 100px; height: 30px; margin: 10px 0px 10px 150px;}
+.usrInfo .empUpdateBtn .manageUpdateBtn:hover, .manageResetBtn:hover {background-color: #005b23; color: #ffffff;}
 .usrInfo .manageBtn .manageDeleteBtn {border-radius: 20px; border-style: solid; border-color:#C40723; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #C40723; font-size: 15px; width: 100px; height: 30px; margin: 10px 0px 10px 80px;}
 .usrInfo .manageBtn .manageDeleteBtn:hover {background-color: #C40723; color: #ffffff;}
 #ManageEmpSalary{width: 120px;}
