@@ -90,7 +90,8 @@ public class LoginDao {
                                 rs.getString("EMPADDR"),
                                 rs.getString("EMPGENDER"),
                                 rs.getBoolean("EMPSTATUS"),
-                                rs.getBoolean("ROLE")
+                                rs.getBoolean("ROLE"),
+                                rs.getString("IMAGEPATH")
                         );
 
                     } catch (SQLException e) {

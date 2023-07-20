@@ -168,7 +168,7 @@ function joinChkEmp() {
 function idChk() {
     var usrId = document.getElementById("usrId").value;
     var new_window_width = 500;
-    var new_window_height = 370;
+    var new_window_height = 270;
     var positionX = (window.screen.width / 2) - (new_window_width / 2);
     var positionY = (window.screen.height / 2) - (new_window_height / 2);
     var pattern = /^[a-z0-9_-]{5,20}$/;

@@ -6,6 +6,7 @@
 <html>
 <head>
 <script defer="defer" type="text/javascript" src="./js/empScript.js"></script>
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <meta charset="UTF-8">
 <title>Team KwangWoo</title>
 </head>
@@ -59,14 +60,14 @@
 				</div>
 				<div class="table5">
 					<div class="name">우편번호</div>
-					<div class="content"><input value=""></div>
-					<div><button class="empUpdateBtn">우편번호 찾기</button></div>
+					<div class="content" ><input value="" id="sample6_postcode" disabled></div>
+					<div><button type="button" class="empUpdateBtn" id="sample6_button" onclick="sample6_execDaumPostcode()" >우편번호 찾기</button></div>
 				</div>
 				<div class="table4">
 					<div class="name">주소</div>
-					<div class="content"><input value=""></div>
+					<div class="content"><input value="" id="sample6_address" name="sample6_address" ></div>
 					<div class="name">상세주소</div>
-					<div class="content"><input value=""></div>
+					<div class="content"><input value="" id="sample6_detailAddress" name="sample6_detailAddress" ></div>
 				</div>
 				<div class="table4">
 					<div>생년월일</div>
