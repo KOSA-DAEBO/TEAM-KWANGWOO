@@ -5,7 +5,6 @@
 <html>
 <head>
     <title>Team KwangWoo</title>
-    <link rel="stylesheet" href="./css/main.css">
     <script type="text/javascript" src="./js/joinScript.js"></script>
 </head>
 <body id="idCheckPage">

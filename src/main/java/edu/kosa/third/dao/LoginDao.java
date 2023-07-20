@@ -28,7 +28,7 @@ public class LoginDao {
                 rs = pstmt.executeQuery();
                 rs.next();
 
-                customerDto = new CustomerDto(rs.getString("CUSTOMERNO"),
+                customerDto = new CustomerDto(rs.getInt("CUSTOMERNO"),
                         rs.getString("USRID"),
                         rs.getString("CUSTOMEREMAIL"),
                         rs.getString("CUSTOMERTEL"),

@@ -6,7 +6,7 @@
 <head>
     <title>Com KwangWoo</title>
 
-    <script type="text/javascript" src="./js/joinScript.js"></script>
+    <script type="text/javascript" src="./js/loginScript.js"></script>
 </head>
 <body class="loginCustomer">
 
