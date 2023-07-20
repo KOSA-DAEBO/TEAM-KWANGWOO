@@ -8,16 +8,7 @@
 <meta charset="UTF-8">
 <title>Team KwangWoo</title>
 <script type="text/javascript" src="./js/leaveScript.js"></script>
-<script type="text/javascript">
-	function dataCheck() {
-		if (document.getElementById("search").value == "") {
-			alert("검색할 단어를 입력하세요");
-			document.getElementById("search").focus();
-			return;
-		}
-		document.form.submit();
-	}
-</script>
+
 </head>
 
 <body>
