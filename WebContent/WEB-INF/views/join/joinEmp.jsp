@@ -5,10 +5,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>직원 회원가입</title>
+    <title>Team KwangWoo</title>
 
     <script type="text/javascript" src="./js/joinScript.js"></script>
     <c:set var="duplChkId" value="${false}" scope="session"/>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 </head>
 <body>
@@ -77,12 +78,18 @@
 
             <div class="join_Row">
 
-                <label for="usrAddr" class="join_list">주소 :</label>
-
-                <input type="text" class="join_input" id="usrAddr" placeholder="주소 입력" name="usrAddr">
+                <label for="sample6_postcode" class="join_list">우편번호 :</label>
+                <input type="text" class="join_input" id="sample6_postcode" placeholder="우편번호" disabled>
+                <input type="button" class="joinButton" id="sample6_button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
 
             </div>
 
+            <div class="join_Row">
+                <label for="sample6_detailAddress" class="join_list">상세주소 :</label>
+                <input type="text" class="join_input" id="sample6_address" name="sample6_address" placeholder="주소">
+                <input type="text" class="join_input" id="sample6_detailAddress" name="sample6_detailAddress" placeholder="상세주소">
+
+            </div>
 
             <div class="join_Row">
 

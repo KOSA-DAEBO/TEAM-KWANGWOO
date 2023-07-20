@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>출결 관리</title>
+    <title>Team KwangWoo</title>
     <!-- fullcalendar CDN -->
     <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.css' rel='stylesheet' />
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.js'></script>
@@ -20,6 +20,7 @@
 <body>
 
 <div class="commutePage">
+    <div class='commuteTitle'>출퇴근 관리</div>
     <div id='commuteInfo' class = "commutePage" >
         출근 <span class="commuteRounded-bar" id="commuteWork"></span>
         <br>
