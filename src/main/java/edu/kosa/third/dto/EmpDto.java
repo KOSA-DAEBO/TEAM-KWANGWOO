@@ -6,12 +6,12 @@ public class EmpDto {
 	private int empNo, annualLeave, deptNo, posNo, salary;
 
 	private Date empBirth, hireDate, departureDate;
-	private String usrId, empName, empEmail, empTel, empAddr , empGender;
+	private String usrId, empName, empEmail, empTel, empAddr , empGender, imagePath;
 	private boolean empStatus, role;
 
 	public EmpDto(int empNo, int annualLeave, int deptNo, int posNo, int salary, Date empBirth, Date hireDate,
-			Date departureDate, String usrId, String empName, String empEmail, String empTel, String empAddr,
-			String empGender, boolean empStatus, boolean role) {
+				  Date departureDate, String usrId, String empName, String empEmail, String empTel, String empAddr,
+				  String empGender, String imagePath, boolean empStatus, boolean role) {
 		super();
 
 		this.empNo = empNo;
@@ -28,6 +28,7 @@ public class EmpDto {
 		this.empTel = empTel;
 		this.empAddr = empAddr;
 		this.empGender = empGender;
+		this.imagePath = imagePath;
 		this.empStatus = empStatus;
 		this.role = role;
 	}
@@ -187,5 +188,8 @@ public class EmpDto {
 		this.departureDate = departureDate;
 	}
 
-	
+	public String getImagePath() { return imagePath; }
+
+	public void setImagePath(String imagePath) { this.imagePath = imagePath; }
+
 }

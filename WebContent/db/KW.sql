@@ -32,7 +32,8 @@ CREATE TABLE Emp (
 	annualLeave	number	NULL	DEFAULT 0,
 	salary	number	NULL	DEFAULT 0,
 	deptNo	number(2)	NOT NULL,
-	posNo	number	NOT NULL
+	posNo	number	NOT NULL,
+	imagePath varchar2(100)  null DEFAULT './images/usericon.png'
 );
 
 DROP TABLE Customer;

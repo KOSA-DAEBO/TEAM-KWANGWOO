@@ -56,7 +56,6 @@
             <div class="lm group1">
                <ul>
                   <li><a href="deptMenu.do">부서관리</a></li>
-                  <li><a href="empDetail.do">마이페이지</a></li>
                   <li><a href="empList.do">직원관리</a></li>
                </ul>
             </div>

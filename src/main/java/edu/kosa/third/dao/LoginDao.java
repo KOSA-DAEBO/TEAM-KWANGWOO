@@ -89,6 +89,7 @@ public class LoginDao {
                                 rs.getString("EMPTEL"),
                                 rs.getString("EMPADDR"),
                                 rs.getString("EMPGENDER"),
+                                rs.getString("IMAGEPATH"),
                                 rs.getBoolean("EMPSTATUS"),
                                 rs.getBoolean("ROLE")
                         );
