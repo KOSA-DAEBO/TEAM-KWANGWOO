@@ -339,3 +339,18 @@ table.type071 td{width:470px;padding:10px;vertical-align:top;border-bottom:1px s
 .deptList {margin: 10px auto; width: 500px; text-align: center; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif;}
 .deptList .dept_head th {border: 1px solid #005b23; font-size: 20px; padding: 10px;}
 .deptList .dept_body td {border: 1px solid #005b23; font-size: 17px; padding: 10px;}
+
+/*show_emp_list*/
+#simpleList {display: grid; grid-template-rows: 100px 1fr 100px; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; justify-content: center; height: 500px;  margin-top: 50px; gap:20px;}
+#simpleList .deptListName {text-align:center; color:#005b23; font-size:40px;}
+#simpleList #allempinfo {display: grid; grid-template-columns: repeat(5, 1fr); grid-template-rows: repeat(2, 1fr); width: 1300px; gap: 20px;}
+#simpleList #allempinfo #simpleInfoAll {display: grid; grid-template-columns: repeat(2, 1fr);}
+#simpleList #allempinfo #simpleInfoAll .usrImage {width: 100px;}
+#simpleList #allempinfo #simpleInfoAll .usrImage img {width: 100%;}
+#simpleList #allempinfo #simpleInfoAll .usrInfo {width: 150px; display: grid; grid-template-rows: repeat(2, 1fr); grid-template-columns: 60px 1fr; cursor: pointer;}
+#simpleList #pagionation {margin: 20px auto;}
+#simpleList #pagionation button {border-radius: 20px; border-style: solid; border-color:#005b23; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #005b23; font-size: 20px; width: 150px; height: 40px; margin: 15px 50px;}
+#simpleList #pagionation button:hover {background-color: #005b23; color: #ffffff;}
+#simpleList #pagionation button:disabled {opacity: 0.5; cursor: not-allowed;}
+#empButtonHome button {margin-left: 90%; border-radius: 20px; border-style: solid; border-color:#005b23; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #005b23; width: 80px; height: 30px;}
+#empButtonHome button:hover {background-color: #005b23; color: #ffffff;}

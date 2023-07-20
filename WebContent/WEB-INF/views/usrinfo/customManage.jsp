@@ -48,4 +48,4 @@
 		</table>
 </body>
 </html>
-<%@ include file="../../../fixed/customfooter.jsp"%>
+<%@ include file="../../../fixed/customFooter.jsp"%>
