@@ -8,22 +8,22 @@ import edu.kosa.third.action.ActionForward;
 import edu.kosa.third.dao.UsrInfoDao;
 import edu.kosa.third.dto.EmpDto;
 
-public class UpdateEmpInfoServiceAction implements Action {
+public class UpdateManageEmpInfoServiceAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
 		
-		String empAddr = request.getParameter("empAddr");
-		String empTel = request.getParameter("empTel");
-		String empEmail = request.getParameter("empEmail");
+		String empName = request.getParameter("empName");
+		int deptNo = Integer.parseInt(request.getParameter("deptNo"));
+		int posNo = Integer.parseInt(request.getParameter("posNo"));
+		int salary = Integer.parseInt(request.getParameter("salary"));
 		int empNo = Integer.parseInt(request.getParameter("empNo"));
-		
 		UsrInfoDao usrInfoDao = new UsrInfoDao();
-		usrInfoDao.updateEmpInfo(new EmpDto(empAddr, empTel, empEmail, empNo));
+		usrInfoDao.updateManageEmpInfo(new EmpDto(empName, deptNo, posNo, salary, empNo));
 		
-		forward.setPath("empDetail.do");
-		return forward;
+		forward.setPath("/WEB-INF/views/usrinfo/manageEmpInfo.jsp");
+        return forward;
 	}
 
 }
