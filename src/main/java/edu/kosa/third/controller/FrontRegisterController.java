@@ -262,7 +262,20 @@ public class FrontRegisterController extends HttpServlet {
 		} else if (urlcommand.equals("/customManage.do")) {
 			action = new ManageCustomInfoServiceAction();
 			forward = action.execute(request, response);
-		}
+			
+		} else if(urlcommand.equals("/deleteCustom.do")) {
+			action = new DeleteCustomServiceAction();
+			forward = action.execute(request, response);
+			
+		} else if(urlcommand.equals("/changeCustomInfo.do")) {
+			action = new ChangeCustomInfoServiceAction();
+			forward = action.execute(request, response);
+			
+		} else if (urlcommand.equals("/departureCustom.do")) {
+			action = new DepartureCustomServiceAction();
+			forward = action.execute(request, response);
+			
+		} 
 		
 		if (forward != null) {
 			if (forward.isRedirect()) { // true 페이지 재 요청 (location.href="페이지"
