@@ -276,13 +276,13 @@ table.type02 input.lbutton{font-size:17px}
 .join_Row{padding:10px}
 .join_list{display:inline-block;width:140px}
 .join_radio_input{margin: 12px 5px;vertical-align: middle;accent-color: #005b23;margin : 0 20px 0 70px;}
-#idCheckButton, #sample6_button{margin:0;width:85px;height:30px}
+#idCheckButton, .join_Row #sample6_button{margin:0;width:85px;height:30px}
 #idChecklist{padding-left:30px}
 #idCheckTitle{size:20px;text-indent:0;margin:20px}
 #idCheckPage{overflow-x:hidden}
-.joinPage #usrId,#sample6_postcode{width : 240px}
-#sample6_button{font-size:12px}
-#sample6_address, #sample6_detailAddress{width:160px}
+.joinPage #usrId,.join_Row #sample6_postcode{width : 240px}
+.join_Row #sample6_button{font-size:12px}
+.join_Row #sample6_address, #sample6_detailAddress{width:160px}
 .joinCustomer .joinPage{border-top:5px solid #C40723;border-bottom:5px solid #C40723}
 .joinCustomer .join_input{border:1px solid #C40723}
 .joinCustomer .joinButton{background-color:#C40723}
@@ -305,6 +305,7 @@ table.type02 input.lbutton{font-size:17px}
 /* fullcalendar*/
 .fc-day-sun a{color:red;text-decoration:none}
 .fc-day-sat a{color:blue;text-decoration:none}
+.fc-daygrid-block-event{pointer-events: none;cursor: default;}
 
 /*sal*/
 table.type091{border-collapse:collapse;text-align:left;line-height:1.5;margin-left:auto;margin-right:auto}
@@ -373,4 +374,4 @@ table.type071 td{width:470px;padding:10px;vertical-align:top;border-bottom:1px s
 .usrInfo .empUpdateBtn .manageUpdateBtn:hover, .manageResetBtn:hover {background-color: #005b23; color: #ffffff;}
 .usrInfo .manageBtn .manageDeleteBtn {border-radius: 20px; border-style: solid; border-color:#C40723; background-color: #ffffff; font-family: 'Nanum Gothic', sans-serif; font-family: 'Noto Sans KR', sans-serif; color: #C40723; font-size: 15px; width: 100px; height: 30px; margin: 10px 0px 10px 80px;}
 .usrInfo .manageBtn .manageDeleteBtn:hover {background-color: #C40723; color: #ffffff;}
-#ManageEmpSalary{width: 120px;}
+#ManageEmpSalary{width:90px;text-align:right;}

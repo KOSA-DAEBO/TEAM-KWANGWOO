@@ -30,11 +30,11 @@ public class EmpDto {
 		this.empStatus = empStatus;
 		this.role = role;
 	}
-	
+
 	public EmpDto(int empNo, int annualLeave, int deptNo, int posNo, int salary, Date empBirth, Date hireDate,
 			Date departureDate, String usrId, String empName, String empEmail, String empTel, String empAddr,
 			String empGender, boolean empStatus, boolean role, String imagePath) {
-		
+
 		this.empNo = empNo;
 		this.annualLeave = annualLeave;
 		this.deptNo = deptNo;
@@ -215,4 +215,5 @@ public class EmpDto {
 		this.departureDate = departureDate;
 	}
 
+	
 }
