@@ -24,7 +24,7 @@ public class DeleteUsrInfoServiceAction implements Action{
 
 		UsrInfoDao usrInfoDao = new UsrInfoDao();
 		boolean result = usrInfoDao.deleteEmpInfo(usrId,empNo);
-		
+		response.setContentType("text/html;charset=UTF-8");
 		if(result) {
 			PrintWriter out;
 			try {

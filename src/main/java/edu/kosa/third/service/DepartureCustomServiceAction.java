@@ -8,26 +8,24 @@ import edu.kosa.third.action.Action;
 import edu.kosa.third.action.ActionForward;
 import edu.kosa.third.dao.UsrInfoDao;
 import edu.kosa.third.dto.CustomerDto;
-import edu.kosa.third.dto.EmpDto;
+import edu.kosa.third.dto.UsrDto;
 
-public class ManageCustomInfoServiceAction implements Action {
+public class DepartureCustomServiceAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
 		
+		int customNo = Integer.parseInt(request.getParameter("customNo"));
+		
 		HttpSession session = request.getSession();
-		CustomerDto dto = (CustomerDto) session.getAttribute("loginCustomer");
 		
-		int customNo = (dto.getCustomerNo());
-		UsrInfoDao usrInfoDao = new UsrInfoDao();
-
-		CustomerDto customDto = usrInfoDao.customDetail(customNo);
+		UsrInfoDao dao = new UsrInfoDao();
+		CustomerDto customDto = (CustomerDto) session.getAttribute("loginCustomer");
+		dao.deleteCustomInfo(customDto);
 		
-		request.setAttribute("customInfo", customDto);
-		forward.setPath("/WEB-INF/views/usrinfo/customManage.jsp");
+		forward.setPath("customList.do");
 		return forward;
 	}
-
 }

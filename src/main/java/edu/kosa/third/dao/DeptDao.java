@@ -14,7 +14,7 @@ public class DeptDao {
 	
 	//부서 출력
 	public List<DeptDto> totalDept(){
-		String select ="select * from dept";
+		String select ="select * from dept order by deptno asc";
 		List<DeptDto> list = null;
 		Connection conn = ConnectionHelper.getConnection("oracle");
 		PreparedStatement pstmt = null;
