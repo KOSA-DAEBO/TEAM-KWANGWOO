@@ -17,7 +17,7 @@
 		<c:forEach items="${customList}" var="customList">
 		<tr>
 			<td><a href="customManage.do?customerNo=${customList.customerNo }"> ${customList.customerName }</a></td>
-			<td><a href="customManage.do?customerNo=${customList.customerNo }">${customList.usrId } 사번	${customList.customerNo }</a></td>
+			<td><a href="customManage.do?customerNo=${customList.customerNo }">${customList.usrId }</a></td>
 		
 		</tr>
 		</c:forEach>

@@ -29,7 +29,20 @@ public class CustomerDto {
     this.customerName = customerName;
   }
 
-  public int getCustomerNo() {
+  public CustomerDto(String customName, String customAddr, String customTel, String customEmail, int customNo) {
+	  this.customerName = customName;
+	  this.customerAddr = customAddr;
+	  this.customerTel = customTel;
+	  this.customerEmail = customEmail;
+	  this.customerNo = customNo;
+	  
+}
+
+public CustomerDto(int customNo) {
+	this.customerNo = customNo;
+}
+
+public int getCustomerNo() {
     return customerNo;
   }
 

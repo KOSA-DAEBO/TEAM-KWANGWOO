@@ -16,7 +16,84 @@ import edu.kosa.third.utils.ConnectionHelper;
 
 public class UsrInfoDao {
 
-	//관리자 - 소비자 정보
+	// 관리자 - 퇴사 처리
+	public boolean deleteEmpInfo(String usrId, int empNo) {
+		String delete = "update emp set DEPARTUREDATE = current_timestamp where  empno = ?";
+		String delete2 = "update usr set status = 1 , IMAGEPATH = null, THUMBNAILPATH = null where usrid = ?";
+		Connection conn = ConnectionHelper.getConnection("oracle");
+		PreparedStatement pstmt = null;
+		PreparedStatement pstmt2 = null;
+		boolean result = false;
+		try {
+			pstmt = conn.prepareStatement(delete);
+			pstmt.setInt(1, empNo);
+			pstmt.execute();
+			
+			pstmt2 = conn.prepareStatement(delete2);
+			pstmt2.setString(1, usrId);
+			pstmt2.execute();
+			
+			result = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(pstmt2);
+			ConnectionHelper.close(conn);
+		}
+		return result;
+	}
+	
+	//회원 탈퇴
+	public void deleteCustomInfo(CustomerDto customerDto) {
+		String sql = "delete from customer where customerNo = ? ";
+		String sql2= "delete from usr where usrid=?";
+		Connection conn = ConnectionHelper.getConnection("oracle");
+		PreparedStatement pstmt = null;
+		PreparedStatement pstmt2 = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, customerDto.getCustomerNo());
+			pstmt.execute();
+			
+			pstmt2=conn.prepareStatement(sql2);
+			pstmt2.setString(1, customerDto.getUsrId());
+			pstmt2.execute();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
+		}
+	}
+	
+	//소비자 - 개인정보 변경하기
+	public void updateCustomInfo(CustomerDto customerDto) {
+		String sql = "update customer set customerName =?, customerAddr = ?, customerTel = ? , customerEmail = ? where customerNo = ? ";
+		Connection conn = ConnectionHelper.getConnection("oracle");
+		PreparedStatement pstmt = null;
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, customerDto.getCustomerName());
+			pstmt.setString(2, customerDto.getCustomerAddr());
+			pstmt.setString(3, customerDto.getCustomerTel());
+			pstmt.setString(4, customerDto.getCustomerEmail());
+			pstmt.setInt(5, customerDto.getCustomerNo());
+			
+			pstmt.execute();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
+		}
+
+	}
+
+	// 관리자 - 소비자 정보 조회 가능
 	public List<CustomerDto> totalCustom() {
 		String sql = "select * from customer";
 		Connection conn = ConnectionHelper.getConnection("oracle");
@@ -50,7 +127,7 @@ public class UsrInfoDao {
 		return list;
 	}
 
-	// 관리자 - 소비자 개인정보 조회(상세보기)
+	// 관리자 - 소비자 개인정보 조회(상세보기)`
 	public CustomerDto customDetail(int customNo) {
 		Connection conn = ConnectionHelper.getConnection("oracle");
 		PreparedStatement pstmt = null;
@@ -81,34 +158,6 @@ public class UsrInfoDao {
 			ConnectionHelper.close(conn);
 		}
 		return dto;
-	}
-
-	// 관리자 - 퇴사 처리
-	public boolean deleteEmpInfo(String usrId, int empNo) {
-		String delete = "update emp set DEPARTUREDATE = current_timestamp where  empno = ?";
-		String delete2 = "update usr set status = 1 , IMAGEPATH = null, THUMBNAILPATH = null where usrid = ?";
-		Connection conn = ConnectionHelper.getConnection("oracle");
-		PreparedStatement pstmt = null;
-		PreparedStatement pstmt2 = null;
-		boolean result = false;
-		try {
-			pstmt = conn.prepareStatement(delete);
-			pstmt.setInt(1, empNo);
-			pstmt.execute();
-
-			pstmt2 = conn.prepareStatement(delete2);
-			pstmt2.setString(1, usrId);
-			pstmt2.execute();
-
-			result = true;
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			ConnectionHelper.close(pstmt);
-			ConnectionHelper.close(pstmt2);
-			ConnectionHelper.close(conn);
-		}
-		return result;
 	}
 
 	// 관리자 - 인사 정보 변경

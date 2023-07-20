@@ -1,7 +1,8 @@
- <%@ page language="java" contentType="text/html; charset=UTF-8"
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ include file="../../../fixed/header.jsp"%>
+<%@ include file="../../../fixed/customHeader.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +11,7 @@
 </head>
 <body>
 	<div align="center">
-		<form action="" method="post">
+		<form action="changeCustomInfo.do" method="post">
 			<table>
 				<tr>
 					<td>계정</td>
@@ -51,9 +52,9 @@
 					<td>${loginCustomer.customerBirth }</td>
 				</tr>
 				<tr>
-					<td colspan="2"><input type="submit" value="수 정">
-					<input type="reset" value="취 소">
-					<button> 탈퇴하기</button> </td>
+					<td colspan="2"><input type="submit" value="수 정"> <input
+						type="reset" value="취 소">
+						<button>탈퇴하기</button></td>
 				</tr>
 			</table>
 		</form>
@@ -64,4 +65,4 @@
 	</h1>
 </body>
 </html>
-<%@ include file="../../../fixed/footer.jsp"%>
+<%@ include file="../../../fixed/customFooter.jsp"%>
