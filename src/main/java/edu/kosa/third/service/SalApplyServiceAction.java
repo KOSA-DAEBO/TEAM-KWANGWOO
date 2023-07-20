@@ -32,7 +32,9 @@ public class SalApplyServiceAction implements Action {
 		if (slistNum != null && slistNum.equals("3")) {
 			String total = request.getParameter("total");
 			String empNo = request.getParameter("empNo");
-			int a = dao.applySal(total, empNo);
+			String bonus = request.getParameter("allowance3");
+			
+			int a = dao.applySal(total, empNo, bonus);
 			if (a > 0) {
 				try {
 					out = response.getWriter();

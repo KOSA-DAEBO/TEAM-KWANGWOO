@@ -9,7 +9,7 @@
 	href="https://unpkg.com/nice-forms.css@0.1.7/dist/nice-forms.css" />
 <meta charset="UTF-8">
 <title>Team KwangWoo</title>
-<script type="text/javascript" src="./js/leaveScript.js"></script>
+<script defer="defer" type="text/javascript" src="./js/leaveScript.js"></script>
 </head>
 
 <body>

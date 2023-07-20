@@ -21,15 +21,36 @@ public class SalPayStubServiceAction implements Action {
 		HttpSession session = request.getSession();
 		String empNo = request.getParameter("empNo");
 		String payDay = request.getParameter("payDay");
-
-		System.out.println(empNo);
-		System.out.println(payDay);
+		String modify = request.getParameter("modify");
+		String applyPath = request.getParameter("applyPath");
+		
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out;
 
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false); // True 클라이언트가 새로운 페이지를 요청하게 할 거예요
 
+		if(applyPath!=null && applyPath.equals("1")) {
+			forward.setPath("/WEB-INF/views/sal/payStub2.jsp");
+			HashMap<String, String> map = dao.selectBySalNo(empNo,payDay);
+			request.setAttribute("map", map);
+			return forward;
+		}
+		
+		if(modify!=null&&modify.equals("2")) {
+			dao.deleteSal(empNo, payDay);
+			forward.setPath("/salList.do");
+			return forward;
+		}else if(modify!=null&&modify.equals("1")) {
+			String bonus = request.getParameter("allowance3");
+			String amount = request.getParameter("total");
+			dao.modifySal(bonus, amount, empNo, payDay);
+			String year=payDay.substring(0,4)+"년";
+			String month=payDay.substring(5,7)+"월";
+			forward.setPath("/salList.do?field1="+year+"&field2="+month);
+			return forward;
+		}
+		
 		/*
 		if (slistNum != null && slistNum.equals("3")) {
 			String total = request.getParameter("total");

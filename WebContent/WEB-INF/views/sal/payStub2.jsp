@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="../../../fixed/header.jsp"%>
 <!DOCTYPE html>
 <html>
@@ -13,7 +14,11 @@
 	<br>
 	<br>
 
-	<form class="levForm" action="salApply.do?slistNum=3" method="post">
+	<form action="salPayStub.do" name="form" method=post>
+		<input type="hidden" name="modify" id="modify" value="1">
+		<c:set var="amount" value="${map.amount}" />
+		<input type="hidden" name="empNo" id="empNo" value="${map.empNo}">
+		<input type="hidden" name="payDay" id="payDay" value="${map.payDay}">
 		<table class="type09">
 			<thead>
 				<tr>
@@ -48,10 +53,11 @@
 					<td><input type="text" name="expense3" id="expense3"
 						value="${map.EI}" readonly></td>
 				</tr>
+
 				<tr>
 					<th scope="row">상여금</th>
 					<td><input type="text" name="allowance3" id="allowance3"
-						value="0"></td>
+						class="stubModify" value="${map.bonus}" readonly=readonly></td>
 					<th scope="row">장기요양보험</th>
 					<td><input type="text" name="expense4" id="expense4"
 						value="${map.CI}" readonly></td>
@@ -59,10 +65,11 @@
 				<tr>
 					<th scope="row">지급 총액</th>
 					<td class="totalA"><input type="text" name="totalAllowance"
-						id="totalAllowance" value="0" readonly="readonly"></td>
+						id="totalAllowance" value="${map.totalAllowance}"
+						readonly="readonly"></td>
 					<th scope="row">공제 총액</th>
 					<td class="totalE"><input type="text" name="totalExpense"
-						id="totalExpense" value="0" readonly="readonly"></td>
+						id="totalExpense" value="${map.totalExpense}" readonly="readonly"></td>
 				</tr>
 			</tbody>
 		</table>
@@ -72,20 +79,24 @@
 				<tr>
 					<th scope="row" colspan="2">실수령액</th>
 					<td colspan="2">&nbsp; &nbsp; &nbsp; &nbsp; <input type="text"
-						name="total" id="total" value="0" readonly="readonly"></td>
+						name="total" id="total"
+						value="<fmt:formatNumber value="${amount*10000}" pattern="#"/>"
+						readonly="readonly"></td>
 				</tr>
 			</tbody>
 		</table>
-
-		<input type="hidden" name="empNo" id="empNo" value="${map.empNo}">
-
-
-		<button type="button" class="leaveButton" onclick="Cal()">실수령액
-			계산</button>
-		<input type="hidden" name="slistNum" id="slistNum" value="3">
-		<input type="submit" class="leaveButton" value="급여 확정">
 	</form>
 
+	<table class="type100">
+		<tr>
+			<td>
+				<form action="salList.do" method="post">
+					<input type="submit" class="leaveButton" value="나의 급여 목록">
+					<input type="hidden" name="slistNum" id="slistNum" value="4">
+				</form>
+			</td>
+		</tr>
+	</table>
 </body>
 </html>
 <%@ include file="../../../fixed/footer.jsp"%>
