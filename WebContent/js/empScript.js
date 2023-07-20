@@ -7,23 +7,23 @@ window.addEventListener("DOMContentLoaded", function() {
 
 	function updatePage() {
 		let emps = document.querySelectorAll("#allempinfo > div");
-		
-		emps.forEach(function(empno, index){
+
+		emps.forEach(function(empno, index) {
 			if (index >= (currentPage - 1) * empsPerPage && index < currentPage * empsPerPage) {
 				empno.style.display = "grid";
 			} else {
 				empno.style.display = "none";
 			}
 		});
-		
+
 		let prevButton = document.getElementById("prevButton");
 		if (currentPage === 1) {
 			prevButton.disabled = true;
 		} else {
 			prevButton.disabled = false;
 		}
-		
-		
+
+
 		let nextButton = document.getElementById("nextButton");
 		if (currentPage === totalPage) {
 			nextButton.disabled = true;
@@ -31,14 +31,14 @@ window.addEventListener("DOMContentLoaded", function() {
 			nextButton.disabled = false;
 		}
 	}
-	
-	document.getElementById("prevButton").addEventListener("click",function(){
-		if(currentPage > 1){
+
+	document.getElementById("prevButton").addEventListener("click", function() {
+		if (currentPage > 1) {
 			currentPage--;
 			updatePage();
 		}
 	});
-	
+
 	document.getElementById("nextButton").addEventListener("click", function() {
 		if (currentPage < totalPage) {
 			currentPage++; // 다음 페이지로 이동
@@ -90,14 +90,14 @@ function sample6_execDaumPostcode() {
 			}
 
 			// 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-			if(data.userSelectedType === 'R'){
+			if (data.userSelectedType === 'R') {
 				// 법정동명이 있을 경우 추가한다. (법정리는 제외)
 				// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-				if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+				if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
 					extraAddr += data.bname;
 				}
 				// 건물명이 있고, 공동주택일 경우 추가한다.
-				if(data.buildingName !== '' && data.apartment === 'Y'){
+				if (data.buildingName !== '' && data.apartment === 'Y') {
 					extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
 				}
 

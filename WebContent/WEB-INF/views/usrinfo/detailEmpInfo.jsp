@@ -12,14 +12,14 @@
 </head>
 <body>
 	<div id="usrcontainer">
-		<form class="manageForm" action="updateUsrInfo.do" method="post">
+		<form class="manageForm" action="updateUsrInfo.do" method="post" enctype="multipart/form-data">
 			<div class="usrInfo">
 				<div class="head_name">마이페이지</div>
 				<div class="table1">
-					<div class="empImage">
-						<label for="fileInput" class="addImageLabel" id="fileInputText">클릭해서 이미지 추가</label>
+					<div class="empImage" onclick="document.getElementById('fileInput').click()">
 						<input type="file" id="fileInput" name="file" style="display: none;" onchange="previewImage(this)">
 						<img class="imgPreview" id="imgPreview" src="${login.imagePath}" alt="미리보기 이미지" style="display: block;">
+						<label for="fileInput" class="addImageLabel" id="fileInputText">클릭해서 이미지 추가</label>
 					</div>
 					<div class="innerTable">
 						<div class="innerContent">
@@ -41,9 +41,9 @@
 						</div>
 						<div class="innerContent">
 							<div>이메일</div>
-							<div><input value="${login.empEmail}"></div>
+							<div><input type="text" name="empEmail" value="${login.empEmail}"></div>
 							<div>전화번호</div>
-							<div><input value="${login.empTel}"></div>
+							<div><input type="text" name="empTel" value="${login.empTel}"></div>
 						</div>
 						<div class="innerContent">
 							<div>연차개수</div>

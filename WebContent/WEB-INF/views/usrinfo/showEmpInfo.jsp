@@ -18,7 +18,7 @@
 					<div id="simpleInfoAll">
 						<div class="usrImage">
 							<a href="manageEmpInfo.do?empNo=${empList.empNo }">
-								<img src="#" alt="#" onerror="this.onerror=null;
+								<img src="${empList.imagePath}" alt="#" onerror="this.onerror=null;
 								 this.src='./images/usericon.png';">
 							</a>
 						</div>
