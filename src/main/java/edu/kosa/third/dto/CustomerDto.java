@@ -5,7 +5,7 @@ import java.sql.Date;
 
 public class CustomerDto {
 
-  private String customerNo;
+  private int customerNo;
   private String usrId;
   private String customerEmail;
   private String customerTel;
@@ -18,7 +18,7 @@ public class CustomerDto {
 	  
   }
 
-  public CustomerDto(String customerNo, String usrId, String customerEmail, String customerTel, String customerGender, Date customerBirth, String customerAddr, String customerName) {
+  public CustomerDto(int customerNo, String usrId, String customerEmail, String customerTel, String customerGender, Date customerBirth, String customerAddr, String customerName) {
     this.customerNo = customerNo;
     this.usrId = usrId;
     this.customerEmail = customerEmail;
@@ -29,11 +29,11 @@ public class CustomerDto {
     this.customerName = customerName;
   }
 
-  public String getCustomerNo() {
+  public int getCustomerNo() {
     return customerNo;
   }
 
-  public void setCustomerNo(String customerNo) {
+  public void setCustomerNo(int customerNo) {
     this.customerNo = customerNo;
   }
 
