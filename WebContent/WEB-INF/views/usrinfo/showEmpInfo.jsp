@@ -12,7 +12,7 @@
 <body>
 	<div id="empinfoContent">
 		<div id="simpleList">
-			<div class="deptListName">부서 관리</div>
+			<div class="deptListName">인사 관리</div>
 			<div id="allempinfo">
 				<c:forEach items="${empList}" var="empList">
 					<div id="simpleInfoAll">
