@@ -13,7 +13,6 @@ import edu.kosa.third.dto.EmpDto;
 import edu.kosa.third.dto.PosDto;
 import edu.kosa.third.dto.UsrDto;
 import edu.kosa.third.utils.ConnectionHelper;
-import oracle.jdbc.proxy.annotation.Pre;
 
 public class UsrInfoDao {
 
@@ -85,22 +84,20 @@ public class UsrInfoDao {
 	}
 
 	// 관리자 - 퇴사 처리
-	public boolean deleteEmpInfo(EmpDetailsDto empDetailDto) {
-		String delete = "update usr set status = ?  where usrid = ?";
-		String delete2 = "update emp set DEPARTUREDATE = ? where  empno = ?";
+	public boolean deleteEmpInfo(String usrId, int empNo) {
+		String delete = "update emp set DEPARTUREDATE = current_timestamp where  empno = ?";
+		String delete2 = "update usr set status = 1 , IMAGEPATH = null, THUMBNAILPATH = null where usrid = ?";
 		Connection conn = ConnectionHelper.getConnection("oracle");
 		PreparedStatement pstmt = null;
 		PreparedStatement pstmt2 = null;
 		boolean result = false;
 		try {
 			pstmt = conn.prepareStatement(delete);
-			pstmt.setString(1, empDetailDto.getUsrDto().getStatus());
-			pstmt.setString(2, empDetailDto.getUsrDto().getUsrId());
+			pstmt.setInt(1, empNo);
 			pstmt.execute();
 
 			pstmt2 = conn.prepareStatement(delete2);
-			pstmt2.setDate(1, empDetailDto.getEmpDto().getDepartureDate());
-			pstmt2.setInt(2, empDetailDto.getEmpDto().getEmpNo());
+			pstmt2.setString(1, usrId);
 			pstmt2.execute();
 
 			result = true;
@@ -108,23 +105,23 @@ public class UsrInfoDao {
 			e.printStackTrace();
 		} finally {
 			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(pstmt2);
 			ConnectionHelper.close(conn);
 		}
 		return result;
 	}
 
 	// 관리자 - 인사 정보 변경
-	public void updateManageEmpInfo(EmpDto empDto) {
-		String update = "update emp set empName = ?, deptno = ? , posno = ? , salary = ? where empno = ?";
+	public void updateManageEmpInfo(int empNo, int posNo, int salary, int deptNo) {
+		String update = "update emp set deptno = ? , posno = ? , salary = ? where empno = ?";
 		Connection conn = ConnectionHelper.getConnection("oracle");
 		PreparedStatement pstmt;
 		try {
 			pstmt = conn.prepareStatement(update);
-			pstmt.setString(1, empDto.getEmpName());
-			pstmt.setInt(2, empDto.getDeptNo());
-			pstmt.setInt(3, empDto.getPosNo());
-			pstmt.setInt(4, empDto.getSalary());
-			pstmt.setInt(5, empDto.getEmpNo());
+			pstmt.setInt(1, deptNo);
+			pstmt.setInt(2, posNo);
+			pstmt.setInt(3, salary);
+			pstmt.setInt(4, empNo);
 			pstmt.execute();
 
 		} catch (Exception e) {
