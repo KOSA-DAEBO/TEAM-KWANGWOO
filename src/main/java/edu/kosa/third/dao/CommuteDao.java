@@ -60,7 +60,7 @@ public class CommuteDao {
 
             pstmt.execute();
 
-            String sql2 ="update emp set empstatus = 1 where empno = ?";
+            String sql2 ="update emp set empstatus = 0 where empno = ?";
             pstmt2 = conn.prepareStatement(sql2);
 
             pstmt2.setInt(1, empDto.getEmpNo());
