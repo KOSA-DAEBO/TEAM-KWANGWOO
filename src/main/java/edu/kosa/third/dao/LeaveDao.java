@@ -212,7 +212,7 @@ public class LeaveDao {
 	public boolean checkDays(String usrId, String startDay, String endDay) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select * from leave where usrId= ? and levstatus=0 and ?>=startday and ?<=endday";
+		String sql = "SELECT * FROM LEAVE WHERE USRID= ? AND (LEVSTATUS = 0 OR LEVSTATUS = 1) AND (ENDDAY >= ? AND STARTDAY <= ?)";
 		Connection conn = ConnectionHelper.getConnection("oracle");
 		boolean flag = false;
 		try {

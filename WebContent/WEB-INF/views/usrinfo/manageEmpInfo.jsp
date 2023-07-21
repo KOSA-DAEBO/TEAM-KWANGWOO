@@ -14,7 +14,7 @@
 			<div class="usrInfo">
 				<div class="head_name">근로자 상세페이지</div>
 				<div class="table1">
-					<div><img src="#" alt="#" onerror="this.onerror=null; this.src='./images/usericon.png';"></div>
+					<div><img src="${empDto.imagePath}" alt="#"></div>
 					<div class="innerTable">
 						<div class="innerContent">
 							<div>이름</div>
@@ -28,8 +28,8 @@
 							<div>성별</div>
 							<div>
 								<c:choose>
-									<c:when test="${empDto.empGender == '1'}">남</c:when>
-									<c:when test="${empDto.empGender == '0'}">여</c:when>
+									<c:when test="${empDto.empGender == '0'}">남</c:when>
+									<c:when test="${empDto.empGender == '1'}">여</c:when>
 								</c:choose>
 							</div>
 						</div>
