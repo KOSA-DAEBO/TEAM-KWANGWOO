@@ -15,7 +15,7 @@
 	<br>
 	<br>
 	<div class="leave_content">
-		<div class="name">이번달 급여 목록</div>
+		<div class="name">${title} 급여목록</div>
 
 		<form name="form" action="salList.do" method=post>
 			<select name="field1">

@@ -7,32 +7,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Team KwangWoo</title>
-<script type="text/javascript" src="./js/leaveScript.js"></script>
+<script defer="defer" type="text/javascript" src="./js/leaveScript.js"></script>
 </head>
 
 <body>
 	<br>
 	<br>
-	<div class="leave_content">
+	<div class="leave_content2">
 		<div class="name">나의 급여 목록</div>
 
-		<form name="" action="salList.do" method=post>
-				<select name="field">
-					<option value="selection">선택</option>
-					<option value="empNo">사번</option>
-					<option value="empName">사원 이름</option>
-					<option value="deptName">부서 이름</option>
-					<option value="posName">직급 이름</option>
-				</select> <input onmouseover="this.focus()" type="text" id="search"
-					name="search" placeholder="찾을 내용을 입력하세요">
-				<button type="button" onclick=dataCheck() class="btn btn-defaults">검색</button>
-		</form>
-		
 		<table class="type07">
 			<thead>
 				<tr>
 					<th scope="col">지급 연월</th>
-					<th scope="col">총 급여액</th>
+					<th scope="col">실수령액</th>
 					<th scope="col">사원 이름</th>
 					<th scope="col">사번</th>
 					<th scope="col">부서 이름</th>
@@ -46,7 +34,7 @@
 					<tr>
 						<th scope="row">${list.get('payMonth')}</th>
 						<td><a
-							href="salPayStub.do?empNo=${list.get('empNo')}&payDay=${list.get('payDay')}">${list.get('amount')}</a></td>
+							href="salPayStub.do?empNo=${list.get('empNo')}&payDay=${list.get('payDay')}&applyPath=1">${list.get('amount')}</a></td>
 						<td>${list.get('empName')}</td>
 						<td>${list.get('empNo')}</td>
 						<td>${list.get('deptName')}</td>
@@ -59,7 +47,7 @@
 		</table>
 	</div>
 
-	
+
 </body>
 </html>
 <%@ include file="../../../fixed/footer.jsp"%>

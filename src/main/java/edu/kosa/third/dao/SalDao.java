@@ -59,6 +59,58 @@ public class SalDao {
 		return list;
 	}
 
+	public ArrayList<HashMap<String, String>> selectMonth(String field1, String field2) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		StringBuilder sb = new StringBuilder();
+		sb.append("SELECT amount, e.empno,empname, deptname, posname, payday , e.salary FROM sal s");
+		sb.append(" left join emp e on e.empNo = s.empno");
+		sb.append(" left join dept d on d.deptNo = e.deptNo");
+		sb.append(" left join pos p on p.posNo = e.posNo");
+		sb.append(" WHERE payDay=?");
+		String sql = sb.toString();
+		
+		String day=field1.substring(2,4);
+		day+=field2.substring(0,2);
+		day+="20";
+		
+		Connection conn = ConnectionHelper.getConnection("oracle");
+		ArrayList<HashMap<String, String>> list = new ArrayList<>();
+		HashMap<String, String> map;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, day);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				map = new HashMap<String, String>();
+				String s = rs.getDate(6) + "";
+				String payMonth = s.substring(2, 7);
+				String year = s.substring(0,4);
+				String month = s.substring(5,7);
+				String title = year+"년 "+month+"월";
+				
+				map.put("payMonth", payMonth);
+				map.put("amount", rs.getInt(1) + "");
+				map.put("empNo", rs.getInt(2) + "");
+				map.put("empName", rs.getString(3));
+				map.put("deptName", rs.getString(4));
+				map.put("posName", rs.getString(5));
+				map.put("payDay", rs.getDate(6) + "");
+				map.put("salary", rs.getInt(7) + "");
+				map.put("title", title);
+				
+				list.add(map);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(rs);
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
+		}
+		return list;
+	}
+
 	public ArrayList<HashMap<String, String>> selectEmpAll() {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -187,17 +239,23 @@ public class SalDao {
 				int rankAllowance = 0;
 
 				switch (rs.getString(4)) {
+				case "대표이사":
+					rankAllowance = 2000000;
+					break;
+				case "이사":
+					rankAllowance = 1500000;
+					break;
 				case "부장":
-					rankAllowance = 500000;
+					rankAllowance = 1000000;
 					break;
 				case "차장":
-					rankAllowance = 400000;
+					rankAllowance = 700000;
 					break;
 				case "과장":
-					rankAllowance = 300000;
+					rankAllowance = 500000;
 					break;
 				case "대리":
-					rankAllowance = 200000;
+					rankAllowance = 300000;
 					break;
 				case "주임":
 					rankAllowance = 100000;
@@ -226,9 +284,9 @@ public class SalDao {
 		return map;
 	}
 
-	public int applySal(String total, String empNo) {
+	public int applySal(String total, String empNo, String bonus) {
 		PreparedStatement pstmt = null;
-		String sql = "insert into sal(amount,payday,empno,usrid) values (?,TRUNC(SYSDATE, 'MM') + INTERVAL '19' DAY,?,?)";
+		String sql = "insert into sal(amount,payday,empno,usrid,bonus) values (?,TRUNC(SYSDATE, 'MM') + INTERVAL '19' DAY,?,?,?)";
 		Connection conn = ConnectionHelper.getConnection("oracle");
 		int resultrow = 0;
 		double amount = Double.parseDouble(total) / 10000;
@@ -237,6 +295,7 @@ public class SalDao {
 			pstmt.setDouble(1, amount);
 			pstmt.setInt(2, Integer.parseInt(empNo));
 			pstmt.setString(3, searchUsrId(empNo));
+			pstmt.setInt(4, Integer.parseInt(bonus));
 			resultrow = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -273,7 +332,7 @@ public class SalDao {
 	public HashMap<String, String> selectBySalNo(String empNo, String payDay) {
 		PreparedStatement pstmt = null;
 		StringBuilder sb = new StringBuilder();
-		sb.append("SELECT amount, empname, e.empno, deptname, posname, payday , e.salary FROM sal s");
+		sb.append("SELECT amount, empname, e.empno, deptname, posname, payday , e.salary, bonus FROM sal s");
 		sb.append(" left join emp e on e.empNo = s.empno");
 		sb.append(" left join dept d on e.deptNo = d.deptNo");
 		sb.append(" left join pos p on p.posNo = e.posNo");
@@ -300,23 +359,29 @@ public class SalDao {
 				int rankAllowance = 0;
 
 				switch (rs.getString(5)) {
+				case "대표이사":
+					rankAllowance = 2000000;
+					break;
+				case "이사":
+					rankAllowance = 1500000;
+					break;
 				case "부장":
-					rankAllowance = 500000;
+					rankAllowance = 1000000;
 					break;
 				case "차장":
-					rankAllowance = 400000;
+					rankAllowance = 700000;
 					break;
 				case "과장":
-					rankAllowance = 300000;
+					rankAllowance = 500000;
 					break;
 				case "대리":
-					rankAllowance = 200000;
+					rankAllowance = 300000;
 					break;
 				case "주임":
 					rankAllowance = 100000;
 					break;
 				}
-				int totalAllowance = rankAllowance + salary + 200000;
+				int totalAllowance = rankAllowance + salary + 200000 + rs.getInt(8);
 
 				map.put("amount", rs.getDouble(1) + "");
 				map.put("empName", rs.getString(2));
@@ -325,6 +390,7 @@ public class SalDao {
 				map.put("posName", rs.getString(5));
 				map.put("payDay", rs.getDate(6) + "");
 				map.put("salary", (rs.getInt(7) * 10000) + "");
+				map.put("bonus", rs.getInt(8) + "");
 				map.put("rankAllowance", rankAllowance + "");
 				map.put("totalExpense", totalExpense + "");
 				map.put("totalAllowance", totalAllowance + "");
@@ -332,7 +398,7 @@ public class SalDao {
 				map.put("HI", b + "");
 				map.put("EI", c + "");
 				map.put("CI", d + "");
-
+				System.out.println(map.get("bonus"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -344,7 +410,7 @@ public class SalDao {
 		return map;
 	}
 
-	public ArrayList<HashMap<String, String>> selectAllById(String usrId){
+	public ArrayList<HashMap<String, String>> selectAllById(String usrId) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		StringBuilder sb = new StringBuilder();
@@ -386,6 +452,23 @@ public class SalDao {
 		}
 		return list;
 	}
+
+	public void deleteSal(String empNo, String payDay) {
+		PreparedStatement pstmt = null;
+		String sql = "delete from sal where payday=? and empno=?";
+		Connection conn = ConnectionHelper.getConnection("oracle");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, payDay);
+			pstmt.setInt(2, Integer.parseInt(empNo));
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
+		}
+	}
 	
 	public boolean checkDays(String usrId, String startDay, String endDay) {
 		PreparedStatement pstmt = null;
@@ -410,34 +493,16 @@ public class SalDao {
 		return flag;
 	}
 
-	public void deleteLeave(int leaveNo) {
+	public void modifySal(String bonus, String amount, String empNo, String payDay) {
 		PreparedStatement pstmt = null;
-		String sql = "delete from leave where leaveno= ?";
+		String sql = "update sal set bonus= ? , amount=? where empNo=? and payDay=?";
 		Connection conn = ConnectionHelper.getConnection("oracle");
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, leaveNo);
-			pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			ConnectionHelper.close(pstmt);
-			ConnectionHelper.close(conn);
-		}
-	}
-
-
-	public void modifyLeave(String startDay, String endDay, String reason, int typeNo, int leaveNo) {
-		PreparedStatement pstmt = null;
-		String sql = "update Leave set startday = ?, endday = ?, reason=?, typeno=? where leaveno = ?";
-		Connection conn = ConnectionHelper.getConnection("oracle");
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, startDay);
-			pstmt.setString(2, endDay);
-			pstmt.setString(3, reason);
-			pstmt.setInt(4, typeNo);
-			pstmt.setInt(5, leaveNo);
+			pstmt.setInt(1, Integer.parseInt(bonus));
+			pstmt.setInt(2, Integer.parseInt(amount)/10000);
+			pstmt.setInt(3, Integer.parseInt(empNo));
+			pstmt.setString(4, payDay);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -14,7 +14,7 @@
 <body>
 	<br>
 	<br>
-	<div class="leave_content">
+	<div class="leave_content2">
 		<div class="name">승인 대기 휴가 리스트</div>
 		<table class="type07">
 			<thead>

@@ -9,7 +9,7 @@
 <title>Team KwangWoo</title>
 <script
 	type="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script type="text/javascript" src="./js/leaveScript.js"></script>
+<script defer="defer" type="text/javascript" src="./js/leaveScript.js"></script>
 </head>
 <body>
 	<br>
@@ -30,61 +30,62 @@
 				<button type="button" onclick=dataCheck() class="btn btn-default">검색</button>
 			</div>
 		</form>
-
-		<table class="type07">
-			<thead>
-				<tr>
-					<th scope="col" onclick="javajava()">신청 번호</th>
-					<th scope="col">사원 이름</th>
-					<th scope="col">사번</th>
-					<th scope="col">부서 이름</th>
-					<th scope="col">직급 이름</th>
-					<th scope="col">휴가 종류</th>
-					<th scope="col" onclick="sortTable()">휴가 시작일</th>
-					<th scope="col">휴가 종료일</th>
-					<th scope="col">승인 여부</th>
-					<th scope="col">연차 일수</th>
-				</tr>
-			</thead>
-			<tbody class="card_list">
-				<c:forEach var="list" items="${ list }">
+		<div>
+			<table class="type07">
+				<thead>
 					<tr>
-						<c:if test="${list.get('typeNo')==10}">
-							<c:set var="type" value="연차" />
-						</c:if>
-						<c:if test="${list.get('typeNo')==20}">
-							<c:set var="type" value="공가" />
-						</c:if>
-						<c:if test="${list.get('typeNo')==30}">
-							<c:set var="type" value="병가" />
-						</c:if>
-						<c:if test="${list.get('typeNo')==40}">
-							<c:set var="type" value="특별휴가" />
-						</c:if>
-						<c:if test="${list.get('levStatus')==0}">
-							<c:set var="status" value="승인 대기" />
-						</c:if>
-						<c:if test="${list.get('levStatus')==1}">
-							<c:set var="status" value="승인" />
-						</c:if>
-						<c:if test="${list.get('levStatus')==2}">
-							<c:set var="status" value="반려" />
-						</c:if>
-						<th scope="row"><a
-							href="leaveList.do?No=${list.get('leaveNo')}">${list.get('leaveNo')}</a></th>
-						<td>${list.get('empName')}</td>
-						<td>${list.get('empNo')}</td>
-						<td>${list.get('deptName')}</td>
-						<td>${list.get('posName')}</td>
-						<td>${type}</td>
-						<td>${list.get('startDay')}</td>
-						<td>${list.get('endDay')}</td>
-						<td>${ status }</td>
-						<td>${list.get('annualLeave')}일</td>
+						<th scope="col" onclick="javajava()">신청 번호</th>
+						<th scope="col">사원 이름</th>
+						<th scope="col">사번</th>
+						<th scope="col">부서 이름</th>
+						<th scope="col">직급 이름</th>
+						<th scope="col">휴가 종류</th>
+						<th scope="col" onclick="sortTable()">휴가 시작일</th>
+						<th scope="col">휴가 종료일</th>
+						<th scope="col">승인 여부</th>
+						<th scope="col">연차 일수</th>
 					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
+				</thead>
+				<tbody class="card_list">
+					<c:forEach var="list" items="${ list }">
+						<tr>
+							<c:if test="${list.get('typeNo')==10}">
+								<c:set var="type" value="연차" />
+							</c:if>
+							<c:if test="${list.get('typeNo')==20}">
+								<c:set var="type" value="공가" />
+							</c:if>
+							<c:if test="${list.get('typeNo')==30}">
+								<c:set var="type" value="병가" />
+							</c:if>
+							<c:if test="${list.get('typeNo')==40}">
+								<c:set var="type" value="특별휴가" />
+							</c:if>
+							<c:if test="${list.get('levStatus')==0}">
+								<c:set var="status" value="승인 대기" />
+							</c:if>
+							<c:if test="${list.get('levStatus')==1}">
+								<c:set var="status" value="승인" />
+							</c:if>
+							<c:if test="${list.get('levStatus')==2}">
+								<c:set var="status" value="반려" />
+							</c:if>
+							<th scope="row"><a
+								href="leaveList.do?No=${list.get('leaveNo')}">${list.get('leaveNo')}</a></th>
+							<td>${list.get('empName')}</td>
+							<td>${list.get('empNo')}</td>
+							<td>${list.get('deptName')}</td>
+							<td>${list.get('posName')}</td>
+							<td>${type}</td>
+							<td>${list.get('startDay')}</td>
+							<td>${list.get('endDay')}</td>
+							<td>${ status }</td>
+							<td>${list.get('annualLeave')}일</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
 	</div>
 	<form action="leaveList.do" class="levForm" method="post">
 		<input type="hidden" name="listNum" id="listNum" value="2"> <input
