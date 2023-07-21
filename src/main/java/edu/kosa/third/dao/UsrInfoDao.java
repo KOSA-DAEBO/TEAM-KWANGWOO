@@ -300,6 +300,7 @@ public class UsrInfoDao {
 				dto.setPosNo(rs.getInt("posNo"));
 				dto.setSalary(rs.getInt("salary"));
 				dto.setDepartureDate(rs.getDate("departureDate"));
+				dto.setImagePath(rs.getString("imagePath"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
